@@ -7,7 +7,7 @@ namespace: decisions/ontology-corpus
 title: Object-Keyed, Hash-Pinned Ontology Vendoring Index
 tags:
   - adr
-  - proposed
+  - accepted
   - registry
   - vendoring
   - supply-chain
@@ -34,7 +34,7 @@ entity:
 
 ## Status
 
-proposed
+accepted
 
 ## Context
 
