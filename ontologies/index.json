@@ -100,7 +100,7 @@
         "mif-generic"
       ],
       "file": "regenerative-agriculture-research.ontology.yaml",
-      "sha256": "5df0d93571b709f2420fda04a82a31ba12dea3a0f421bb7f5b4a0484cdb629f6",
+      "sha256": "e83dc6e11d6aff3c4004087317ad2e44d679f078707bae3498f921e774a05b5c",
       "version": "0.4.0"
     },
     "regulatory-legal": {

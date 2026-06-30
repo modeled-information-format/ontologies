@@ -5,9 +5,13 @@
 # findings. Types describe RESEARCH OBSERVATIONS about farming practices,
 # infrastructure, funding, and technology — not farm records.
 #
-# Compatible with: engineering-base v0.1.0 + mif-generic v1.0.0
-# Version: 0.3.1
-# Last Updated: 2026-06-26
+# Compatible with: research v0.1.0 + agriculture v0.1.0 + engineering-base v0.1.0 + mif-generic v1.0.0
+# Version: 0.4.0
+# Last Updated: 2026-06-30
+#
+# 0.4.0 (research+agriculture base layers): re-parented onto the new `research` and
+# `agriculture` base layers (extends now [research, agriculture, engineering-base,
+# mif-generic]); leaf types subtype_of the inherited research/agriculture supertypes.
 #
 # 0.3.1: Narrowed the locally-retained cross-cutting types to `adoption-trend` and
 # `compliance-regulation`; dropped `security-framework` and `security-threat`, deferring

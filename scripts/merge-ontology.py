@@ -82,7 +82,6 @@ def main() -> int:
 
     # Harness is the structural base (current Round-4 design); adopt it, bump version.
     merged = dict(h)
-    merged.setdefault("ontology", {})
     merged["ontology"] = {**h.get("ontology", {}), "version": a.version}
 
     if a.union:
