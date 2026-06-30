@@ -75,8 +75,8 @@ jobs:
       security-events: write
       actions: read
       packages: read
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ bf1c8e2 (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-trivy.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
+      modeled-information-format/.github/.github/workflows/reusable-trivy.yml@bf1c8e219de5b134c82d51c1b66507cd86e2d711
     with:
       scan-iac: true
