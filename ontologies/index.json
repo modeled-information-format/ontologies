@@ -32,8 +32,8 @@
         "shared-traits"
       ],
       "file": "market-research.ontology.yaml",
-      "sha256": "b909177137708d540deff5ad4976f85574b5753e8f04b8965ec7e96c931542a2",
-      "version": "0.1.0"
+      "sha256": "ce28d06ba61100dc19ef5f5c81d46dc09861a84375c3a1c848d2c56afe466242",
+      "version": "0.2.0"
     },
     "mif-base": {
       "extends": [],
@@ -99,8 +99,8 @@
         "shared-traits"
       ],
       "file": "regulatory-legal.ontology.yaml",
-      "sha256": "917e4f823373a6b2b887e4d2ec63cc6fda3e2f4c7ed5db8451db1a5cacee646b",
-      "version": "0.1.0"
+      "sha256": "49c3a65a27dd3babc2ba1cea6283de090f45dc30186d22fd5e55ac1529b9269d",
+      "version": "0.2.0"
     },
     "scientific": {
       "extends": [
@@ -108,8 +108,8 @@
         "shared-traits"
       ],
       "file": "scientific.ontology.yaml",
-      "sha256": "20cd0ef46dbbaef91c1bbf5bd97c104ef5e11b29b85012126a93efde73f09564",
-      "version": "0.1.0"
+      "sha256": "41791b6cf14eb964762b76c56a4f5b4b2d096782fcfc51dbba8857d38c432868",
+      "version": "0.2.0"
     },
     "shared-traits": {
       "extends": [
@@ -129,12 +129,11 @@
     },
     "software-security": {
       "extends": [
-        "mif-base",
-        "shared-traits"
+        "engineering-base"
       ],
       "file": "software-security.ontology.yaml",
-      "sha256": "0c089a8b4e65516056b28ea67a0f8c01ced912b912e228d24d855cb514371e4b",
-      "version": "0.1.0"
+      "sha256": "8b8aafa07bfdc4b3f76ceffc91b691c0764b0cf84ac6bf4f99929716181a91a3",
+      "version": "0.2.0"
     },
     "trend-analysis": {
       "extends": [
@@ -142,8 +141,8 @@
         "shared-traits"
       ],
       "file": "trend-analysis.ontology.yaml",
-      "sha256": "1ba8a4a7ef9273eec632c6f5a66d50cecd550c9593c19c5865c52686e9a2f6ec",
-      "version": "0.1.0"
+      "sha256": "de9c8b21cfb029629849d56b0023c7c028f09b9f9d3e1d8820891d19b99478c6",
+      "version": "0.2.0"
     }
   },
   "schema": "mif-ontology-index/v1",

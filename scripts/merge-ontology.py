@@ -62,6 +62,9 @@ def main() -> int:
     ap.add_argument("--schema", required=True, type=Path)
     ap.add_argument("--out", type=Path)
     ap.add_argument("--version", required=True)
+    ap.add_argument("--union", action="store_true",
+                    help="keep names from BOTH sides (entity_types: harness wins on conflict; "
+                         "relationships: union of both vocabularies). Default: require harness superset.")
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args()
 
@@ -71,16 +74,33 @@ def main() -> int:
     for key in ("entity_types", "relationships", "traits"):
         reg_only |= delta(h, r, key, report)
 
-    if reg_only:
+    if reg_only and not a.union:
         print(f"merge-ontology[{a.id}]: REFUSING — registry has names the harness lacks "
-              f"(not a clean superset): {sorted(reg_only)}", file=sys.stderr)
+              f"(not a clean superset; pass --union to keep both): {sorted(reg_only)}", file=sys.stderr)
         print("\n".join(report), file=sys.stderr)
         return 1
 
-    # Harness is a superset of the registry: adopt it verbatim, bump the version.
+    # Harness is the structural base (current Round-4 design); adopt it, bump version.
     merged = dict(h)
     merged.setdefault("ontology", {})
     merged["ontology"] = {**h.get("ontology", {}), "version": a.version}
+
+    if a.union:
+        # entity_types: harness wins on name conflict, append registry-only (none expected).
+        # relationships: keep BOTH vocabularies (§2 prose + §9.3 grounded), harness first.
+        # traits: drop any inlined block — both packs extend shared-traits and inherit them.
+        def union_field(key):
+            hf, rf = h.get(key), r.get(key)
+            if isinstance(hf, dict) or isinstance(rf, dict):
+                out = dict(rf or {}); out.update(hf or {}); return out
+            hn = names(hf)
+            return list(hf or []) + [i for i in (rf or []) if isinstance(i, dict) and i.get("name") not in hn]
+        merged["entity_types"] = union_field("entity_types")
+        merged["relationships"] = union_field("relationships")
+        merged.pop("traits", None)
+        report.append(f"  UNION: entity_types={len(names(merged['entity_types']))}, "
+                      f"relationships={len(names(merged['relationships']))} (both vocabularies kept); "
+                      f"inlined traits dropped (inherited from shared-traits)")
 
     schema = json.loads(a.schema.read_text())
     try:
