@@ -103,9 +103,9 @@ jobs:
     needs: [meta]
     permissions:
       contents: read
-    # modeled-information-format/.github main @ 698148e (PR #4, merged 2026-06-19)
+    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-zap.yml@698148e12da113cfeeef8742c31ae93657959e67
+      modeled-information-format/.github/.github/workflows/reusable-zap.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
     with:
       target: ${{ inputs.target }}
       fail-action: false
@@ -118,9 +118,9 @@ jobs:
       id-token: write
       attestations: write
       contents: read
-    # modeled-information-format/.github main @ 698148e (PR #4, merged 2026-06-19)
+    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@698148e12da113cfeeef8742c31ae93657959e67
+      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
     with:
       subject-name: ${{ needs.subject.outputs.subject-name }}
       subject-digest: ${{ needs.subject.outputs.subject-digest }}
