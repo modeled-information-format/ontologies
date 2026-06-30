@@ -1,9 +1,0 @@
-{
-  "name": "software-security",
-  "version": "0.1.0",
-  "kind": "ontology",
-  "description": "Software-security domain ontology — vulnerabilities, weaknesses, controls, threat actors, campaigns, indicators of compromise, malware, supply-chain risk, policies, and assessments, grounded in MITRE ATT&CK, CVE/CWE/NVD, NIST 800-53/OSCAL/800-161r1, STIX 2.1, and VERIS. Mints 10 security types; extends mif-base and shared-traits.",
-  "provides": {
-    "ontologies": ["software-security"]
-  }
-}

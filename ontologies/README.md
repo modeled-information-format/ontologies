@@ -1,5 +1,30 @@
 ---
-diataxis_type: reference
+id: reference-ontologies-directory
+type: semantic
+created: '2026-06-30T12:00:00Z'
+modified: '2026-06-30T12:00:00Z'
+namespace: reference/ontology-corpus
+title: MIF Ontologies
+tags:
+  - reference
+  - ontology
+  - corpus
+temporal:
+  '@type': TemporalMetadata
+  validFrom: '2026-06-30T00:00:00Z'
+  recordedAt: '2026-06-30T12:00:00Z'
+  ttl: P1Y
+relationships:
+  - type: relates-to
+    target: ../docs/reference/ontology-corpus.md
+ontology:
+  '@type': OntologyReference
+  id: mif-docs
+  version: 1.0.0
+  uri: https://mif-spec.dev/ontologies/mif-docs
+entity:
+  name: MIF Ontologies
+  entity_type: reference-document
 ---
 
 # MIF Ontologies
@@ -122,7 +147,7 @@ Later entries override earlier entries for conflicting definitions.
 
 Memories are stored using hierarchical namespace paths:
 
-```
+```text
 # User-level (includes org and project)
 ${MNEMONIC_ROOT}/{org}/{project}/{namespace}/
 
@@ -131,6 +156,7 @@ ${MNEMONIC_ROOT}/{org}/{project}/{namespace}/
 ```
 
 Examples:
+
 - `${MNEMONIC_ROOT}/zircote/mif/_semantic/decisions/`
 - `./.claude/mnemonic/_procedural/patterns/`
 
@@ -198,29 +224,24 @@ namespace: _semantic/livestock
 | `version` | No | Semantic version (e.g., "1.0.0") |
 | `uri` | No | URL to the ontology definition file |
 
-## Examples
+## Domain ontologies
 
-The `examples/` directory contains domain-specific ontologies:
-
-- `software-engineering.ontology.yaml` - Software development entities
-- `regenerative-agriculture.ontology.yaml` - Farm operations and carbon markets
-- `k12-educational-publishing.ontology.yaml` - Educational content publishing
-- `biology-research-lab.ontology.yaml` - Academic research lab operations
-- `backstage.ontology.yaml` - Backstage.io developer portal entities
-- `csi-5w1h.ontology.yaml` - CSI 5W1H investigative framework
-
-The top-level `ontologies/` directory also contains:
-
-- `shared-traits.ontology.yaml` - Reusable trait mixins
+Domain ontologies are flat `ontologies/<name>.ontology.yaml` files beside the base
+ontologies (`mif-base`, `shared-traits`, `engineering-base`, `mif-generic`), each
+with a committed `.ontology.jsonld` projection. For the full catalog with versions,
+namespaces, and traits, see the
+[ontology corpus reference](../docs/reference/ontology-corpus.md).
 
 ## Creating Custom Ontologies
 
 1. Create an `ontology.yaml` file in your project:
-   ```
+
+   ```text
    ./.claude/mnemonic/ontology.yaml
    ```
 
 2. Define custom namespaces, entity types, and discovery patterns:
+
    ```yaml
    ontology:
      id: my-project
@@ -243,11 +264,15 @@ The top-level `ontologies/` directory also contains:
 
 ## JSON-LD Generation
 
-Convert YAML ontologies to JSON-LD for semantic web compatibility:
+Each `*.ontology.yaml` has a committed `*.ontology.jsonld` projection beside it for
+semantic-web interoperability. The projections are generated from the YAML by the
+`modeled-information-format/MIF` spec repo's generator, not by tooling in this
+repository:
 
 ```bash
-python scripts/yaml2jsonld.py ontologies/mif-base.ontology.yaml
-python scripts/yaml2jsonld.py --all  # Convert all
+# from a modeled-information-format/MIF checkout
+python scripts/yaml2jsonld.py ontologies/<name>.ontology.yaml
 ```
 
-> **Prerequisites:** `pip install pyyaml` (PyYAML is required for YAML processing)
+Commit the regenerated `.jsonld` alongside any `.yaml` change so the two stay in
+sync.

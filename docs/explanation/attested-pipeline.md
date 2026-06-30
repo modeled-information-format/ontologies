@@ -1,7 +1,45 @@
 ---
-diataxis_type: explanation
-title: The attested pipeline model
-description: Why attested-pipeline-template exists, what the build→attest→verify→publish model means, and how the pieces fit together.
+id: explanation-attested-pipeline
+type: semantic
+created: '2026-06-30T12:00:00Z'
+modified: '2026-06-30T12:00:00Z'
+namespace: explanation/attested-pipeline
+title: The Attested Pipeline Model
+tags:
+  - explanation
+  - attested-delivery
+  - supply-chain
+temporal:
+  '@type': TemporalMetadata
+  validFrom: '2026-06-30T00:00:00Z'
+  recordedAt: '2026-06-30T12:00:00Z'
+  ttl: P1Y
+provenance:
+  '@type': Provenance
+  sourceType: external_import
+  trustLevel: verified
+  wasDerivedFrom:
+    '@id': https://github.com/attested-delivery
+    '@type': prov:Entity
+citations:
+  - '@type': Citation
+    citationType: specification
+    citationRole: source
+    title: Attested Delivery — the attested release architecture
+    url: https://github.com/attested-delivery
+relationships:
+  - type: relates-to
+    target: ../reference/gates.md
+  - type: relates-to
+    target: ../how-to/instantiate-with-copier.md
+ontology:
+  '@type': OntologyReference
+  id: mif-docs
+  version: 1.0.0
+  uri: https://mif-spec.dev/ontologies/mif-docs
+entity:
+  name: The Attested Pipeline Model
+  entity_type: explanation
 ---
 
 # The attested pipeline model
@@ -31,7 +69,7 @@ publication — is toolchain-agnostic and is not meant to be modified.
 
 ## The central invariant
 
-```
+```text
 build → attest-provenance → generate+attest-SBOM → fail-closed-verify → publish
 ```
 

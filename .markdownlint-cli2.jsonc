@@ -1,0 +1,22 @@
+{
+  // Lint config for the MIF ontology corpus docs. Disables rules that conflict
+  // with the doc set's conventions; everything else stays on.
+  "config": {
+    "default": true,
+    "MD013": false, // line length — prose and tables run long by design
+    "MD060": false, // table column style — compact and padded tables both allowed
+    "MD033": false, // inline HTML — the README hero image lockup
+    "MD041": false, // first-line-heading — README leads with the hero image
+    // MIF docs carry a frontmatter `title:` AND a body `# Title` H1. Disable
+    // front-matter-title detection so the body H1 is the single canonical title
+    // and the two do not collide as duplicate top-level headings.
+    "MD025": { "front_matter_title": "" },
+    // Keep a Changelog repeats `### Added` / `### Changed` under each version
+    // section; allow identical headings when they are not siblings.
+    "MD024": { "siblings_only": true }
+  },
+  "ignores": [
+    "node_modules/**",
+    "**/node_modules/**"
+  ]
+}
