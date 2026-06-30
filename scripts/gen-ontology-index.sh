@@ -37,7 +37,7 @@ trap 'rm -f "$acc" "$acc.2"' EXIT
 for f in "$ONT_DIR"/*.ontology.yaml; do
   [ -e "$f" ] || continue
   id=$(yq -r '.ontology.id // ""' "$f")
-  if [ -z "$id" ] || [ "$id" = "null" ]; then
+  if [ -z "$id" ]; then
     echo "gen-ontology-index: skip $f (no .ontology.id)" >&2
     continue
   fi
