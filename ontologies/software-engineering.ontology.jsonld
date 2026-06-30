@@ -126,37 +126,9 @@
   "@id": "mif:ontology/software-engineering",
   "@type": "mif:Ontology",
   "identifier": "software-engineering",
-  "version": "0.1.0",
-  "description": "Software engineering domain ontology",
+  "version": "0.5.0",
+  "description": "Software engineering domain ontology \u2014 incidents and SDLC operational procedures",
   "namespaces": {
-    "semantic": {
-      "@id": "mif:namespace/semantic",
-      "@type": "mif:Namespace",
-      "name": "semantic",
-      "children": {
-        "architecture": {
-          "@id": "mif:namespace/semantic/architecture",
-          "@type": "mif:Namespace",
-          "name": "architecture",
-          "description": "System architecture and component designs",
-          "type_hint": "semantic"
-        },
-        "components": {
-          "@id": "mif:namespace/semantic/components",
-          "@type": "mif:Namespace",
-          "name": "components",
-          "description": "Software components, modules, services",
-          "type_hint": "semantic"
-        },
-        "dependencies": {
-          "@id": "mif:namespace/semantic/dependencies",
-          "@type": "mif:Namespace",
-          "name": "dependencies",
-          "description": "Third-party libraries, packages, integrations",
-          "type_hint": "semantic"
-        }
-      }
-    },
     "procedural": {
       "@id": "mif:namespace/procedural",
       "@type": "mif:Namespace",
@@ -173,99 +145,6 @@
     }
   },
   "entity_types": [
-    {
-      "@id": "mif:entityType/component",
-      "@type": "mif:EntityType",
-      "name": "component",
-      "base": "semantic",
-      "description": "A software component, module, or service",
-      "traits": [
-        "mif:trait/versioned",
-        "mif:trait/documented"
-      ],
-      "schema": {
-        "required": [
-          "name",
-          "responsibility"
-        ],
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Component name"
-          },
-          "responsibility": {
-            "type": "string",
-            "description": "Single responsibility description"
-          },
-          "dependencies": {
-            "type": "array",
-            "description": "List of component dependencies",
-            "items": {
-              "type": "string"
-            }
-          },
-          "interfaces": {
-            "type": "array",
-            "description": "Public interfaces/APIs",
-            "items": {
-              "type": "string"
-            }
-          },
-          "owner": {
-            "type": "string",
-            "description": "Team or person owning this component"
-          }
-        }
-      }
-    },
-    {
-      "@id": "mif:entityType/architectural-decision",
-      "@type": "mif:EntityType",
-      "name": "architectural-decision",
-      "base": "semantic",
-      "description": "An architectural decision with full context",
-      "traits": [
-        "mif:trait/dated",
-        "mif:trait/cited"
-      ],
-      "schema": {
-        "required": [
-          "decision",
-          "rationale"
-        ],
-        "properties": {
-          "decision": {
-            "type": "string",
-            "description": "The decision made"
-          },
-          "rationale": {
-            "type": "string",
-            "description": "Why this decision was made"
-          },
-          "alternatives": {
-            "type": "array",
-            "description": "Alternatives considered",
-            "items": {
-              "type": "object"
-            }
-          },
-          "consequences": {
-            "type": "object",
-            "description": "Known consequences and trade-offs"
-          },
-          "status": {
-            "type": "string",
-            "description": "Decision status",
-            "enum": [
-              "proposed",
-              "accepted",
-              "deprecated",
-              "superseded"
-            ]
-          }
-        }
-      }
-    },
     {
       "@id": "mif:entityType/incident-report",
       "@type": "mif:EntityType",
@@ -315,147 +194,6 @@
           "duration_minutes": {
             "type": "integer",
             "description": "Incident duration in minutes"
-          }
-        }
-      }
-    },
-    {
-      "@id": "mif:entityType/security-incident",
-      "@type": "mif:EntityType",
-      "name": "security-incident",
-      "base": "episodic",
-      "description": "A security breach/incident \u2014 a specialization of incident-report carrying the VERIS Actor/Action/Asset/Attribute",
-      "traits": [
-        "mif:trait/timeline",
-        "mif:trait/stakeholders"
-      ],
-      "subtype_of": [
-        "mif:entityType/incident-report"
-      ],
-      "schema": {
-        "required": [
-          "severity",
-          "impact",
-          "resolution"
-        ],
-        "properties": {
-          "severity": {
-            "type": "string",
-            "description": "Incident severity level",
-            "enum": [
-              "critical",
-              "high",
-              "medium",
-              "low"
-            ]
-          },
-          "impact": {
-            "type": "string",
-            "description": "Business/user impact description"
-          },
-          "resolution": {
-            "type": "string",
-            "description": "How the incident was resolved"
-          },
-          "actor": {
-            "type": "string",
-            "description": "VERIS Actor \u2014 external / internal / partner"
-          },
-          "action": {
-            "type": "string",
-            "description": "VERIS Action \u2014 malware / hacking / social / error / misuse"
-          },
-          "asset": {
-            "type": "string",
-            "description": "VERIS Asset \u2014 the device/data affected"
-          },
-          "attribute": {
-            "type": "string",
-            "description": "VERIS Attribute \u2014 how affected (CIA)"
-          }
-        }
-      }
-    },
-    {
-      "@id": "mif:entityType/technology",
-      "@type": "mif:EntityType",
-      "name": "technology",
-      "base": "semantic",
-      "description": "A technology, framework, or tool",
-      "traits": [
-        "mif:trait/versioned",
-        "mif:trait/documented"
-      ],
-      "schema": {
-        "required": [
-          "name",
-          "category"
-        ],
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string",
-            "enum": [
-              "database",
-              "framework",
-              "language",
-              "infrastructure",
-              "tool",
-              "library"
-            ]
-          },
-          "website": {
-            "type": "string",
-            "format": "uri"
-          },
-          "license": {
-            "type": "string"
-          },
-          "use_case": {
-            "type": "string",
-            "description": "Why/where we use this technology"
-          }
-        }
-      }
-    },
-    {
-      "@id": "mif:entityType/design-pattern",
-      "@type": "mif:EntityType",
-      "name": "design-pattern",
-      "base": "semantic",
-      "description": "A design pattern or architectural pattern",
-      "traits": [
-        "mif:trait/cited"
-      ],
-      "schema": {
-        "required": [
-          "pattern_name",
-          "context",
-          "solution"
-        ],
-        "properties": {
-          "pattern_name": {
-            "type": "string"
-          },
-          "context": {
-            "type": "string",
-            "description": "When to use this pattern"
-          },
-          "solution": {
-            "type": "string",
-            "description": "How the pattern solves the problem"
-          },
-          "consequences": {
-            "type": "object",
-            "description": "Trade-offs and implications"
-          },
-          "related_patterns": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         }
       }
@@ -640,21 +378,6 @@
         }
       }
     },
-    "documented": {
-      "@id": "mif:trait/documented",
-      "@type": "mif:Trait",
-      "name": "documented",
-      "description": "Adds documentation reference",
-      "fields": {
-        "documentation_url": {
-          "type": "string",
-          "format": "uri"
-        },
-        "readme_path": {
-          "type": "string"
-        }
-      }
-    },
     "dated": {
       "@id": "mif:trait/dated",
       "@type": "mif:Trait",
@@ -670,15 +393,6 @@
           "format": "date"
         }
       }
-    },
-    "cited": {
-      "@id": "mif:trait/cited",
-      "@type": "mif:Trait",
-      "name": "cited",
-      "description": "Requires citations/sources",
-      "requires": [
-        "citations"
-      ]
     },
     "timeline": {
       "@id": "mif:trait/timeline",
@@ -733,34 +447,6 @@
     }
   },
   "relationships": {
-    "depends_on": {
-      "@id": "mif:relationship/depends_on",
-      "@type": "mif:Relationship",
-      "name": "depends_on",
-      "description": "Component dependency relationship",
-      "from": [
-        "mif:entityType/component"
-      ],
-      "to": [
-        "mif:entityType/component",
-        "mif:entityType/technology"
-      ],
-      "symmetric": false
-    },
-    "implements": {
-      "@id": "mif:relationship/implements",
-      "@type": "mif:Relationship",
-      "name": "implements",
-      "description": "Component implements a pattern or decision",
-      "from": [
-        "mif:entityType/component"
-      ],
-      "to": [
-        "mif:entityType/design-pattern",
-        "mif:entityType/architectural-decision"
-      ],
-      "symmetric": false
-    },
     "caused_by": {
       "@id": "mif:relationship/caused_by",
       "@type": "mif:Relationship",
@@ -844,103 +530,40 @@
       {
         "@id": "mif:pattern/0",
         "@type": "mif:DiscoveryPattern",
-        "content_pattern": "\\b(PostgreSQL|MySQL|MongoDB|Redis)\\b",
-        "suggest_entity": "mif:entityType/technology",
-        "suggest_namespace": "_semantic/entities"
-      },
-      {
-        "@id": "mif:pattern/1",
-        "@type": "mif:DiscoveryPattern",
-        "content_pattern": "\\b(React|Vue|Angular|Next\\.js|Django)\\b",
-        "suggest_entity": "mif:entityType/technology",
-        "suggest_namespace": "_semantic/entities"
-      },
-      {
-        "@id": "mif:pattern/2",
-        "@type": "mif:DiscoveryPattern",
-        "content_pattern": "\\b(FastAPI|Express|Flask|Spring)\\b",
-        "suggest_entity": "mif:entityType/technology",
-        "suggest_namespace": "_semantic/entities"
-      },
-      {
-        "@id": "mif:pattern/3",
-        "@type": "mif:DiscoveryPattern",
-        "content_pattern": "\\b(Docker|Kubernetes|Terraform|AWS)\\b",
-        "suggest_entity": "mif:entityType/technology",
-        "suggest_namespace": "_semantic/entities"
-      },
-      {
-        "@id": "mif:pattern/4",
-        "@type": "mif:DiscoveryPattern",
-        "content_pattern": "\\b(Factory|Singleton|Observer)\\s+Pattern\\b",
-        "suggest_entity": "mif:entityType/design-pattern",
-        "suggest_namespace": "_procedural/patterns"
-      },
-      {
-        "@id": "mif:pattern/5",
-        "@type": "mif:DiscoveryPattern",
-        "content_pattern": "\\b(Repository|Strategy|Decorator)\\s+Pattern\\b",
-        "suggest_entity": "mif:entityType/design-pattern",
-        "suggest_namespace": "_procedural/patterns"
-      },
-      {
-        "@id": "mif:pattern/6",
-        "@type": "mif:DiscoveryPattern",
-        "content_pattern": "\\b(CQRS|Event\\s+Sourcing|Saga)\\b",
-        "suggest_entity": "mif:entityType/design-pattern",
-        "suggest_namespace": "_procedural/patterns"
-      },
-      {
-        "@id": "mif:pattern/7",
-        "@type": "mif:DiscoveryPattern",
-        "file_pattern": "**/services/**/*.py",
-        "suggest_entity": "mif:entityType/component",
-        "suggest_namespace": "_semantic/components"
-      },
-      {
-        "@id": "mif:pattern/8",
-        "@type": "mif:DiscoveryPattern",
-        "file_pattern": "**/components/**/*.tsx",
-        "suggest_entity": "mif:entityType/component",
-        "suggest_namespace": "_semantic/components"
-      },
-      {
-        "@id": "mif:pattern/9",
-        "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(outage|incident|postmortem|RCA)\\b",
         "suggest_entity": "mif:entityType/incident-report",
         "suggest_namespace": "_episodic/incidents"
       },
       {
-        "@id": "mif:pattern/10",
+        "@id": "mif:pattern/1",
         "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(runbook|playbook|SOP|procedure)\\b",
         "suggest_entity": "mif:entityType/runbook",
         "suggest_namespace": "_procedural/runbooks"
       },
       {
-        "@id": "mif:pattern/11",
+        "@id": "mif:pattern/2",
         "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(deploy|release|rollout)\\s+(steps|procedure)\\b",
         "suggest_entity": "mif:entityType/deployment-procedure",
         "suggest_namespace": "_procedural/deployments"
       },
       {
-        "@id": "mif:pattern/12",
+        "@id": "mif:pattern/3",
         "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(migration|migrate|upgrade)\\s+(guide|plan)\\b",
         "suggest_entity": "mif:entityType/migration-guide",
         "suggest_namespace": "_procedural/migrations"
       },
       {
-        "@id": "mif:pattern/13",
+        "@id": "mif:pattern/4",
         "@type": "mif:DiscoveryPattern",
         "file_pattern": "**/runbooks/**/*.md",
         "suggest_entity": "mif:entityType/runbook",
         "suggest_namespace": "_procedural/runbooks"
       },
       {
-        "@id": "mif:pattern/14",
+        "@id": "mif:pattern/5",
         "@type": "mif:DiscoveryPattern",
         "file_pattern": "**/docs/procedures/**/*.md",
         "suggest_entity": "mif:entityType/deployment-procedure",
