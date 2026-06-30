@@ -28,10 +28,20 @@ permissions:
 
 jobs:
   # ---------------------------------------------------------------------------
+  # Changelog gate: a tag release must carry a non-empty CHANGELOG entry for its
+  # version. Guarded to tag pushes; a branch workflow_dispatch passes empty (skip).
+  # ---------------------------------------------------------------------------
+  changelog-check:
+    uses: modeled-information-format/.github/.github/workflows/reusable-changelog-check.yml@824b7ba80c0f798bf1be1d4b776e3688b89152fc
+    with:
+      version: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+
+  # ---------------------------------------------------------------------------
   # Meta: resolve artifact name + version from the tag or a dev default.
   # ---------------------------------------------------------------------------
   meta:
     name: Resolve Metadata
+    needs: changelog-check
     runs-on: ubuntu-latest
     outputs:
       name: ${{ steps.meta.outputs.name }}
