@@ -1,225 +1,106 @@
-# attested-pipeline-template
+<p align="center">
+  <img src=".github/social-preview.png" width="860"
+       alt="MIF Ontology Corpus: a shared, growing set of ontologies. A machine-cyan typed base (mif-base's knowledge triad and the shared-traits mixins) that domain ontologies extend, fanning out as human-amber nodes for software-security, scientific, regenerative-agriculture, and more, with a dashed plus-new node showing the corpus is still growing.">
+</p>
 
-A language-agnostic GitHub repository template demonstrating the **attested release architecture**: every artifact that reaches consumers is byte-identical to what was validated, carries SLSA provenance and SBOM attestations that re-verify at every hop, and publication is fail-closed on verification.
+# MIF Ontology Corpus
 
-A tag publishes nothing unattested.
+The central, growing corpus of ontologies for the **Modeled Information Format
+(MIF)**. An ontology here is one model read two ways: the `*.ontology.yaml` a
+person reads and the `*.ontology.jsonld` a parser resolves. It types MIF
+memories so a fact recorded in one domain means the same thing everywhere it
+travels.
 
-## The Invariant
+A domain does not invent its own vocabulary. It `extends` a shared base and adds
+only what is its own.
 
-```
-build → attest-provenance → generate+attest-SBOM → fail-closed-verify → [tag-gated] publish
-```
+**New here?** Start with [the ontology model](docs/explanation/ontology-model.md)
+for the why, then [author your first ontology](docs/tutorial/author-your-first-ontology.md)
+for the how.
 
-No step is skippable. If `verify` fails, `publish` does not run — GitHub Actions
-enforces this via the `needs:` dependency graph.
+## What's in the corpus
 
-## What's in This Template
+Every ontology is one flat pair of files under `ontologies/`: the
+`<name>.ontology.yaml` a person reads and the generated `<name>.ontology.jsonld`
+a parser resolves.
 
-```
-.github/
-  workflows/
-    release.yml   # The attested release pipeline (see below)
-    ci.yml        # CI + mandatory action-pin check
-SECURITY.md       # Verification instructions for consumers
-README.md         # This file
-LICENSE           # Apache-2.0
-```
+| Layer | Files | What it is |
+| --- | --- | --- |
+| Base | [`mif-base.ontology.yaml`](ontologies/mif-base.ontology.yaml) | The knowledge triad (`_semantic`, `_episodic`, `_procedural`) and the core traits `timestamped`, `confidence`, `provenance` |
+| Shared traits | [`shared-traits.ontology.yaml`](ontologies/shared-traits.ontology.yaml) | Cross-domain trait mixins (`located`, `measured`, `auditable`, `lifecycle`, and more) every domain can compose |
+| Intermediate bases | [`engineering-base`](ontologies/engineering-base.ontology.yaml), [`mif-generic`](ontologies/mif-generic.ontology.yaml) | `engineering-base` adds shared engineering supertypes; `mif-generic` adds always-on generic entity types |
+| Domain ontologies | [`ontologies/*.ontology.yaml`](ontologies/) | 13 domain ontologies, including `software-security`, `scientific`, `regenerative-agriculture`, `regulatory-legal`, and `trend-analysis` |
 
-### `release.yml` — The Attested Release Pipeline
+The full catalog, with every ontology, version, namespace, and trait, is the
+[corpus reference](docs/reference/ontology-corpus.md).
 
-| Job | What it does | Key permissions |
-|---|---|---|
-| `meta` | Resolves artifact name + version from the git ref | `contents: read` |
-| `build` | Builds the artifact, attests SLSA build provenance, exposes the subject digest | `id-token: write`, `attestations: write` |
-| `sbom` | Generates a CycloneDX SBOM via Syft, attests it | `id-token: write`, `attestations: write` |
-| `gate-sast` / `attest-sast` | SAST (CodeQL) → seam-sign verdict (`sast/v1`) over the subject | `security-events: write` / `attestations: write` |
-| `gate-sca` / `attest-sca` | SCA (OSV) → seam-sign verdict (`sca/v1`) over the subject | `security-events: write` / `attestations: write` |
-| `gate-trivy` / `attest-iac-license` | IaC/license (Trivy) → seam-sign verdict (`iac-license/v1`) | `security-events: write` / `attestations: write` |
-| `vex` | OpenVEX disposition, self-signed (`reusable-vex.yml`, `openvex.dev/ns/v0.2.0`) over the subject | `id-token: write`, `attestations: write` |
-| `verify` | **Fail-closed**: verifies provenance + SBOM + every seam verdict (sast/sca/iac-license) + VEX | `attestations: read` |
-| `publish` | Creates the GitHub Release with checksums | `contents: write` — only on tag push, only if `verify` passes |
+## How the model fits together
 
-The pipeline supports `workflow_dispatch` as a dry-run: the full
-build → attest → verify chain runs, but `publish` is skipped (tag-gated).
-
-**Artifact verdicts are signed and attested at release.**
-Every gate verdict that characterizes the shipped artifact — SAST (CodeQL), SCA
-(OSV), IaC/license (Trivy), container-scan (Trivy image), and DAST (ZAP) — is
-signed and attested at release, bound to the release subject by digest. SAST
-analyzes the exact source that ships, so its verdict travels with the release
-like the others. Supply-chain posture (Scorecard) is a repo-level signal, not an
-artifact verdict. This template is a **complete attested reference**: SAST + SCA
-+ IaC/license + VEX in `release.yml`, DAST in `dast.yml`, merge-time
-SAST/SCA/Scorecard/Trivy in `quality-gates.yml`. Container-scan (Trivy image) is
-N/A here (this template ships a tarball, not an image); see
-`modeled-information-format/rust-template` for the containerized variant.
-
-### `quality-gates.yml` — Merge-time gates
-
-Thin callers of the central SAST (CodeQL), SCA (OSV), posture (Scorecard), and
-IaC/license (Trivy) reusables. Each normalizes on SARIF and surfaces in the
-repository Security tab; wire "Code scanning results" as a required status check
-to make it a merge gate. Posture (Scorecard) lives here as a repo-level signal.
-
-### `ci.yml` — CI + Pin Check
-
-Includes a mandatory `pin-check` job — a thin caller of the central
-`modeled-information-format/.github` **`pin-check.yml`** reusable (pinned by the `.github`
-repo's commit SHA), per CLAUDE.md §2/§3 (consume the central reusables, never
-reinvent them). It fails closed if any `uses:` references an action by tag or
-branch instead of a full 40-character commit SHA.
-
-### `dast.yml` — Attested DAST (ZAP)
-
-Concrete DAST example: points the central `reusable-zap.yml` at a **running**
-target (`workflow_dispatch` input `target`, default the org's deployed site),
-then `attest-dast` seam-signs the verdict as `dast/v1` bound to a subject digest,
-and a fail-closed `verify` job re-checks it. Stand up your own deployed
-preview/staging and pass its URL. Requires the org Actions allow-list to permit
-the single action `zaproxy/action-full-scan@*` (or its exact pinned SHA) — not a
-`zaproxy/*` owner wildcard — since `reusable-zap.yml` pulls
-`zaproxy/action-full-scan`.
-
-## Adapting This Template
-
-### 1. Use this as a template repository
-
-Click **"Use this template"** on GitHub to create a new repository.
-
-### 2. Replace the build step
-
-In `release.yml`, find the `# ADAPT THIS STEP` block in the `build` job:
+A domain ontology declares what it builds on, then defines its own entity types
+by composing inherited traits:
 
 ```yaml
-- name: Build artifact
-  run: |
-    # Replace this with your toolchain's build command.
-    # Output MUST land under dist/
-    git archive --format=tar.gz ...
+ontology:
+  id: regenerative-agriculture
+  version: "0.1.0"
+  extends:
+    - mif-base        # the namespace triad + core traits
+    - shared-traits   # the cross-domain mixins
+
+entity_types:
+  - name: field
+    base: semantic
+    traits: [bounded, measured, seasonal]   # inherited from shared-traits
+    schema:
+      required: [name, acres, farm_id]
+      properties:
+        acres: { type: number }
 ```
 
-Examples by language:
+Traits, namespaces, relationships, and discovery patterns are inherited; entity
+types are not, so each ontology defines its own. See
+[the ontology model](docs/explanation/ontology-model.md) for the reasoning, and
+[ADR 0001](docs/decisions/0001-underscore-prefixed-base-namespaces.md) for why
+base-type namespaces carry the `_` prefix.
 
-**Go:**
+A memory then names the ontology it conforms to:
+
 ```yaml
-- name: Build artifact
-  run: |
-    mkdir -p dist
-    GOOS=linux GOARCH=amd64 go build -o dist/${NAME}-${VERSION}-linux-amd64 ./cmd/...
+ontology:
+  id: regenerative-agriculture
+  version: "0.1.0"
+namespace: _semantic/entities
 ```
 
-**Rust:**
-```yaml
-- name: Build artifact
-  run: |
-    cargo build --release --locked
-    mkdir -p dist
-    cp target/release/mybinary dist/${NAME}-${VERSION}-linux-amd64
-```
+## Documentation
 
-**Node.js:**
-```yaml
-- name: Build artifact
-  run: |
-    npm ci
-    npm run build
-    mkdir -p dist
-    tar -czf dist/${NAME}-${VERSION}.tar.gz --exclude=node_modules .
-```
+Organized by [Diátaxis](https://diataxis.fr/): learning, tasks, reference, and
+understanding.
 
-**Docker:**
-Use `actions/attest-build-provenance` with `subject-digest` pointing at the
-image digest from `docker buildx build --iidfile`.
+| Mode | Document |
+| --- | --- |
+| Tutorial | [Author your first ontology](docs/tutorial/author-your-first-ontology.md) |
+| How-to | [Add a domain ontology](docs/how-to/add-a-domain-ontology.md) · [Submit an ontology](docs/how-to/submit-an-ontology.md) |
+| Reference | [Ontology corpus reference](docs/reference/ontology-corpus.md) |
+| Explanation | [The ontology model](docs/explanation/ontology-model.md) |
+| Runbooks | [Release the corpus](docs/runbooks/release-the-corpus.md) · [Diagnose a CI gate failure](docs/runbooks/ci-gate-failure.md) |
+| Decisions | [ADR 0001: underscore-prefixed base namespaces](docs/decisions/0001-underscore-prefixed-base-namespaces.md) |
 
-### 3. Update action SHAs
+## Contributing
 
-Action SHAs in this template were resolved on **2026-06-18**. Rotate them
-periodically:
+New ontologies and improvements are welcome. The
+[submission guide](docs/how-to/submit-an-ontology.md) walks the full path: author,
+validate, open a PR, pass the gates, and release.
 
-```bash
-gh api repos/actions/checkout/commits/v4 --jq .sha
-gh api repos/actions/attest-build-provenance/commits/v2 --jq .sha
-gh api repos/actions/attest-sbom/commits/v2 --jq .sha
-gh api repos/anchore/sbom-action/commits/v0 --jq .sha
-gh api repos/softprops/action-gh-release/commits/v2 --jq .sha
-gh api repos/actions/upload-artifact/commits/v4 --jq .sha
-gh api repos/actions/download-artifact/commits/v4 --jq .sha
-```
+## CI backbone
 
-Update the SHA and the trailing `# vX.Y.Z` comment in the workflow file.
-
-### 4. Update the repo reference in SECURITY.md
-
-Replace `modeled-information-format/attested-pipeline-template` with your org/repo.
-
-### 5. Release
-
-```bash
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-The release pipeline fires automatically. Watch it at:
-`https://github.com/<org>/<repo>/actions`
-
-### 6. Verify a release artifact
-
-```bash
-gh attestation verify <artifact-file> \
-  --repo <org>/<repo> \
-  --predicate-type "https://slsa.dev/provenance/v1"
-```
-
-See [SECURITY.md](SECURITY.md) for the full verification guide.
-
-## Pinned Actions Reference
-
-All actions are pinned to full 40-char SHAs (resolved 2026-06-18):
-
-| Action | Tag | SHA |
-|---|---|---|
-| `actions/checkout` | v4.2.2 | `34e114876b0b11c390a56381ad16ebd13914f8d5` |
-| `actions/attest-build-provenance` | v2.4.0 | `e8998f949152b193b063cb0ec769d69d929409be` |
-| `actions/attest-sbom` | v2.3.0 | `bd218ad0dbcb3e146bd073d1d9c6d78e08aa8a0b` |
-| `anchore/sbom-action` | v0.24.0 | `e22c389904149dbc22b58101806040fa8d37a610` |
-| `softprops/action-gh-release` | v2.2.2 | `3bb12739c298aeb8a4eeaf626c5b8d85266b0e65` |
-| `actions/upload-artifact` | v4.6.2 | `ea165f8d65b6e75b540449e92b4886f43607fa02` |
-| `actions/download-artifact` | v4.3.0 | `d3f86a106a0bac45b974a628896c90dbdf5c8093` |
-
-## Architecture Notes
-
-### Why fail-closed verification?
-
-A build pipeline that attests but doesn't verify provides a false sense of
-security. An attacker who can tamper with the artifact post-build (e.g., a
-compromised artifact store) would produce an artifact whose attestation
-verification fails. The fail-closed `verify` job catches this before publish.
-
-### Why SHA-pinned actions?
-
-A tag like `actions/checkout@v4` is mutable — the repo owner can move the tag
-to a different commit at any time. A SHA like
-`actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5` is immutable.
-Supply-chain attacks against CI/CD tooling (e.g., tj-actions/changed-files,
-reviewdog) exploit mutable action references.
-
-### Why SLSA provenance?
-
-SLSA (Supply-chain Levels for Software Artifacts) provenance attestations
-cryptographically bind an artifact to the workflow run that produced it,
-including the source commit SHA, the workflow file path, and the runner
-environment. This prevents substitution attacks where a different build
-produces a different artifact with the same name.
-
-### Dry-run without a tag
-
-```bash
-gh workflow run release.yml
-```
-
-This exercises the full build → attest → verify chain. The `publish` job
-is skipped because `startsWith(github.ref, 'refs/tags/')` is false.
+Releases ride the org's **attested release pipeline**: every published artifact
+carries SLSA provenance and an SBOM, every security gate verdict is signed, and
+publication is fail-closed on verification. The mechanics live in
+[the attested pipeline](docs/explanation/attested-pipeline.md) and the
+[gates reference](docs/reference/gates.md); the operational steps are the
+[release runbook](docs/runbooks/release-the-corpus.md).
 
 ## License
 
-Apache-2.0. See [LICENSE](LICENSE).
+[MIT](LICENSE).

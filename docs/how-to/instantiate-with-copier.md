@@ -1,7 +1,45 @@
 ---
-diataxis_type: how-to
-title: Instantiate this template with Copier
-description: How to stand up a new project from attested-pipeline-template using Copier and pull future template improvements.
+id: how-to-instantiate-with-copier
+type: procedural
+created: '2026-06-30T12:00:00Z'
+modified: '2026-06-30T12:00:00Z'
+namespace: how-to/attested-pipeline
+title: Instantiate This Template with Copier
+tags:
+  - how-to
+  - attested-delivery
+  - copier
+temporal:
+  '@type': TemporalMetadata
+  validFrom: '2026-06-30T00:00:00Z'
+  recordedAt: '2026-06-30T12:00:00Z'
+  ttl: P1Y
+provenance:
+  '@type': Provenance
+  sourceType: external_import
+  trustLevel: verified
+  wasDerivedFrom:
+    '@id': https://github.com/attested-delivery
+    '@type': prov:Entity
+citations:
+  - '@type': Citation
+    citationType: specification
+    citationRole: source
+    title: Attested Delivery — the attested release architecture
+    url: https://github.com/attested-delivery
+relationships:
+  - type: relates-to
+    target: ../explanation/attested-pipeline.md
+  - type: relates-to
+    target: ../reference/gates.md
+ontology:
+  '@type': OntologyReference
+  id: mif-docs
+  version: 1.0.0
+  uri: https://mif-spec.dev/ontologies/mif-docs
+entity:
+  name: Instantiate This Template with Copier
+  entity_type: how-to-guide
 ---
 
 # Instantiate this template with Copier

@@ -1,7 +1,45 @@
 ---
-diataxis_type: reference
-title: Quality gates and workflows
-description: Reference listing for every workflow this template ships — triggers, jobs, gate verdicts, predicate types, and attestation subjects.
+id: reference-quality-gates
+type: semantic
+created: '2026-06-30T12:00:00Z'
+modified: '2026-06-30T12:00:00Z'
+namespace: reference/attested-pipeline
+title: Quality Gates and Workflows
+tags:
+  - reference
+  - attested-delivery
+  - ci
+temporal:
+  '@type': TemporalMetadata
+  validFrom: '2026-06-30T00:00:00Z'
+  recordedAt: '2026-06-30T12:00:00Z'
+  ttl: P1Y
+provenance:
+  '@type': Provenance
+  sourceType: external_import
+  trustLevel: verified
+  wasDerivedFrom:
+    '@id': https://github.com/attested-delivery
+    '@type': prov:Entity
+citations:
+  - '@type': Citation
+    citationType: specification
+    citationRole: source
+    title: Attested Delivery — the attested release architecture
+    url: https://github.com/attested-delivery
+relationships:
+  - type: relates-to
+    target: ../explanation/attested-pipeline.md
+  - type: relates-to
+    target: ../runbooks/release-the-corpus.md
+ontology:
+  '@type': OntologyReference
+  id: mif-docs
+  version: 1.0.0
+  uri: https://mif-spec.dev/ontologies/mif-docs
+entity:
+  name: Quality Gates and Workflows
+  entity_type: reference-document
 ---
 
 # Quality gates and workflows
