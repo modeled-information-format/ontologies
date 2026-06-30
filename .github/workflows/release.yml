@@ -435,7 +435,7 @@ jobs:
     needs: [meta, verify]
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # required to create the GitHub Release
+      contents: read  # release creation now uses the release App token
 
     steps:
       - name: Download all artifacts
