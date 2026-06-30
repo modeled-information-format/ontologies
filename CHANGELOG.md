@@ -55,7 +55,8 @@ this file tracks the corpus as a whole.
   `developer-portal` and `portal-plugin` (both `subtype_of` `component`),
   `software-template`, `golden-path`, and `portal-integration` (whose
   `integration_category` differentiates identity / scm / cloud / observability /
-  incident / security / ci-cd bindings). Extends `engineering-base`.
+  incident / security / ci-cd / infrastructure / ticketing bindings). Extends
+  `engineering-base`.
 - A committed `*.ontology.jsonld` projection beside every `*.ontology.yaml`, so
   the parser-facing reading is versioned and reviewable alongside the YAML.
 - Documentation set organized by Diátaxis: a getting-started tutorial, how-to
