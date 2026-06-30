@@ -23,7 +23,13 @@ CHECK=0
 
 command -v yq >/dev/null || { echo "gen-ontology-index: yq is required" >&2; exit 2; }
 command -v jq >/dev/null || { echo "gen-ontology-index: jq is required" >&2; exit 2; }
-SHA="sha256sum"; command -v sha256sum >/dev/null || SHA="shasum -a 256"
+if command -v sha256sum >/dev/null; then
+  SHA="sha256sum"
+elif command -v shasum >/dev/null; then
+  SHA="shasum -a 256"
+else
+  echo "gen-ontology-index: sha256sum or shasum is required" >&2; exit 2
+fi
 
 acc=$(mktemp); echo '{}' > "$acc"
 trap 'rm -f "$acc" "$acc.2"' EXIT
