@@ -1,5 +1,14 @@
 {
   "ontologies": {
+    "agriculture": {
+      "extends": [
+        "mif-base",
+        "shared-traits"
+      ],
+      "file": "agriculture.ontology.yaml",
+      "sha256": "ae505a9d8d804469c7f97489f84b1b775285f819fc7b7d0eb4457d327a179e7f",
+      "version": "0.1.0"
+    },
     "biology-research-lab": {
       "extends": [
         "mif-base",
@@ -101,6 +110,15 @@
       "file": "regulatory-legal.ontology.yaml",
       "sha256": "49c3a65a27dd3babc2ba1cea6283de090f45dc30186d22fd5e55ac1529b9269d",
       "version": "0.2.0"
+    },
+    "research": {
+      "extends": [
+        "mif-base",
+        "shared-traits"
+      ],
+      "file": "research.ontology.yaml",
+      "sha256": "c81ffe0abb30106468dbd8644bd2eac688f9bc24662a3049338e5087729a9906",
+      "version": "0.1.0"
     },
     "scientific": {
       "extends": [

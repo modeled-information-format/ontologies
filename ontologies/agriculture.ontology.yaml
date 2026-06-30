@@ -1,0 +1,236 @@
+---
+# Agriculture Base Ontology — shared farm supertypes (Tier 1)
+#
+# A MIF-compliant intermediate layer between the domain-neutral generic core
+# (mif-base / shared-traits) and the agriculture DOMAIN packs
+# (regenerative-agriculture, and future agriculture packs). It owns the entity
+# types that recur across every agriculture domain — farms, fields, soil, crops,
+# livestock, inputs, equipment, harvests, and weather — so agriculture domains
+# inherit them via `extends` and specialize them with `subtype_of` instead of
+# each re-declaring its own copy.
+#
+# Cataloged present-but-NOT-core (core=false): never bound to a topic directly and
+# never auto-applied to non-agriculture domains.
+#
+# See docs/decisions/0003-research-and-agriculture-base-layers.md.
+#
+# Version: 0.1.0
+# Last Updated: 2026-06-30
+
+ontology:
+  id: agriculture
+  version: "0.1.0"
+  description: "Shared farm supertypes — the MIF-compliant intermediate layer the agriculture domains extend"
+  extends:
+    - mif-base
+    - shared-traits
+
+namespaces:
+  semantic:
+    children:
+      farm:
+        description: "Farm operations, land, and resources"
+        type_hint: semantic
+  episodic:
+    children:
+      records:
+        description: "Farm episodic records — harvests, weather events"
+        type_hint: episodic
+
+# Entity Types — the supertypes shared across agriculture domains. Domain packs
+# specialize these via `subtype_of` (e.g. regenerative-agriculture `crop-rotation`
+# subtype_of `crop`, `grazing-plan` relates to `livestock`).
+entity_types:
+  - name: farm
+    description: "A farm operation or agricultural enterprise"
+    base: semantic
+    traits:
+      - cited
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        location:
+          type: string
+        operation_type:
+          type: string
+          description: "crop / livestock / mixed"
+        size:
+          type: string
+          description: "Operated area"
+  - name: field
+    description: "A field, parcel, or paddock within a farm"
+    base: semantic
+    traits:
+      - cited
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        area:
+          type: string
+        location:
+          type: string
+  - name: soil
+    description: "A soil profile or soil unit"
+    base: semantic
+    traits:
+      - cited
+      - dated
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        soil_type:
+          type: string
+        organic_matter:
+          type: string
+  - name: crop
+    description: "A crop, cultivar, or planting subject"
+    base: semantic
+    traits:
+      - cited
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        species:
+          type: string
+        variety:
+          type: string
+  - name: livestock
+    description: "Livestock — an animal or herd kept on the farm"
+    base: semantic
+    traits:
+      - cited
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        species:
+          type: string
+        count:
+          type: integer
+  - name: agricultural-input
+    description: "An input applied on the farm (seed, feed, fertilizer, amendment)"
+    base: semantic
+    traits:
+      - cited
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        input_type:
+          type: string
+          description: "seed / feed / fertilizer / amendment / pesticide"
+  - name: agricultural-equipment
+    description: "A machine, implement, or piece of farm equipment"
+    base: semantic
+    traits:
+      - cited
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        equipment_type:
+          type: string
+  - name: harvest-record
+    description: "An episodic record of a harvest event and its yield"
+    base: episodic
+    traits:
+      - cited
+      - dated
+    schema:
+      required:
+        - crop_ref
+      properties:
+        crop_ref:
+          type: string
+          description: "The crop harvested"
+        harvest_date:
+          type: string
+          format: date
+        yield:
+          type: string
+  - name: weather-event
+    description: "An episodic weather event affecting the operation"
+    base: episodic
+    traits:
+      - cited
+      - dated
+    schema:
+      required:
+        - event_type
+      properties:
+        event_type:
+          type: string
+          description: "drought / frost / flood / storm / heatwave"
+        event_date:
+          type: string
+          format: date
+        impact:
+          type: string
+
+traits:
+  cited:
+    description: "Requires citations/sources"
+    requires:
+      - citations
+  dated:
+    description: "Adds an event/observation date"
+    fields:
+      event_date:
+        type: string
+        format: date
+
+relationships:
+  located-in:
+    description: "A field is located in a farm"
+    from:
+      - field
+    to:
+      - farm
+    symmetric: false
+  grows:
+    description: "A field grows a crop"
+    from:
+      - field
+    to:
+      - crop
+    symmetric: false
+  applied-to:
+    description: "An input is applied to a field or crop"
+    from:
+      - agricultural-input
+    to:
+      - field
+      - crop
+    symmetric: false
+
+discovery:
+  enabled: true
+  confidence_threshold: 0.8
+  patterns:
+    - content_pattern: "\\b(farm|ranch|holding|operation)\\b"
+      suggest_entity: farm
+      suggest_namespace: _semantic/farm
+    - content_pattern: "\\b(field|parcel|paddock|plot)\\b"
+      suggest_entity: field
+      suggest_namespace: _semantic/farm
+    - content_pattern: "\\b(crop|cultivar|planting)\\b"
+      suggest_entity: crop
+      suggest_namespace: _semantic/farm

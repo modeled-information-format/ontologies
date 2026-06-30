@@ -1,0 +1,297 @@
+---
+# Research Base Ontology — shared research-methodology supertypes (Tier 1)
+#
+# A MIF-compliant intermediate layer between the domain-neutral generic core
+# (mif-base / shared-traits) and the research DOMAIN packs (scientific,
+# regenerative-agriculture-research, and future *-research packs). It owns the
+# entity types that recur across every research domain — studies, methods,
+# measurements, hypotheses, datasets, outputs, funding, instruments, and findings
+# — so the research domains inherit them via `extends` and specialize them with
+# `subtype_of` instead of each re-declaring its own copy.
+#
+# Cataloged present-but-NOT-core (core=false): never bound to a topic directly and
+# never auto-applied to non-research domains. A topic resolves these types only by
+# binding a descendant pack whose `extends` chain reaches here.
+#
+# See docs/decisions/0003-research-and-agriculture-base-layers.md.
+#
+# Version: 0.1.0
+# Last Updated: 2026-06-30
+
+ontology:
+  id: research
+  version: "0.1.0"
+  description: "Shared research-methodology supertypes — the MIF-compliant intermediate layer the research domains extend"
+  extends:
+    - mif-base
+    - shared-traits
+
+# Custom namespaces under the cognitive triad inherited from mif-base.
+namespaces:
+  semantic:
+    children:
+      research:
+        description: "Research artifacts — datasets, outputs, instruments, findings"
+        type_hint: semantic
+  episodic:
+    children:
+      studies:
+        description: "Research studies and investigations as episodic records"
+        type_hint: episodic
+  procedural:
+    children:
+      methods:
+        description: "Research methods and protocols"
+        type_hint: procedural
+
+# Entity Types — the supertypes shared across the research domains. Domain packs
+# specialize these via `subtype_of` (e.g. scientific `study` subtype_of
+# `research-study`, agriculture-research `grant-program` subtype_of
+# `research-funding`); subsumption is ENFORCED across the extends chain.
+entity_types:
+  - name: research-study
+    description: "A research study or investigation — the episodic container for a unit of inquiry"
+    base: episodic
+    traits:
+      - cited
+      - dated
+    schema:
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        design:
+          type: string
+          description: "Study design (observational, experimental, computational, …)"
+        objective:
+          type: string
+        status:
+          type: string
+          description: "planned / active / completed / retracted"
+  - name: research-method
+    description: "A method, protocol, or procedure applied in research"
+    base: procedural
+    traits:
+      - cited
+      - versioned
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        procedure:
+          type: string
+          description: "What the method does, step-wise"
+        instrument:
+          type: string
+          description: "Instrument or platform the method uses"
+  - name: measurement
+    description: "A measured datum produced by a method"
+    base: semantic
+    traits:
+      - cited
+      - dated
+    schema:
+      required:
+        - variable
+        - value
+      properties:
+        variable:
+          type: string
+        value:
+          type: string
+        unit:
+          type: string
+        method_ref:
+          type: string
+          description: "The method that produced this measurement"
+  - name: hypothesis
+    description: "A falsifiable hypothesis under test"
+    base: semantic
+    traits:
+      - cited
+    schema:
+      required:
+        - statement
+      properties:
+        statement:
+          type: string
+          description: "The falsifiable claim"
+        status:
+          type: string
+          description: "untested / supported / refuted / inconclusive"
+  - name: dataset
+    description: "A dataset produced or consumed by research"
+    base: semantic
+    traits:
+      - cited
+      - versioned
+    schema:
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        distribution:
+          type: array
+          description: "Access distributions for the dataset"
+          items:
+            type: string
+        license:
+          type: string
+  - name: research-output
+    description: "A published research output (article, preprint, report, dataset descriptor)"
+    base: semantic
+    traits:
+      - cited
+      - documented
+    schema:
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        output_type:
+          type: string
+          description: "journal-article / preprint / report / dataset-descriptor"
+        doi:
+          type: string
+  - name: research-funding
+    description: "A grant or funding instrument supporting research"
+    base: semantic
+    traits:
+      - cited
+      - dated
+    schema:
+      required:
+        - funder
+      properties:
+        funder:
+          type: string
+        grant_id:
+          type: string
+        amount:
+          type: string
+  - name: research-instrument
+    description: "A device, platform, or instrument used to produce research data"
+    base: semantic
+    traits:
+      - cited
+      - versioned
+    schema:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        instrument_type:
+          type: string
+        manufacturer:
+          type: string
+  - name: research-finding
+    description: "An observation or finding — the unit of recorded research knowledge a domain observation specializes"
+    base: semantic
+    traits:
+      - cited
+    schema:
+      required:
+        - statement
+      properties:
+        statement:
+          type: string
+          description: "The finding or observation"
+        evidence:
+          type: string
+        confidence:
+          type: string
+          description: "Qualitative confidence in the finding"
+
+# Traits used by the supertypes. Defined here so the layer is self-contained;
+# shared-traits carries the domain-neutral mixins these names mirror.
+traits:
+  cited:
+    description: "Requires citations/sources"
+    requires:
+      - citations
+  dated:
+    description: "Adds an event/observation date"
+    fields:
+      observed_date:
+        type: string
+        format: date
+  versioned:
+    description: "Adds version tracking"
+    fields:
+      version:
+        type: string
+        pattern: "^\\d+\\.\\d+\\.\\d+.*$"
+  documented:
+    description: "Adds a documentation reference"
+    fields:
+      documentation_url:
+        type: string
+        format: uri
+
+# Relationships among the shared research supertypes. Domain packs may add edges
+# referencing these types (resolved across the registry + extends chain).
+relationships:
+  uses-method:
+    description: "A study uses a method"
+    from:
+      - research-study
+    to:
+      - research-method
+    symmetric: false
+  produces:
+    description: "A method produces a measurement"
+    from:
+      - research-method
+    to:
+      - measurement
+    symmetric: false
+  tests:
+    description: "A study tests a hypothesis"
+    from:
+      - research-study
+    to:
+      - hypothesis
+    symmetric: false
+  yields:
+    description: "A study yields a dataset"
+    from:
+      - research-study
+    to:
+      - dataset
+    symmetric: false
+  reports-in:
+    description: "A study is reported in a research output"
+    from:
+      - research-study
+    to:
+      - research-output
+    symmetric: false
+  funded-by:
+    description: "A study is funded by a funding instrument"
+    from:
+      - research-study
+    to:
+      - research-funding
+    symmetric: false
+
+# Discovery — reuses the layer's OWN supertypes so a research topic (whose extends
+# chain reaches here) can auto-classify untyped findings.
+discovery:
+  enabled: true
+  confidence_threshold: 0.8
+  patterns:
+    - content_pattern: "\\b(study|trial|investigation|experiment)\\b"
+      suggest_entity: research-study
+      suggest_namespace: _episodic/studies
+    - content_pattern: "\\b(hypothesis|we hypothesi[sz]e|null hypothesis)\\b"
+      suggest_entity: hypothesis
+      suggest_namespace: _semantic/research
+    - content_pattern: "\\b(dataset|data set|data catalog)\\b"
+      suggest_entity: dataset
+      suggest_namespace: _semantic/research
