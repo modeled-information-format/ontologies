@@ -6,7 +6,7 @@
         "shared-traits"
       ],
       "file": "agriculture.ontology.yaml",
-      "sha256": "ae505a9d8d804469c7f97489f84b1b775285f819fc7b7d0eb4457d327a179e7f",
+      "sha256": "8eba262f822bddfa44f3e0f76447eb99bdd84bb5d14f8561edcc0d65a9444780",
       "version": "0.1.0"
     },
     "biology-research-lab": {
@@ -86,21 +86,22 @@
     },
     "regenerative-agriculture": {
       "extends": [
-        "mif-base",
-        "shared-traits"
+        "agriculture"
       ],
       "file": "regenerative-agriculture.ontology.yaml",
-      "sha256": "f5c507a213c96d7aaac706cd0632a5b968d0d507fc10d0a9467757fc4355391b",
-      "version": "0.1.0"
+      "sha256": "671e66775447a92ed768565ad691324f75ea6d5da9d410db02ff0b946b57631f",
+      "version": "0.2.0"
     },
     "regenerative-agriculture-research": {
       "extends": [
+        "research",
+        "agriculture",
         "engineering-base",
         "mif-generic"
       ],
       "file": "regenerative-agriculture-research.ontology.yaml",
-      "sha256": "2feafcf8c8b294aa18a846d3364ec0bab37caffa6aa5277ff799e80f4302559d",
-      "version": "0.3.1"
+      "sha256": "5df0d93571b709f2420fda04a82a31ba12dea3a0f421bb7f5b4a0484cdb629f6",
+      "version": "0.4.0"
     },
     "regulatory-legal": {
       "extends": [
@@ -117,17 +118,16 @@
         "shared-traits"
       ],
       "file": "research.ontology.yaml",
-      "sha256": "c81ffe0abb30106468dbd8644bd2eac688f9bc24662a3049338e5087729a9906",
+      "sha256": "1918677e62b0cd6e62de1e996e23d3adf2f903ff11bc65fb137fe65237e27e89",
       "version": "0.1.0"
     },
     "scientific": {
       "extends": [
-        "mif-base",
-        "shared-traits"
+        "research"
       ],
       "file": "scientific.ontology.yaml",
-      "sha256": "41791b6cf14eb964762b76c56a4f5b4b2d096782fcfc51dbba8857d38c432868",
-      "version": "0.2.0"
+      "sha256": "91efe7a7d4d2f3952cc63fa9af1c47de6e763be585cf7ba83edb5e729bd79ac9",
+      "version": "0.2.1"
     },
     "shared-traits": {
       "extends": [

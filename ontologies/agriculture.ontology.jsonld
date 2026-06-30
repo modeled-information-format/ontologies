@@ -152,7 +152,7 @@
           "@id": "mif:namespace/episodic/records",
           "@type": "mif:Namespace",
           "name": "records",
-          "description": "Farm episodic records \u2014 harvests, weather events",
+          "description": "Farm episodic records \u2014 harvest and climate events",
           "type_hint": "episodic"
         }
       }
@@ -160,11 +160,11 @@
   },
   "entity_types": [
     {
-      "@id": "mif:entityType/farm",
+      "@id": "mif:entityType/agricultural-holding",
       "@type": "mif:EntityType",
-      "name": "farm",
+      "name": "agricultural-holding",
       "base": "semantic",
-      "description": "A farm operation or agricultural enterprise",
+      "description": "An agricultural operation or enterprise",
       "traits": [
         "mif:trait/cited"
       ],
@@ -184,18 +184,17 @@
             "description": "crop / livestock / mixed"
           },
           "size": {
-            "type": "string",
-            "description": "Operated area"
+            "type": "string"
           }
         }
       }
     },
     {
-      "@id": "mif:entityType/field",
+      "@id": "mif:entityType/land-parcel",
       "@type": "mif:EntityType",
-      "name": "field",
+      "name": "land-parcel",
       "base": "semantic",
-      "description": "A field, parcel, or paddock within a farm",
+      "description": "A field, parcel, or paddock within a holding",
       "traits": [
         "mif:trait/cited"
       ],
@@ -217,11 +216,11 @@
       }
     },
     {
-      "@id": "mif:entityType/soil",
+      "@id": "mif:entityType/soil-unit",
       "@type": "mif:EntityType",
-      "name": "soil",
+      "name": "soil-unit",
       "base": "semantic",
-      "description": "A soil profile or soil unit",
+      "description": "A soil profile or soil mapping unit",
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -244,9 +243,9 @@
       }
     },
     {
-      "@id": "mif:entityType/crop",
+      "@id": "mif:entityType/cultivar",
       "@type": "mif:EntityType",
-      "name": "crop",
+      "name": "cultivar",
       "base": "semantic",
       "description": "A crop, cultivar, or planting subject",
       "traits": [
@@ -270,11 +269,11 @@
       }
     },
     {
-      "@id": "mif:entityType/livestock",
+      "@id": "mif:entityType/managed-animal",
       "@type": "mif:EntityType",
-      "name": "livestock",
+      "name": "managed-animal",
       "base": "semantic",
-      "description": "Livestock \u2014 an animal or herd kept on the farm",
+      "description": "An animal or herd kept on the holding",
       "traits": [
         "mif:trait/cited"
       ],
@@ -300,7 +299,7 @@
       "@type": "mif:EntityType",
       "name": "agricultural-input",
       "base": "semantic",
-      "description": "An input applied on the farm (seed, feed, fertilizer, amendment)",
+      "description": "An input applied on the holding (seed, feed, fertilizer, amendment)",
       "traits": [
         "mif:trait/cited"
       ],
@@ -343,9 +342,9 @@
       }
     },
     {
-      "@id": "mif:entityType/harvest-record",
+      "@id": "mif:entityType/harvest-event",
       "@type": "mif:EntityType",
-      "name": "harvest-record",
+      "name": "harvest-event",
       "base": "episodic",
       "description": "An episodic record of a harvest event and its yield",
       "traits": [
@@ -354,12 +353,12 @@
       ],
       "schema": {
         "required": [
-          "crop_ref"
+          "cultivar_ref"
         ],
         "properties": {
-          "crop_ref": {
+          "cultivar_ref": {
             "type": "string",
-            "description": "The crop harvested"
+            "description": "The cultivar harvested"
           },
           "harvest_date": {
             "type": "string",
@@ -372,11 +371,11 @@
       }
     },
     {
-      "@id": "mif:entityType/weather-event",
+      "@id": "mif:entityType/climate-event",
       "@type": "mif:EntityType",
-      "name": "weather-event",
+      "name": "climate-event",
       "base": "episodic",
-      "description": "An episodic weather event affecting the operation",
+      "description": "An episodic climate/weather event affecting the operation",
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -425,70 +424,70 @@
     }
   },
   "relationships": {
-    "located-in": {
-      "@id": "mif:relationship/located-in",
+    "sited-in": {
+      "@id": "mif:relationship/sited-in",
       "@type": "mif:Relationship",
-      "name": "located-in",
-      "description": "A field is located in a farm",
+      "name": "sited-in",
+      "description": "A parcel is sited in a holding",
       "from": [
-        "mif:entityType/field"
+        "mif:entityType/land-parcel"
       ],
       "to": [
-        "mif:entityType/farm"
+        "mif:entityType/agricultural-holding"
       ],
       "symmetric": false
     },
-    "grows": {
-      "@id": "mif:relationship/grows",
+    "cultivates": {
+      "@id": "mif:relationship/cultivates",
       "@type": "mif:Relationship",
-      "name": "grows",
-      "description": "A field grows a crop",
+      "name": "cultivates",
+      "description": "A parcel cultivates a cultivar",
       "from": [
-        "mif:entityType/field"
+        "mif:entityType/land-parcel"
       ],
       "to": [
-        "mif:entityType/crop"
+        "mif:entityType/cultivar"
       ],
       "symmetric": false
     },
-    "applied-to": {
-      "@id": "mif:relationship/applied-to",
+    "amends": {
+      "@id": "mif:relationship/amends",
       "@type": "mif:Relationship",
-      "name": "applied-to",
-      "description": "An input is applied to a field or crop",
+      "name": "amends",
+      "description": "An input is applied to a parcel or cultivar",
       "from": [
         "mif:entityType/agricultural-input"
       ],
       "to": [
-        "mif:entityType/field",
-        "mif:entityType/crop"
+        "mif:entityType/land-parcel",
+        "mif:entityType/cultivar"
       ],
       "symmetric": false
     }
   },
   "discovery": {
-    "enabled": true,
+    "enabled": false,
     "confidence_threshold": 0.8,
     "patterns": [
       {
         "@id": "mif:pattern/0",
         "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(farm|ranch|holding|operation)\\b",
-        "suggest_entity": "mif:entityType/farm",
+        "suggest_entity": "mif:entityType/agricultural-holding",
         "suggest_namespace": "_semantic/farm"
       },
       {
         "@id": "mif:pattern/1",
         "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(field|parcel|paddock|plot)\\b",
-        "suggest_entity": "mif:entityType/field",
+        "suggest_entity": "mif:entityType/land-parcel",
         "suggest_namespace": "_semantic/farm"
       },
       {
         "@id": "mif:pattern/2",
         "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(crop|cultivar|planting)\\b",
-        "suggest_entity": "mif:entityType/crop",
+        "suggest_entity": "mif:entityType/cultivar",
         "suggest_namespace": "_semantic/farm"
       }
     ]

@@ -3,14 +3,18 @@
 #
 # A MIF-compliant intermediate layer between the domain-neutral generic core
 # (mif-base / shared-traits) and the agriculture DOMAIN packs
-# (regenerative-agriculture, and future agriculture packs). It owns the entity
-# types that recur across every agriculture domain — farms, fields, soil, crops,
-# livestock, inputs, equipment, harvests, and weather — so agriculture domains
-# inherit them via `extends` and specialize them with `subtype_of` instead of
-# each re-declaring its own copy.
+# (regenerative-agriculture, and future agriculture packs). It owns the ABSTRACT
+# supertypes that recur across every agriculture domain — a holding, a parcel, a
+# soil unit, a cultivar, a managed animal, an input, equipment, a harvest event,
+# a climate event — so agriculture domains inherit them via `extends` and
+# specialize them with `subtype_of`.
 #
-# Cataloged present-but-NOT-core (core=false): never bound to a topic directly and
-# never auto-applied to non-agriculture domains.
+# Supertype names are deliberately ABSTRACT and distinct from any leaf pack's
+# concrete type names (e.g. `agricultural-holding`, not `farm`; `land-parcel`,
+# not `field`): a base a leaf `extends` must not share entity-type NAMES with
+# that leaf.
+#
+# Cataloged present-but-NOT-core (core=false): never bound to a topic directly.
 #
 # See docs/decisions/0003-research-and-agriculture-base-layers.md.
 #
@@ -24,7 +28,6 @@ ontology:
   extends:
     - mif-base
     - shared-traits
-
 namespaces:
   semantic:
     children:
@@ -34,15 +37,14 @@ namespaces:
   episodic:
     children:
       records:
-        description: "Farm episodic records — harvests, weather events"
+        description: "Farm episodic records — harvest and climate events"
         type_hint: episodic
-
-# Entity Types — the supertypes shared across agriculture domains. Domain packs
-# specialize these via `subtype_of` (e.g. regenerative-agriculture `crop-rotation`
-# subtype_of `crop`, `grazing-plan` relates to `livestock`).
+# Abstract supertypes shared across agriculture domains. Leaf packs specialize
+# these via `subtype_of` (e.g. regenerative-agriculture `farm` subtype_of
+# `agricultural-holding`, `field` subtype_of `land-parcel`).
 entity_types:
-  - name: farm
-    description: "A farm operation or agricultural enterprise"
+  - name: agricultural-holding
+    description: "An agricultural operation or enterprise"
     base: semantic
     traits:
       - cited
@@ -59,9 +61,8 @@ entity_types:
           description: "crop / livestock / mixed"
         size:
           type: string
-          description: "Operated area"
-  - name: field
-    description: "A field, parcel, or paddock within a farm"
+  - name: land-parcel
+    description: "A field, parcel, or paddock within a holding"
     base: semantic
     traits:
       - cited
@@ -75,8 +76,8 @@ entity_types:
           type: string
         location:
           type: string
-  - name: soil
-    description: "A soil profile or soil unit"
+  - name: soil-unit
+    description: "A soil profile or soil mapping unit"
     base: semantic
     traits:
       - cited
@@ -91,7 +92,7 @@ entity_types:
           type: string
         organic_matter:
           type: string
-  - name: crop
+  - name: cultivar
     description: "A crop, cultivar, or planting subject"
     base: semantic
     traits:
@@ -106,8 +107,8 @@ entity_types:
           type: string
         variety:
           type: string
-  - name: livestock
-    description: "Livestock — an animal or herd kept on the farm"
+  - name: managed-animal
+    description: "An animal or herd kept on the holding"
     base: semantic
     traits:
       - cited
@@ -122,7 +123,7 @@ entity_types:
         count:
           type: integer
   - name: agricultural-input
-    description: "An input applied on the farm (seed, feed, fertilizer, amendment)"
+    description: "An input applied on the holding (seed, feed, fertilizer, amendment)"
     base: semantic
     traits:
       - cited
@@ -148,7 +149,7 @@ entity_types:
           type: string
         equipment_type:
           type: string
-  - name: harvest-record
+  - name: harvest-event
     description: "An episodic record of a harvest event and its yield"
     base: episodic
     traits:
@@ -156,18 +157,18 @@ entity_types:
       - dated
     schema:
       required:
-        - crop_ref
+        - cultivar_ref
       properties:
-        crop_ref:
+        cultivar_ref:
           type: string
-          description: "The crop harvested"
+          description: "The cultivar harvested"
         harvest_date:
           type: string
           format: date
         yield:
           type: string
-  - name: weather-event
-    description: "An episodic weather event affecting the operation"
+  - name: climate-event
+    description: "An episodic climate/weather event affecting the operation"
     base: episodic
     traits:
       - cited
@@ -184,7 +185,6 @@ entity_types:
           format: date
         impact:
           type: string
-
 traits:
   cited:
     description: "Requires citations/sources"
@@ -196,41 +196,39 @@ traits:
       event_date:
         type: string
         format: date
-
 relationships:
-  located-in:
-    description: "A field is located in a farm"
+  sited-in:
+    description: "A parcel is sited in a holding"
     from:
-      - field
+      - land-parcel
     to:
-      - farm
+      - agricultural-holding
     symmetric: false
-  grows:
-    description: "A field grows a crop"
+  cultivates:
+    description: "A parcel cultivates a cultivar"
     from:
-      - field
+      - land-parcel
     to:
-      - crop
+      - cultivar
     symmetric: false
-  applied-to:
-    description: "An input is applied to a field or crop"
+  amends:
+    description: "An input is applied to a parcel or cultivar"
     from:
       - agricultural-input
     to:
-      - field
-      - crop
+      - land-parcel
+      - cultivar
     symmetric: false
-
 discovery:
-  enabled: true
+  enabled: false
   confidence_threshold: 0.8
   patterns:
     - content_pattern: "\\b(farm|ranch|holding|operation)\\b"
-      suggest_entity: farm
+      suggest_entity: agricultural-holding
       suggest_namespace: _semantic/farm
     - content_pattern: "\\b(field|parcel|paddock|plot)\\b"
-      suggest_entity: field
+      suggest_entity: land-parcel
       suggest_namespace: _semantic/farm
     - content_pattern: "\\b(crop|cultivar|planting)\\b"
-      suggest_entity: crop
+      suggest_entity: cultivar
       suggest_namespace: _semantic/farm

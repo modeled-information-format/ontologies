@@ -7,7 +7,7 @@ namespace: decisions/ontology-corpus
 title: Research and Agriculture Base Layers in the Ontology Spine
 tags:
   - adr
-  - proposed
+  - accepted
   - layering
   - extends
   - is-a
@@ -36,7 +36,7 @@ entity:
 
 ## Status
 
-proposed
+accepted
 
 ## Context
 
@@ -240,7 +240,7 @@ instead of specialized from the base, signals this decision has been violated.
 
 ## Audit
 
-- 2026-06-30: **Pending.** Proposed. The base layers are not yet authored and the
+- 2026-06-30: **Pending.** Accepted; bases authored (collision-free abstract supertypes, discovery disabled), scientific/regenerative-agriculture/regenerative-agriculture-research re-parented with subtype_of (all reachable via extends closure), corpus resolves 36/36. Flip to Compliant once deployed + the harness vendors against the live registry. The base layers are not yet authored and the
   packs not yet re-parented. Flip to Compliant once `research` and `agriculture`
   ship, the three packs extend them with `subtype_of` wiring, the corpus still
   resolves, and the registry is re-promoted on the layered closure.
