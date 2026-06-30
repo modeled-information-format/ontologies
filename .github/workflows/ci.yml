@@ -28,12 +28,12 @@ jobs:
   # central `pin-check.yml` reusable, not an inline re-implementation. The
   # reusable is itself pinned by the central `.github` repo's commit SHA.
   # ---------------------------------------------------------------------------
-  # modeled-information-format/.github main @ aba1860 (resolved 2026-06-16)
+  # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
   pin-check:
     permissions:
       contents: read
     uses: >-
-      modeled-information-format/.github/.github/workflows/pin-check.yml@aba1860be6b6ebd5c0c0a0f07160946fb0349965
+      modeled-information-format/.github/.github/workflows/pin-check.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
 
   # ---------------------------------------------------------------------------
   # Lint: basic shell/YAML linting placeholder.
@@ -63,9 +63,9 @@ jobs:
   # Thin caller of the central reusable-actionlint — the verified, pinned
   # actionlint download lives in the reusable (consume the central reusables,
   # never reinvent them). Pinned by the .github repo's commit SHA.
-  # modeled-information-format/.github @ b314c29 (#6 — in-step PATH fix)
+  # modeled-information-format/.github @ 789b6ba (re-pinned 2026-06-30)
   validate-workflows:
     permissions:
       contents: read
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-actionlint.yml@b314c29ac9d445ea1f6ad5487743a909e104ceb9
+      modeled-information-format/.github/.github/workflows/reusable-actionlint.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
