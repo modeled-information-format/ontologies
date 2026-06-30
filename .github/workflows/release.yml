@@ -459,9 +459,18 @@ jobs:
       # Create the release with the GitHub CLI (pre-installed on the runner)
       # rather than a third-party action, keeping every step GitHub-native so
       # the org Actions allow-list cannot block publication.
+      - name: Mint release app token (publish identity)
+        id: release-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.RELEASE_CLIENT_APP_ID }}
+          private-key: ${{ secrets.RELEASE_CLIENT_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+
       - name: Create GitHub Release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.release-token.outputs.token }}
           VERSION: ${{ needs.meta.outputs.version }}
         run: |
           set -euo pipefail
