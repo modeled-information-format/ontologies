@@ -39,7 +39,7 @@ jobs:
     steps:
       - name: Checkout repository
         # v4.2.2
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
 
       - name: Resolve artifact name and version
         id: meta
@@ -77,7 +77,7 @@ jobs:
     steps:
       - name: Checkout repository
         # v4.2.2
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
 
       # -----------------------------------------------------------------------
       # ADAPT THIS STEP for your toolchain.
@@ -152,7 +152,7 @@ jobs:
     steps:
       - name: Checkout repository
         # v4.2.2
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
 
       - name: Download build artifacts
         # v4.3.0
@@ -211,7 +211,7 @@ jobs:
       packages: read   # reusable's analyze job declares it (CodeQL pkg resolution)
     # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-sast-codeql.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
+      modeled-information-format/.github/.github/workflows/reusable-sast-codeql.yml@5c856f8118976bfd3bb64a8911f69dc9b00b4cad
     with:
       languages: actions
       build-mode: none
@@ -225,7 +225,7 @@ jobs:
       contents: read
     # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
+      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@5c856f8118976bfd3bb64a8911f69dc9b00b4cad
     with:
       subject-name: ${{ needs.build.outputs.subject-name }}
       subject-digest: ${{ needs.build.outputs.subject-digest }}
@@ -260,7 +260,7 @@ jobs:
       contents: read
     # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
+      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@5c856f8118976bfd3bb64a8911f69dc9b00b4cad
     with:
       subject-name: ${{ needs.build.outputs.subject-name }}
       subject-digest: ${{ needs.build.outputs.subject-digest }}
@@ -294,7 +294,7 @@ jobs:
       contents: read
     # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
+      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@5c856f8118976bfd3bb64a8911f69dc9b00b4cad
     with:
       subject-name: ${{ needs.build.outputs.subject-name }}
       subject-digest: ${{ needs.build.outputs.subject-digest }}
