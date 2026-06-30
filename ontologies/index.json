@@ -75,6 +75,14 @@
       "sha256": "401e98940e3b50ef6cbed1187ac92f4004b44eee2ec743dddc07774b14a54249",
       "version": "0.1.0"
     },
+    "platform-engineering": {
+      "extends": [
+        "engineering-base"
+      ],
+      "file": "platform-engineering.ontology.yaml",
+      "sha256": "52368e2458fac857610c11def8336597c0be0230d3d73c476df2fca6e0fd55c6",
+      "version": "0.1.0"
+    },
     "psycholinguistics": {
       "extends": [
         "engineering-base",

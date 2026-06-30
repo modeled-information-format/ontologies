@@ -1,0 +1,581 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://mif-spec.dev/ns/ontology#",
+    "mif": "https://mif-spec.dev/ns/",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ontology": {
+      "@id": "mif:Ontology",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "schema_url": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "namespaces": {
+      "@id": "mif:hasNamespace",
+      "@container": "@id"
+    },
+    "type_hint": {
+      "@id": "mif:typeHint",
+      "@type": "xsd:string"
+    },
+    "replaces": {
+      "@id": "mif:replaces",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "mif:hasChildNamespace",
+      "@container": "@id"
+    },
+    "entity_types": {
+      "@id": "mif:definesEntityType",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "base": {
+      "@id": "mif:baseType",
+      "@type": "@vocab"
+    },
+    "semantic": "mif:SemanticMemory",
+    "episodic": "mif:EpisodicMemory",
+    "procedural": "mif:ProceduralMemory",
+    "traits": {
+      "@id": "mif:definesTrait",
+      "@container": "@id"
+    },
+    "subtype_of": {
+      "@id": "mif:subtypeOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "mif:hasField",
+      "@container": "@id"
+    },
+    "requires": {
+      "@id": "mif:requiresField",
+      "@container": "@list"
+    },
+    "relationships": {
+      "@id": "mif:definesRelationship",
+      "@container": "@id"
+    },
+    "from": {
+      "@id": "rdfs:domain",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "rdfs:range",
+      "@container": "@set"
+    },
+    "symmetric": {
+      "@id": "owl:SymmetricProperty",
+      "@type": "xsd:boolean"
+    },
+    "discovery": {
+      "@id": "mif:discoveryConfig"
+    },
+    "enabled": {
+      "@id": "mif:discoveryEnabled",
+      "@type": "xsd:boolean"
+    },
+    "patterns": {
+      "@id": "mif:hasDiscoveryPattern",
+      "@container": "@list"
+    },
+    "confidence_threshold": {
+      "@id": "mif:confidenceThreshold",
+      "@type": "xsd:decimal"
+    },
+    "content_pattern": {
+      "@id": "mif:contentPattern",
+      "@type": "xsd:string"
+    },
+    "file_pattern": {
+      "@id": "mif:filePattern",
+      "@type": "xsd:string"
+    },
+    "suggest_entity": {
+      "@id": "mif:suggestsEntityType",
+      "@type": "@id"
+    },
+    "suggest_namespace": {
+      "@id": "mif:suggestsNamespace",
+      "@type": "xsd:string"
+    }
+  },
+  "@id": "mif:ontology/platform-engineering",
+  "@type": "mif:Ontology",
+  "identifier": "platform-engineering",
+  "version": "0.1.0",
+  "description": "Platform engineering domain ontology \u2014 internal developer portals, plugins, software templates, golden paths, and typed integrations",
+  "namespaces": {
+    "_semantic": {
+      "@id": "mif:namespace/_semantic",
+      "@type": "mif:Namespace",
+      "name": "_semantic",
+      "description": "Portals, their extensions, and the paths they pave",
+      "type_hint": "semantic",
+      "children": {
+        "portals": {
+          "@id": "mif:namespace/_semantic/portals",
+          "@type": "mif:Namespace",
+          "name": "portals",
+          "description": "Internal developer portals and the plugins that extend them",
+          "type_hint": "semantic"
+        },
+        "integrations": {
+          "@id": "mif:namespace/_semantic/integrations",
+          "@type": "mif:Namespace",
+          "name": "integrations",
+          "description": "Typed bindings from a portal to external systems",
+          "type_hint": "semantic"
+        },
+        "paths": {
+          "@id": "mif:namespace/_semantic/paths",
+          "@type": "mif:Namespace",
+          "name": "paths",
+          "description": "Software templates and golden paths",
+          "type_hint": "semantic"
+        }
+      }
+    }
+  },
+  "entity_types": [
+    {
+      "@id": "mif:entityType/developer-portal",
+      "@type": "mif:EntityType",
+      "name": "developer-portal",
+      "base": "semantic",
+      "description": "An internal developer portal / platform (IDP): the unified catalog + plugin surface engineers use to discover, create, and operate software",
+      "traits": [
+        "mif:trait/versioned",
+        "mif:trait/documented",
+        "mif:trait/cited"
+      ],
+      "subtype_of": [
+        "mif:entityType/component"
+      ],
+      "schema": {
+        "required": [
+          "name",
+          "responsibility"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the portal or deployment"
+          },
+          "responsibility": {
+            "type": "string",
+            "description": "The portal's single responsibility (e.g. unified developer experience and service catalog)"
+          },
+          "build": {
+            "type": "string",
+            "description": "The portal product/distribution it is built on",
+            "enum": [
+              "backstage",
+              "port",
+              "cortex",
+              "opslevel",
+              "roadie",
+              "spotify-portal",
+              "custom",
+              "other"
+            ]
+          },
+          "hosting": {
+            "type": "string",
+            "description": "Operational model",
+            "enum": [
+              "self-hosted",
+              "saas",
+              "managed"
+            ]
+          },
+          "catalog_kinds": {
+            "type": "array",
+            "description": "Catalog entity kinds the portal models (e.g. Component, System, API, Resource, Domain, Group, User)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "owner": {
+            "type": "string",
+            "description": "Team owning the portal"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/portal-plugin",
+      "@type": "mif:EntityType",
+      "name": "portal-plugin",
+      "base": "semantic",
+      "description": "A plugin/extension that adds capability to a developer portal (frontend card, backend module, or processor)",
+      "traits": [
+        "mif:trait/documented",
+        "mif:trait/cited"
+      ],
+      "subtype_of": [
+        "mif:entityType/component"
+      ],
+      "schema": {
+        "required": [
+          "name",
+          "responsibility"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Plugin name or package"
+          },
+          "responsibility": {
+            "type": "string",
+            "description": "What the plugin is responsible for (e.g. surface on-call status on entity pages)"
+          },
+          "plugin_type": {
+            "type": "string",
+            "description": "Where the plugin runs",
+            "enum": [
+              "frontend",
+              "backend",
+              "common",
+              "processor"
+            ]
+          },
+          "capability": {
+            "type": "string",
+            "description": "What the plugin adds (e.g. surfaces on-call, renders security findings)"
+          },
+          "integrates_system": {
+            "type": "string",
+            "description": "External system the plugin surfaces, if any (e.g. PagerDuty, Snyk)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Provenance of the plugin",
+            "enum": [
+              "core",
+              "community",
+              "commercial",
+              "custom"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/software-template",
+      "@type": "mif:EntityType",
+      "name": "software-template",
+      "base": "semantic",
+      "description": "A scaffolder/golden-path template that instantiates a ready-to-run software project (skeleton + parameters + steps)",
+      "traits": [
+        "mif:trait/documented",
+        "mif:trait/cited"
+      ],
+      "schema": {
+        "required": [
+          "template_name"
+        ],
+        "properties": {
+          "template_name": {
+            "type": "string",
+            "description": "Template name"
+          },
+          "instantiates": {
+            "type": "string",
+            "description": "What the template produces (e.g. a Component of kind service)"
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Parameters the template collects",
+            "items": {
+              "type": "string"
+            }
+          },
+          "steps": {
+            "type": "array",
+            "description": "Scaffolder actions the template runs (e.g. fetch:template, publish:github, catalog:register)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "owner": {
+            "type": "string",
+            "description": "Team owning the template"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/golden-path",
+      "@type": "mif:EntityType",
+      "name": "golden-path",
+      "base": "semantic",
+      "description": "A paved-road workflow: the opinionated, supported way to build, ship, or operate a class of software, with guardrails",
+      "traits": [
+        "mif:trait/cited"
+      ],
+      "schema": {
+        "required": [
+          "path_name"
+        ],
+        "properties": {
+          "path_name": {
+            "type": "string",
+            "description": "Name of the golden path"
+          },
+          "scope": {
+            "type": "string",
+            "description": "What the path covers (e.g. new microservice from zero to production)"
+          },
+          "stages": {
+            "type": "array",
+            "description": "Ordered stages of the paved road",
+            "items": {
+              "type": "string"
+            }
+          },
+          "guardrails": {
+            "type": "string",
+            "description": "Policies/checks the path enforces by default"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/portal-integration",
+      "@type": "mif:EntityType",
+      "name": "portal-integration",
+      "base": "semantic",
+      "description": "A typed binding from a developer portal to an external system; integration_category differentiates the many bindings a portal exposes",
+      "traits": [
+        "mif:trait/cited"
+      ],
+      "schema": {
+        "required": [
+          "integration_name",
+          "integration_category"
+        ],
+        "properties": {
+          "integration_name": {
+            "type": "string",
+            "description": "Name of the integration (e.g. Okta auth provider, GitHub catalog discovery)"
+          },
+          "integration_category": {
+            "type": "string",
+            "description": "The class of external system the integration binds",
+            "enum": [
+              "identity",
+              "scm",
+              "cloud",
+              "observability",
+              "incident",
+              "security",
+              "ci-cd",
+              "infrastructure",
+              "ticketing"
+            ]
+          },
+          "external_system": {
+            "type": "string",
+            "description": "The external product bound (e.g. Okta, GitHub Enterprise, AWS, Chronosphere, PagerDuty, Snyk, Orca)"
+          },
+          "auth_mechanism": {
+            "type": "string",
+            "description": "How the integration authenticates (e.g. OIDC, GitHub App, IAM role, API token)"
+          },
+          "surface": {
+            "type": "string",
+            "description": "Where the integration manifests in the portal",
+            "enum": [
+              "authentication",
+              "catalog-discovery",
+              "entity-page",
+              "scaffolder-action",
+              "processor"
+            ]
+          },
+          "plugin_ref": {
+            "type": "string",
+            "description": "The portal-plugin that implements the integration, if any"
+          }
+        }
+      }
+    }
+  ],
+  "traits": {
+    "versioned": {
+      "@id": "mif:trait/versioned",
+      "@type": "mif:Trait",
+      "name": "versioned",
+      "description": "Adds version tracking fields",
+      "fields": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+.*$"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "documented": {
+      "@id": "mif:trait/documented",
+      "@type": "mif:Trait",
+      "name": "documented",
+      "description": "Adds documentation reference",
+      "fields": {
+        "documentation_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "readme_path": {
+          "type": "string"
+        }
+      }
+    },
+    "cited": {
+      "@id": "mif:trait/cited",
+      "@type": "mif:Trait",
+      "name": "cited",
+      "description": "Requires citations/sources",
+      "requires": [
+        "citations"
+      ]
+    }
+  },
+  "relationships": {
+    "integrates": {
+      "@id": "mif:relationship/integrates",
+      "@type": "mif:Relationship",
+      "name": "integrates",
+      "description": "A developer portal exposes a typed integration to an external system",
+      "from": [
+        "mif:entityType/developer-portal"
+      ],
+      "to": [
+        "mif:entityType/portal-integration"
+      ],
+      "symmetric": false
+    },
+    "extends_portal": {
+      "@id": "mif:relationship/extends_portal",
+      "@type": "mif:Relationship",
+      "name": "extends_portal",
+      "description": "A plugin extends a developer portal",
+      "from": [
+        "mif:entityType/portal-plugin"
+      ],
+      "to": [
+        "mif:entityType/developer-portal"
+      ],
+      "symmetric": false
+    },
+    "provides": {
+      "@id": "mif:relationship/provides",
+      "@type": "mif:Relationship",
+      "name": "provides",
+      "description": "A developer portal provides golden paths and software templates",
+      "from": [
+        "mif:entityType/developer-portal"
+      ],
+      "to": [
+        "mif:entityType/golden-path",
+        "mif:entityType/software-template"
+      ],
+      "symmetric": false
+    },
+    "scaffolds": {
+      "@id": "mif:relationship/scaffolds",
+      "@type": "mif:Relationship",
+      "name": "scaffolds",
+      "description": "A software template scaffolds a component",
+      "from": [
+        "mif:entityType/software-template"
+      ],
+      "to": [
+        "mif:entityType/component"
+      ],
+      "symmetric": false
+    },
+    "bound_to": {
+      "@id": "mif:relationship/bound_to",
+      "@type": "mif:Relationship",
+      "name": "bound_to",
+      "description": "A portal integration binds the portal to an external technology",
+      "from": [
+        "mif:entityType/portal-integration"
+      ],
+      "to": [
+        "mif:entityType/technology"
+      ],
+      "symmetric": false
+    }
+  },
+  "discovery": {
+    "enabled": true,
+    "confidence_threshold": 0.8,
+    "patterns": [
+      {
+        "@id": "mif:pattern/0",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(internal developer (portal|platform)|developer portal|Backstage|\\bIDP\\b)\\b",
+        "suggest_entity": "mif:entityType/developer-portal",
+        "suggest_namespace": "_semantic/portals"
+      },
+      {
+        "@id": "mif:pattern/1",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(Backstage plugin|portal plugin|frontend plugin|backend plugin|backend module)\\b",
+        "suggest_entity": "mif:entityType/portal-plugin",
+        "suggest_namespace": "_semantic/portals"
+      },
+      {
+        "@id": "mif:pattern/2",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(software template|scaffolder template|golden-path template|cookiecutter|project skeleton|catalog-info\\.yaml template)\\b",
+        "suggest_entity": "mif:entityType/software-template",
+        "suggest_namespace": "_semantic/paths"
+      },
+      {
+        "@id": "mif:pattern/3",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(golden path|paved road|paved path)\\b",
+        "suggest_entity": "mif:entityType/golden-path",
+        "suggest_namespace": "_semantic/paths"
+      },
+      {
+        "@id": "mif:pattern/4",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(Okta|OIDC|SAML|SSO|GitHub|PagerDuty|Snyk|Orca|Chronosphere|Grafana|AWS)\\b[^.]{0,40}\\b(integration|provider|plugin|auth|catalog discovery|entity provider)\\b",
+        "suggest_entity": "mif:entityType/portal-integration",
+        "suggest_namespace": "_semantic/integrations"
+      }
+    ]
+  }
+}

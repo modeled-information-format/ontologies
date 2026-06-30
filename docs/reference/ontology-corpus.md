@@ -41,7 +41,7 @@ examples tree.
 ## Catalog
 
 Four base ontologies (`mif-base`, `shared-traits`, `engineering-base`,
-`mif-generic`) plus thirteen domain ontologies, seventeen in all. The `version`
+`mif-generic`) plus fourteen domain ontologies, eighteen in all. The `version`
 column is the YAML `ontology.version` field.
 
 | Ontology id | Version | Path | Description |
@@ -55,6 +55,7 @@ column is the YAML `ontology.version` field.
 | `market-research` | 0.1.0 | `ontologies/market-research.ontology.yaml` | Segments, competitors, sizing, forces, and market intelligence. |
 | `mif-docs` | 1.0.0 | `ontologies/mif-docs.ontology.yaml` | Document genres of the mif-docs suite and the relationships connecting them. |
 | `observability` | 0.1.0 | `ontologies/observability.ontology.yaml` | Services, telemetry signals, ownership registries, and roadmap signals. |
+| `platform-engineering` | 0.1.0 | `ontologies/platform-engineering.ontology.yaml` | Internal developer portals, portal plugins, software templates, golden paths, and typed integrations. |
 | `psycholinguistics` | 0.1.0 | `ontologies/psycholinguistics.ontology.yaml` | Psychological and linguistic constructs, stylometric and psychometric features. |
 | `regenerative-agriculture` | 0.1.0 | `ontologies/regenerative-agriculture.ontology.yaml` | Regenerative agriculture entities with ecosystem coverage. |
 | `regenerative-agriculture-research` | 0.3.1 | `ontologies/regenerative-agriculture-research.ontology.yaml` | Research observations about regenerative farming practices. |
@@ -236,6 +237,7 @@ The `extends` declared by each domain ontology:
 | `market-research` | `mif-base`, `shared-traits` |
 | `mif-docs` | `mif-base` |
 | `observability` | `engineering-base`, `mif-generic` |
+| `platform-engineering` | `engineering-base` |
 | `psycholinguistics` | `engineering-base`, `mif-generic` |
 | `regenerative-agriculture` | `mif-base`, `shared-traits` |
 | `regenerative-agriculture-research` | `engineering-base`, `mif-generic` |
