@@ -46,11 +46,16 @@ this file tracks the corpus as a whole.
   `auditable`, and more) that domain ontologies compose by `extends`.
 - Intermediate base ontologies `engineering-base` (shared engineering supertypes)
   and `mif-generic` (always-on generic entity types).
-- 13 domain ontologies: `biology-research-lab`, `data-engineering`,
-  `market-research`, `mif-docs`, `observability`, `psycholinguistics`,
-  `regenerative-agriculture`, `regenerative-agriculture-research`,
-  `regulatory-legal`, `scientific`, `software-engineering`, `software-security`,
-  `trend-analysis`.
+- 14 domain ontologies: `biology-research-lab`, `data-engineering`,
+  `market-research`, `mif-docs`, `observability`, `platform-engineering`,
+  `psycholinguistics`, `regenerative-agriculture`,
+  `regenerative-agriculture-research`, `regulatory-legal`, `scientific`,
+  `software-engineering`, `software-security`, `trend-analysis`.
+- `platform-engineering` (0.1.0): internal developer platform / portal domain —
+  `developer-portal` and `portal-plugin` (both `subtype_of` `component`),
+  `software-template`, `golden-path`, and `portal-integration` (whose
+  `integration_category` differentiates identity / scm / cloud / observability /
+  incident / security / ci-cd bindings). Extends `engineering-base`.
 - A committed `*.ontology.jsonld` projection beside every `*.ontology.yaml`, so
   the parser-facing reading is versioned and reviewable alongside the YAML.
 - Documentation set organized by Diátaxis: a getting-started tutorial, how-to
