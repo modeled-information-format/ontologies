@@ -35,8 +35,14 @@ for f in "$ONT_DIR"/*.ontology.yaml; do
     echo "gen-ontology-index: skip $f (no .ontology.id)" >&2
     continue
   fi
+  # duplicate id would silently last-write-wins in the accumulator — fail loudly.
+  if jq -e --arg id "$id" 'has($id)' "$acc" >/dev/null 2>&1; then
+    echo "gen-ontology-index: duplicate ontology id '$id' (second occurrence: $f)" >&2
+    exit 1
+  fi
   version=$(yq -r '.ontology.version // "0.0.0"' "$f")
-  extends=$(yq -o=json -I=0 '.ontology.extends // []' "$f")
+  # normalize extends to an array: missing -> [], a scalar -> [scalar], a sequence -> as-is.
+  extends=$(yq -o=json -I=0 '[.ontology.extends // []] | flatten' "$f")
   sha=$($SHA "$f" | awk '{print $1}')
   file=$(basename "$f")
   jq --arg id "$id" --arg v "$version" --arg file "$file" --arg sha "$sha" --argjson ext "$extends" \
