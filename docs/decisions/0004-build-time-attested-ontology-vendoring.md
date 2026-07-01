@@ -136,12 +136,11 @@ committed snapshot as the materialization mechanism of ADR-0002's index contract
   `release.yml`'s build step being a full `git archive` of the committed tree;
   if that step is ever specialized to a curated build, it must keep packaging
   `index.json`, or the attestation no longer covers the manifest.
-- **Uniform vendoring, no base/domain split:** per ADR-018, every ontology —
-  including `mif-base` and `shared-traits` — is authored and versioned in this
-  repo as source of record. MIF has no canonical copy of any ontology to
-  compose against; `mif-base` is fetched, verified, and vendored identically
-  to every domain ontology in the tarball. There is no MIF-side compatibility
-  check, because there is no MIF-side base.
+- **Uniform vendoring:** per ADR-018, every ontology — including `mif-base`
+  and `shared-traits` — is authored and versioned in this repo as source of
+  record. MIF has no canonical copy of any ontology to reconcile against;
+  `mif-base` is fetched, verified, and vendored identically to every other
+  ontology in the tarball.
 - **Freshness:** deploy triggers on ontologies release (`repository_dispatch`
   with the ref, authenticated via the ADR-011 app fleet), on MIF's own changes,
   and on a fuzzily scheduled backstop. Concurrency-grouped so bursts collapse
