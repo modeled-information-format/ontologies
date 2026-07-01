@@ -112,7 +112,8 @@ corpus onto MIF's **canonical base**, then recomputes only the *enriched* catalo
 untouched. The build enumerates release tags for the historical version axis;
 each version is one immutable, signed tarball. Deploy is triggered by **either an
 ontologies release (`repository_dispatch`, carrying the ref) or a MIF change**,
-with a **scattered scheduled** deploy as a convergence backstop; on any
+with a **scattered-time scheduled** deploy (a fuzzy, non-round-minute cron, per
+org convention) as a convergence backstop; on any
 verification failure the deploy **keeps the last-good published surface** and
 signals, never publishing partial or unverified bytes.
 
@@ -144,7 +145,7 @@ committed snapshot as the materialization mechanism of ADR-0002's index contract
   (fail-closed compatibility, not just integrity).
 - **Freshness:** deploy triggers on ontologies release (`repository_dispatch`
   with the ref, authenticated via the ADR-011 app fleet), on MIF's own changes,
-  and on a scattered scheduled backstop. Concurrency-grouped so bursts collapse
+  and on a scattered-time scheduled backstop. Concurrency-grouped so bursts collapse
   to one publish. Verification failure ⇒ keep-last-good + signal.
 - **No committed mirror:** `public/ontologies/` becomes build output under
   `dist/`; the hand-run snapshot commit is retired.
