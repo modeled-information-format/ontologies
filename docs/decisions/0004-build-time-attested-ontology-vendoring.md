@@ -71,9 +71,6 @@ capstone of the project.
   built from; the served surface is built from a hand-committed copy.
 - **No cross-repo freshness path.** Nothing wires an ontologies release to a MIF
   rebuild, so the served surface cannot self-heal.
-- **Base/domain ownership is undifferentiated.** The normative floor
-  (`mif-base`, `shared-traits`) and open-growth domain ontologies share one
-  materialization path, though they have different governance cadence.
 
 ## Decision Drivers
 
@@ -90,7 +87,6 @@ capstone of the project.
 
 - Keep one `index.json` contract end to end (ADR-0002) — the publisher enriches,
   never recomputes, the attested `{version, file, sha256, extends[]}` core.
-- Separate the governed normative floor from the open-growth domain corpus.
 - Preserve the single-publisher, single-signer, single-apex-domain invariant.
 
 ## Considered Options
@@ -106,10 +102,10 @@ drift; the signed tarball remains unused by the publisher.
 At MIF deploy, vendor the corpus by **fetching the tag's signed
 `${NAME}-${VERSION}.tar.gz`, running `gh attestation verify` fail-closed, and
 untarring** into build output (`dist/`, not committed source — the pattern
-already used for the versioned schema mirror). The publisher composes the domain
-corpus onto MIF's **canonical base**, then recomputes only the *enriched* catalog
-(`latest`/`v0` aliases, versioned URLs) while leaving the attested core index
-untouched. The build enumerates release tags for the historical version axis;
+already used for the versioned schema mirror). The publisher vendors the whole
+verified corpus as-is — including `mif-base` and `shared-traits` — then
+recomputes only the *enriched* catalog (`latest`/`v0` aliases, versioned URLs)
+while leaving the attested core index untouched. The build enumerates release tags for the historical version axis;
 each version is one immutable, signed tarball. Deploy is triggered by **either an
 ontologies release (`repository_dispatch`, carrying the ref) or a MIF change**,
 with a **fuzzily scheduled** deploy (per the org's fuzzy-scheduling policy —
@@ -140,12 +136,11 @@ committed snapshot as the materialization mechanism of ADR-0002's index contract
   `release.yml`'s build step being a full `git archive` of the committed tree;
   if that step is ever specialized to a curated build, it must keep packaging
   `index.json`, or the attestation no longer covers the manifest.
-- **Base/domain split:** the normative floor (`mif-base`, `shared-traits`) is
-  **canonical in `MIF`** — authored and attested in its own tree, trusted by
-  authorship. Domain ontologies grow freely in this repo and are the fetched,
-  fail-closed-verified layers. The tarball declares the `mif-base` version it was
-  validated against; MIF refuses to compose it onto an incompatible base
-  (fail-closed compatibility, not just integrity).
+- **Uniform vendoring:** per ADR-018, every ontology — including `mif-base`
+  and `shared-traits` — is authored and versioned in this repo as source of
+  record. MIF has no canonical copy of any ontology to reconcile against;
+  `mif-base` is fetched, verified, and vendored identically to every other
+  ontology in the tarball.
 - **Freshness:** deploy triggers on ontologies release (`repository_dispatch`
   with the ref, authenticated via the ADR-011 app fleet), on MIF's own changes,
   and on a fuzzily scheduled backstop. Concurrency-grouped so bursts collapse
@@ -163,16 +158,14 @@ committed snapshot as the materialization mechanism of ADR-0002's index contract
   surface is exactly the attested tarball's verified bytes, enriched.
 - Vendoring reuses `release.yml` + `gh attestation verify` verbatim; no new
   fetch/verify code to maintain.
-- Governance matches physics: MIF owns and signs a small, slow normative floor;
-  the domain corpus grows open and additive without touching the core.
+- MIF stays a pure consumer of this repo's attested corpus, including
+  `mif-base` and `shared-traits` — no ontology content is authored or
+  duplicated in MIF, per ADR-018.
 
 ### Negative
 
 - MIF's Pages build becomes **non-hermetic** (build-time network fetch); mitigated
   by pinning to the dispatched ref and sha/attestation verification.
-- The `extends` graph now **crosses repos**: this repo's validators must resolve
-  `mif-base` from a pinned, verified MIF version, and a `mif-base` change in MIF
-  must run this corpus's validators before merge (reverse validation).
 - Cutover must land as one move — MIF fetch/verify/untar deploy, the
   `repository_dispatch` wiring, and retirement of the committed snapshot — or the
   served surface breaks between states.
@@ -181,8 +174,8 @@ committed snapshot as the materialization mechanism of ADR-0002's index contract
 
 - The `index.json` contract (ADR-0002) is unchanged; only *who materializes it and
   when* changes. Discovery fields and per-ontology `version` semantics are as-is.
-- `engineering-base` and `research` remain domain-side family bases, not part of
-  the canonical floor.
+- `engineering-base` and `research` remain domain-side family bases within this
+  repo, unaffected by this decision.
 
 ## Decision Outcome
 
@@ -191,14 +184,12 @@ snapshot (primary driver one); admission is fail-closed on `gh attestation verif
 over the signed tarball (primary driver two); and it reuses the existing attested
 release chain rather than new glue (primary driver three). One index contract is
 preserved by enriching, not recomputing, the attested core (secondary driver one),
-and the base/domain split gives the normative floor its own governance while
-domains grow freely (secondary driver two), all under the single-publisher
-invariant (secondary driver three).
+under the single-publisher invariant (secondary driver two).
 
-The residual costs — a non-hermetic build and a cross-repo `extends` seam — are
-accepted: both reduce to "pin the other repo at a verified ref," and the
-correctness gate (keep-last-good on verify failure) means freshness is best-effort
-*under* integrity, never at its expense.
+The residual cost — a non-hermetic build — is accepted: it reduces to "pin the
+fetched ref and verify its attestation," and the correctness gate (keep-last-good
+on verify failure) means freshness is best-effort *under* integrity, never at its
+expense.
 
 ## Related Decisions
 
@@ -207,15 +198,14 @@ correctness gate (keep-last-good on verify failure) means freshness is best-effo
   (committed snapshot → build-time verified vendoring). ADR-0002's shape stands;
   its `snapshot-ontology-version.py` commit step is superseded here.
 - [ADR-0003: Research and Agriculture Base Layers](0003-research-and-agriculture-base-layers.md)
-  — the domain-side family bases that remain in this repo under the base/domain
-  split.
+  — the domain-side family bases that remain in this repo, unaffected by this
+  decision.
 - `research-harness-template` ADR-0012 (on-demand vendoring) — the consumer whose
   fail-closed fetch this pipeline keeps satisfiable.
 - **MIF-side companion:** `modeled-information-format/MIF` ADR-019,
-  "Deploy-Time, Attestation-Verified Ontology Vendoring" (draft PR
-  modeled-information-format/MIF#200) — the publisher-side decision recording
-  the fetch/verify/untar deploy job, the `repository_dispatch` contract, and
-  the canonical base ownership.
+  "Deploy-Time, Attestation-Verified Ontology Vendoring" (merged as commit
+  `d469e09`) — the publisher-side decision recording the fetch/verify/untar
+  deploy job and the `repository_dispatch` contract.
 
 ## Links
 
@@ -244,5 +234,14 @@ violated.
 
 - 2026-06-30: **Proposed.** Captures the design agreed in ideation. The MIF deploy
   still reads the committed `public/ontologies/` snapshot; the fetch/verify/untar
-  job, the `repository_dispatch` wiring, the base/domain split, and the MIF-side
-  companion ADR are not yet implemented.
+  job, the `repository_dispatch` wiring, and the MIF-side companion ADR are not
+  yet implemented.
+- 2026-07-01: **Correction.** The original text of this ADR claimed `mif-base`
+  and `shared-traits` are canonical in MIF, with a fail-closed compatibility
+  check against a MIF-side base. That contradicted the already-accepted
+  ADR-018, which put every ontology — including `mif-base` — in this repo as
+  source of record; `ontologies/index.json` itself confirms `mif-base` is an
+  entry here, not in MIF. Corrected throughout: MIF has no canonical ontology
+  copy of any kind and no compatibility check to run; it is a pure consumer of
+  this repo's attested corpus. No change to the chosen mechanism (Option 2,
+  build-time fetch/verify/untar) or to any other decision in this ADR.
