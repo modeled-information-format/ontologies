@@ -467,6 +467,9 @@ jobs:
           private-key: ${{ secrets.RELEASE_CLIENT_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: ${{ github.event.repository.name }}
+          # Down-scope the minted token: the release publish only needs contents:write
+          # (metadata:read is always granted).
+          permission-contents: write
 
       - name: Create GitHub Release
         env:
