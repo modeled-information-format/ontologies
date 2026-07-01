@@ -112,8 +112,10 @@ corpus onto MIF's **canonical base**, then recomputes only the *enriched* catalo
 untouched. The build enumerates release tags for the historical version axis;
 each version is one immutable, signed tarball. Deploy is triggered by **either an
 ontologies release (`repository_dispatch`, carrying the ref) or a MIF change**,
-with a **scattered-time scheduled** deploy (a fuzzy, non-round-minute cron, per
-org convention) as a convergence backstop; on any
+with a **scattered-time scheduled** deploy (a plain `on.schedule.cron` at a
+hand-picked, non-round minute — never gh-aw's fuzzy-schedule syntax, which
+only compiles inside gh-aw agentic-workflow markdown — per org convention) as
+a convergence backstop; on any
 verification failure the deploy **keeps the last-good published surface** and
 signals, never publishing partial or unverified bytes.
 
