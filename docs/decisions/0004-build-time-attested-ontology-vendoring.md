@@ -132,7 +132,10 @@ committed snapshot as the materialization mechanism of ADR-0002's index contract
   the byte-stable `index.json` (from `gen-ontology-index.sh`) **packaged inside**
   it so the manifest is itself under attestation. The publisher **enriches** the
   verified index (aliases, versioned URLs); it never recomputes the attested
-  `{version, file, sha256, extends[]}` core.
+  `{version, file, sha256, extends[]}` core. This guarantee currently rides on
+  `release.yml`'s build step being a full `git archive` of the committed tree;
+  if that step is ever specialized to a curated build, it must keep packaging
+  `index.json`, or the attestation no longer covers the manifest.
 - **Base/domain split:** the normative floor (`mif-base`, `shared-traits`) is
   **canonical in `MIF`** — authored and attested in its own tree, trusted by
   authorship. Domain ontologies grow freely in this repo and are the fetched,
@@ -204,15 +207,21 @@ correctness gate (keep-last-good on verify failure) means freshness is best-effo
   split.
 - `research-harness-template` ADR-0012 (on-demand vendoring) — the consumer whose
   fail-closed fetch this pipeline keeps satisfiable.
-- **MIF-side companion (to author):** "Deploy assembles a verified external corpus"
-  — the publisher-side decision recording the fetch/verify/untar deploy job,
-  the `repository_dispatch` contract, and the canonical base ownership.
+- **MIF-side companion:** `modeled-information-format/MIF` ADR-019,
+  "Deploy-Time, Attestation-Verified Ontology Vendoring" (draft PR
+  modeled-information-format/MIF#200) — the publisher-side decision recording
+  the fetch/verify/untar deploy job, the `repository_dispatch` contract, and
+  the canonical base ownership.
 
 ## Links
 
 - `modeled-information-format/ontologies` `.github/workflows/release.yml`: the
   build → attest → fail-closed-verify → tag-gated-publish chain producing the
-  signed `${NAME}-${VERSION}.tar.gz` this decision vendors.
+  signed `${NAME}-${VERSION}.tar.gz` this decision vendors. The `index.json`
+  manifest is packaged inside it only because this workflow's build step is
+  currently the unmodified `git archive`-of-everything template default; a
+  future specialization of that step must keep packaging `index.json` or the
+  attestation stops covering the manifest.
 - `scripts/gen-ontology-index.sh`: emits the byte-stable `index.json` packaged
   inside the attested tarball.
 - `modeled-information-format/MIF` `scripts/snapshot-ontology-version.py`: the
