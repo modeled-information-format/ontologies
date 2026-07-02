@@ -20,8 +20,6 @@ relationships:
   - type: relates-to
     target: 0002-object-keyed-hash-pinned-vendoring-index.md
   - type: relates-to
-    target: 0003-research-and-agriculture-base-layers.md
-  - type: relates-to
     target: ../reference/ontology-corpus.md
 ontology:
   '@type': OntologyReference
@@ -252,4 +250,7 @@ violated.
   `main` commit: `gen-ontology-index.sh --check` clean, all 20 ontologies
   hash-match their `index.json` entry, and `mif-spec.dev/ontologies/index.json`
   confirmed serving the same 20-entry core with zero mismatches, deployed from
-  the exact merge commit. Issue #6 closed on this evidence.
+  the exact merge commit. Issue #6's own acceptance criterion — the index
+  "served at `https://mif-spec.dev/ontologies/index.json`" — stayed unmet
+  until this work landed, even though #5 had already delivered the local
+  `index.json` and `gen-ontology-index.sh` half; closed on this evidence.
