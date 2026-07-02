@@ -31,6 +31,7 @@ pre-commit:
 pre-push:
   commands:
     build:
+      glob: "{src/**,docs/**,ontologies/**,astro.config.mjs,package.json,package-lock.json}"
       run: npm run build
       fail_text: |
         Astro build failed. This is the same build deploy.yml runs on push to
