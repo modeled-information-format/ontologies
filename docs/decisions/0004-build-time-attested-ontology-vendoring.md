@@ -2,12 +2,12 @@
 id: adr-0004-build-time-attested-ontology-vendoring
 type: semantic
 created: '2026-06-30T22:00:00Z'
-modified: '2026-06-30T22:00:00Z'
+modified: '2026-07-02T00:54:46Z'
 namespace: decisions/ontology-corpus
 title: Build-Time, Attestation-Verified Ontology Vendoring
 tags:
   - adr
-  - proposed
+  - implemented
   - registry
   - vendoring
   - supply-chain
@@ -19,8 +19,6 @@ temporal:
 relationships:
   - type: relates-to
     target: 0002-object-keyed-hash-pinned-vendoring-index.md
-  - type: relates-to
-    target: 0003-research-and-agriculture-base-layers.md
   - type: relates-to
     target: ../reference/ontology-corpus.md
 ontology:
@@ -37,7 +35,7 @@ entity:
 
 ## Status
 
-proposed
+implemented
 
 ## Context
 
@@ -245,3 +243,14 @@ violated.
   copy of any kind and no compatibility check to run; it is a pure consumer of
   this repo's attested corpus. No change to the chosen mechanism (Option 2,
   build-time fetch/verify/untar) or to any other decision in this ADR.
+- 2026-07-02: **Implemented.** `release.yml` gained a `notify-mif` job that
+  fires a `repository_dispatch` to `modeled-information-format/MIF` on a
+  tagged release (#25). MIF's own companion ADR-019 landed the
+  fetch/verify/untar side (modeled-information-format/MIF#203). Verified end to end against the merged
+  `main` commit: `gen-ontology-index.sh --check` clean, all 20 ontologies
+  hash-match their `index.json` entry, and `mif-spec.dev/ontologies/index.json`
+  confirmed serving the same 20-entry core with zero mismatches, deployed from
+  the exact merge commit. Issue #6's own acceptance criterion — the index
+  "served at `https://mif-spec.dev/ontologies/index.json`" — stayed unmet
+  until this work landed, even though #5 had already delivered the local
+  `index.json` and `gen-ontology-index.sh` half; closed on this evidence.

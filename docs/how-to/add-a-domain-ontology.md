@@ -193,26 +193,24 @@ and the JSON-LD; every ontology in the corpus carries its committed projection.
 
 ## 4. Validate against the ontology schema
 
-The MIF validators discover `*.ontology.yaml` files in their own checkout's
-`ontologies/` tree (they take no path argument) and validate each against the
-canonical schema (`$id`
-`https://mif-spec.dev/schema/ontology/ontology.schema.json`), resolving `extends`
-against the `mif-base` and `shared-traits` they ship. To validate your new
-ontology before it is mirrored upstream, copy its YAML into your MIF checkout's
-`ontologies/` directory, then run the validators from there:
+The validators live in the MIF spec repo (`scripts/validate-ontologies.py` and
+`scripts/validate-namespaces.py`), since MIF owns `ontology.schema.json`. MIF
+authors no ontology content of its own (ADR-018), so both take a `--path <dir>`
+argument pointing at the corpus to check, rather than scanning a tree inside
+the MIF checkout. Point `--path` at this repo's own `ontologies/` directory so
+your new file validates against the real `mif-base` and `shared-traits`
+parents:
 
 ```bash
-cp ontologies/customer-support.ontology.yaml /path/to/MIF/ontologies/
 cd /path/to/MIF
-python scripts/validate-ontologies.py
-python scripts/validate-namespaces.py
-python scripts/test_subtype_of.py
+python scripts/validate-ontologies.py --path /path/to/ontologies/ontologies
+python scripts/validate-namespaces.py --path /path/to/ontologies/ontologies
 ```
 
-A clean exit from all three means the ontology is schema-conformant, its
-namespaces resolve, and its entity-type subsumption (`subtype_of`) holds across
-the `extends` chain. These are the same validators MIF runs in CI over the
-corpus it mirrors.
+A clean exit from both means the ontology is schema-conformant (`$id`
+`https://mif-spec.dev/schema/ontology/ontology.schema.json`), its namespaces
+resolve, and its entity-type subsumption (`subtype_of`) holds across the
+`extends` chain.
 
 Your ontology is complete. To propose it for inclusion in the published corpus,
 follow [Submit an ontology](./submit-an-ontology.md).

@@ -273,8 +273,8 @@ declared ontology defines.
 | --- | --- |
 | Source of record | `ontologies/<name>.ontology.yaml` (hand-authored). |
 | Projection | `ontologies/<name>.ontology.jsonld` (generated, committed beside the YAML). |
-| Generator | `scripts/yaml2jsonld.py <file>` in the `modeled-information-format/MIF` spec repo. |
-| Validators | `scripts/validate-ontologies.py`, `scripts/validate-namespaces.py`, `scripts/test_subtype_of.py` (in the MIF spec repo; they scan a MIF checkout's `ontologies/` tree). |
+| Generator | `scripts/yaml2jsonld.py --all --path <dir>` in the `modeled-information-format/MIF` spec repo. |
+| Validators | `scripts/validate-ontologies.py --path <dir>`, `scripts/validate-namespaces.py --path <dir>` (in the MIF spec repo; `--path` points at this repo's `ontologies/` directory, since MIF authors no ontology content of its own — ADR-018). `scripts/test_subtype_of.py` also lives in MIF but only exercises its own hardcoded fixtures; it does not check this corpus and takes no `--path`. |
 | Canonical schema | `ontology.schema.json`, `$id` `https://mif-spec.dev/schema/ontology/ontology.schema.json`. |
 
 This repository holds the corpus source. The generator, validators, and canonical

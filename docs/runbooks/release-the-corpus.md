@@ -65,28 +65,41 @@ ontologies: it ships security attestations, so a malformed ontology will release
 cleanly. Validation is your job, here, first.
 
 The ontology validators are **not vendored in this repo**. They live in the
-sibling `modeled-information-format/MIF` spec repo under `scripts/`, which mirrors
-this corpus and re-runs them in CI. Run them from a MIF checkout.
+sibling `modeled-information-format/MIF` spec repo under `scripts/`, since MIF
+owns `ontology.schema.json`. MIF authors no ontology content of its own
+(ADR-018) and no longer keeps a committed mirror of this corpus (ADR-019
+replaced that with deploy-time vendoring), so its own CI has nothing local to
+run these against. This pre-flight checklist is the only place they run
+against your actual changes before release — run them from a MIF checkout,
+pointed at this repo with `--path`:
 
 1. **Regenerate JSON-LD projections for any changed YAML.** The
    `.ontology.jsonld` files are committed beside their `.ontology.yaml` source;
    they must match.
 
+   `--all --path` regenerates every `*.ontology.jsonld` in the corpus in one
+   pass, for release pre-flight. Authoring a single new ontology instead? See
+   [Add a domain ontology](../how-to/add-a-domain-ontology.md), which converts
+   just that one file.
+
    ```bash
    # from a modeled-information-format/MIF checkout
-   python scripts/yaml2jsonld.py
+   python scripts/yaml2jsonld.py --all --path /path/to/ontologies/ontologies
    ```
 
    Commit any regenerated `.jsonld`. A drifted projection is a release blocker.
 
-2. **Validate the corpus.** All three must pass:
+2. **Validate the corpus.** Both must pass:
 
    ```bash
    # from a modeled-information-format/MIF checkout
-   python scripts/validate-ontologies.py   # ontology YAML vs ontology.schema.json
-   python scripts/validate-namespaces.py    # declared namespaces resolve
-   python scripts/test_subtype_of.py        # subtype_of integrity
+   python scripts/validate-ontologies.py --path /path/to/ontologies/ontologies   # schema conformance + subtype_of integrity
+   python scripts/validate-namespaces.py --path /path/to/ontologies/ontologies   # declared namespaces resolve
    ```
+
+   (`scripts/test_subtype_of.py`, also in MIF, only exercises the `subtype_of`
+   resolver against its own hardcoded fixtures. It is a regression test for
+   that logic, not a check of this corpus, and does not take `--path`.)
 
 3. **Bump the version of every ontology you changed.** In each changed
    `<name>.ontology.yaml`, bump the `version:` under its `ontology:` block.
@@ -153,10 +166,20 @@ The job graph, in dependency order:
 | `vex` | OpenVEX disposition from `.vex/openvex.json`, self-signed |
 | `verify` | **Fail-closed** `gh attestation verify` of all six predicates |
 | `publish` | Creates the GitHub Release with checksums; **tag-gated, runs only after `verify` passes** |
+| `notify-mif` | Mints a `pages` App token and fires a `repository_dispatch` (`ontology-corpus-released`) at `modeled-information-format/MIF`, carrying the tag and version; tag-gated, runs only after `publish` succeeds |
 
 `publish` declares `needs: [meta, verify]` and `if: startsWith(github.ref,
 'refs/tags/')`. If `verify` fails, `publish` never runs and nothing is released.
 A tag publishes nothing unattested.
+
+`notify-mif` is what makes the release show up at `mif-spec.dev/ontologies/`
+without a manual step (ADR-019): the dispatch triggers MIF's own
+`deploy.yml`, which fetches this release's tarball, fail-closed
+`gh attestation verify`s it the same way `verify` above does, and vendors the
+corpus into its Pages build. If `notify-mif` fails, the release itself has
+already published successfully; MIF's scheduled backstop deploy will pick up
+the new tag on its own within 24 hours, or trigger `deploy.yml` manually via
+`workflow_dispatch` in the meantime.
 
 ---
 
