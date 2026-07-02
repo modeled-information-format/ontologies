@@ -4,7 +4,8 @@ name: Release
 # Attested delivery pipeline — language-agnostic template.
 #
 # Flow: build tarball → attest-build-provenance → generate + attest CycloneDX SBOM
-#       → fail-closed verify (gh attestation verify) → tag-gated publish.
+#       → fail-closed verify (gh attestation verify) → tag-gated publish
+#       → notify MIF's ontology-vendoring deploy (ADR-0004/ADR-019).
 #
 # The invariant: an artifact reaches consumers ONLY if it is byte-identical to
 # what was validated, carries SLSA provenance + SBOM attestations that re-verify
@@ -503,6 +504,10 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     needs: [meta, publish]
     runs-on: ubuntu-latest
+    # Explicit, matching every other job in this file: this job never touches
+    # the default GITHUB_TOKEN, only the minted App token below, so it needs
+    # none of the automatic token's permissions.
+    permissions: {}
     steps:
       - name: Mint a token scoped to the MIF repo
         id: app-token
