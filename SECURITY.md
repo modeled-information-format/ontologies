@@ -83,7 +83,7 @@ bash verify-artifact.sh attested-pipeline-template-1.0.0.tar.gz
 
 ### What a Passing Verification Looks Like
 
-```
+```text
 Loaded digest sha256:abc123... for file://attested-pipeline-template-1.0.0.tar.gz
 Loaded 1 attestation from GitHub API
 ✓ Verification succeeded!
