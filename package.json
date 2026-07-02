@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "prepare": "lefthook install"
   },
   "dependencies": {
-    "astro": "7.0.3",
     "@astrojs/starlight": "0.41.1",
+    "astro": "7.0.3",
     "astro-mermaid": "2.1.0"
   },
   "overrides": {
@@ -20,9 +21,12 @@
   },
   "allowScripts": {
     "esbuild@0.28.1": true,
+    "lefthook@2.1.9": true,
     "sharp@0.34.5": true
   },
   "devDependencies": {
+    "lefthook": "2.1.9",
+    "markdownlint-cli2": "0.23.0",
     "starlight-llms-txt": "0.10.0"
   }
 }
