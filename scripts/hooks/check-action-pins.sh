@@ -46,7 +46,7 @@ done
 if [ "$fail" -ne 0 ]; then
   echo ""
   echo "ERROR: one or more workflow 'uses:' refs are not pinned to a full commit SHA."
-  echo "Resolve the tag to its commit SHA (e.g. 'gh api repos/<owner>/<repo>/git/refs/tags/<tag>')"
+  echo "Resolve the tag to its commit SHA (e.g. 'gh api repos/<owner>/<repo>/git/ref/tags/<tag>')"
   echo "and pin to that instead. This mirrors ci.yml's pin-check gate."
   exit 1
 fi
