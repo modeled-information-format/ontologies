@@ -77,6 +77,11 @@ pointed at this repo with `--path`:
    `.ontology.jsonld` files are committed beside their `.ontology.yaml` source;
    they must match.
 
+   `--all --path` regenerates every `*.ontology.jsonld` in the corpus in one
+   pass, for release pre-flight. Authoring a single new ontology instead? See
+   [Add a domain ontology](../how-to/add-a-domain-ontology.md), which converts
+   just that one file.
+
    ```bash
    # from a modeled-information-format/MIF checkout
    python scripts/yaml2jsonld.py --all --path /path/to/ontologies/ontologies

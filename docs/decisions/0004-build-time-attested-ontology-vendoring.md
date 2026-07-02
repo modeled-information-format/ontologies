@@ -245,8 +245,8 @@ violated.
   build-time fetch/verify/untar) or to any other decision in this ADR.
 - 2026-07-02: **Implemented.** `release.yml` gained a `notify-mif` job that
   fires a `repository_dispatch` to `modeled-information-format/MIF` on a
-  tagged release (`ontologies`#25). MIF's own companion ADR-019 landed the
-  fetch/verify/untar side (`MIF`#203). Verified end to end against the merged
+  tagged release (#25). MIF's own companion ADR-019 landed the
+  fetch/verify/untar side (modeled-information-format/MIF#203). Verified end to end against the merged
   `main` commit: `gen-ontology-index.sh --check` clean, all 20 ontologies
   hash-match their `index.json` entry, and `mif-spec.dev/ontologies/index.json`
   confirmed serving the same 20-entry core with zero mismatches, deployed from
