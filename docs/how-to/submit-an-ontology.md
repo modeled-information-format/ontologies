@@ -113,28 +113,30 @@ This is your conformance gate. The corpus repo's own CI runs supply-chain
 security gates, not ontology validation (see step 6), so local validation against
 the schema is what proves your ontology conforms.
 
-The validators take no path argument; they scan the `ontologies/` tree of the MIF
-checkout they run in. Copy your YAML into that tree so it validates against the
-real `mif-base` and `shared-traits` parents, run the validators, then remove the
-copy:
+MIF authors no ontology content of its own (ADR-018), so the validators take a
+`--path <dir>` argument pointing at the corpus to check, rather than scanning a
+tree inside the MIF checkout itself. Point `--path` at this repo's own
+`ontologies/` directory so your new file validates against the real `mif-base`
+and `shared-traits` parents:
 
 ```bash
 cd /path/to/MIF
-cp /path/to/ontologies/ontologies/<your-domain>.ontology.yaml ontologies/
 
-python scripts/validate-ontologies.py     # schema conformance + subtype_of integrity
-python scripts/validate-namespaces.py      # every declared namespace resolves
-python scripts/test_subtype_of.py          # subtype_of subsumption across the corpus
-
-rm ontologies/<your-domain>.ontology.yaml
+python scripts/validate-ontologies.py --path /path/to/ontologies/ontologies
+python scripts/validate-namespaces.py --path /path/to/ontologies/ontologies
 ```
 
 `validate-ontologies.py` checks each `*.ontology.yaml` against
 `ontology.schema.json` (resolvable `$id`
-`https://mif-spec.dev/schema/ontology/ontology.schema.json`).
-`validate-namespaces.py` confirms every namespace your entity types reference
-exists in the declared ontologies. Each validator prints a success line and exits
-`0` when clean. Fix anything they report before you open the pull request.
+`https://mif-spec.dev/schema/ontology/ontology.schema.json`), plus `subtype_of`
+subsumption integrity across the whole corpus. `validate-namespaces.py`
+confirms every namespace your entity types reference exists in the declared
+ontologies. Each validator prints a success line and exits `0` when clean. Fix
+anything they report before you open the pull request.
+
+(`scripts/test_subtype_of.py` also lives in MIF, but only exercises the
+`subtype_of` resolver against its own hardcoded fixtures; it does not check
+your submission and does not take a `--path` argument.)
 
 ### 5. Commit the YAML and the JSON-LD together
 
