@@ -4,7 +4,8 @@ name: Release
 # Attested delivery pipeline — language-agnostic template.
 #
 # Flow: build tarball → attest-build-provenance → generate + attest CycloneDX SBOM
-#       → fail-closed verify (gh attestation verify) → tag-gated publish.
+#       → fail-closed verify (gh attestation verify) → tag-gated publish
+#       → notify MIF's ontology-vendoring deploy (ADR-0004/ADR-019).
 #
 # The invariant: an artifact reaches consumers ONLY if it is byte-identical to
 # what was validated, carries SLSA provenance + SBOM attestations that re-verify
@@ -486,3 +487,47 @@ jobs:
             --title "Release ${VERSION}" \
             --generate-notes \
             "${PRERELEASE[@]}"
+
+  # ---------------------------------------------------------------------------
+  # Notify MIF: after a real publish, tell the MIF repo's deploy to fetch,
+  # verify, and vendor this release (ADR-0004 / MIF ADR-019 — build-time
+  # attested ontology vendoring). Mirrors the exact cross-repo dispatch
+  # pattern research-harness-template/.github/workflows/docs.yml uses to
+  # notify the org Pages site, reusing the same `pages` App (already
+  # installed org-wide).
+  # ---------------------------------------------------------------------------
+  notify-mif:
+    name: Notify MIF (ontology corpus released)
+    # Explicit, matching publish's own gate: never fire on workflow_dispatch
+    # (dry-run) or a non-tag push, even though a skipped `publish` already
+    # skips this via `needs`.
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [meta, publish]
+    runs-on: ubuntu-latest
+    # Explicit, matching every other job in this file: this job never touches
+    # the default GITHUB_TOKEN, only the minted App token below, so it needs
+    # none of the automatic token's permissions.
+    permissions: {}
+    steps:
+      - name: Mint a token scoped to the MIF repo
+        id: app-token
+        # v3.2.0
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          client-id: ${{ vars.PAGES_CLIENT_APP_ID }}
+          private-key: ${{ secrets.PAGES_CLIENT_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: MIF
+          # Down-scope the minted token: the repository_dispatch only needs contents:write.
+          permission-contents: write
+
+      - name: Trigger MIF's ontology-vendoring deploy
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          VERSION: ${{ needs.meta.outputs.version }}
+        run: |
+          gh api --method POST \
+            "repos/${{ github.repository_owner }}/MIF/dispatches" \
+            -f event_type=ontology-corpus-released \
+            -F "client_payload[ref]=${GITHUB_REF_NAME}" \
+            -F "client_payload[version]=${VERSION}"
