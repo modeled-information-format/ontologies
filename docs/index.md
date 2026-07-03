@@ -69,7 +69,7 @@ hero:
           <circle cx="1015" cy="212" r="9" fill="none" stroke="#F5B642" stroke-width="2.5" stroke-dasharray="3 3"/>
 
           <g font-family="Menlo, 'SF Mono', 'JetBrains Mono', monospace" letter-spacing="0.02em">
-            <text x="734" y="303" text-anchor="end" font-size="17" fill="#AEBCCF">mif-base</text>
+            <text x="734" y="296" text-anchor="end" font-size="17" fill="#AEBCCF">mif-base</text>
             <text x="876" y="268" text-anchor="middle" font-size="17" fill="#34D3E8">extends</text>
             <text x="1000" y="200" text-anchor="end" font-size="17" fill="#F5B642">+new</text>
           </g>
@@ -77,7 +77,7 @@ hero:
 
         <rect x="146" y="362" width="268" height="30" rx="15" fill="#151B27" stroke="#2E3A4D"/>
         <circle cx="168" cy="377" r="4.5" fill="#34D3E8"/>
-        <text x="184" y="381" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="12.5" letter-spacing="0.02em"><tspan fill="#34D3E8">typed base</tspan><tspan fill="#AEBCCF">  ·  domains extend it</tspan></text>
+        <text x="184" y="381" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="12.5" letter-spacing="0.02em" xml:space="preserve"><tspan fill="#34D3E8">typed base</tspan><tspan fill="#AEBCCF">  ·  domains extend it</tspan></text>
       </svg>
   actions:
     - text: The ontology model
