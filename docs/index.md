@@ -86,6 +86,17 @@ hero:
     - text: Author your first ontology
       link: tutorial/author-your-first-ontology/
       variant: minimal
+    - text: Browse the corpus
+      link: reference/ontology-corpus/
+      variant: minimal
+    - text: Specification (mif-spec.dev)
+      link: https://mif-spec.dev
+      icon: external
+      variant: minimal
+    - text: MIF home
+      link: https://modeled-information-format.github.io/
+      icon: external
+      variant: minimal
 ---
 
 ## How the corpus fits together
