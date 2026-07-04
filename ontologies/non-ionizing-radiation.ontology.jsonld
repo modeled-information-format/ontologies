@@ -1,0 +1,602 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://github.com/zircote/MIF/ontology#",
+    "mif": "https://github.com/zircote/MIF#",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ontology": {
+      "@id": "mif:Ontology",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "schema_url": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "namespaces": {
+      "@id": "mif:hasNamespace",
+      "@container": "@id"
+    },
+    "type_hint": {
+      "@id": "mif:typeHint",
+      "@type": "xsd:string"
+    },
+    "replaces": {
+      "@id": "mif:replaces",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "mif:hasChildNamespace",
+      "@container": "@id"
+    },
+    "entity_types": {
+      "@id": "mif:definesEntityType",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "base": {
+      "@id": "mif:baseType",
+      "@type": "@vocab"
+    },
+    "semantic": "mif:SemanticMemory",
+    "episodic": "mif:EpisodicMemory",
+    "procedural": "mif:ProceduralMemory",
+    "traits": {
+      "@id": "mif:definesTrait",
+      "@container": "@id"
+    },
+    "subtype_of": {
+      "@id": "mif:subtypeOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "mif:hasField",
+      "@container": "@id"
+    },
+    "requires": {
+      "@id": "mif:requiresField",
+      "@container": "@list"
+    },
+    "relationships": {
+      "@id": "mif:definesRelationship",
+      "@container": "@id"
+    },
+    "from": {
+      "@id": "rdfs:domain",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "rdfs:range",
+      "@container": "@set"
+    },
+    "symmetric": {
+      "@id": "owl:SymmetricProperty",
+      "@type": "xsd:boolean"
+    },
+    "discovery": {
+      "@id": "mif:discoveryConfig"
+    },
+    "enabled": {
+      "@id": "mif:discoveryEnabled",
+      "@type": "xsd:boolean"
+    },
+    "patterns": {
+      "@id": "mif:hasDiscoveryPattern",
+      "@container": "@list"
+    },
+    "confidence_threshold": {
+      "@id": "mif:confidenceThreshold",
+      "@type": "xsd:decimal"
+    },
+    "content_pattern": {
+      "@id": "mif:contentPattern",
+      "@type": "xsd:string"
+    },
+    "file_pattern": {
+      "@id": "mif:filePattern",
+      "@type": "xsd:string"
+    },
+    "suggest_entity": {
+      "@id": "mif:suggestsEntityType",
+      "@type": "@id"
+    },
+    "suggest_namespace": {
+      "@id": "mif:suggestsNamespace",
+      "@type": "xsd:string"
+    }
+  },
+  "@id": "mif:ontology/non-ionizing-radiation",
+  "@type": "mif:Ontology",
+  "identifier": "non-ionizing-radiation",
+  "version": "0.1.0",
+  "description": "Non-ionizing radiation domain ontology: power-frequency and RF/microwave EMF exposure sources and quantities, regulatory exposure limits, IARC carcinogenicity classifications, and exposure/health-outcome findings",
+  "namespaces": {
+    "semantic": {
+      "@id": "mif:namespace/semantic",
+      "@type": "mif:Namespace",
+      "name": "semantic",
+      "children": {
+        "emf-sources": {
+          "@id": "mif:namespace/semantic/emf-sources",
+          "@type": "mif:Namespace",
+          "name": "emf-sources",
+          "description": "Electrical and wireless EMF exposure-source apparatus",
+          "type_hint": "semantic"
+        },
+        "emf-quantities": {
+          "@id": "mif:namespace/semantic/emf-quantities",
+          "@type": "mif:Namespace",
+          "name": "emf-quantities",
+          "description": "Named power-frequency and RF field-exposure physical quantities",
+          "type_hint": "semantic"
+        },
+        "emf-limits": {
+          "@id": "mif:namespace/semantic/emf-limits",
+          "@type": "mif:Namespace",
+          "name": "emf-limits",
+          "description": "Regulatory/guideline EMF exposure limits and carcinogenicity classifications",
+          "type_hint": "semantic"
+        }
+      }
+    },
+    "episodic": {
+      "@id": "mif:namespace/episodic",
+      "@type": "mif:Namespace",
+      "name": "episodic",
+      "children": {
+        "emf-health-findings": {
+          "@id": "mif:namespace/episodic/emf-health-findings",
+          "@type": "mif:Namespace",
+          "name": "emf-health-findings",
+          "description": "Clinical/epidemiological findings on EMF exposure and health outcomes",
+          "type_hint": "episodic"
+        }
+      }
+    }
+  },
+  "entity_types": [
+    {
+      "@id": "mif:entityType/electrical-device",
+      "@type": "mif:EntityType",
+      "name": "electrical-device",
+      "base": "semantic",
+      "description": "A power-frequency electromagnetic-field source (appliance, transmission line, transformer, substation)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/apparatus"
+      ],
+      "schema": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Matches research.ontology.yaml's apparatus field name directly"
+          },
+          "device_category": {
+            "type": "string",
+            "enum": [
+              "appliance",
+              "transmission-line",
+              "transformer",
+              "substation",
+              "other"
+            ]
+          },
+          "nominal_frequency_hz": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/wireless-transmitter",
+      "@type": "mif:EntityType",
+      "name": "wireless-transmitter",
+      "base": "semantic",
+      "description": "An RF/microwave electromagnetic-field source (mobile handset, base station, WiFi router, Bluetooth device, radar)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/apparatus"
+      ],
+      "schema": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "device_category": {
+            "type": "string",
+            "enum": [
+              "mobile-handset",
+              "base-station",
+              "wifi-router",
+              "bluetooth",
+              "radar",
+              "other"
+            ]
+          },
+          "operating_frequency_hz": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/power-frequency-field-strength",
+      "@type": "mif:EntityType",
+      "name": "power-frequency-field-strength",
+      "base": "semantic",
+      "description": "A measured power-frequency (1 Hz-100 kHz) electric or magnetic field-strength value",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/physical-quantity"
+      ],
+      "schema": {
+        "required": [
+          "value",
+          "variable"
+        ],
+        "properties": {
+          "variable": {
+            "type": "string"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "field_type": {
+            "type": "string",
+            "enum": [
+              "electric",
+              "magnetic"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/rf-field-exposure",
+      "@type": "mif:EntityType",
+      "name": "rf-field-exposure",
+      "base": "semantic",
+      "description": "A measured RF/microwave (100 kHz-300 GHz) field-strength or power-density exposure value",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/physical-quantity"
+      ],
+      "schema": {
+        "required": [
+          "value",
+          "variable"
+        ],
+        "properties": {
+          "variable": {
+            "type": "string"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "metric_type": {
+            "type": "string",
+            "enum": [
+              "electric-field",
+              "power-density",
+              "absorbed-power-density"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/specific-absorption-rate",
+      "@type": "mif:EntityType",
+      "name": "specific-absorption-rate",
+      "base": "semantic",
+      "description": "Specific absorption rate (SAR): RF energy absorbed per unit body mass, the basic-restriction metric below the ICNIRP(2020)/IEEE C95.1-2019 6 GHz transition frequency",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/physical-quantity"
+      ],
+      "schema": {
+        "required": [
+          "value",
+          "variable"
+        ],
+        "properties": {
+          "variable": {
+            "type": "string"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "averaging_mass_g": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/emf-exposure-limit",
+      "@type": "mif:EntityType",
+      "name": "emf-exposure-limit",
+      "base": "semantic",
+      "description": "A named regulatory or guideline exposure limit/reference level for electric, magnetic, or electromagnetic field exposure",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "standard_body",
+          "limit_type"
+        ],
+        "properties": {
+          "standard_body": {
+            "type": "string",
+            "enum": [
+              "ICNIRP",
+              "IEEE",
+              "FCC",
+              "ARPANSA",
+              "other"
+            ]
+          },
+          "limit_type": {
+            "type": "string",
+            "enum": [
+              "occupational",
+              "general-public"
+            ]
+          },
+          "frequency_range": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/iarc-carcinogen-classification",
+      "@type": "mif:EntityType",
+      "name": "iarc-carcinogen-classification",
+      "base": "semantic",
+      "description": "An IARC Monograph carcinogenicity-hazard classification (Group 1/2A/2B/3/4) for an exposure agent",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "agent",
+          "group"
+        ],
+        "properties": {
+          "agent": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2A",
+              "2B",
+              "3",
+              "4"
+            ]
+          },
+          "monograph_volume": {
+            "type": "string"
+          },
+          "evaluation_year": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/emf-exposure-health-finding",
+      "@type": "mif:EntityType",
+      "name": "emf-exposure-health-finding",
+      "base": "episodic",
+      "description": "A clinical or epidemiological finding examining the association between an EMF-exposure quantity and a health outcome",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "value",
+          "observation_id",
+          "code"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Matches clinical-health-base's clinical-observation field name directly"
+          },
+          "value": {
+            "type": "string"
+          },
+          "observation_id": {
+            "type": "string"
+          },
+          "exposure_source": {
+            "type": "string",
+            "description": "e.g. 'power-frequency', 'RF/wireless'"
+          },
+          "outcome": {
+            "type": "string"
+          },
+          "association_strength": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "exposes": {
+      "@id": "mif:relationship/exposes",
+      "@type": "mif:Relationship",
+      "name": "exposes",
+      "description": "An EMF source produces an exposure quantity a subject may be exposed to",
+      "from": [
+        "mif:entityType/electrical-device",
+        "mif:entityType/wireless-transmitter"
+      ],
+      "to": [
+        "mif:entityType/power-frequency-field-strength",
+        "mif:entityType/rf-field-exposure",
+        "mif:entityType/specific-absorption-rate"
+      ],
+      "symmetric": false
+    },
+    "bounded_by": {
+      "@id": "mif:relationship/bounded_by",
+      "@type": "mif:Relationship",
+      "name": "bounded_by",
+      "description": "A measured exposure quantity is compared against a named regulatory exposure limit",
+      "from": [
+        "mif:entityType/power-frequency-field-strength",
+        "mif:entityType/rf-field-exposure",
+        "mif:entityType/specific-absorption-rate"
+      ],
+      "to": [
+        "mif:entityType/emf-exposure-limit"
+      ],
+      "symmetric": false
+    }
+  },
+  "discovery": {
+    "enabled": true,
+    "confidence_threshold": 0.8,
+    "patterns": [
+      {
+        "@id": "mif:pattern/0",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(power line|transmission line|transformer|substation|appliance)\\b.*\\b(EMF|electromagnetic field|magnetic field)\\b",
+        "suggest_entity": "mif:entityType/electrical-device",
+        "suggest_namespace": "_semantic/emf-sources"
+      },
+      {
+        "@id": "mif:pattern/1",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(cell tower|base station|WiFi router|Bluetooth|mobile phone|handset|radar)\\b",
+        "suggest_entity": "mif:entityType/wireless-transmitter",
+        "suggest_namespace": "_semantic/emf-sources"
+      },
+      {
+        "@id": "mif:pattern/2",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(power-frequency field|50 ?Hz|60 ?Hz|ELF field|extremely low frequency)\\b",
+        "suggest_entity": "mif:entityType/power-frequency-field-strength",
+        "suggest_namespace": "_semantic/emf-quantities"
+      },
+      {
+        "@id": "mif:pattern/3",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(RF exposure|radiofrequency field|power density|electric field strength)\\b",
+        "suggest_entity": "mif:entityType/rf-field-exposure",
+        "suggest_namespace": "_semantic/emf-quantities"
+      },
+      {
+        "@id": "mif:pattern/4",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(specific absorption rate|\\bSAR\\b)\\b",
+        "suggest_entity": "mif:entityType/specific-absorption-rate",
+        "suggest_namespace": "_semantic/emf-quantities"
+      },
+      {
+        "@id": "mif:pattern/5",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(ICNIRP|IEEE C95\\.1|FCC.*MPE|maximum permissible exposure|reference level)\\b",
+        "suggest_entity": "mif:entityType/emf-exposure-limit",
+        "suggest_namespace": "_semantic/emf-limits"
+      },
+      {
+        "@id": "mif:pattern/6",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(IARC|Group 2B|possibly carcinogenic)\\b",
+        "suggest_entity": "mif:entityType/iarc-carcinogen-classification",
+        "suggest_namespace": "_semantic/emf-limits"
+      },
+      {
+        "@id": "mif:pattern/7",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(EMF exposure and|association between.*(EMF|electromagnetic field).*health)\\b",
+        "suggest_entity": "mif:entityType/emf-exposure-health-finding",
+        "suggest_namespace": "_episodic/emf-health-findings"
+      }
+    ]
+  }
+}
