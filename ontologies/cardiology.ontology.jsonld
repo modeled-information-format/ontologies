@@ -1,0 +1,993 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://mif-spec.dev/ns/ontology#",
+    "mif": "https://mif-spec.dev/ns/",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ontology": {
+      "@id": "mif:Ontology",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "schema_url": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "namespaces": {
+      "@id": "mif:hasNamespace",
+      "@container": "@id"
+    },
+    "type_hint": {
+      "@id": "mif:typeHint",
+      "@type": "xsd:string"
+    },
+    "replaces": {
+      "@id": "mif:replaces",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "mif:hasChildNamespace",
+      "@container": "@id"
+    },
+    "entity_types": {
+      "@id": "mif:definesEntityType",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "base": {
+      "@id": "mif:baseType",
+      "@type": "@vocab"
+    },
+    "semantic": "mif:SemanticMemory",
+    "episodic": "mif:EpisodicMemory",
+    "procedural": "mif:ProceduralMemory",
+    "traits": {
+      "@id": "mif:definesTrait",
+      "@container": "@id"
+    },
+    "subtype_of": {
+      "@id": "mif:subtypeOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "mif:hasField",
+      "@container": "@id"
+    },
+    "requires": {
+      "@id": "mif:requiresField",
+      "@container": "@list"
+    },
+    "relationships": {
+      "@id": "mif:definesRelationship",
+      "@container": "@id"
+    },
+    "from": {
+      "@id": "rdfs:domain",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "rdfs:range",
+      "@container": "@set"
+    },
+    "symmetric": {
+      "@id": "owl:SymmetricProperty",
+      "@type": "xsd:boolean"
+    },
+    "discovery": {
+      "@id": "mif:discoveryConfig"
+    },
+    "enabled": {
+      "@id": "mif:discoveryEnabled",
+      "@type": "xsd:boolean"
+    },
+    "patterns": {
+      "@id": "mif:hasDiscoveryPattern",
+      "@container": "@list"
+    },
+    "confidence_threshold": {
+      "@id": "mif:confidenceThreshold",
+      "@type": "xsd:decimal"
+    },
+    "content_pattern": {
+      "@id": "mif:contentPattern",
+      "@type": "xsd:string"
+    },
+    "file_pattern": {
+      "@id": "mif:filePattern",
+      "@type": "xsd:string"
+    },
+    "suggest_entity": {
+      "@id": "mif:suggestsEntityType",
+      "@type": "@id"
+    },
+    "suggest_namespace": {
+      "@id": "mif:suggestsNamespace",
+      "@type": "xsd:string"
+    }
+  },
+  "@id": "mif:ontology/cardiology",
+  "@type": "mif:Ontology",
+  "identifier": "cardiology",
+  "version": "0.1.0",
+  "description": "Cardiology domain ontology: circulatory disease classification, structured cardiac studies, and functional-status assessment",
+  "namespaces": {
+    "semantic": {
+      "@id": "mif:namespace/semantic",
+      "@type": "mif:Namespace",
+      "name": "semantic",
+      "children": {
+        "cardiology-disorders": {
+          "@id": "mif:namespace/semantic/cardiology-disorders",
+          "@type": "mif:Namespace",
+          "name": "cardiology-disorders",
+          "description": "Circulatory disease classification (ICD-11 Chapter 11)",
+          "type_hint": "semantic"
+        },
+        "cardiology-functional-status": {
+          "@id": "mif:namespace/semantic/cardiology-functional-status",
+          "@type": "mif:Namespace",
+          "name": "cardiology-functional-status",
+          "description": "Cardiac functional-status classification scales",
+          "type_hint": "semantic"
+        }
+      }
+    },
+    "episodic": {
+      "@id": "mif:namespace/episodic",
+      "@type": "mif:Namespace",
+      "name": "episodic",
+      "children": {
+        "cardiology-studies": {
+          "@id": "mif:namespace/episodic/cardiology-studies",
+          "@type": "mif:Namespace",
+          "name": "cardiology-studies",
+          "description": "Structured cardiac diagnostic studies and clinical events",
+          "type_hint": "episodic"
+        }
+      }
+    }
+  },
+  "entity_types": [
+    {
+      "@id": "mif:entityType/hypertensive-disease",
+      "@type": "mif:EntityType",
+      "name": "hypertensive-disease",
+      "base": "semantic",
+      "description": "Hypertensive diseases",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          },
+          "parent_chapter": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/ischemic-heart-disease",
+      "@type": "mif:EntityType",
+      "name": "ischemic-heart-disease",
+      "base": "semantic",
+      "description": "Ischaemic heart diseases",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/coronary-artery-disease",
+      "@type": "mif:EntityType",
+      "name": "coronary-artery-disease",
+      "base": "semantic",
+      "description": "Diseases of coronary artery",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/pulmonary-heart-disease",
+      "@type": "mif:EntityType",
+      "name": "pulmonary-heart-disease",
+      "base": "semantic",
+      "description": "Pulmonary heart disease or diseases of pulmonary circulation",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/pericardial-disease",
+      "@type": "mif:EntityType",
+      "name": "pericardial-disease",
+      "base": "semantic",
+      "description": "Pericarditis",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/endocarditis",
+      "@type": "mif:EntityType",
+      "name": "endocarditis",
+      "base": "semantic",
+      "description": "Acute or subacute endocarditis",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/heart-valve-disease",
+      "@type": "mif:EntityType",
+      "name": "heart-valve-disease",
+      "base": "semantic",
+      "description": "Heart valve diseases",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          },
+          "affected_valve": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/cardiomyopathy",
+      "@type": "mif:EntityType",
+      "name": "cardiomyopathy",
+      "base": "semantic",
+      "description": "Diseases of the myocardium or cardiac chambers",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/cardiac-arrhythmia",
+      "@type": "mif:EntityType",
+      "name": "cardiac-arrhythmia",
+      "base": "semantic",
+      "description": "Cardiac arrhythmia",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/heart-failure",
+      "@type": "mif:EntityType",
+      "name": "heart-failure",
+      "base": "semantic",
+      "description": "Heart failure",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/arterial-disease",
+      "@type": "mif:EntityType",
+      "name": "arterial-disease",
+      "base": "semantic",
+      "description": "Diseases of arteries or arterioles",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/venous-disease",
+      "@type": "mif:EntityType",
+      "name": "venous-disease",
+      "base": "semantic",
+      "description": "Diseases of veins",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/lymphatic-vascular-disorder",
+      "@type": "mif:EntityType",
+      "name": "lymphatic-vascular-disorder",
+      "base": "semantic",
+      "description": "Disorders of lymphatic vessels or lymph nodes",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "code_range",
+          "title",
+          "stem_code"
+        ],
+        "properties": {
+          "code_range": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "icd11_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/echocardiography-study",
+      "@type": "mif:EntityType",
+      "name": "echocardiography-study",
+      "base": "episodic",
+      "description": "A structured bundle of cardiac echocardiography measurement data",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "study_id",
+          "modality",
+          "observation_id",
+          "code",
+          "value"
+        ],
+        "properties": {
+          "study_id": {
+            "type": "string"
+          },
+          "modality": {
+            "type": "string"
+          },
+          "member_measurements": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "ejection_fraction": {
+            "type": "number"
+          },
+          "study_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "observation_id": {
+            "type": "string",
+            "description": "Inherited from clinical-observation (same value as study_id)"
+          },
+          "code": {
+            "type": "string",
+            "description": "Inherited from clinical-observation: the LOINC code for this study"
+          },
+          "value": {
+            "type": "string",
+            "description": "Inherited from clinical-observation"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/ecg-finding",
+      "@type": "mif:EntityType",
+      "name": "ecg-finding",
+      "base": "episodic",
+      "description": "A structured electrical measurement bundle from a 12-lead ECG",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "pr_interval_ms",
+          "qrs_duration_ms",
+          "observation_id",
+          "code",
+          "value"
+        ],
+        "properties": {
+          "pr_interval_ms": {
+            "type": "number"
+          },
+          "qrs_duration_ms": {
+            "type": "number"
+          },
+          "qt_interval_ms": {
+            "type": "number"
+          },
+          "qtc_ms": {
+            "type": "number"
+          },
+          "impression": {
+            "type": "string"
+          },
+          "observation_id": {
+            "type": "string",
+            "description": "Inherited from clinical-observation"
+          },
+          "code": {
+            "type": "string",
+            "description": "Inherited from clinical-observation: the LOINC code for this panel"
+          },
+          "value": {
+            "type": "string",
+            "description": "Inherited from clinical-observation"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/cardiac-catheterization-study",
+      "@type": "mif:EntityType",
+      "name": "cardiac-catheterization-study",
+      "base": "episodic",
+      "description": "The execution of an invasive diagnostic cardiac catheterization protocol",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned"
+      ],
+      "subtype_of": [
+        "mif:entityType/research-procedure"
+      ],
+      "schema": {
+        "required": [
+          "study_id",
+          "access_site",
+          "name"
+        ],
+        "properties": {
+          "study_id": {
+            "type": "string"
+          },
+          "access_site": {
+            "type": "string"
+          },
+          "hemodynamic_findings": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "pre_cath_diagnosis": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Inherited from research-procedure: the procedure name (e.g. 'Cardiac catheterization')"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/cardiovascular-endpoint-event",
+      "@type": "mif:EntityType",
+      "name": "cardiovascular-endpoint-event",
+      "base": "episodic",
+      "description": "A standardized cardiovascular clinical-trial endpoint event",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "event_type",
+          "event_date"
+        ],
+        "properties": {
+          "event_type": {
+            "type": "string"
+          },
+          "event_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "death_classification": {
+            "type": "string"
+          },
+          "adjudication_source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/nyha-functional-class",
+      "@type": "mif:EntityType",
+      "name": "nyha-functional-class",
+      "base": "semantic",
+      "description": "New York Heart Association functional capacity classification",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/scored"
+      ],
+      "schema": {
+        "required": [
+          "nyha_class"
+        ],
+        "properties": {
+          "nyha_class": {
+            "type": "string",
+            "enum": [
+              "I",
+              "II",
+              "III",
+              "IV"
+            ]
+          },
+          "assessment_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "objective_assessment": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/cardiovascular-clinical-finding",
+      "@type": "mif:EntityType",
+      "name": "cardiovascular-clinical-finding",
+      "base": "semantic",
+      "description": "A point-in-time clinical finding distinct from a structured measurement (SNOMED CT's finding branch, architecturally distinct from ICD-11's disorder branch)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "finding_type",
+          "value",
+          "observation_id",
+          "code"
+        ],
+        "properties": {
+          "finding_type": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "observation_id": {
+            "type": "string",
+            "description": "Inherited from clinical-observation"
+          },
+          "code": {
+            "type": "string",
+            "description": "Inherited from clinical-observation: the SNOMED CT finding code (same value as finding_type)"
+          }
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "occurs_within": {
+      "@id": "mif:relationship/occurs_within",
+      "@type": "mif:Relationship",
+      "name": "occurs_within",
+      "description": "A clinical activity occurs within a clinical encounter (finding-intermediary-layering-spec.json)",
+      "from": [
+        "mif:entityType/cardiac-catheterization-study"
+      ],
+      "to": [
+        "mif:entityType/clinical-encounter"
+      ],
+      "symmetric": false
+    }
+  },
+  "discovery": {
+    "enabled": true,
+    "confidence_threshold": 0.8,
+    "patterns": [
+      {
+        "@id": "mif:pattern/0",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(hypertension|ischemic heart disease|coronary artery disease|arrhythmia|heart failure|cardiomyopathy)\\b",
+        "suggest_entity": "mif:entityType/hypertensive-disease",
+        "suggest_namespace": "_semantic/cardiology-disorders"
+      },
+      {
+        "@id": "mif:pattern/1",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(echocardiogram|echocardiography|2D echo|ejection fraction)\\b",
+        "suggest_entity": "mif:entityType/echocardiography-study",
+        "suggest_namespace": "_episodic/cardiology-studies"
+      },
+      {
+        "@id": "mif:pattern/2",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(ECG|EKG|electrocardiogram|QRS|QT interval|PR interval)\\b",
+        "suggest_entity": "mif:entityType/ecg-finding",
+        "suggest_namespace": "_episodic/cardiology-studies"
+      },
+      {
+        "@id": "mif:pattern/3",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(cardiac catheterization|coronary angiography|PCI)\\b",
+        "suggest_entity": "mif:entityType/cardiac-catheterization-study",
+        "suggest_namespace": "_episodic/cardiology-studies"
+      },
+      {
+        "@id": "mif:pattern/4",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(NYHA class|New York Heart Association functional class)\\b",
+        "suggest_entity": "mif:entityType/nyha-functional-class",
+        "suggest_namespace": "_semantic/cardiology-functional-status"
+      }
+    ]
+  }
+}

@@ -18,6 +18,30 @@
       "sha256": "67b895be6d46c1ff60619cc77adcd08f57b6d7bb834fa5f1b92d15484b9233dd",
       "version": "0.1.0"
     },
+    "cardiology": {
+      "extends": [
+        "clinical-health-base"
+      ],
+      "file": "cardiology.ontology.yaml",
+      "sha256": "3ae96630f5e082ebab31a4a5cccc3d24ee5e169109f9b7760aa6741ce6667aa3",
+      "version": "0.1.0"
+    },
+    "clinical-health-base": {
+      "extends": [
+        "research"
+      ],
+      "file": "clinical-health-base.ontology.yaml",
+      "sha256": "8a98e0e50d65c2909d37c1883dc23eb633e74e76455caf5fb97aec519bfecbaa",
+      "version": "0.1.0"
+    },
+    "cosmology": {
+      "extends": [
+        "physical-science-base"
+      ],
+      "file": "cosmology.ontology.yaml",
+      "sha256": "d75532a2e35f3416913a2d20ec4ca10dd69d5acd0041341e949967e891d75f31",
+      "version": "0.1.0"
+    },
     "data-engineering": {
       "extends": [
         "engineering-base"
@@ -33,6 +57,22 @@
       ],
       "file": "engineering-base.ontology.yaml",
       "sha256": "89e2fb197f2ae880746b0ca7a3dff48eb8111864fd91c804e1169b866012bfb3",
+      "version": "0.1.0"
+    },
+    "fitness": {
+      "extends": [
+        "clinical-health-base"
+      ],
+      "file": "fitness.ontology.yaml",
+      "sha256": "246fb0140077ea92180fe20ac8752057e1f1e8ca48a216f6624ba420a150e3e5",
+      "version": "0.1.0"
+    },
+    "health": {
+      "extends": [
+        "clinical-health-base"
+      ],
+      "file": "health.ontology.yaml",
+      "sha256": "603aa6e4a03204c013ae4fc6afd7f33913084ccc5fbe2ebcaeca5c83e56b8cf6",
       "version": "0.1.0"
     },
     "market-research": {
@@ -73,6 +113,22 @@
       ],
       "file": "observability.ontology.yaml",
       "sha256": "401e98940e3b50ef6cbed1187ac92f4004b44eee2ec743dddc07774b14a54249",
+      "version": "0.1.0"
+    },
+    "physical-science-base": {
+      "extends": [
+        "research"
+      ],
+      "file": "physical-science-base.ontology.yaml",
+      "sha256": "cfa08d098ff784ef51aa7bcbed98b73baadc4f7651783e0fa9b98cf588852604",
+      "version": "0.1.0"
+    },
+    "plasma-physics": {
+      "extends": [
+        "physical-science-base"
+      ],
+      "file": "plasma-physics.ontology.yaml",
+      "sha256": "5d0bb0bd53ab18a50d888b6f07225914bf6989912d81f5c1fdafd8a9fdb1473e",
       "version": "0.1.0"
     },
     "platform-engineering": {
