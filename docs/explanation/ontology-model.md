@@ -97,7 +97,7 @@ confidence:
 ```
 
 And the same trait as a parser resolves it, in
-[`mif-base.ontology.jsonld`](../../ontologies/mif-base.ontology.jsonld):
+[`mif-base.ontology.jsonld`](https://mif-spec.dev/ontologies/mif-base.ontology.jsonld):
 
 ```json
 "confidence": {
