@@ -37,6 +37,33 @@ this file tracks the corpus as a whole.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-04
+
+### Added
+
+- `heliophysics` (0.1.0, `extends: [physical-science-base]`): 10 entity types
+  for the space-weather domain — geomagnetic storms, solar flares, coronal
+  mass ejections, solar-terrestrial coupling, the Kp/Dst geomagnetic indices,
+  GOES X-ray flare flux, geomagnetically induced currents, aurora
+  observations, NOAA G/S/R severity-scale alert levels, and monitoring
+  platforms (GOES, ACE/DSCOVR, INTERMAGNET). Grounded in PACS 91.25.-r,
+  96.50.-e, 96.60.-j, GFZ Potsdam (Kp), WDC Kyoto (Dst), NOAA GOES/SWPC, NERC
+  TPL-007-4 / IEEE C57.163-2016, and the OVATION/Aurorasaurus aurora sources.
+- `non-ionizing-radiation` (0.1.0, `extends: [physical-science-base,
+  clinical-health-base]`): 8 entity types for non-ionizing EMF exposure —
+  power-frequency and RF/microwave exposure sources and quantities (including
+  specific absorption rate), regulatory exposure limits, IARC
+  carcinogenicity-hazard classifications, and clinical/epidemiological
+  exposure/health-outcome findings. Grounded in ICNIRP (2010/2020), IEEE
+  C95.1-2019, FCC 47 CFR 1.1310, and IARC Monographs Vol. 102 and Vol. 80.
+
+### Fixed
+
+- `heliophysics.ontology.yaml`'s header comment referenced an internal
+  authoring context that did not belong in the corpus; replaced with a plain
+  statement of the coverage gap the ontology closes. Comment-only fix, no
+  schema or entity change. Closes #36.
+
 ## [0.2.2] - 2026-07-04
 
 ### Added
