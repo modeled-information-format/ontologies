@@ -44,8 +44,8 @@ about writing and reading the YAML, not about validation.
 
 - A text editor.
 - The two base ontologies open for reference (you will not edit them):
-  [`mif-base.ontology.yaml`](../../ontologies/mif-base.ontology.yaml) and
-  [`shared-traits.ontology.yaml`](../../ontologies/shared-traits.ontology.yaml).
+  [`mif-base.ontology.yaml`](https://mif-spec.dev/ontologies/mif-base.ontology.yaml) and
+  [`shared-traits.ontology.yaml`](https://mif-spec.dev/ontologies/shared-traits.ontology.yaml).
 - A new, empty file named `garden-sensors.ontology.yaml`.
 
 You are building a `garden-sensors` ontology: one entity type for a soil sensor
@@ -190,13 +190,13 @@ Next:
 
 - Add another ontology to the corpus as a flat `ontologies/<name>.ontology.yaml`
   file (and its generated `.ontology.jsonld`): see
-  [Add a domain ontology](../how-to/add-a-domain-ontology.md).
+  [Add a domain ontology](https://modeled-information-format.github.io/ontologies/how-to/add-a-domain-ontology/).
 - Understand *why* the model is shaped this way (the triad, `extends:`, and why
-  entity types stay local) in [The ontology model](../explanation/ontology-model.md).
+  entity types stay local) in [The ontology model](https://modeled-information-format.github.io/ontologies/explanation/ontology-model/).
 
 ## Related
 
-- [Add a domain ontology](../how-to/add-a-domain-ontology.md)
-- [The ontology model](../explanation/ontology-model.md)
-- [`mif-base.ontology.yaml`](../../ontologies/mif-base.ontology.yaml)
-- [`shared-traits.ontology.yaml`](../../ontologies/shared-traits.ontology.yaml)
+- [Add a domain ontology](https://modeled-information-format.github.io/ontologies/how-to/add-a-domain-ontology/)
+- [The ontology model](https://modeled-information-format.github.io/ontologies/explanation/ontology-model/)
+- [`mif-base.ontology.yaml`](https://mif-spec.dev/ontologies/mif-base.ontology.yaml)
+- [`shared-traits.ontology.yaml`](https://mif-spec.dev/ontologies/shared-traits.ontology.yaml)

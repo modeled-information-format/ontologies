@@ -79,7 +79,7 @@ pointed at this repo with `--path`:
 
    `--all --path` regenerates every `*.ontology.jsonld` in the corpus in one
    pass, for release pre-flight. Authoring a single new ontology instead? See
-   [Add a domain ontology](../how-to/add-a-domain-ontology.md), which converts
+   [Add a domain ontology](https://modeled-information-format.github.io/ontologies/how-to/add-a-domain-ontology/), which converts
    just that one file.
 
    ```bash
@@ -227,7 +227,7 @@ publishing. Nothing shipped, so there is nothing to roll back at the release.
    so the version history stays append-only.
 
 For diagnosing a specific failed gate or verify step, follow
-[Recover from a CI gate failure](./ci-gate-failure.md).
+[Recover from a CI gate failure](https://modeled-information-format.github.io/ontologies/runbooks/ci-gate-failure/).
 
 If a bad release already published, do not edit it in place: cut a new patch
 version that supersedes it, and note the superseded version in `CHANGELOG.md`.
@@ -236,5 +236,5 @@ version that supersedes it, and note the superseded version in `CHANGELOG.md`.
 
 ## Related
 
-- [The ontology corpus](../reference/ontology-corpus.md): what ships in a release, every ontology, its version, and its contents.
-- [Recover from a CI gate failure](./ci-gate-failure.md): diagnose and clear a failing gate or verify step.
+- [The ontology corpus](https://modeled-information-format.github.io/ontologies/reference/ontology-corpus/): what ships in a release, every ontology, its version, and its contents.
+- [Recover from a CI gate failure](https://modeled-information-format.github.io/ontologies/runbooks/ci-gate-failure/): diagnose and clear a failing gate or verify step.

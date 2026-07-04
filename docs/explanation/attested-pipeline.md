@@ -45,8 +45,8 @@ entity:
 # The attested pipeline model
 
 This document explains what this template is and why it is structured the way it
-is. For step-by-step usage see [How to instantiate with Copier](../how-to/instantiate-with-copier.md).
-For the exact workflow and gate inventory see [Quality gates and workflows](../reference/gates.md).
+is. For step-by-step usage see [How to instantiate with Copier](https://modeled-information-format.github.io/ontologies/how-to/instantiate-with-copier/).
+For the exact workflow and gate inventory see [Quality gates and workflows](https://modeled-information-format.github.io/ontologies/reference/gates/).
 For ecosystem concepts and the full attestation architecture see the
 [modeled-information-format docs](https://modeled-information-format.github.io/docs/).
 

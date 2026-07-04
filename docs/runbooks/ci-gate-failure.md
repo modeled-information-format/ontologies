@@ -183,5 +183,5 @@ get a merge through. A gate exists to fail; route the real fix instead.
 
 ## Related
 
-- [Release the corpus](./release-the-corpus.md): cutting a `vX.Y.Z` tag and what the release pipeline does.
-- [Ontology corpus reference](../reference/ontology-corpus.md): what the repo ships and how the corpus is structured.
+- [Release the corpus](https://modeled-information-format.github.io/ontologies/runbooks/release-the-corpus/): cutting a `vX.Y.Z` tag and what the release pipeline does.
+- [Ontology corpus reference](https://modeled-information-format.github.io/ontologies/reference/ontology-corpus/): what the repo ships and how the corpus is structured.

@@ -283,5 +283,5 @@ here.
 
 ## Related
 
-- [Ontology model](../explanation/ontology-model.md)
-- [Add a domain ontology](../how-to/add-a-domain-ontology.md)
+- [Ontology model](https://modeled-information-format.github.io/ontologies/explanation/ontology-model/)
+- [Add a domain ontology](https://modeled-information-format.github.io/ontologies/how-to/add-a-domain-ontology/)

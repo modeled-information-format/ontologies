@@ -40,7 +40,7 @@ at `modeled-information-format/ontologies`. This guide takes you from a branch t
 a merged pull request to a tagged release. It assumes you have already written,
 or are ready to write, the ontology itself. The authoring mechanics (namespaces,
 trait composition, entity types, and how `extends` resolves) live in
-[Add a domain ontology](./add-a-domain-ontology.md); follow that recipe, then
+[Add a domain ontology](https://modeled-information-format.github.io/ontologies/how-to/add-a-domain-ontology/); follow that recipe, then
 return here to submit.
 
 The deliverable is two files, side by side, directly under `ontologies/`:
@@ -66,7 +66,7 @@ is generated from it and committed beside it.
   documents the exact pinned setup.
 - A finished `<your-domain>.ontology.yaml` with its `id`, `version`, `extends`,
   namespaces, traits, and entity types decided. If you do not have one yet, start
-  with [Add a domain ontology](./add-a-domain-ontology.md).
+  with [Add a domain ontology](https://modeled-information-format.github.io/ontologies/how-to/add-a-domain-ontology/).
 
 ## Steps
 
@@ -91,7 +91,7 @@ The file declares its `ontology` block first (`id`, `version`, `description`, an
 `traits`, and `entity_types`. The corpus foundations are `mif-base` and
 `shared-traits`; `extends` names whichever parents your entity types compose
 from. Do not duplicate the authoring recipe here. Come back from
-[Add a domain ontology](./add-a-domain-ontology.md) with a finished YAML.
+[Add a domain ontology](https://modeled-information-format.github.io/ontologies/how-to/add-a-domain-ontology/) with a finished YAML.
 
 ### 3. Generate the JSON-LD projection
 
@@ -187,7 +187,7 @@ now in the corpus source tree, but not yet released.
 The corpus publishes when a maintainer pushes a `vX.Y.Z` tag, which triggers the
 attested release pipeline (`release.yml`): build, attest provenance and SBOM,
 fail-closed verification, then a tag-gated publish. Follow
-[Release the corpus](../runbooks/release-the-corpus.md) for the procedure.
+[Release the corpus](https://modeled-information-format.github.io/ontologies/runbooks/release-the-corpus/) for the procedure.
 
 Your ontology is submitted: authored, generated, validated, committed with its
 projection, reviewed, merged, and released.
@@ -199,7 +199,7 @@ projection, reviewed, merged, and released.
 - [ ] Namespace references are underscore-correct: base-type namespaces carry the
       `_` prefix (`_semantic`, `_episodic`, `_procedural`); domain namespaces do
       not. See
-      [Underscore-prefixed base namespaces](../decisions/0001-underscore-prefixed-base-namespaces.md).
+      [Underscore-prefixed base namespaces](https://modeled-information-format.github.io/ontologies/decisions/0001-underscore-prefixed-base-namespaces/).
 - [ ] `ontologies/<your-domain>.ontology.jsonld` is regenerated and committed
       beside the YAML.
 - [ ] No `pack.json`, no per-ontology directory, and no per-ontology README; the
@@ -210,11 +210,11 @@ projection, reviewed, merged, and released.
 
 ## Related
 
-- [Add a domain ontology](./add-a-domain-ontology.md): the authoring recipe for
+- [Add a domain ontology](https://modeled-information-format.github.io/ontologies/how-to/add-a-domain-ontology/): the authoring recipe for
   the ontology you submit here.
-- [Ontology corpus](../reference/ontology-corpus.md): what the corpus contains and
+- [Ontology corpus](https://modeled-information-format.github.io/ontologies/reference/ontology-corpus/): what the corpus contains and
   how its ontologies are organized.
-- [Underscore-prefixed base namespaces](../decisions/0001-underscore-prefixed-base-namespaces.md):
+- [Underscore-prefixed base namespaces](https://modeled-information-format.github.io/ontologies/decisions/0001-underscore-prefixed-base-namespaces/):
   the decision behind the `_` prefix on base-type namespaces.
-- [Release the corpus](../runbooks/release-the-corpus.md): cutting the `vX.Y.Z`
+- [Release the corpus](https://modeled-information-format.github.io/ontologies/runbooks/release-the-corpus/): cutting the `vX.Y.Z`
   tag that publishes a merged submission.

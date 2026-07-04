@@ -191,11 +191,11 @@ expense.
 
 ## Related Decisions
 
-- [ADR-0002: Object-Keyed, Hash-Pinned Ontology Vendoring Index](0002-object-keyed-hash-pinned-vendoring-index.md)
+- [ADR-0002: Object-Keyed, Hash-Pinned Ontology Vendoring Index](https://modeled-information-format.github.io/ontologies/decisions/0002-object-keyed-hash-pinned-vendoring-index/)
   — the index contract whose **materialization mechanism** this decision replaces
   (committed snapshot → build-time verified vendoring). ADR-0002's shape stands;
   its `snapshot-ontology-version.py` commit step is superseded here.
-- [ADR-0003: Research and Agriculture Base Layers](0003-research-and-agriculture-base-layers.md)
+- [ADR-0003: Research and Agriculture Base Layers](https://modeled-information-format.github.io/ontologies/decisions/0003-research-and-agriculture-base-layers/)
   — the domain-side family bases that remain in this repo, unaffected by this
   decision.
 - `research-harness-template` ADR-0012 (on-demand vendoring) — the consumer whose

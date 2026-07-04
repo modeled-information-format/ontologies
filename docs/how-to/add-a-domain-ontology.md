@@ -52,7 +52,7 @@ Format.
   `pip install pyyaml jsonschema`.
 - Familiarity with the base model: the knowledge triad (`_semantic`,
   `_episodic`, `_procedural`), core traits, and trait inheritance via `extends`.
-  See [the ontology model](../explanation/ontology-model.md) if you need it.
+  See [the ontology model](https://modeled-information-format.github.io/ontologies/explanation/ontology-model/) if you need it.
 
 ## 1. Create the ontology file
 
@@ -213,13 +213,13 @@ resolve, and its entity-type subsumption (`subtype_of`) holds across the
 `extends` chain.
 
 Your ontology is complete. To propose it for inclusion in the published corpus,
-follow [Submit an ontology](./submit-an-ontology.md).
+follow [Submit an ontology](https://modeled-information-format.github.io/ontologies/how-to/submit-an-ontology/).
 
 ## Related
 
-- [Ontology corpus reference](../reference/ontology-corpus.md): the catalog of
+- [Ontology corpus reference](https://modeled-information-format.github.io/ontologies/reference/ontology-corpus/): the catalog of
   ontologies, foundations, and shared traits.
-- [Author your first ontology](../tutorial/author-your-first-ontology.md): the
+- [Author your first ontology](https://modeled-information-format.github.io/ontologies/tutorial/author-your-first-ontology/): the
   learning-oriented walkthrough.
-- [Submit an ontology](./submit-an-ontology.md): open an ontology for inclusion
+- [Submit an ontology](https://modeled-information-format.github.io/ontologies/how-to/submit-an-ontology/): open an ontology for inclusion
   in the corpus.

@@ -45,8 +45,8 @@ per-project, why the model is written once and read twice, and the reasoning
 behind the three choices that shape every ontology in it: the knowledge triad,
 trait composition, and the underscore-prefixed base namespaces. For the catalog
 of what the corpus currently holds, see the
-[ontology corpus reference](../reference/ontology-corpus.md); to add to it, start
-with the [tutorial](../tutorial/author-your-first-ontology.md).
+[ontology corpus reference](https://modeled-information-format.github.io/ontologies/reference/ontology-corpus/); to add to it, start
+with the [tutorial](https://modeled-information-format.github.io/ontologies/tutorial/author-your-first-ontology/).
 
 ## One vocabulary, not many
 
@@ -85,7 +85,7 @@ documents kept in sync: they are one model in two renderings, which is the
 property the whole format is built to protect.
 
 Here is the `confidence` trait as a person reads it, in
-[`mif-base.ontology.yaml`](../../ontologies/mif-base.ontology.yaml):
+[`mif-base.ontology.yaml`](https://mif-spec.dev/ontologies/mif-base.ontology.yaml):
 
 ```yaml
 confidence:
@@ -232,7 +232,7 @@ adds its own namespaces without a prefix (`livestock`, `entities`, `features`)
 and the underscore keeps the base type triad from ever colliding with or being
 mistaken for domain vocabulary. The decision and the alternatives weighed are
 recorded in
-[ADR 0001, Underscore-Prefixed Base Namespaces](../decisions/0001-underscore-prefixed-base-namespaces.md);
+[ADR 0001, Underscore-Prefixed Base Namespaces](https://modeled-information-format.github.io/ontologies/decisions/0001-underscore-prefixed-base-namespaces/);
 this is the short version of why the convention is worth the small ugliness of a
 leading underscore.
 
@@ -265,6 +265,6 @@ drift.
 
 ## Related
 
-- [Ontology corpus reference](../reference/ontology-corpus.md): the catalog of base ontologies, shared traits, and domain ontologies.
-- [Author your first ontology](../tutorial/author-your-first-ontology.md): a hands-on path from empty file to a working domain ontology.
-- [ADR 0001: Underscore-Prefixed Base Namespaces](../decisions/0001-underscore-prefixed-base-namespaces.md): the decision record behind the namespace convention.
+- [Ontology corpus reference](https://modeled-information-format.github.io/ontologies/reference/ontology-corpus/): the catalog of base ontologies, shared traits, and domain ontologies.
+- [Author your first ontology](https://modeled-information-format.github.io/ontologies/tutorial/author-your-first-ontology/): a hands-on path from empty file to a working domain ontology.
+- [ADR 0001: Underscore-Prefixed Base Namespaces](https://modeled-information-format.github.io/ontologies/decisions/0001-underscore-prefixed-base-namespaces/): the decision record behind the namespace convention.
