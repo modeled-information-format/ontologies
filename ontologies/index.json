@@ -75,6 +75,14 @@
       "sha256": "1085a153f322ad4e683d0682faf83eb78ff76f3cdf47bea71312d74494b139d1",
       "version": "0.1.0"
     },
+    "heliophysics": {
+      "extends": [
+        "physical-science-base"
+      ],
+      "file": "heliophysics.ontology.yaml",
+      "sha256": "2618eb0d73744dafa8d033461d5ccd5ba117b40b5ebb332e797034676ff3fca7",
+      "version": "0.1.0"
+    },
     "market-research": {
       "extends": [
         "mif-base",
