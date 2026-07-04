@@ -1,0 +1,38 @@
+---
+# Git hooks for the ontologies repo. Install: `npm install` runs `prepare`,
+# which runs `lefthook install`. Bypass any hook in an emergency with
+# `git commit --no-verify` / `git push --no-verify`.
+pre-commit:
+  parallel: true
+  commands:
+    markdownlint:
+      glob: "*.md"
+      run: npx markdownlint-cli2 {staged_files}
+      fail_text: |
+        Markdown lint failed (see .markdownlint-cli2.jsonc for this repo's rules).
+        Fix the reported issues, or bypass with: git commit --no-verify
+
+    ontology-index-drift:
+      glob: "ontologies/*.ontology.{yaml,jsonld}"
+      run: bash scripts/gen-ontology-index.sh --check
+      fail_text: |
+        ontologies/index.json is stale relative to the ontology files you changed.
+        Fix: bash scripts/gen-ontology-index.sh && git add ontologies/index.json
+        Bypass in an emergency: git commit --no-verify
+
+    action-pin-check:
+      glob: ".github/workflows/*.{yml,yaml}"
+      run: bash scripts/hooks/check-action-pins.sh {staged_files}
+      fail_text: |
+        A workflow 'uses:' ref is not pinned to a full 40-char commit SHA.
+        This is the same check ci.yml's pin-check job runs; fixing it locally
+        avoids a round trip through CI. Bypass: git commit --no-verify
+
+pre-push:
+  commands:
+    build:
+      glob: "{src/**,docs/**,ontologies/**,astro.config.mjs,package.json,package-lock.json}"
+      run: npm run build
+      fail_text: |
+        Astro build failed. This is the same build deploy.yml runs on push to
+        main; fixing it now avoids a broken deploy. Bypass: git push --no-verify
