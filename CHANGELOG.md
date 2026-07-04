@@ -37,6 +37,8 @@ this file tracks the corpus as a whole.
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-07-04
+
 ### Added
 
 - `clinical-health-base` (0.1.0) and `physical-science-base` (0.1.0)
@@ -127,7 +129,8 @@ no functional changes from 0.2.0. See [0.2.0] below for the full release notes.
 
 - Relicensed the repository under MIT.
 
-[Unreleased]: https://github.com/modeled-information-format/ontologies/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/modeled-information-format/ontologies/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/modeled-information-format/ontologies/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/modeled-information-format/ontologies/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/modeled-information-format/ontologies/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/modeled-information-format/ontologies/releases/tag/v0.1.0
