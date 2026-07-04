@@ -152,7 +152,7 @@ Adopt **Option 2**. The three base-type namespaces are underscore-prefixed
 base-type namespaces across the corpus.
 
 The convention is encoded directly in the `namespaces:` block of
-[`mif-base.ontology.yaml`](../../ontologies/mif-base.ontology.yaml), whose path
+[`mif-base.ontology.yaml`](https://mif-spec.dev/ontologies/mif-base.ontology.yaml), whose path
 format documents `_{top-level}/{sub-namespace}` and whose three top-level keys are
 exactly `_semantic`, `_episodic`, and `_procedural`. Domain ontologies inherit
 these through `extends: [mif-base]` and add their own namespaces without the
@@ -209,11 +209,11 @@ None. This is the first recorded decision for the corpus.
 
 ## Links
 
-- [`mif-base.ontology.yaml`](../../ontologies/mif-base.ontology.yaml): the
+- [`mif-base.ontology.yaml`](https://mif-spec.dev/ontologies/mif-base.ontology.yaml): the
   `namespaces:` block that encodes `_semantic`, `_episodic`, `_procedural`.
-- [The MIF ontology model](../explanation/ontology-model.md): how the triad and
+- [The MIF ontology model](https://modeled-information-format.github.io/ontologies/explanation/ontology-model/): how the triad and
   inheritance fit together.
-- [Ontology corpus reference](../reference/ontology-corpus.md): the namespace and
+- [Ontology corpus reference](https://modeled-information-format.github.io/ontologies/reference/ontology-corpus/): the namespace and
   trait catalog.
 
 ## More Information

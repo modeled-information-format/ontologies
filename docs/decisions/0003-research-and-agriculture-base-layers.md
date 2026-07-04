@@ -221,8 +221,8 @@ before the single `mif-spec.dev` deploy.
 
 ## Related Decisions
 
-- [ADR-0001: Underscore-Prefixed Base-Type Namespaces](0001-underscore-prefixed-base-namespaces.md)
-- [ADR-0002: Object-Keyed, Hash-Pinned Ontology Vendoring Index](0002-object-keyed-hash-pinned-vendoring-index.md)
+- [ADR-0001: Underscore-Prefixed Base-Type Namespaces](https://modeled-information-format.github.io/ontologies/decisions/0001-underscore-prefixed-base-namespaces/)
+- [ADR-0002: Object-Keyed, Hash-Pinned Ontology Vendoring Index](https://modeled-information-format.github.io/ontologies/decisions/0002-object-keyed-hash-pinned-vendoring-index/)
   — its promotion of `scientific`/agriculture packs is superseded by this re-parenting and must be re-run before deploy.
 
 ## Links

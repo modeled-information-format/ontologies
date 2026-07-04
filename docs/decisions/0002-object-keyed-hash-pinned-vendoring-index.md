@@ -213,7 +213,7 @@ harness to fetch on demand.
 
 ## Related Decisions
 
-- [ADR-0001: Underscore-Prefixed Base-Type Namespaces](0001-underscore-prefixed-base-namespaces.md)
+- [ADR-0001: Underscore-Prefixed Base-Type Namespaces](https://modeled-information-format.github.io/ontologies/decisions/0001-underscore-prefixed-base-namespaces/)
   — the prior corpus decision.
 - `research-harness-template` ADR-0012 (on-demand vendoring) — the consumer-side
   decision this index contract serves.
