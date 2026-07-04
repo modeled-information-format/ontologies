@@ -9,10 +9,10 @@
 # physical-science-base directly (one hop), mirroring plasma-physics and
 # cosmology, the two existing physical-science-base leaf packs.
 #
-# Authored to close a gap surfaced by the research-harness's
-# `solar-geomagnetic-afib-correlation` topic: neither plasma-physics (lab/fusion
-# plasma, PACS 52.xx) nor cosmology (astrophysics-scale, PACS 98.xx) covers
-# heliophysics/space-weather phenomena.
+# Closes a coverage gap in the physical-science-base family: neither
+# plasma-physics (lab/fusion plasma, PACS 52.xx) nor cosmology
+# (astrophysics-scale, PACS 98.xx) covers heliophysics/space-weather
+# phenomena.
 #
 # Grounded in: PACS 91.25.-r (Geomagnetism and paleomagnetism; geoelectricity),
 # PACS 96.60.-j (Solar physics, incl. 96.60.Q- solar activity and 96.60.Vg
