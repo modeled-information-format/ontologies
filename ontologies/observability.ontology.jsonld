@@ -126,7 +126,7 @@
   "@id": "mif:ontology/observability",
   "@type": "mif:Ontology",
   "identifier": "observability",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Observability-platform domain ontology \u2014 services, telemetry signals, capability comparisons, service-ownership registries, migration patterns, market positioning, and roadmap signals, organized as an IS-A tree rooted in generic types",
   "schema_url": "https://mif-spec.dev/schema/ontology/ontology.schema.json",
   "namespaces": {
@@ -340,12 +340,13 @@
       ],
       "schema": {
         "required": [
-          "name",
+          "metric_name",
           "signal_type"
         ],
         "properties": {
-          "name": {
-            "type": "string"
+          "metric_name": {
+            "type": "string",
+            "description": "Renamed from name to match engineering-base.ontology.yaml's delivery-metric field name directly"
           },
           "signal_type": {
             "type": "string",
@@ -509,13 +510,16 @@
       ],
       "schema": {
         "required": [
-          "name",
+          "pattern_name",
           "from_platform",
-          "to_platform"
+          "to_platform",
+          "context",
+          "solution"
         ],
         "properties": {
-          "name": {
-            "type": "string"
+          "pattern_name": {
+            "type": "string",
+            "description": "Renamed from name to match engineering-base.ontology.yaml's design-pattern field name directly"
           },
           "from_platform": {
             "type": "string"
@@ -523,8 +527,13 @@
           "to_platform": {
             "type": "string"
           },
-          "approach": {
-            "type": "string"
+          "context": {
+            "type": "string",
+            "description": "Inherited from design-pattern: when to use this migration pattern (genuinely new field, no prior equivalent existed on migration-pattern)"
+          },
+          "solution": {
+            "type": "string",
+            "description": "Renamed from approach to match engineering-base.ontology.yaml's design-pattern field name directly (how the pattern accomplishes the migration)"
           },
           "evidence_type": {
             "type": "string",

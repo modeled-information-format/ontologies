@@ -1,0 +1,358 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://mif-spec.dev/ns/ontology#",
+    "mif": "https://mif-spec.dev/ns/",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ontology": {
+      "@id": "mif:Ontology",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "schema_url": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "namespaces": {
+      "@id": "mif:hasNamespace",
+      "@container": "@id"
+    },
+    "type_hint": {
+      "@id": "mif:typeHint",
+      "@type": "xsd:string"
+    },
+    "replaces": {
+      "@id": "mif:replaces",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "mif:hasChildNamespace",
+      "@container": "@id"
+    },
+    "entity_types": {
+      "@id": "mif:definesEntityType",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "base": {
+      "@id": "mif:baseType",
+      "@type": "@vocab"
+    },
+    "semantic": "mif:SemanticMemory",
+    "episodic": "mif:EpisodicMemory",
+    "procedural": "mif:ProceduralMemory",
+    "traits": {
+      "@id": "mif:definesTrait",
+      "@container": "@id"
+    },
+    "subtype_of": {
+      "@id": "mif:subtypeOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "mif:hasField",
+      "@container": "@id"
+    },
+    "requires": {
+      "@id": "mif:requiresField",
+      "@container": "@list"
+    },
+    "relationships": {
+      "@id": "mif:definesRelationship",
+      "@container": "@id"
+    },
+    "from": {
+      "@id": "rdfs:domain",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "rdfs:range",
+      "@container": "@set"
+    },
+    "symmetric": {
+      "@id": "owl:SymmetricProperty",
+      "@type": "xsd:boolean"
+    },
+    "discovery": {
+      "@id": "mif:discoveryConfig"
+    },
+    "enabled": {
+      "@id": "mif:discoveryEnabled",
+      "@type": "xsd:boolean"
+    },
+    "patterns": {
+      "@id": "mif:hasDiscoveryPattern",
+      "@container": "@list"
+    },
+    "confidence_threshold": {
+      "@id": "mif:confidenceThreshold",
+      "@type": "xsd:decimal"
+    },
+    "content_pattern": {
+      "@id": "mif:contentPattern",
+      "@type": "xsd:string"
+    },
+    "file_pattern": {
+      "@id": "mif:filePattern",
+      "@type": "xsd:string"
+    },
+    "suggest_entity": {
+      "@id": "mif:suggestsEntityType",
+      "@type": "@id"
+    },
+    "suggest_namespace": {
+      "@id": "mif:suggestsNamespace",
+      "@type": "xsd:string"
+    }
+  },
+  "@id": "mif:ontology/clinical-health-base",
+  "@type": "mif:Ontology",
+  "identifier": "clinical-health-base",
+  "version": "0.1.0",
+  "description": "Shared clinical supertypes \u2014 the MIF-compliant intermediate layer cardiology, health, and fitness extend",
+  "namespaces": {
+    "semantic": {
+      "@id": "mif:namespace/semantic",
+      "@type": "mif:Namespace",
+      "name": "semantic",
+      "children": {
+        "clinical-records": {
+          "@id": "mif:namespace/semantic/clinical-records",
+          "@type": "mif:Namespace",
+          "name": "clinical-records",
+          "description": "Clinical record subjects and diagnostic classification shapes",
+          "type_hint": "semantic"
+        }
+      }
+    },
+    "episodic": {
+      "@id": "mif:namespace/episodic",
+      "@type": "mif:Namespace",
+      "name": "episodic",
+      "children": {
+        "clinical-events": {
+          "@id": "mif:namespace/episodic/clinical-events",
+          "@type": "mif:Namespace",
+          "name": "clinical-events",
+          "description": "Clinical encounters and observations",
+          "type_hint": "episodic"
+        }
+      }
+    }
+  },
+  "entity_types": [
+    {
+      "@id": "mif:entityType/clinical-record-subject",
+      "@type": "mif:EntityType",
+      "name": "clinical-record-subject",
+      "base": "semantic",
+      "description": "The subject-of-record for a clinical encounter, observation, or diagnosis \u2014 the FHIR Patient-shaped entity domain packs reference rather than re-minting their own subject type",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned"
+      ],
+      "schema": {
+        "required": [
+          "patient_id"
+        ],
+        "properties": {
+          "patient_id": {
+            "type": "string",
+            "description": "Stable subject identifier"
+          },
+          "name": {
+            "type": "string"
+          },
+          "birth_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/clinical-encounter",
+      "@type": "mif:EntityType",
+      "name": "clinical-encounter",
+      "base": "episodic",
+      "description": "A time-bound clinical interaction \u2014 the FHIR Encounter-shaped entity a clinical activity (a study, a procedure, a prescription) occurs within",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "encounter_id",
+          "status"
+        ],
+        "properties": {
+          "encounter_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "class": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string"
+          },
+          "subject_ref": {
+            "type": "string",
+            "description": "Reference to the clinical-record-subject this encounter concerns"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/clinical-observation",
+      "@type": "mif:EntityType",
+      "name": "clinical-observation",
+      "base": "episodic",
+      "description": "A measurement-or-assertion primitive about a clinical-record-subject \u2014 the FHIR Observation-shaped entity that is the single strongest cross-pack convergence in the clinical domain: health's own Observation reuse, cardiology's structured study/finding bundles, and fitness's device-sourced vital-sign readings are all specializations of this one shape",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "schema": {
+        "required": [
+          "observation_id",
+          "code",
+          "value"
+        ],
+        "properties": {
+          "observation_id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "effective_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "subject_ref": {
+            "type": "string",
+            "description": "Reference to the clinical-record-subject this observation concerns"
+          },
+          "modality": {
+            "type": "string",
+            "description": "Imaging or acquisition modality, where applicable (cardiology extension)"
+          },
+          "member_measurements": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Component measurements bundled within a structured study (cardiology extension)"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/diagnostic-classification-entry",
+      "@type": "mif:EntityType",
+      "name": "diagnostic-classification-entry",
+      "base": "semantic",
+      "description": "A WHO ICD-11 stem-code or extension-code classification entry \u2014 the shape health's general diagnosis classification and cardiology's chapter-11-scoped circulatory disease types both instantiate",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "stem_code",
+          "title"
+        ],
+        "properties": {
+          "stem_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "chapter": {
+            "type": "string"
+          },
+          "foundation_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  ],
+  "discovery": {
+    "enabled": false,
+    "confidence_threshold": 0.8,
+    "patterns": [
+      {
+        "@id": "mif:pattern/0",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(FHIR Patient|patient record|subject of record)\\b",
+        "suggest_entity": "mif:entityType/clinical-record-subject",
+        "suggest_namespace": "_semantic/clinical-records"
+      },
+      {
+        "@id": "mif:pattern/1",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(FHIR Encounter|clinical encounter|inpatient admission|outpatient visit)\\b",
+        "suggest_entity": "mif:entityType/clinical-encounter",
+        "suggest_namespace": "_episodic/clinical-events"
+      },
+      {
+        "@id": "mif:pattern/2",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(FHIR Observation|clinical observation|vital sign|lab result)\\b",
+        "suggest_entity": "mif:entityType/clinical-observation",
+        "suggest_namespace": "_episodic/clinical-events"
+      },
+      {
+        "@id": "mif:pattern/3",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(ICD-11|diagnosis code|diagnostic classification)\\b",
+        "suggest_entity": "mif:entityType/diagnostic-classification-entry",
+        "suggest_namespace": "_semantic/clinical-records"
+      }
+    ]
+  }
+}

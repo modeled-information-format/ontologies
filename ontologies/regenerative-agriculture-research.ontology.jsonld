@@ -126,7 +126,7 @@
   "@id": "mif:ontology/regenerative-agriculture-research",
   "@type": "mif:Ontology",
   "identifier": "regenerative-agriculture-research",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Agriculture / farm research ontology \u2014 research-oriented entity types for husbandry, agronomy, farm infrastructure, grants, and equipment, organized as an IS-A tree rooted in the inherited generic/engineering supertypes.",
   "schema_url": "https://mif-spec.dev/schema/ontology/ontology.schema.json",
   "namespaces": {
@@ -253,16 +253,17 @@
       ],
       "schema": {
         "required": [
-          "name"
+          "name",
+          "responsibility"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Infrastructure system or component name"
           },
-          "purpose": {
+          "responsibility": {
             "type": "string",
-            "description": "What the infrastructure does"
+            "description": "Renamed from purpose to match engineering-base.ontology.yaml's component field name directly (same meaning: what the infrastructure does)"
           },
           "components": {
             "type": "string",
@@ -289,12 +290,12 @@
       ],
       "schema": {
         "required": [
-          "program_name"
+          "policy_name"
         ],
         "properties": {
-          "program_name": {
+          "policy_name": {
             "type": "string",
-            "description": "Name of the grant or funding program"
+            "description": "Renamed from program_name to match engineering-base.ontology.yaml's policy field name directly (the grant or funding program's name)"
           },
           "funder": {
             "type": "string",
@@ -567,12 +568,17 @@
       ],
       "schema": {
         "required": [
-          "name"
+          "name",
+          "responsibility"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Name or designation of the fencing system"
+          },
+          "responsibility": {
+            "type": "string",
+            "description": "Inherited from farm-infrastructure/component: what this fencing system is responsible for (e.g. perimeter containment, predator exclusion, rotational-grazing subdivision)"
           },
           "fence_type": {
             "type": "string",
@@ -607,12 +613,17 @@
       ],
       "schema": {
         "required": [
-          "name"
+          "name",
+          "responsibility"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Name or designation of the irrigation system"
+          },
+          "responsibility": {
+            "type": "string",
+            "description": "Inherited from farm-infrastructure/component: what this irrigation system is responsible for (e.g. delivering water to a specific field or crop zone)"
           },
           "system_type": {
             "type": "string",
@@ -647,12 +658,17 @@
       ],
       "schema": {
         "required": [
-          "name"
+          "name",
+          "responsibility"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Name or designation of the connectivity link"
+          },
+          "responsibility": {
+            "type": "string",
+            "description": "Inherited from farm-infrastructure/component: what this link is responsible for (e.g. backhauling sensor data from a remote field to the farm office)"
           },
           "link_technology": {
             "type": "string",
@@ -687,12 +703,17 @@
       ],
       "schema": {
         "required": [
-          "name"
+          "name",
+          "responsibility"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Name or designation of the sensor or edge node"
+          },
+          "responsibility": {
+            "type": "string",
+            "description": "Inherited from farm-infrastructure/component: what this sensor or node is responsible for (e.g. monitoring soil moisture in a specific field zone)"
           },
           "sensor_type": {
             "type": "string",
@@ -727,12 +748,17 @@
       ],
       "schema": {
         "required": [
-          "name"
+          "name",
+          "responsibility"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Name or designation of the power system"
+          },
+          "responsibility": {
+            "type": "string",
+            "description": "Inherited from farm-infrastructure/component: what this power system is responsible for (e.g. supplying off-grid power to remote pumps and sensors)"
           },
           "power_source": {
             "type": "string",
@@ -767,12 +793,17 @@
       ],
       "schema": {
         "required": [
-          "name"
+          "name",
+          "responsibility"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Name or designation of the network segment"
+          },
+          "responsibility": {
+            "type": "string",
+            "description": "Inherited from farm-infrastructure/component: what this network segment is responsible for (e.g. isolating IoT device traffic from the farm office LAN)"
           },
           "segment_type": {
             "type": "string",
@@ -887,12 +918,12 @@
       ],
       "schema": {
         "required": [
-          "program_name"
+          "policy_name"
         ],
         "properties": {
-          "program_name": {
+          "policy_name": {
             "type": "string",
-            "description": "Program name (e.g. EQIP, RCPP, CSP)"
+            "description": "Renamed from program_name to match grant-program/policy's field name directly (e.g. EQIP, RCPP, CSP)"
           },
           "agency": {
             "type": "string",
@@ -927,12 +958,13 @@
       ],
       "schema": {
         "required": [
-          "trend_name",
+          "name",
           "direction"
         ],
         "properties": {
-          "trend_name": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Renamed from trend_name to match mif-generic.ontology.yaml's concept field name directly"
           },
           "direction": {
             "type": "string",
@@ -963,12 +995,13 @@
       ],
       "schema": {
         "required": [
-          "regulation_name",
+          "policy_name",
           "jurisdiction"
         ],
         "properties": {
-          "regulation_name": {
-            "type": "string"
+          "policy_name": {
+            "type": "string",
+            "description": "Renamed from regulation_name to match engineering-base.ontology.yaml's policy field name directly"
           },
           "jurisdiction": {
             "type": "string",

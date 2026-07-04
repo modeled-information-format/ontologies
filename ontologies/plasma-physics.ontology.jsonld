@@ -1,0 +1,766 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://mif-spec.dev/ns/ontology#",
+    "mif": "https://mif-spec.dev/ns/",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ontology": {
+      "@id": "mif:Ontology",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "schema_url": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "namespaces": {
+      "@id": "mif:hasNamespace",
+      "@container": "@id"
+    },
+    "type_hint": {
+      "@id": "mif:typeHint",
+      "@type": "xsd:string"
+    },
+    "replaces": {
+      "@id": "mif:replaces",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "mif:hasChildNamespace",
+      "@container": "@id"
+    },
+    "entity_types": {
+      "@id": "mif:definesEntityType",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "base": {
+      "@id": "mif:baseType",
+      "@type": "@vocab"
+    },
+    "semantic": "mif:SemanticMemory",
+    "episodic": "mif:EpisodicMemory",
+    "procedural": "mif:ProceduralMemory",
+    "traits": {
+      "@id": "mif:definesTrait",
+      "@container": "@id"
+    },
+    "subtype_of": {
+      "@id": "mif:subtypeOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "mif:hasField",
+      "@container": "@id"
+    },
+    "requires": {
+      "@id": "mif:requiresField",
+      "@container": "@list"
+    },
+    "relationships": {
+      "@id": "mif:definesRelationship",
+      "@container": "@id"
+    },
+    "from": {
+      "@id": "rdfs:domain",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "rdfs:range",
+      "@container": "@set"
+    },
+    "symmetric": {
+      "@id": "owl:SymmetricProperty",
+      "@type": "xsd:boolean"
+    },
+    "discovery": {
+      "@id": "mif:discoveryConfig"
+    },
+    "enabled": {
+      "@id": "mif:discoveryEnabled",
+      "@type": "xsd:boolean"
+    },
+    "patterns": {
+      "@id": "mif:hasDiscoveryPattern",
+      "@container": "@list"
+    },
+    "confidence_threshold": {
+      "@id": "mif:confidenceThreshold",
+      "@type": "xsd:decimal"
+    },
+    "content_pattern": {
+      "@id": "mif:contentPattern",
+      "@type": "xsd:string"
+    },
+    "file_pattern": {
+      "@id": "mif:filePattern",
+      "@type": "xsd:string"
+    },
+    "suggest_entity": {
+      "@id": "mif:suggestsEntityType",
+      "@type": "@id"
+    },
+    "suggest_namespace": {
+      "@id": "mif:suggestsNamespace",
+      "@type": "xsd:string"
+    }
+  },
+  "@id": "mif:ontology/plasma-physics",
+  "@type": "mif:Ontology",
+  "identifier": "plasma-physics",
+  "version": "0.1.0",
+  "description": "Plasma physics domain ontology: plasma phenomena, confinement devices, diagnostic techniques, and fundamental plasma quantities",
+  "namespaces": {
+    "semantic": {
+      "@id": "mif:namespace/semantic",
+      "@type": "mif:Namespace",
+      "name": "semantic",
+      "children": {
+        "plasma-phenomena": {
+          "@id": "mif:namespace/semantic/plasma-phenomena",
+          "@type": "mif:Namespace",
+          "name": "plasma-phenomena",
+          "description": "Plasma physical phenomena classification (PACS 52.xx)",
+          "type_hint": "semantic"
+        },
+        "plasma-devices": {
+          "@id": "mif:namespace/semantic/plasma-devices",
+          "@type": "mif:Namespace",
+          "name": "plasma-devices",
+          "description": "Plasma confinement and generation apparatus",
+          "type_hint": "semantic"
+        },
+        "plasma-parameters": {
+          "@id": "mif:namespace/semantic/plasma-parameters",
+          "@type": "mif:Namespace",
+          "name": "plasma-parameters",
+          "description": "Fundamental plasma physical quantities",
+          "type_hint": "semantic"
+        }
+      }
+    },
+    "procedural": {
+      "@id": "mif:namespace/procedural",
+      "@type": "mif:Namespace",
+      "name": "procedural",
+      "children": {
+        "plasma-diagnostics": {
+          "@id": "mif:namespace/procedural/plasma-diagnostics",
+          "@type": "mif:Namespace",
+          "name": "plasma-diagnostics",
+          "description": "Plasma diagnostic and simulation techniques",
+          "type_hint": "procedural"
+        }
+      }
+    }
+  },
+  "entity_types": [
+    {
+      "@id": "mif:entityType/elementary-plasma-process",
+      "@type": "mif:EntityType",
+      "name": "elementary-plasma-process",
+      "base": "semantic",
+      "description": "Elementary processes in plasmas",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "process_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-property",
+      "@type": "mif:EntityType",
+      "name": "plasma-property",
+      "base": "semantic",
+      "description": "Plasma properties (kinetic equations, transport properties, emission/absorption)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "property_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-dynamics-flow",
+      "@type": "mif:EntityType",
+      "name": "plasma-dynamics-flow",
+      "base": "semantic",
+      "description": "Plasma dynamics and flow",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-wave-instability",
+      "@type": "mif:EntityType",
+      "name": "plasma-wave-instability",
+      "base": "semantic",
+      "description": "Waves, oscillations, and instabilities in plasmas and intense beams",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "instability_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/laser-plasma-interaction",
+      "@type": "mif:EntityType",
+      "name": "laser-plasma-interaction",
+      "base": "semantic",
+      "description": "Laser-plasma interactions",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-interaction-nonlaser",
+      "@type": "mif:EntityType",
+      "name": "plasma-interaction-nonlaser",
+      "base": "semantic",
+      "description": "Plasma interactions (nonlaser)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-heating-method",
+      "@type": "mif:EntityType",
+      "name": "plasma-heating-method",
+      "base": "procedural",
+      "description": "Plasma production and heating",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "heating_mechanism": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/magnetic-confinement-configuration",
+      "@type": "mif:EntityType",
+      "name": "magnetic-confinement-configuration",
+      "base": "semantic",
+      "description": "Magnetic confinement and equilibrium device configuration (tokamaks, stellarators, reversed-field pinches, heliacs)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/apparatus"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "name"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "configuration_type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Renamed from device_name to match research.ontology.yaml's apparatus field name directly"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/laser-inertial-confinement-device",
+      "@type": "mif:EntityType",
+      "name": "laser-inertial-confinement-device",
+      "base": "semantic",
+      "description": "Laser inertial confinement fusion device",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/apparatus"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "name"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Renamed from device_name to match research.ontology.yaml's apparatus field name directly"
+          },
+          "laser_power": {
+            "type": "number"
+          },
+          "target_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/pinch-device",
+      "@type": "mif:EntityType",
+      "name": "pinch-device",
+      "base": "semantic",
+      "description": "Pinch devices (incl. Z-pinches)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/apparatus"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "name"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "pinch_type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "The device's own name (e.g. a specific Z-pinch facility name), distinct from pinch_type (the pinch mechanism category); no prior equivalent field existed"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/intense-particle-beam-source",
+      "@type": "mif:EntityType",
+      "name": "intense-particle-beam-source",
+      "base": "semantic",
+      "description": "Intense particle beams and radiation sources",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "beam_type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "The PACS section's own heading text, distinct from beam_type (a further sub-classification of the beam kind); no prior equivalent field existed"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-simulation-method",
+      "@type": "mif:EntityType",
+      "name": "plasma-simulation-method",
+      "base": "procedural",
+      "description": "Plasma simulation methods (incl. perturbative methods)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned"
+      ],
+      "subtype_of": [
+        "mif:entityType/research-procedure"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "name"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Renamed from simulation_method to match research-procedure's field name directly"
+          },
+          "code_name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-diagnostic-technique",
+      "@type": "mif:EntityType",
+      "name": "plasma-diagnostic-technique",
+      "base": "procedural",
+      "description": "Plasma diagnostic techniques and instrumentation",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned"
+      ],
+      "subtype_of": [
+        "mif:entityType/research-procedure"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "name"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Renamed from technique_name to match research-procedure's field name directly"
+          },
+          "measured_quantity": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-device",
+      "@type": "mif:EntityType",
+      "name": "plasma-device",
+      "base": "semantic",
+      "description": "Plasma devices",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/apparatus"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "name"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Renamed from device_name to match research.ontology.yaml's apparatus field name directly"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-application",
+      "@type": "mif:EntityType",
+      "name": "plasma-application",
+      "base": "semantic",
+      "description": "Plasma applications",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "application_domain": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "The PACS section's own heading text, distinct from application_domain (the specific application area); no prior equivalent field existed"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/electric-discharge",
+      "@type": "mif:EntityType",
+      "name": "electric-discharge",
+      "base": "semantic",
+      "description": "Electric discharges",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "discharge_type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "The PACS section's own heading text, distinct from discharge_type (the specific discharge mechanism); no prior equivalent field existed"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/plasma-parameter",
+      "@type": "mif:EntityType",
+      "name": "plasma-parameter",
+      "base": "semantic",
+      "description": "A fundamental named plasma physical quantity (Debye length, plasma frequency, Larmor radius)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/physical-quantity"
+      ],
+      "schema": {
+        "required": [
+          "value",
+          "variable"
+        ],
+        "properties": {
+          "variable": {
+            "type": "string",
+            "description": "Renamed from parameter_name to match physical-science-base's physical-quantity field name directly"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "discovery": {
+    "enabled": true,
+    "confidence_threshold": 0.8,
+    "patterns": [
+      {
+        "@id": "mif:pattern/0",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(plasma instability|plasma wave|Langmuir wave|Alfven wave)\\b",
+        "suggest_entity": "mif:entityType/plasma-wave-instability",
+        "suggest_namespace": "_semantic/plasma-phenomena"
+      },
+      {
+        "@id": "mif:pattern/1",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(tokamak|stellarator|magnetic confinement|reversed-field pinch)\\b",
+        "suggest_entity": "mif:entityType/magnetic-confinement-configuration",
+        "suggest_namespace": "_semantic/plasma-devices"
+      },
+      {
+        "@id": "mif:pattern/2",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(inertial confinement fusion|ICF|laser-driven fusion)\\b",
+        "suggest_entity": "mif:entityType/laser-inertial-confinement-device",
+        "suggest_namespace": "_semantic/plasma-devices"
+      },
+      {
+        "@id": "mif:pattern/3",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(Debye length|plasma frequency|Larmor radius)\\b",
+        "suggest_entity": "mif:entityType/plasma-parameter",
+        "suggest_namespace": "_semantic/plasma-parameters"
+      },
+      {
+        "@id": "mif:pattern/4",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(Langmuir probe|plasma diagnostic|Thomson scattering)\\b",
+        "suggest_entity": "mif:entityType/plasma-diagnostic-technique",
+        "suggest_namespace": "_procedural/plasma-diagnostics"
+      }
+    ]
+  }
+}

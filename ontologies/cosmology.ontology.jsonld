@@ -1,0 +1,643 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://mif-spec.dev/ns/ontology#",
+    "mif": "https://mif-spec.dev/ns/",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ontology": {
+      "@id": "mif:Ontology",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "schema_url": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "namespaces": {
+      "@id": "mif:hasNamespace",
+      "@container": "@id"
+    },
+    "type_hint": {
+      "@id": "mif:typeHint",
+      "@type": "xsd:string"
+    },
+    "replaces": {
+      "@id": "mif:replaces",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "mif:hasChildNamespace",
+      "@container": "@id"
+    },
+    "entity_types": {
+      "@id": "mif:definesEntityType",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "base": {
+      "@id": "mif:baseType",
+      "@type": "@vocab"
+    },
+    "semantic": "mif:SemanticMemory",
+    "episodic": "mif:EpisodicMemory",
+    "procedural": "mif:ProceduralMemory",
+    "traits": {
+      "@id": "mif:definesTrait",
+      "@container": "@id"
+    },
+    "subtype_of": {
+      "@id": "mif:subtypeOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "mif:hasField",
+      "@container": "@id"
+    },
+    "requires": {
+      "@id": "mif:requiresField",
+      "@container": "@list"
+    },
+    "relationships": {
+      "@id": "mif:definesRelationship",
+      "@container": "@id"
+    },
+    "from": {
+      "@id": "rdfs:domain",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "rdfs:range",
+      "@container": "@set"
+    },
+    "symmetric": {
+      "@id": "owl:SymmetricProperty",
+      "@type": "xsd:boolean"
+    },
+    "discovery": {
+      "@id": "mif:discoveryConfig"
+    },
+    "enabled": {
+      "@id": "mif:discoveryEnabled",
+      "@type": "xsd:boolean"
+    },
+    "patterns": {
+      "@id": "mif:hasDiscoveryPattern",
+      "@container": "@list"
+    },
+    "confidence_threshold": {
+      "@id": "mif:confidenceThreshold",
+      "@type": "xsd:decimal"
+    },
+    "content_pattern": {
+      "@id": "mif:contentPattern",
+      "@type": "xsd:string"
+    },
+    "file_pattern": {
+      "@id": "mif:filePattern",
+      "@type": "xsd:string"
+    },
+    "suggest_entity": {
+      "@id": "mif:suggestsEntityType",
+      "@type": "@id"
+    },
+    "suggest_namespace": {
+      "@id": "mif:suggestsNamespace",
+      "@type": "xsd:string"
+    }
+  },
+  "@id": "mif:ontology/cosmology",
+  "@type": "mif:Ontology",
+  "identifier": "cosmology",
+  "version": "0.1.0",
+  "description": "Cosmology domain ontology: astronomical object/data classification (IVOA), IAU nomenclature, and cosmological theory/observation",
+  "namespaces": {
+    "semantic": {
+      "@id": "mif:namespace/semantic",
+      "@type": "mif:Namespace",
+      "name": "semantic",
+      "children": {
+        "cosmology-objects": {
+          "@id": "mif:namespace/semantic/cosmology-objects",
+          "@type": "mif:Namespace",
+          "name": "cosmology-objects",
+          "description": "Astronomical object and data-product classification (IVOA)",
+          "type_hint": "semantic"
+        },
+        "cosmology-theory": {
+          "@id": "mif:namespace/semantic/cosmology-theory",
+          "@type": "mif:Namespace",
+          "name": "cosmology-theory",
+          "description": "Cosmological theory and process models",
+          "type_hint": "semantic"
+        },
+        "cosmology-parameters": {
+          "@id": "mif:namespace/semantic/cosmology-parameters",
+          "@type": "mif:Namespace",
+          "name": "cosmology-parameters",
+          "description": "Observational cosmology parameters",
+          "type_hint": "semantic"
+        },
+        "cosmology-structure": {
+          "@id": "mif:namespace/semantic/cosmology-structure",
+          "@type": "mif:Namespace",
+          "name": "cosmology-structure",
+          "description": "Large-scale structure and galaxy evolution classification",
+          "type_hint": "semantic"
+        }
+      }
+    },
+    "episodic": {
+      "@id": "mif:namespace/episodic",
+      "@type": "mif:Namespace",
+      "name": "episodic",
+      "children": {
+        "cosmology-observations": {
+          "@id": "mif:namespace/episodic/cosmology-observations",
+          "@type": "mif:Namespace",
+          "name": "cosmology-observations",
+          "description": "Background-radiation and other cosmological observations",
+          "type_hint": "episodic"
+        }
+      }
+    }
+  },
+  "entity_types": [
+    {
+      "@id": "mif:entityType/astronomical-object-type",
+      "@type": "mif:EntityType",
+      "name": "astronomical-object-type",
+      "base": "semantic",
+      "description": "IVOA object-type vocabulary entry",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "ivoa_object_type",
+          "object_name"
+        ],
+        "properties": {
+          "ivoa_object_type": {
+            "type": "string"
+          },
+          "object_name": {
+            "type": "string"
+          },
+          "coordinates": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/astronomical-data-product",
+      "@type": "mif:EntityType",
+      "name": "astronomical-data-product",
+      "base": "semantic",
+      "description": "IVOA product-type vocabulary entry",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "ivoa_product_type"
+        ],
+        "properties": {
+          "ivoa_product_type": {
+            "type": "string"
+          },
+          "dataset_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/cataloged-object-designation",
+      "@type": "mif:EntityType",
+      "name": "cataloged-object-designation",
+      "base": "semantic",
+      "description": "IAU/CDS celestial-object designation",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "acronym",
+          "sequence"
+        ],
+        "properties": {
+          "acronym": {
+            "type": "string"
+          },
+          "sequence": {
+            "type": "string"
+          },
+          "specifier": {
+            "type": "string"
+          },
+          "catalog_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/hubble-lemaitre-parameter",
+      "@type": "mif:EntityType",
+      "name": "hubble-lemaitre-parameter",
+      "base": "semantic",
+      "description": "The Hubble-Lemaitre expansion-rate relation",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "schema": {
+        "required": [
+          "expansion_rate_value"
+        ],
+        "properties": {
+          "expansion_rate_value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "measurement_method": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/astronomical-reference-frame",
+      "@type": "mif:EntityType",
+      "name": "astronomical-reference-frame",
+      "base": "semantic",
+      "description": "IVOA reference-frame vocabulary entry",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "frame_name"
+        ],
+        "properties": {
+          "frame_name": {
+            "type": "string"
+          },
+          "epoch": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/astronomical-messenger-type",
+      "@type": "mif:EntityType",
+      "name": "astronomical-messenger-type",
+      "base": "semantic",
+      "description": "IVOA messenger vocabulary entry",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "messenger_type"
+        ],
+        "properties": {
+          "messenger_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/astronomical-facility",
+      "@type": "mif:EntityType",
+      "name": "astronomical-facility",
+      "base": "semantic",
+      "description": "An observatory, space probe, or telescope facility (a site/institution shape, categorically distinct from a device/apparatus shape)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "facility_name"
+        ],
+        "properties": {
+          "facility_name": {
+            "type": "string"
+          },
+          "facility_type": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/data-processing-level",
+      "@type": "mif:EntityType",
+      "name": "data-processing-level",
+      "base": "semantic",
+      "description": "IVOA data-processing-level vocabulary entry",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "processing_level"
+        ],
+        "properties": {
+          "processing_level": {
+            "type": "string"
+          },
+          "dataset_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/astrophysical-process-concept",
+      "@type": "mif:EntityType",
+      "name": "astrophysical-process-concept",
+      "base": "semantic",
+      "description": "A UAT top-level astrophysical-process concept",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "uat_concept_id",
+          "concept_name"
+        ],
+        "properties": {
+          "uat_concept_id": {
+            "type": "string"
+          },
+          "concept_name": {
+            "type": "string"
+          },
+          "broader_concept": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/cosmology-theory-model",
+      "@type": "mif:EntityType",
+      "name": "cosmology-theory-model",
+      "base": "semantic",
+      "description": "A cosmological theory or field-theory model of the early universe",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "Renamed from model_name to match classification-scheme-entry's field name directly"
+          },
+          "theory_class": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/observational-cosmology-parameter",
+      "@type": "mif:EntityType",
+      "name": "observational-cosmology-parameter",
+      "base": "semantic",
+      "description": "An observational cosmology parameter (Hubble constant, distance scale, cosmological constant)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/physical-quantity"
+      ],
+      "schema": {
+        "required": [
+          "value",
+          "variable"
+        ],
+        "properties": {
+          "variable": {
+            "type": "string",
+            "description": "Renamed from parameter_name to match physical-science-base's physical-quantity field name directly"
+          },
+          "value": {
+            "type": "number"
+          },
+          "uncertainty": {
+            "type": "number"
+          },
+          "measurement_epoch": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/large-scale-structure",
+      "@type": "mif:EntityType",
+      "name": "large-scale-structure",
+      "base": "semantic",
+      "description": "Large-scale structure of the universe (superclusters, voids, galaxy clusters)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "structure_type": {
+            "type": "string"
+          },
+          "scale": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "The PACS section's own heading text, distinct from structure_type (the specific structure category); no prior equivalent field existed"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/galaxy-evolution-process",
+      "@type": "mif:EntityType",
+      "name": "galaxy-evolution-process",
+      "base": "semantic",
+      "description": "Origin, formation, and evolution of galaxies",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/classification-scheme-entry"
+      ],
+      "schema": {
+        "required": [
+          "pacs_code",
+          "title"
+        ],
+        "properties": {
+          "pacs_code": {
+            "type": "string"
+          },
+          "process_type": {
+            "type": "string"
+          },
+          "galaxy_class": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "The PACS section's own heading text, distinct from process_type (the specific evolutionary process); no prior equivalent field existed"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/cosmic-background-radiation",
+      "@type": "mif:EntityType",
+      "name": "cosmic-background-radiation",
+      "base": "semantic",
+      "description": "A cosmic microwave (or other) background-radiation measurement",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/physical-quantity"
+      ],
+      "schema": {
+        "required": [
+          "variable",
+          "value"
+        ],
+        "properties": {
+          "variable": {
+            "type": "string",
+            "description": "Renamed from radiation_type to match physical-science-base's physical-quantity field name directly"
+          },
+          "value": {
+            "type": "number",
+            "description": "Renamed from temperature_k to match physical-science-base's physical-quantity field name directly"
+          },
+          "anisotropy_spectrum": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "discovery": {
+    "enabled": true,
+    "confidence_threshold": 0.8,
+    "patterns": [
+      {
+        "@id": "mif:pattern/0",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(dark energy|dark matter|cosmological constant|inflationary universe)\\b",
+        "suggest_entity": "mif:entityType/cosmology-theory-model",
+        "suggest_namespace": "_semantic/cosmology-theory"
+      },
+      {
+        "@id": "mif:pattern/1",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(Hubble constant|Hubble-Lemaitre|expansion rate of the universe)\\b",
+        "suggest_entity": "mif:entityType/hubble-lemaitre-parameter",
+        "suggest_namespace": "_semantic/cosmology-parameters"
+      },
+      {
+        "@id": "mif:pattern/2",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(cosmic microwave background|CMB|background radiation)\\b",
+        "suggest_entity": "mif:entityType/cosmic-background-radiation",
+        "suggest_namespace": "_episodic/cosmology-observations"
+      },
+      {
+        "@id": "mif:pattern/3",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(galaxy cluster|supercluster|large-scale structure|cosmic web)\\b",
+        "suggest_entity": "mif:entityType/large-scale-structure",
+        "suggest_namespace": "_semantic/cosmology-structure"
+      },
+      {
+        "@id": "mif:pattern/4",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(quasar|active galactic nucleus|AGN|blazar|Seyfert galaxy)\\b",
+        "suggest_entity": "mif:entityType/astronomical-object-type",
+        "suggest_namespace": "_semantic/cosmology-objects"
+      }
+    ]
+  }
+}

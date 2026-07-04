@@ -126,7 +126,7 @@
   "@id": "mif:ontology/regenerative-agriculture",
   "@type": "mif:Ontology",
   "identifier": "regenerative-agriculture",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Regenerative agriculture ontology with ecosystem coverage",
   "schema_url": "https://mif-spec.dev/schema/ontology/ontology.schema.json",
   "namespaces": {
@@ -404,12 +404,17 @@
       "schema": {
         "required": [
           "field_id",
-          "sample_date"
+          "sample_date",
+          "name"
         ],
         "properties": {
           "field_id": {
             "type": "string",
             "description": "Reference to field"
+          },
+          "name": {
+            "type": "string",
+            "description": "Inherited from agriculture.ontology.yaml's soil-unit: the soil unit's human-readable name (e.g. 'North 40 - back terrace'), distinct from field_id (the internal reference)"
           },
           "sample_date": {
             "type": "string",
@@ -700,12 +705,17 @@
         "required": [
           "tag_id",
           "species",
-          "herd_id"
+          "herd_id",
+          "name"
         ],
         "properties": {
           "tag_id": {
             "type": "string",
             "description": "Ear tag or RFID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Inherited from agriculture.ontology.yaml's managed-animal: the animal's given or barn name (e.g. 'Bessie'), distinct from tag_id (the ear tag or RFID identifier)"
           },
           "species": {
             "type": "string"
@@ -1294,7 +1304,8 @@
         "required": [
           "field_id",
           "crop_id",
-          "harvest_date"
+          "harvest_date",
+          "cultivar_ref"
         ],
         "properties": {
           "field_id": {
@@ -1302,6 +1313,10 @@
           },
           "crop_id": {
             "type": "string"
+          },
+          "cultivar_ref": {
+            "type": "string",
+            "description": "Inherited from agriculture.ontology.yaml's harvest-event: the specific cultivar/variety harvested (e.g. 'Silver Queen sweet corn'), distinct from crop_id (the general crop identity)"
           },
           "harvest_date": {
             "type": "string",

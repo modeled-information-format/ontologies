@@ -126,7 +126,7 @@
   "@id": "mif:ontology/scientific",
   "@type": "mif:Ontology",
   "identifier": "scientific",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Scientific research domain ontology \u2014 studies, methods, data, provenance",
   "namespaces": {
     "semantic": {
@@ -349,11 +349,16 @@
       ],
       "schema": {
         "required": [
-          "cohort_id"
+          "cohort_id",
+          "title"
         ],
         "properties": {
           "cohort_id": {
             "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "Inherited from research.ontology.yaml's inquiry: the cohort's human-readable name (e.g. 'Framingham Heart Study Cohort 1948'), distinct from cohort_id (the internal identifier)"
           },
           "cohort_size": {
             "type": "integer"
@@ -391,12 +396,13 @@
       ],
       "schema": {
         "required": [
-          "method_name",
+          "name",
           "method_type"
         ],
         "properties": {
-          "method_name": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Renamed from method_name to match research-procedure's field name directly (no duplicate field: the registry's sha256-pinned vendoring isolates already-vendored consumers from this rename until they re-vendor)"
           },
           "method_type": {
             "type": "string"
@@ -435,11 +441,12 @@
       ],
       "schema": {
         "required": [
-          "protocol_name"
+          "name"
         ],
         "properties": {
-          "protocol_name": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Renamed from protocol_name to match research-procedure's field name directly"
           },
           "version": {
             "type": "string"
@@ -523,14 +530,16 @@
       "schema": {
         "required": [
           "measurement_id",
-          "value"
+          "value",
+          "variable"
         ],
         "properties": {
           "measurement_id": {
             "type": "string"
           },
-          "measured_property": {
-            "type": "string"
+          "variable": {
+            "type": "string",
+            "description": "Renamed from measured_property to match research.ontology.yaml's observation field name directly"
           },
           "value": {
             "type": "string"
@@ -619,11 +628,16 @@
       "schema": {
         "required": [
           "instrument_id",
-          "instrument_type"
+          "instrument_type",
+          "name"
         ],
         "properties": {
           "instrument_id": {
             "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Inherited from research.ontology.yaml's apparatus: the instrument's human-readable display name (e.g. 'Illumina NovaSeq 6000'), distinct from instrument_id (the internal identifier)"
           },
           "instrument_type": {
             "type": "string",
@@ -732,14 +746,15 @@
       "schema": {
         "required": [
           "grant_id",
-          "funder_name"
+          "funder"
         ],
         "properties": {
           "grant_id": {
             "type": "string"
           },
-          "funder_name": {
-            "type": "string"
+          "funder": {
+            "type": "string",
+            "description": "Renamed from funder_name to match research.ontology.yaml's funding-instrument field name directly"
           },
           "amount": {
             "type": "string"
@@ -834,12 +849,17 @@
       "schema": {
         "required": [
           "access_url",
-          "dataset_ref"
+          "dataset_ref",
+          "title"
         ],
         "properties": {
           "access_url": {
             "type": "string",
             "format": "uri"
+          },
+          "title": {
+            "type": "string",
+            "description": "Inherited from research.ontology.yaml's research-artifact"
           },
           "download_url": {
             "type": "string",
@@ -882,12 +902,17 @@
       ],
       "schema": {
         "required": [
-          "endpoint_url"
+          "endpoint_url",
+          "title"
         ],
         "properties": {
           "endpoint_url": {
             "type": "string",
             "format": "uri"
+          },
+          "title": {
+            "type": "string",
+            "description": "Inherited from research.ontology.yaml's research-artifact"
           },
           "endpoint_description": {
             "type": "string"

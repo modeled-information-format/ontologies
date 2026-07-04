@@ -1,0 +1,682 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://mif-spec.dev/ns/ontology#",
+    "mif": "https://mif-spec.dev/ns/",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ontology": {
+      "@id": "mif:Ontology",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "schema_url": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "namespaces": {
+      "@id": "mif:hasNamespace",
+      "@container": "@id"
+    },
+    "type_hint": {
+      "@id": "mif:typeHint",
+      "@type": "xsd:string"
+    },
+    "replaces": {
+      "@id": "mif:replaces",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "mif:hasChildNamespace",
+      "@container": "@id"
+    },
+    "entity_types": {
+      "@id": "mif:definesEntityType",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "base": {
+      "@id": "mif:baseType",
+      "@type": "@vocab"
+    },
+    "semantic": "mif:SemanticMemory",
+    "episodic": "mif:EpisodicMemory",
+    "procedural": "mif:ProceduralMemory",
+    "traits": {
+      "@id": "mif:definesTrait",
+      "@container": "@id"
+    },
+    "subtype_of": {
+      "@id": "mif:subtypeOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "mif:hasField",
+      "@container": "@id"
+    },
+    "requires": {
+      "@id": "mif:requiresField",
+      "@container": "@list"
+    },
+    "relationships": {
+      "@id": "mif:definesRelationship",
+      "@container": "@id"
+    },
+    "from": {
+      "@id": "rdfs:domain",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "rdfs:range",
+      "@container": "@set"
+    },
+    "symmetric": {
+      "@id": "owl:SymmetricProperty",
+      "@type": "xsd:boolean"
+    },
+    "discovery": {
+      "@id": "mif:discoveryConfig"
+    },
+    "enabled": {
+      "@id": "mif:discoveryEnabled",
+      "@type": "xsd:boolean"
+    },
+    "patterns": {
+      "@id": "mif:hasDiscoveryPattern",
+      "@container": "@list"
+    },
+    "confidence_threshold": {
+      "@id": "mif:confidenceThreshold",
+      "@type": "xsd:decimal"
+    },
+    "content_pattern": {
+      "@id": "mif:contentPattern",
+      "@type": "xsd:string"
+    },
+    "file_pattern": {
+      "@id": "mif:filePattern",
+      "@type": "xsd:string"
+    },
+    "suggest_entity": {
+      "@id": "mif:suggestsEntityType",
+      "@type": "@id"
+    },
+    "suggest_namespace": {
+      "@id": "mif:suggestsNamespace",
+      "@type": "xsd:string"
+    }
+  },
+  "@id": "mif:ontology/health",
+  "@type": "mif:Ontology",
+  "identifier": "health",
+  "version": "0.1.0",
+  "description": "Health domain ontology: general clinical-record data (HL7 FHIR core resources) and functioning classification (WHO ICF)",
+  "namespaces": {
+    "semantic": {
+      "@id": "mif:namespace/semantic",
+      "@type": "mif:Namespace",
+      "name": "semantic",
+      "children": {
+        "health-classification": {
+          "@id": "mif:namespace/semantic/health-classification",
+          "@type": "mif:Namespace",
+          "name": "health-classification",
+          "description": "ICD-11 diagnosis classification",
+          "type_hint": "semantic"
+        },
+        "health-functioning": {
+          "@id": "mif:namespace/semantic/health-functioning",
+          "@type": "mif:Namespace",
+          "name": "health-functioning",
+          "description": "ICF functioning, disability, and health classification",
+          "type_hint": "semantic"
+        }
+      }
+    },
+    "episodic": {
+      "@id": "mif:namespace/episodic",
+      "@type": "mif:Namespace",
+      "name": "episodic",
+      "children": {
+        "health-clinical-record": {
+          "@id": "mif:namespace/episodic/health-clinical-record",
+          "@type": "mif:Namespace",
+          "name": "health-clinical-record",
+          "description": "FHIR-shaped clinical record data",
+          "type_hint": "episodic"
+        }
+      }
+    }
+  },
+  "entity_types": [
+    {
+      "@id": "mif:entityType/patient",
+      "@type": "mif:EntityType",
+      "name": "patient",
+      "base": "semantic",
+      "description": "The subject of a health record",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-record-subject"
+      ],
+      "schema": {
+        "required": [
+          "patient_id"
+        ],
+        "properties": {
+          "patient_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "birth_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/condition",
+      "@type": "mif:EntityType",
+      "name": "condition",
+      "base": "semantic",
+      "description": "A clinical condition, problem, diagnosis, or other event",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "condition_id",
+          "code"
+        ],
+        "properties": {
+          "condition_id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "clinical_status": {
+            "type": "string"
+          },
+          "onset_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "subject_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/fhir-observation",
+      "@type": "mif:EntityType",
+      "name": "fhir-observation",
+      "base": "episodic",
+      "description": "A measured or asserted clinical datum. Named fhir-observation, not observation: research.ontology.yaml (an ancestor of this ontology via clinical-health-base) already defines its own, incompatible observation entity type, and the JSON-LD projection uses global ids (mif:entityType/<name>) that would collide",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "observation_id",
+          "code",
+          "value"
+        ],
+        "properties": {
+          "observation_id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "effective_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "subject_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/encounter",
+      "@type": "mif:EntityType",
+      "name": "encounter",
+      "base": "episodic",
+      "description": "An interaction between a patient and healthcare provider(s)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-encounter"
+      ],
+      "schema": {
+        "required": [
+          "encounter_id",
+          "status"
+        ],
+        "properties": {
+          "encounter_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "class": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string"
+          },
+          "subject_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/procedure",
+      "@type": "mif:EntityType",
+      "name": "procedure",
+      "base": "episodic",
+      "description": "An action performed on or for a patient",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "procedure_id",
+          "code"
+        ],
+        "properties": {
+          "procedure_id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "performed_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "subject_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/allergy-intolerance",
+      "@type": "mif:EntityType",
+      "name": "allergy-intolerance",
+      "base": "semantic",
+      "description": "An allergy or intolerance record",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "allergy_id",
+          "substance"
+        ],
+        "properties": {
+          "allergy_id": {
+            "type": "string"
+          },
+          "substance": {
+            "type": "string"
+          },
+          "criticality": {
+            "type": "string"
+          },
+          "reaction": {
+            "type": "string"
+          },
+          "subject_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/diagnostic-report",
+      "@type": "mif:EntityType",
+      "name": "diagnostic-report",
+      "base": "episodic",
+      "description": "A report of diagnostic results",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/documented"
+      ],
+      "schema": {
+        "required": [
+          "report_id",
+          "status"
+        ],
+        "properties": {
+          "report_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "result_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "conclusion": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/clinical-diagnosis",
+      "@type": "mif:EntityType",
+      "name": "clinical-diagnosis",
+      "base": "semantic",
+      "description": "The general ICD-11 stem-code / Foundation category diagnosis shape",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "stem_code",
+          "title"
+        ],
+        "properties": {
+          "stem_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "chapter": {
+            "type": "string"
+          },
+          "foundation_uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/diagnosis-extension-qualifier",
+      "@type": "mif:EntityType",
+      "name": "diagnosis-extension-qualifier",
+      "base": "semantic",
+      "description": "An ICD-11 extension or cluster code qualifying a diagnosis stem code",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "subtype_of": [
+        "mif:entityType/diagnostic-classification-entry"
+      ],
+      "schema": {
+        "required": [
+          "extension_code",
+          "stem_code",
+          "title"
+        ],
+        "properties": {
+          "extension_code": {
+            "type": "string"
+          },
+          "stem_code": {
+            "type": "string",
+            "description": "Renamed from qualifies_stem to match diagnostic-classification-entry's field name directly: the stem code this qualifier attaches to"
+          },
+          "dimension_type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "A human-readable label for this specific qualifier (e.g. 'Severe'), distinct from dimension_type (which axis it qualifies: severity, temporality, etiology, etc.)"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/body-function",
+      "@type": "mif:EntityType",
+      "name": "body-function",
+      "base": "semantic",
+      "description": "A physiological body function classification",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized",
+        "mif:trait/scored"
+      ],
+      "schema": {
+        "required": [
+          "chapter_code",
+          "title"
+        ],
+        "properties": {
+          "chapter_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "impairment_qualifier": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/body-structure",
+      "@type": "mif:EntityType",
+      "name": "body-structure",
+      "base": "semantic",
+      "description": "An anatomical body structure classification",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized",
+        "mif:trait/scored"
+      ],
+      "schema": {
+        "required": [
+          "chapter_code",
+          "title"
+        ],
+        "properties": {
+          "chapter_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "impairment_qualifier": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/activity-participation-domain",
+      "@type": "mif:EntityType",
+      "name": "activity-participation-domain",
+      "base": "semantic",
+      "description": "A functioning/participation classification domain",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized",
+        "mif:trait/scored"
+      ],
+      "schema": {
+        "required": [
+          "domain_code",
+          "title"
+        ],
+        "properties": {
+          "domain_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "performance_qualifier": {
+            "type": "string"
+          },
+          "capacity_qualifier": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/environmental-factor",
+      "@type": "mif:EntityType",
+      "name": "environmental-factor",
+      "base": "semantic",
+      "description": "An environmental-context classification factor",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized"
+      ],
+      "schema": {
+        "required": [
+          "chapter_code",
+          "title"
+        ],
+        "properties": {
+          "chapter_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "barrier_or_facilitator_qualifier": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "discovery": {
+    "enabled": true,
+    "confidence_threshold": 0.8,
+    "patterns": [
+      {
+        "@id": "mif:pattern/0",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(ICD-11|diagnosis code|diagnostic classification)\\b",
+        "suggest_entity": "mif:entityType/clinical-diagnosis",
+        "suggest_namespace": "_semantic/health-classification"
+      },
+      {
+        "@id": "mif:pattern/1",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(body function|ICF b[1-8]|impairment of function)\\b",
+        "suggest_entity": "mif:entityType/body-function",
+        "suggest_namespace": "_semantic/health-functioning"
+      },
+      {
+        "@id": "mif:pattern/2",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(activities of daily living|ICF d[1-9]|participation restriction)\\b",
+        "suggest_entity": "mif:entityType/activity-participation-domain",
+        "suggest_namespace": "_semantic/health-functioning"
+      },
+      {
+        "@id": "mif:pattern/3",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(FHIR Patient|patient record|demographics)\\b",
+        "suggest_entity": "mif:entityType/patient",
+        "suggest_namespace": "_episodic/health-clinical-record"
+      },
+      {
+        "@id": "mif:pattern/4",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(FHIR Observation|vital sign|lab result|clinical measurement)\\b",
+        "suggest_entity": "mif:entityType/fhir-observation",
+        "suggest_namespace": "_episodic/health-clinical-record"
+      },
+      {
+        "@id": "mif:pattern/5",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(clinical encounter|inpatient admission|outpatient visit)\\b",
+        "suggest_entity": "mif:entityType/encounter",
+        "suggest_namespace": "_episodic/health-clinical-record"
+      }
+    ]
+  }
+}

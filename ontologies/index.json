@@ -18,6 +18,30 @@
       "sha256": "67b895be6d46c1ff60619cc77adcd08f57b6d7bb834fa5f1b92d15484b9233dd",
       "version": "0.1.0"
     },
+    "cardiology": {
+      "extends": [
+        "clinical-health-base"
+      ],
+      "file": "cardiology.ontology.yaml",
+      "sha256": "64901fa7459df499a16097af91a4cd9c88261625bb1aab27fb2f2bb11233e32a",
+      "version": "0.1.0"
+    },
+    "clinical-health-base": {
+      "extends": [
+        "research"
+      ],
+      "file": "clinical-health-base.ontology.yaml",
+      "sha256": "dea9b8bfec8953dfb1b0cfa977e47f14d2cacb78f105427b4291c2bca6cfc61a",
+      "version": "0.1.0"
+    },
+    "cosmology": {
+      "extends": [
+        "physical-science-base"
+      ],
+      "file": "cosmology.ontology.yaml",
+      "sha256": "2419a900e9184e274066a702e30f494ab0ea3499df024e2677f80a8add4ee070",
+      "version": "0.1.0"
+    },
     "data-engineering": {
       "extends": [
         "engineering-base"
@@ -33,6 +57,22 @@
       ],
       "file": "engineering-base.ontology.yaml",
       "sha256": "89e2fb197f2ae880746b0ca7a3dff48eb8111864fd91c804e1169b866012bfb3",
+      "version": "0.1.0"
+    },
+    "fitness": {
+      "extends": [
+        "clinical-health-base"
+      ],
+      "file": "fitness.ontology.yaml",
+      "sha256": "5b95e1502a88c7fb89c758f988b96838f860a24b07c81ed219c07c6a80241c8b",
+      "version": "0.1.0"
+    },
+    "health": {
+      "extends": [
+        "clinical-health-base"
+      ],
+      "file": "health.ontology.yaml",
+      "sha256": "1085a153f322ad4e683d0682faf83eb78ff76f3cdf47bea71312d74494b139d1",
       "version": "0.1.0"
     },
     "market-research": {
@@ -72,7 +112,23 @@
         "mif-generic"
       ],
       "file": "observability.ontology.yaml",
-      "sha256": "401e98940e3b50ef6cbed1187ac92f4004b44eee2ec743dddc07774b14a54249",
+      "sha256": "b9bc875245504925a3cea698d4e94fdb8e2c19495cdee8cace3f989dff1a0d38",
+      "version": "0.2.0"
+    },
+    "physical-science-base": {
+      "extends": [
+        "research"
+      ],
+      "file": "physical-science-base.ontology.yaml",
+      "sha256": "04b10b00e2f2c6f4e1bab4f7be5bdd83695ee011c7ff3b1f3386f9b5f4ed7e9e",
+      "version": "0.1.0"
+    },
+    "plasma-physics": {
+      "extends": [
+        "physical-science-base"
+      ],
+      "file": "plasma-physics.ontology.yaml",
+      "sha256": "57922368f25cb05c4c3a1c009eeabddf25698edfef3f604c9da68812dd7e1fc8",
       "version": "0.1.0"
     },
     "platform-engineering": {
@@ -97,8 +153,8 @@
         "agriculture"
       ],
       "file": "regenerative-agriculture.ontology.yaml",
-      "sha256": "671e66775447a92ed768565ad691324f75ea6d5da9d410db02ff0b946b57631f",
-      "version": "0.2.0"
+      "sha256": "04ac3f7daf0b8015f32d4c9707ea55530b0de6b792dd85f2436e997adf6439f9",
+      "version": "0.3.0"
     },
     "regenerative-agriculture-research": {
       "extends": [
@@ -108,8 +164,8 @@
         "mif-generic"
       ],
       "file": "regenerative-agriculture-research.ontology.yaml",
-      "sha256": "e83dc6e11d6aff3c4004087317ad2e44d679f078707bae3498f921e774a05b5c",
-      "version": "0.4.0"
+      "sha256": "a106407f09034d1bb0cb8e470be2e3c9666ff74eff0518796e38ed2b50c3ff5d",
+      "version": "0.5.0"
     },
     "regulatory-legal": {
       "extends": [
@@ -134,8 +190,8 @@
         "research"
       ],
       "file": "scientific.ontology.yaml",
-      "sha256": "91efe7a7d4d2f3952cc63fa9af1c47de6e763be585cf7ba83edb5e729bd79ac9",
-      "version": "0.2.1"
+      "sha256": "237fbfdb74610535c4508e81857c67f18a7928c32c26feffc56a9a5165be2352",
+      "version": "0.3.0"
     },
     "shared-traits": {
       "extends": [

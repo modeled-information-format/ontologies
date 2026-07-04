@@ -1,0 +1,657 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://mif-spec.dev/ns/ontology#",
+    "mif": "https://mif-spec.dev/ns/",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ontology": {
+      "@id": "mif:Ontology",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "schema_url": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "namespaces": {
+      "@id": "mif:hasNamespace",
+      "@container": "@id"
+    },
+    "type_hint": {
+      "@id": "mif:typeHint",
+      "@type": "xsd:string"
+    },
+    "replaces": {
+      "@id": "mif:replaces",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "mif:hasChildNamespace",
+      "@container": "@id"
+    },
+    "entity_types": {
+      "@id": "mif:definesEntityType",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "base": {
+      "@id": "mif:baseType",
+      "@type": "@vocab"
+    },
+    "semantic": "mif:SemanticMemory",
+    "episodic": "mif:EpisodicMemory",
+    "procedural": "mif:ProceduralMemory",
+    "traits": {
+      "@id": "mif:definesTrait",
+      "@container": "@id"
+    },
+    "subtype_of": {
+      "@id": "mif:subtypeOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "fields": {
+      "@id": "mif:hasField",
+      "@container": "@id"
+    },
+    "requires": {
+      "@id": "mif:requiresField",
+      "@container": "@list"
+    },
+    "relationships": {
+      "@id": "mif:definesRelationship",
+      "@container": "@id"
+    },
+    "from": {
+      "@id": "rdfs:domain",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "rdfs:range",
+      "@container": "@set"
+    },
+    "symmetric": {
+      "@id": "owl:SymmetricProperty",
+      "@type": "xsd:boolean"
+    },
+    "discovery": {
+      "@id": "mif:discoveryConfig"
+    },
+    "enabled": {
+      "@id": "mif:discoveryEnabled",
+      "@type": "xsd:boolean"
+    },
+    "patterns": {
+      "@id": "mif:hasDiscoveryPattern",
+      "@container": "@list"
+    },
+    "confidence_threshold": {
+      "@id": "mif:confidenceThreshold",
+      "@type": "xsd:decimal"
+    },
+    "content_pattern": {
+      "@id": "mif:contentPattern",
+      "@type": "xsd:string"
+    },
+    "file_pattern": {
+      "@id": "mif:filePattern",
+      "@type": "xsd:string"
+    },
+    "suggest_entity": {
+      "@id": "mif:suggestsEntityType",
+      "@type": "@id"
+    },
+    "suggest_namespace": {
+      "@id": "mif:suggestsNamespace",
+      "@type": "xsd:string"
+    }
+  },
+  "@id": "mif:ontology/fitness",
+  "@type": "mif:Ontology",
+  "identifier": "fitness",
+  "version": "0.1.0",
+  "description": "Fitness domain ontology: exercise physiology, physical-activity taxonomy, and wearable-device fitness data",
+  "namespaces": {
+    "semantic": {
+      "@id": "mif:namespace/semantic",
+      "@type": "mif:Namespace",
+      "name": "semantic",
+      "children": {
+        "fitness-components": {
+          "@id": "mif:namespace/semantic/fitness-components",
+          "@type": "mif:Namespace",
+          "name": "fitness-components",
+          "description": "ACSM health-related fitness components",
+          "type_hint": "semantic"
+        }
+      }
+    },
+    "episodic": {
+      "@id": "mif:namespace/episodic",
+      "@type": "mif:Namespace",
+      "name": "episodic",
+      "children": {
+        "fitness-activity-log": {
+          "@id": "mif:namespace/episodic/fitness-activity-log",
+          "@type": "mif:Namespace",
+          "name": "fitness-activity-log",
+          "description": "MET-coded physical activity and wearable-device readings",
+          "type_hint": "episodic"
+        }
+      }
+    },
+    "procedural": {
+      "@id": "mif:namespace/procedural",
+      "@type": "mif:Namespace",
+      "name": "procedural",
+      "children": {
+        "fitness-prescription": {
+          "@id": "mif:namespace/procedural/fitness-prescription",
+          "@type": "mif:Namespace",
+          "name": "fitness-prescription",
+          "description": "Structured exercise-prescription protocols",
+          "type_hint": "procedural"
+        }
+      }
+    }
+  },
+  "entity_types": [
+    {
+      "@id": "mif:entityType/cardiorespiratory-fitness",
+      "@type": "mif:EntityType",
+      "name": "cardiorespiratory-fitness",
+      "base": "semantic",
+      "description": "Cardiorespiratory endurance assessment",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/scored"
+      ],
+      "schema": {
+        "required": [
+          "assessment_method"
+        ],
+        "properties": {
+          "assessment_method": {
+            "type": "string"
+          },
+          "vo2_max": {
+            "type": "number"
+          },
+          "assessment_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/muscular-strength",
+      "@type": "mif:EntityType",
+      "name": "muscular-strength",
+      "base": "semantic",
+      "description": "Muscular strength assessment",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/scored"
+      ],
+      "schema": {
+        "required": [
+          "assessment_method"
+        ],
+        "properties": {
+          "assessment_method": {
+            "type": "string"
+          },
+          "one_rep_max": {
+            "type": "number"
+          },
+          "muscle_group": {
+            "type": "string"
+          },
+          "assessment_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/muscular-endurance",
+      "@type": "mif:EntityType",
+      "name": "muscular-endurance",
+      "base": "semantic",
+      "description": "Muscular endurance assessment",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/scored"
+      ],
+      "schema": {
+        "required": [
+          "assessment_method"
+        ],
+        "properties": {
+          "assessment_method": {
+            "type": "string"
+          },
+          "repetitions": {
+            "type": "integer"
+          },
+          "duration": {
+            "type": "number"
+          },
+          "assessment_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/flexibility-fitness",
+      "@type": "mif:EntityType",
+      "name": "flexibility-fitness",
+      "base": "semantic",
+      "description": "Flexibility assessment",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/scored"
+      ],
+      "schema": {
+        "required": [
+          "assessment_method"
+        ],
+        "properties": {
+          "assessment_method": {
+            "type": "string"
+          },
+          "range_of_motion_deg": {
+            "type": "number"
+          },
+          "joint": {
+            "type": "string"
+          },
+          "assessment_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/body-composition",
+      "@type": "mif:EntityType",
+      "name": "body-composition",
+      "base": "semantic",
+      "description": "Body composition assessment (a distinct fitness-domain construct even though it shares a name-space with health's clinical body-structure classification)",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "schema": {
+        "required": [
+          "body_fat_pct"
+        ],
+        "properties": {
+          "body_fat_pct": {
+            "type": "number"
+          },
+          "lean_mass": {
+            "type": "number"
+          },
+          "assessment_method": {
+            "type": "string"
+          },
+          "assessment_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/exercise-prescription",
+      "@type": "mif:EntityType",
+      "name": "exercise-prescription",
+      "base": "procedural",
+      "description": "A structured exercise-prescription protocol using the FITT-VP principle",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/versioned"
+      ],
+      "schema": {
+        "required": [
+          "frequency_per_week",
+          "intensity"
+        ],
+        "properties": {
+          "frequency_per_week": {
+            "type": "number"
+          },
+          "intensity": {
+            "type": "string"
+          },
+          "duration_min": {
+            "type": "number"
+          },
+          "activity_type": {
+            "type": "string"
+          },
+          "progression_plan": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/physical-activity",
+      "@type": "mif:EntityType",
+      "name": "physical-activity",
+      "base": "episodic",
+      "description": "A MET-coded physical-activity taxonomy entry",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/categorized",
+        "mif:trait/measured"
+      ],
+      "schema": {
+        "required": [
+          "compendium_code",
+          "activity_name"
+        ],
+        "properties": {
+          "compendium_code": {
+            "type": "string"
+          },
+          "major_heading": {
+            "type": "string"
+          },
+          "activity_name": {
+            "type": "string"
+          },
+          "met_value": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/met-value",
+      "@type": "mif:EntityType",
+      "name": "met-value",
+      "base": "semantic",
+      "description": "A metabolic-equivalent-of-task energy-expenditure measurement",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/observation"
+      ],
+      "schema": {
+        "required": [
+          "variable",
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Renamed from met_value to match research.ontology.yaml's observation field name directly"
+          },
+          "measurement_type": {
+            "type": "string"
+          },
+          "source_study_count": {
+            "type": "integer"
+          },
+          "variable": {
+            "type": "string",
+            "description": "The measured variable's name (i.e. 'MET value'); no prior equivalent field existed on met-value"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/omh-step-count",
+      "@type": "mif:EntityType",
+      "name": "omh-step-count",
+      "base": "episodic",
+      "description": "A wearable-device step-count reading",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "observation_id",
+          "code",
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "type": "integer",
+            "description": "Renamed from step_count to match clinical-observation's field name directly"
+          },
+          "effective_time_frame": {
+            "type": "string"
+          },
+          "observation_id": {
+            "type": "string",
+            "description": "Record identifier for this reading (no prior equivalent field existed)"
+          },
+          "code": {
+            "type": "string",
+            "description": "The Open mHealth schema identifier: omh:step-count"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/omh-heart-rate",
+      "@type": "mif:EntityType",
+      "name": "omh-heart-rate",
+      "base": "episodic",
+      "description": "A wearable-device heart-rate reading",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "observation_id",
+          "code",
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Renamed from heart_rate_bpm to match clinical-observation's field name directly"
+          },
+          "temporal_relationship_to_physical_activity": {
+            "type": "string"
+          },
+          "effective_time_frame": {
+            "type": "string"
+          },
+          "observation_id": {
+            "type": "string",
+            "description": "Record identifier for this reading (no prior equivalent field existed)"
+          },
+          "code": {
+            "type": "string",
+            "description": "The Open mHealth schema identifier: omh:heart-rate"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/omh-calories-burned",
+      "@type": "mif:EntityType",
+      "name": "omh-calories-burned",
+      "base": "episodic",
+      "description": "A wearable-device calories-burned reading",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "observation_id",
+          "code",
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Renamed from kcal_value to match clinical-observation's field name directly"
+          },
+          "effective_time_interval": {
+            "type": "string"
+          },
+          "observation_id": {
+            "type": "string",
+            "description": "Record identifier for this reading (no prior equivalent field existed)"
+          },
+          "code": {
+            "type": "string",
+            "description": "The Open mHealth schema identifier: omh:calories_burned:2.0"
+          }
+        }
+      }
+    },
+    {
+      "@id": "mif:entityType/omh-body-weight",
+      "@type": "mif:EntityType",
+      "name": "omh-body-weight",
+      "base": "episodic",
+      "description": "A wearable-device body-weight reading",
+      "traits": [
+        "mif:trait/cited",
+        "mif:trait/dated",
+        "mif:trait/measured"
+      ],
+      "subtype_of": [
+        "mif:entityType/clinical-observation"
+      ],
+      "schema": {
+        "required": [
+          "observation_id",
+          "code",
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Renamed from weight_value to match clinical-observation's field name directly"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "observation_id": {
+            "type": "string",
+            "description": "Record identifier for this reading (no prior equivalent field existed)"
+          },
+          "code": {
+            "type": "string",
+            "description": "The Open mHealth schema identifier: omh:body-weight"
+          },
+          "effective_time_frame": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "relationships": {
+    "occurs_within": {
+      "@id": "mif:relationship/occurs_within",
+      "@type": "mif:Relationship",
+      "name": "occurs_within",
+      "description": "A clinical activity occurs within a clinical encounter (finding-intermediary-layering-spec.json)",
+      "from": [
+        "mif:entityType/exercise-prescription"
+      ],
+      "to": [
+        "mif:entityType/clinical-encounter"
+      ],
+      "symmetric": false
+    }
+  },
+  "discovery": {
+    "enabled": true,
+    "confidence_threshold": 0.8,
+    "patterns": [
+      {
+        "@id": "mif:pattern/0",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(cardiorespiratory endurance|VO2 max|aerobic fitness)\\b",
+        "suggest_entity": "mif:entityType/cardiorespiratory-fitness",
+        "suggest_namespace": "_semantic/fitness-components"
+      },
+      {
+        "@id": "mif:pattern/1",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(FITT|FITT-VP|exercise prescription|frequency intensity time type)\\b",
+        "suggest_entity": "mif:entityType/exercise-prescription",
+        "suggest_namespace": "_procedural/fitness-prescription"
+      },
+      {
+        "@id": "mif:pattern/2",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(MET value|metabolic equivalent|Compendium of Physical Activities)\\b",
+        "suggest_entity": "mif:entityType/physical-activity",
+        "suggest_namespace": "_episodic/fitness-activity-log"
+      },
+      {
+        "@id": "mif:pattern/3",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(step count|steps walked|pedometer)\\b",
+        "suggest_entity": "mif:entityType/omh-step-count",
+        "suggest_namespace": "_episodic/fitness-activity-log"
+      },
+      {
+        "@id": "mif:pattern/4",
+        "@type": "mif:DiscoveryPattern",
+        "content_pattern": "\\b(heart rate monitor|resting heart rate|exercise heart rate)\\b",
+        "suggest_entity": "mif:entityType/omh-heart-rate",
+        "suggest_namespace": "_episodic/fitness-activity-log"
+      }
+    ]
+  }
+}
