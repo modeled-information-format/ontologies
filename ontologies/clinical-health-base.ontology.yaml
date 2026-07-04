@@ -145,7 +145,7 @@ entity_types:
           description: "Component measurements bundled within a structured study (cardiology extension)"
     source_vocab: "HL7 FHIR"
     source_class: "Observation resource (R5)"
-    prior_art: "reuse -- clinical-health-base's generalized instantiation of FHIR's Observation resource; health's own `observation` subtypes this directly, cardiology's echocardiography-study/ecg-finding/cardiovascular-clinical-finding and fitness's four Open mHealth types (omh-step-count, omh-heart-rate, omh-calories-burned, omh-body-weight) are all clinical-observation subtypes since Open mHealth's own schema design deliberately mirrors FHIR Observation's unit-value-time shape"
+    prior_art: "reuse -- clinical-health-base's generalized instantiation of FHIR's Observation resource; health's own `fhir-observation` subtypes this directly (named fhir-observation, not observation, to avoid colliding with research.ontology.yaml's own observation type once resolved through this ontology's extends chain), cardiology's echocardiography-study/ecg-finding/cardiovascular-clinical-finding and fitness's four Open mHealth types (omh-step-count, omh-heart-rate, omh-calories-burned, omh-body-weight) are all clinical-observation subtypes since Open mHealth's own schema design deliberately mirrors FHIR Observation's unit-value-time shape"
     disposition: reuse
 
   - name: diagnostic-classification-entry

@@ -31,7 +31,7 @@
         "research"
       ],
       "file": "clinical-health-base.ontology.yaml",
-      "sha256": "8a98e0e50d65c2909d37c1883dc23eb633e74e76455caf5fb97aec519bfecbaa",
+      "sha256": "dea9b8bfec8953dfb1b0cfa977e47f14d2cacb78f105427b4291c2bca6cfc61a",
       "version": "0.1.0"
     },
     "cosmology": {
@@ -72,7 +72,7 @@
         "clinical-health-base"
       ],
       "file": "health.ontology.yaml",
-      "sha256": "4a0b3cb16da6cd5f83516c69e6c33dfae61e9d1c96587e0968c92156cc5499b3",
+      "sha256": "1085a153f322ad4e683d0682faf83eb78ff76f3cdf47bea71312d74494b139d1",
       "version": "0.1.0"
     },
     "market-research": {

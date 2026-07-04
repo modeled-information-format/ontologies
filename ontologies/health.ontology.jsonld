@@ -244,11 +244,11 @@
       }
     },
     {
-      "@id": "mif:entityType/observation",
+      "@id": "mif:entityType/fhir-observation",
       "@type": "mif:EntityType",
-      "name": "observation",
+      "name": "fhir-observation",
       "base": "episodic",
-      "description": "A measured or asserted clinical datum",
+      "description": "A measured or asserted clinical datum. Named fhir-observation, not observation: research.ontology.yaml (an ancestor of this ontology via clinical-health-base) already defines its own, incompatible observation entity type, and the JSON-LD projection uses global ids (mif:entityType/<name>) that would collide",
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated",
@@ -661,13 +661,13 @@
         "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(FHIR Patient|patient record|demographics)\\b",
         "suggest_entity": "mif:entityType/patient",
-        "suggest_namespace": "_semantic/health-clinical-record"
+        "suggest_namespace": "_episodic/health-clinical-record"
       },
       {
         "@id": "mif:pattern/4",
         "@type": "mif:DiscoveryPattern",
         "content_pattern": "\\b(FHIR Observation|vital sign|lab result|clinical measurement)\\b",
-        "suggest_entity": "mif:entityType/observation",
+        "suggest_entity": "mif:entityType/fhir-observation",
         "suggest_namespace": "_episodic/health-clinical-record"
       },
       {

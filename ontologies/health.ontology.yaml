@@ -76,8 +76,8 @@ entity_types:
     prior_art: "reuse -- direct clone of FHIR's Condition resource"
     disposition: reuse
 
-  - name: observation
-    description: "A measured or asserted clinical datum"
+  - name: fhir-observation
+    description: "A measured or asserted clinical datum. Named fhir-observation, not observation: research.ontology.yaml (an ancestor of this ontology via clinical-health-base) already defines its own, incompatible observation entity type, and the JSON-LD projection uses global ids (mif:entityType/<name>) that would collide"
     base: episodic
     traits: [cited, dated, measured]
     schema:
@@ -274,9 +274,9 @@ discovery:
       suggest_namespace: _semantic/health-functioning
     - content_pattern: "\\b(FHIR Patient|patient record|demographics)\\b"
       suggest_entity: patient
-      suggest_namespace: _semantic/health-clinical-record
+      suggest_namespace: _episodic/health-clinical-record
     - content_pattern: "\\b(FHIR Observation|vital sign|lab result|clinical measurement)\\b"
-      suggest_entity: observation
+      suggest_entity: fhir-observation
       suggest_namespace: _episodic/health-clinical-record
     - content_pattern: "\\b(clinical encounter|inpatient admission|outpatient visit)\\b"
       suggest_entity: encounter
