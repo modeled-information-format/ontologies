@@ -74,12 +74,11 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, title, scheme_code]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         title: { type: string }
         process_type: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
     source_vocab: "PACS"
     source_class: "52.20.-j Elementary processes in plasmas"
     prior_art: "extend physical-science-base `classification-scheme-entry` -- PACS 52.20.-j is a plain classification-scheme entry (corrected from an earlier ungrounded mint with no parent)"
@@ -91,12 +90,11 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, title, scheme_code]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         title: { type: string }
         property_type: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
     source_vocab: "PACS"
     source_class: "52.25.-b Plasma properties (incl. 52.25.Dg kinetic equations, 52.25.Fi transport properties, 52.25.Os emission/absorption)"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -108,11 +106,10 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, title, scheme_code]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         title: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
     source_vocab: "PACS"
     source_class: "52.30.-q Plasma dynamics and flow"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -124,12 +121,11 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, title, scheme_code]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         title: { type: string }
         instability_type: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
     source_vocab: "PACS"
     source_class: "52.35.-g Waves, oscillations, and instabilities in plasmas and intense beams"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -141,11 +137,10 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, title, scheme_code]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         title: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
     source_vocab: "PACS"
     source_class: "52.38.-r Laser-plasma interactions (incl. 52.38.Kd laser acceleration)"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -157,11 +152,10 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, title, scheme_code]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         title: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
     source_vocab: "PACS"
     source_class: "52.40 Plasma interactions (nonlaser) (incl. 52.40.Db electromagnetic phenomena, 52.40.Mj particle beam interactions)"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -188,13 +182,12 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, device_name, name]
+      required: [pacs_code, name]
       properties:
         pacs_code: { type: string }
         configuration_type: { type: string }
-        device_name: { type: string }
+        name: { type: string, description: "Renamed from device_name to match research.ontology.yaml's apparatus field name directly" }
         status: { type: string }
-        name: { type: string, description: "Inherited from research.ontology.yaml's apparatus (same value as device_name)" }
     source_vocab: "PACS + IAEA"
     source_class: "52.55.-s Magnetic confinement and equilibrium (incl. 52.55.Fa tokamaks); IAEA World Survey of Fusion Devices toroidal-device taxonomy"
     prior_art: "extend research.ontology.yaml `apparatus` (\"A device, platform, or instrument used to produce research data\") -- corrected from an earlier mint by finding-disposition-cross-check-fusion-device-entities.json + finding-trajectory-research-instrument-adjudication.json; NOT scientific.ontology.yaml's `research-instrument`, which is itself mid-migration to become a specialization of apparatus and has already forked once (psycholinguistics.ontology.yaml independently minted an incompatible research-instrument)"
@@ -206,13 +199,12 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, device_name, name]
+      required: [pacs_code, name]
       properties:
         pacs_code: { type: string }
-        device_name: { type: string }
+        name: { type: string, description: "Renamed from device_name to match research.ontology.yaml's apparatus field name directly" }
         laser_power: { type: number }
         target_type: { type: string }
-        name: { type: string, description: "Inherited from research.ontology.yaml's apparatus (same value as device_name)" }
     source_vocab: "PACS + IAEA"
     source_class: "52.57.-z Laser inertial confinement; IAEA inertial confinement fusion (ICF) classification"
     prior_art: "extend research.ontology.yaml `apparatus` -- see magnetic-confinement-configuration's prior_art for the full correction rationale"
@@ -228,7 +220,7 @@ entity_types:
       properties:
         pacs_code: { type: string }
         pinch_type: { type: string }
-        name: { type: string, description: "Inherited from research.ontology.yaml's apparatus (same value as pinch_type)" }
+        name: { type: string, description: "The device's own name (e.g. a specific Z-pinch facility name), distinct from pinch_type (the pinch mechanism category); no prior equivalent field existed" }
     source_vocab: "PACS"
     source_class: "52.58 Pinch devices (incl. 52.58.Lq Z-pinches)"
     prior_art: "extend research.ontology.yaml `apparatus` -- see magnetic-confinement-configuration's prior_art for the full correction rationale"
@@ -240,12 +232,11 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, scheme_code, title]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         beam_type: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
-        title: { type: string, description: "Inherited from classification-scheme-entry" }
+        title: { type: string, description: "The PACS section's own heading text, distinct from beam_type (a further sub-classification of the beam kind); no prior equivalent field existed" }
     source_vocab: "PACS"
     source_class: "52.59.-f Intense particle beams and radiation sources"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -257,12 +248,11 @@ entity_types:
     base: procedural
     traits: [cited, dated, versioned]
     schema:
-      required: [pacs_code, simulation_method, name]
+      required: [pacs_code, name]
       properties:
         pacs_code: { type: string }
-        simulation_method: { type: string }
+        name: { type: string, description: "Renamed from simulation_method to match research-procedure's field name directly" }
         code_name: { type: string }
-        name: { type: string, description: "Inherited from research-procedure (same value as simulation_method)" }
     source_vocab: "PACS"
     source_class: "52.65.-y Plasma simulation (incl. 52.65.Vv perturbative methods)"
     prior_art: "extend research.ontology.yaml `research-procedure` (\"A method, protocol, or procedure applied in research, and its executions\") -- a plasma simulation method is a specialized computational research method; entity-inventory.json originally cited scientific.ontology.yaml `method`, which is unreachable once this pack extends physical-science-base instead of scientific directly"
@@ -274,12 +264,11 @@ entity_types:
     base: procedural
     traits: [cited, dated, versioned]
     schema:
-      required: [pacs_code, technique_name, name]
+      required: [pacs_code, name]
       properties:
         pacs_code: { type: string }
-        technique_name: { type: string }
+        name: { type: string, description: "Renamed from technique_name to match research-procedure's field name directly" }
         measured_quantity: { type: string }
-        name: { type: string, description: "Inherited from research-procedure (same value as technique_name)" }
     source_vocab: "PACS"
     source_class: "52.70.-m Plasma diagnostic techniques and instrumentation"
     prior_art: "extend research.ontology.yaml `research-procedure` -- a plasma diagnostic technique is a specialized measurement method; see plasma-simulation-method's prior_art for the full reachability correction rationale"
@@ -294,8 +283,7 @@ entity_types:
       required: [pacs_code, name]
       properties:
         pacs_code: { type: string }
-        device_name: { type: string }
-        name: { type: string, description: "Inherited from research.ontology.yaml's apparatus (same value as device_name)" }
+        name: { type: string, description: "Renamed from device_name to match research.ontology.yaml's apparatus field name directly" }
     source_vocab: "PACS"
     source_class: "52.75.-d Plasma devices"
     prior_art: "extend research.ontology.yaml `apparatus` -- see magnetic-confinement-configuration's prior_art for the full correction rationale"
@@ -307,12 +295,11 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, scheme_code, title]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         application_domain: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
-        title: { type: string, description: "Inherited from classification-scheme-entry" }
+        title: { type: string, description: "The PACS section's own heading text, distinct from application_domain (the specific application area); no prior equivalent field existed" }
     source_vocab: "PACS"
     source_class: "52.77.-j Plasma applications"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -324,12 +311,11 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, scheme_code, title]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         discharge_type: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
-        title: { type: string, description: "Inherited from classification-scheme-entry" }
+        title: { type: string, description: "The PACS section's own heading text, distinct from discharge_type (the specific discharge mechanism); no prior equivalent field existed" }
     source_vocab: "PACS"
     source_class: "52.80.-s Electric discharges"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -341,13 +327,12 @@ entity_types:
     base: semantic
     traits: [cited, dated, measured]
     schema:
-      required: [parameter_name, value, variable]
+      required: [value, variable]
       properties:
-        parameter_name: { type: string }
+        variable: { type: string, description: "Renamed from parameter_name to match physical-science-base's physical-quantity field name directly" }
         symbol: { type: string }
         value: { type: number }
         unit: { type: string }
-        variable: { type: string, description: "Inherited from physical-quantity (same value as parameter_name)" }
     source_vocab: "PPPL/NIST plasma-physics nomenclature"
     source_class: "Debye length, plasma frequency, Larmor radius (named fundamental plasma quantities)"
     prior_art: "extend physical-science-base `physical-quantity` -- a plasma parameter is a specialized named-quantity measurement (corrected from an earlier direct extend of scientific.ontology.yaml `measurement`, which is unreachable from this pack's extends chain)"

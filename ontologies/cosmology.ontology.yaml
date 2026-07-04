@@ -200,13 +200,11 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, model_name, scheme_code, title]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
-        model_name: { type: string }
+        title: { type: string, description: "Renamed from model_name to match classification-scheme-entry's field name directly" }
         theory_class: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
-        title: { type: string, description: "Inherited from classification-scheme-entry (same value as model_name)" }
     source_vocab: "PACS"
     source_class: "98.80.-k Cosmology; 98.80.Cq Particle-theory and field-theory models of the early Universe (cosmic strings, inflationary universe, etc.)"
     prior_art: "extend physical-science-base `classification-scheme-entry` -- PACS 98.80.-k/98.80.Cq is a plain classification-scheme entry (corrected from an earlier ungrounded mint with no parent)"
@@ -218,13 +216,12 @@ entity_types:
     base: semantic
     traits: [cited, dated, measured]
     schema:
-      required: [parameter_name, value, variable]
+      required: [value, variable]
       properties:
-        parameter_name: { type: string }
+        variable: { type: string, description: "Renamed from parameter_name to match physical-science-base's physical-quantity field name directly" }
         value: { type: number }
         uncertainty: { type: number }
         measurement_epoch: { type: string }
-        variable: { type: string, description: "Inherited from physical-quantity (same value as parameter_name)" }
     source_vocab: "PACS"
     source_class: "98.80.Es Observational cosmology (Hubble constant, distance scale, cosmological constant, early Universe)"
     prior_art: "extend physical-science-base `physical-quantity` -- an observational-cosmology parameter is a specialized named-quantity measurement (corrected from an earlier direct extend of scientific.ontology.yaml `measurement`, which is unreachable from this pack's extends chain)"
@@ -236,13 +233,12 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, structure_type, scheme_code, title]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         structure_type: { type: string }
         scale: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
-        title: { type: string, description: "Inherited from classification-scheme-entry" }
+        title: { type: string, description: "The PACS section's own heading text, distinct from structure_type (the specific structure category); no prior equivalent field existed" }
     source_vocab: "PACS"
     source_class: "98.65.Dx Superclusters; large-scale structure of the Universe (voids, pancakes, great wall); 98.65.Cw Galaxy clusters"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -254,13 +250,12 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [pacs_code, process_type, scheme_code, title]
+      required: [pacs_code, title]
       properties:
         pacs_code: { type: string }
         process_type: { type: string }
         galaxy_class: { type: string }
-        scheme_code: { type: string, description: "Inherited from classification-scheme-entry (same value as pacs_code)" }
-        title: { type: string, description: "Inherited from classification-scheme-entry" }
+        title: { type: string, description: "The PACS section's own heading text, distinct from process_type (the specific evolutionary process); no prior equivalent field existed" }
     source_vocab: "PACS"
     source_class: "98.62.Ai Origin, formation, evolution, age, and star formation of galaxies"
     prior_art: "extend physical-science-base `classification-scheme-entry`"
@@ -272,14 +267,11 @@ entity_types:
     base: semantic
     traits: [cited, dated, measured]
     schema:
-      required: [radiation_type, parameter_name, value, variable]
+      required: [variable, value]
       properties:
-        radiation_type: { type: string }
-        temperature_k: { type: number }
+        variable: { type: string, description: "Renamed from radiation_type to match physical-science-base's physical-quantity field name directly" }
+        value: { type: number, description: "Renamed from temperature_k to match physical-science-base's physical-quantity field name directly" }
         anisotropy_spectrum: { type: string }
-        parameter_name: { type: string, description: "Inherited from physical-quantity (same value as radiation_type)" }
-        variable: { type: string, description: "Inherited from physical-quantity (same value as radiation_type)" }
-        value: { type: number, description: "Inherited from physical-quantity (same value as temperature_k)" }
     source_vocab: "PACS"
     source_class: "98.70.Vc Background radiations"
     prior_art: "extend physical-science-base `physical-quantity` -- a background-radiation record is a specialized measurement (corrected from an earlier direct extend of scientific.ontology.yaml `measurement`)"

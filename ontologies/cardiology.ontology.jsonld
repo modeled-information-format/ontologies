@@ -192,7 +192,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -233,7 +233,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -271,7 +271,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -309,7 +309,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -347,7 +347,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -385,7 +385,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -423,7 +423,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -464,7 +464,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -502,7 +502,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -540,7 +540,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -578,7 +578,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -616,7 +616,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -654,7 +654,7 @@
           },
           "stem_code": {
             "type": "string",
-            "description": "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)"
+            "description": "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')"
           },
           "title": {
             "type": "string"
@@ -682,15 +682,15 @@
       ],
       "schema": {
         "required": [
-          "study_id",
-          "modality",
           "observation_id",
+          "modality",
           "code",
           "value"
         ],
         "properties": {
-          "study_id": {
-            "type": "string"
+          "observation_id": {
+            "type": "string",
+            "description": "Renamed from study_id to match clinical-observation's field name directly"
           },
           "modality": {
             "type": "string"
@@ -708,17 +708,13 @@
             "type": "string",
             "format": "date"
           },
-          "observation_id": {
-            "type": "string",
-            "description": "Inherited from clinical-observation (same value as study_id)"
-          },
           "code": {
             "type": "string",
-            "description": "Inherited from clinical-observation: the LOINC code for this study"
+            "description": "The LOINC code for this echo panel (e.g. '34552-0')"
           },
           "value": {
             "type": "string",
-            "description": "Inherited from clinical-observation"
+            "description": "Not independently meaningful for a multi-measurement study; required only for clinical-observation's substitutability contract. Real results live in member_measurements/ejection_fraction"
           }
         }
       }
@@ -763,15 +759,15 @@
           },
           "observation_id": {
             "type": "string",
-            "description": "Inherited from clinical-observation"
+            "description": "Record identifier for this ECG panel (no prior equivalent field existed)"
           },
           "code": {
             "type": "string",
-            "description": "Inherited from clinical-observation: the LOINC code for this panel"
+            "description": "The LOINC code for this panel (e.g. '34534-8')"
           },
           "value": {
             "type": "string",
-            "description": "Inherited from clinical-observation"
+            "description": "Not independently meaningful for a multi-interval panel; required only for clinical-observation's substitutability contract. Real results live in the named interval fields"
           }
         }
       }
@@ -798,7 +794,8 @@
         ],
         "properties": {
           "study_id": {
-            "type": "string"
+            "type": "string",
+            "description": "This specific study's record identifier, distinct from name (the procedure's own name, constant across studies of this protocol)"
           },
           "access_site": {
             "type": "string"
@@ -814,7 +811,7 @@
           },
           "name": {
             "type": "string",
-            "description": "Inherited from research-procedure: the procedure name (e.g. 'Cardiac catheterization')"
+            "description": "The procedure's name (e.g. 'Cardiac catheterization'), matching research-procedure's field name directly (no prior equivalent field existed)"
           }
         }
       }
@@ -903,14 +900,14 @@
       ],
       "schema": {
         "required": [
-          "finding_type",
           "value",
           "observation_id",
           "code"
         ],
         "properties": {
-          "finding_type": {
-            "type": "string"
+          "code": {
+            "type": "string",
+            "description": "Renamed from finding_type to match clinical-observation's field name directly: the SNOMED CT finding code (e.g. 'heart rate', 'cyanosis')"
           },
           "value": {
             "type": "string"
@@ -924,11 +921,7 @@
           },
           "observation_id": {
             "type": "string",
-            "description": "Inherited from clinical-observation"
-          },
-          "code": {
-            "type": "string",
-            "description": "Inherited from clinical-observation: the SNOMED CT finding code (same value as finding_type)"
+            "description": "Record identifier for this finding (no prior equivalent field existed)"
           }
         }
       }

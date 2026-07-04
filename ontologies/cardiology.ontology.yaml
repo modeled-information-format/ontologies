@@ -48,7 +48,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
         parent_chapter: { type: string }
@@ -66,7 +66,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -83,7 +83,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -100,7 +100,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -117,7 +117,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -134,7 +134,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -151,7 +151,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
         affected_valve: { type: string }
@@ -169,7 +169,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -186,7 +186,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -203,7 +203,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -220,7 +220,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -237,7 +237,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -254,7 +254,7 @@ entity_types:
       required: [code_range, title, stem_code]
       properties:
         code_range: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the ICD-11 stem code (same value as the leading portion of code_range)" }
+        stem_code: { type: string, description: "The specific ICD-11 stem code assigned to one finding (e.g. 'BA01'), distinct from code_range (the type's overall classification block, e.g. 'BA00-BA04.Z')" }
         title: { type: string }
         icd11_uri: { type: string, format: uri }
     source_vocab: "WHO ICD-11"
@@ -268,16 +268,15 @@ entity_types:
     base: episodic
     traits: [cited, dated, measured]
     schema:
-      required: [study_id, modality, observation_id, code, value]
+      required: [observation_id, modality, code, value]
       properties:
-        study_id: { type: string }
+        observation_id: { type: string, description: "Renamed from study_id to match clinical-observation's field name directly" }
         modality: { type: string }
         member_measurements: { type: array, items: { type: object } }
         ejection_fraction: { type: number }
         study_date: { type: string, format: date }
-        observation_id: { type: string, description: "Inherited from clinical-observation (same value as study_id)" }
-        code: { type: string, description: "Inherited from clinical-observation: the LOINC code for this study" }
-        value: { type: string, description: "Inherited from clinical-observation" }
+        code: { type: string, description: "The LOINC code for this echo panel (e.g. '34552-0')" }
+        value: { type: string, description: "Not independently meaningful for a multi-measurement study; required only for clinical-observation's substitutability contract. Real results live in member_measurements/ejection_fraction" }
     source_vocab: "LOINC + ACC/AHA/ASE"
     source_class: "34552-0 Cardiac 2D echo panel; 2019 ACC/AHA/ASE TTE Key Data Elements"
     prior_art: "extend clinical-health-base `clinical-observation` -- an echocardiography-study is a structured bundle of cardiac measurement data (corrected from an earlier direct extend of scientific.ontology.yaml `measurement`)"
@@ -296,9 +295,9 @@ entity_types:
         qt_interval_ms: { type: number }
         qtc_ms: { type: number }
         impression: { type: string }
-        observation_id: { type: string, description: "Inherited from clinical-observation" }
-        code: { type: string, description: "Inherited from clinical-observation: the LOINC code for this panel" }
-        value: { type: string, description: "Inherited from clinical-observation" }
+        observation_id: { type: string, description: "Record identifier for this ECG panel (no prior equivalent field existed)" }
+        code: { type: string, description: "The LOINC code for this panel (e.g. '34534-8')" }
+        value: { type: string, description: "Not independently meaningful for a multi-interval panel; required only for clinical-observation's substitutability contract. Real results live in the named interval fields" }
     source_vocab: "LOINC"
     source_class: "34534-8 12 lead EKG panel"
     prior_art: "extend clinical-health-base `clinical-observation` -- an ECG finding is a structured electrical measurement bundle (corrected from an earlier direct extend of scientific.ontology.yaml `measurement`)"
@@ -312,11 +311,11 @@ entity_types:
     schema:
       required: [study_id, access_site, name]
       properties:
-        study_id: { type: string }
+        study_id: { type: string, description: "This specific study's record identifier, distinct from name (the procedure's own name, constant across studies of this protocol)" }
         access_site: { type: string }
         hemodynamic_findings: { type: array, items: { type: object } }
         pre_cath_diagnosis: { type: string }
-        name: { type: string, description: "Inherited from research-procedure: the procedure name (e.g. 'Cardiac catheterization')" }
+        name: { type: string, description: "The procedure's name (e.g. 'Cardiac catheterization'), matching research-procedure's field name directly (no prior equivalent field existed)" }
     source_vocab: "LOINC"
     source_class: "18745-0 Cardiac catheterization study"
     prior_art: "extend research.ontology.yaml `research-procedure` (\"A method, protocol, or procedure applied in research, and its executions\") -- a catheterization study is the execution of an invasive diagnostic protocol; entity-inventory.json originally cited scientific.ontology.yaml `protocol-application`, which is unreachable once cardiology extends clinical-health-base instead of scientific directly -- research-procedure is the reachable, ADR-0003-intended generic equivalent"
@@ -359,14 +358,13 @@ entity_types:
     base: semantic
     traits: [cited, dated, measured]
     schema:
-      required: [finding_type, value, observation_id, code]
+      required: [value, observation_id, code]
       properties:
-        finding_type: { type: string }
+        code: { type: string, description: "Renamed from finding_type to match clinical-observation's field name directly: the SNOMED CT finding code (e.g. 'heart rate', 'cyanosis')" }
         value: { type: string }
         unit: { type: string }
         observed_at: { type: string, format: date-time }
-        observation_id: { type: string, description: "Inherited from clinical-observation" }
-        code: { type: string, description: "Inherited from clinical-observation: the SNOMED CT finding code (same value as finding_type)" }
+        observation_id: { type: string, description: "Record identifier for this finding (no prior equivalent field existed)" }
     source_vocab: "SNOMED CT"
     source_class: "'cardiovascular finding' -- common parent of 'heart rate', 'blood pressure findings', 'rhythm of periphery pulses', and 'cyanosis'"
     prior_art: "extend clinical-health-base `clinical-observation` -- SNOMED CT's finding branch is architecturally distinct from ICD-11's disorder branch, but structurally is a point-in-time clinical observation (corrected from an earlier ungrounded mint with no parent)"

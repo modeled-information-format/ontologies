@@ -23,7 +23,7 @@
         "clinical-health-base"
       ],
       "file": "cardiology.ontology.yaml",
-      "sha256": "3ae96630f5e082ebab31a4a5cccc3d24ee5e169109f9b7760aa6741ce6667aa3",
+      "sha256": "64901fa7459df499a16097af91a4cd9c88261625bb1aab27fb2f2bb11233e32a",
       "version": "0.1.0"
     },
     "clinical-health-base": {
@@ -39,7 +39,7 @@
         "physical-science-base"
       ],
       "file": "cosmology.ontology.yaml",
-      "sha256": "d75532a2e35f3416913a2d20ec4ca10dd69d5acd0041341e949967e891d75f31",
+      "sha256": "2419a900e9184e274066a702e30f494ab0ea3499df024e2677f80a8add4ee070",
       "version": "0.1.0"
     },
     "data-engineering": {
@@ -64,7 +64,7 @@
         "clinical-health-base"
       ],
       "file": "fitness.ontology.yaml",
-      "sha256": "246fb0140077ea92180fe20ac8752057e1f1e8ca48a216f6624ba420a150e3e5",
+      "sha256": "5b95e1502a88c7fb89c758f988b96838f860a24b07c81ed219c07c6a80241c8b",
       "version": "0.1.0"
     },
     "health": {
@@ -72,7 +72,7 @@
         "clinical-health-base"
       ],
       "file": "health.ontology.yaml",
-      "sha256": "603aa6e4a03204c013ae4fc6afd7f33913084ccc5fbe2ebcaeca5c83e56b8cf6",
+      "sha256": "4a0b3cb16da6cd5f83516c69e6c33dfae61e9d1c96587e0968c92156cc5499b3",
       "version": "0.1.0"
     },
     "market-research": {
@@ -120,7 +120,7 @@
         "research"
       ],
       "file": "physical-science-base.ontology.yaml",
-      "sha256": "cfa08d098ff784ef51aa7bcbed98b73baadc4f7651783e0fa9b98cf588852604",
+      "sha256": "04b10b00e2f2c6f4e1bab4f7be5bdd83695ee011c7ff3b1f3386f9b5f4ed7e9e",
       "version": "0.1.0"
     },
     "plasma-physics": {
@@ -128,7 +128,7 @@
         "physical-science-base"
       ],
       "file": "plasma-physics.ontology.yaml",
-      "sha256": "5d0bb0bd53ab18a50d888b6f07225914bf6989912d81f5c1fdafd8a9fdb1473e",
+      "sha256": "57922368f25cb05c4c3a1c009eeabddf25698edfef3f604c9da68812dd7e1fc8",
       "version": "0.1.0"
     },
     "platform-engineering": {

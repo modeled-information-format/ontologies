@@ -190,8 +190,7 @@
       "schema": {
         "required": [
           "pacs_code",
-          "title",
-          "scheme_code"
+          "title"
         ],
         "properties": {
           "pacs_code": {
@@ -202,10 +201,6 @@
           },
           "process_type": {
             "type": "string"
-          },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
           }
         }
       }
@@ -227,8 +222,7 @@
       "schema": {
         "required": [
           "pacs_code",
-          "title",
-          "scheme_code"
+          "title"
         ],
         "properties": {
           "pacs_code": {
@@ -239,10 +233,6 @@
           },
           "property_type": {
             "type": "string"
-          },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
           }
         }
       }
@@ -264,8 +254,7 @@
       "schema": {
         "required": [
           "pacs_code",
-          "title",
-          "scheme_code"
+          "title"
         ],
         "properties": {
           "pacs_code": {
@@ -273,10 +262,6 @@
           },
           "title": {
             "type": "string"
-          },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
           }
         }
       }
@@ -298,8 +283,7 @@
       "schema": {
         "required": [
           "pacs_code",
-          "title",
-          "scheme_code"
+          "title"
         ],
         "properties": {
           "pacs_code": {
@@ -310,10 +294,6 @@
           },
           "instability_type": {
             "type": "string"
-          },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
           }
         }
       }
@@ -335,8 +315,7 @@
       "schema": {
         "required": [
           "pacs_code",
-          "title",
-          "scheme_code"
+          "title"
         ],
         "properties": {
           "pacs_code": {
@@ -344,10 +323,6 @@
           },
           "title": {
             "type": "string"
-          },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
           }
         }
       }
@@ -369,8 +344,7 @@
       "schema": {
         "required": [
           "pacs_code",
-          "title",
-          "scheme_code"
+          "title"
         ],
         "properties": {
           "pacs_code": {
@@ -378,10 +352,6 @@
           },
           "title": {
             "type": "string"
-          },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
           }
         }
       }
@@ -432,7 +402,6 @@
       "schema": {
         "required": [
           "pacs_code",
-          "device_name",
           "name"
         ],
         "properties": {
@@ -442,15 +411,12 @@
           "configuration_type": {
             "type": "string"
           },
-          "device_name": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Renamed from device_name to match research.ontology.yaml's apparatus field name directly"
           },
           "status": {
             "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "description": "Inherited from research.ontology.yaml's apparatus (same value as device_name)"
           }
         }
       }
@@ -472,25 +438,21 @@
       "schema": {
         "required": [
           "pacs_code",
-          "device_name",
           "name"
         ],
         "properties": {
           "pacs_code": {
             "type": "string"
           },
-          "device_name": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Renamed from device_name to match research.ontology.yaml's apparatus field name directly"
           },
           "laser_power": {
             "type": "number"
           },
           "target_type": {
             "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "description": "Inherited from research.ontology.yaml's apparatus (same value as device_name)"
           }
         }
       }
@@ -523,7 +485,7 @@
           },
           "name": {
             "type": "string",
-            "description": "Inherited from research.ontology.yaml's apparatus (same value as pinch_type)"
+            "description": "The device's own name (e.g. a specific Z-pinch facility name), distinct from pinch_type (the pinch mechanism category); no prior equivalent field existed"
           }
         }
       }
@@ -545,7 +507,6 @@
       "schema": {
         "required": [
           "pacs_code",
-          "scheme_code",
           "title"
         ],
         "properties": {
@@ -555,13 +516,9 @@
           "beam_type": {
             "type": "string"
           },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
-          },
           "title": {
             "type": "string",
-            "description": "Inherited from classification-scheme-entry"
+            "description": "The PACS section's own heading text, distinct from beam_type (a further sub-classification of the beam kind); no prior equivalent field existed"
           }
         }
       }
@@ -583,22 +540,18 @@
       "schema": {
         "required": [
           "pacs_code",
-          "simulation_method",
           "name"
         ],
         "properties": {
           "pacs_code": {
             "type": "string"
           },
-          "simulation_method": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Renamed from simulation_method to match research-procedure's field name directly"
           },
           "code_name": {
             "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "description": "Inherited from research-procedure (same value as simulation_method)"
           }
         }
       }
@@ -620,22 +573,18 @@
       "schema": {
         "required": [
           "pacs_code",
-          "technique_name",
           "name"
         ],
         "properties": {
           "pacs_code": {
             "type": "string"
           },
-          "technique_name": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Renamed from technique_name to match research-procedure's field name directly"
           },
           "measured_quantity": {
             "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "description": "Inherited from research-procedure (same value as technique_name)"
           }
         }
       }
@@ -663,12 +612,9 @@
           "pacs_code": {
             "type": "string"
           },
-          "device_name": {
-            "type": "string"
-          },
           "name": {
             "type": "string",
-            "description": "Inherited from research.ontology.yaml's apparatus (same value as device_name)"
+            "description": "Renamed from device_name to match research.ontology.yaml's apparatus field name directly"
           }
         }
       }
@@ -690,7 +636,6 @@
       "schema": {
         "required": [
           "pacs_code",
-          "scheme_code",
           "title"
         ],
         "properties": {
@@ -700,13 +645,9 @@
           "application_domain": {
             "type": "string"
           },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
-          },
           "title": {
             "type": "string",
-            "description": "Inherited from classification-scheme-entry"
+            "description": "The PACS section's own heading text, distinct from application_domain (the specific application area); no prior equivalent field existed"
           }
         }
       }
@@ -728,7 +669,6 @@
       "schema": {
         "required": [
           "pacs_code",
-          "scheme_code",
           "title"
         ],
         "properties": {
@@ -738,13 +678,9 @@
           "discharge_type": {
             "type": "string"
           },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
-          },
           "title": {
             "type": "string",
-            "description": "Inherited from classification-scheme-entry"
+            "description": "The PACS section's own heading text, distinct from discharge_type (the specific discharge mechanism); no prior equivalent field existed"
           }
         }
       }
@@ -765,13 +701,13 @@
       ],
       "schema": {
         "required": [
-          "parameter_name",
           "value",
           "variable"
         ],
         "properties": {
-          "parameter_name": {
-            "type": "string"
+          "variable": {
+            "type": "string",
+            "description": "Renamed from parameter_name to match physical-science-base's physical-quantity field name directly"
           },
           "symbol": {
             "type": "string"
@@ -781,10 +717,6 @@
           },
           "unit": {
             "type": "string"
-          },
-          "variable": {
-            "type": "string",
-            "description": "Inherited from physical-quantity (same value as parameter_name)"
           }
         }
       }

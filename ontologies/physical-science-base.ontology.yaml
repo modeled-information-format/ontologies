@@ -48,12 +48,12 @@ entity_types:
       - categorized
     schema:
       required:
-        - scheme_code
+        - pacs_code
         - title
       properties:
-        scheme_code:
+        pacs_code:
           type: string
-          description: "The classification-scheme code (e.g. a PACS code)"
+          description: "The PACS classification code. Named for the concrete scheme, not genericized to scheme_code: every current subtype (plasma-physics and cosmology) grounds exclusively in PACS, and this registry defers speculative generalization until a second scheme actually needs the shape (ADR-0003's own precedent)"
         title:
           type: string
         parent_section:
@@ -73,19 +73,16 @@ entity_types:
       - measured
     schema:
       required:
-        - parameter_name
         - value
         - variable
       properties:
-        parameter_name:
+        variable:
           type: string
+          description: "The measured variable's name, matching research.ontology.yaml's observation field name directly (no separate parameter_name: same concept, one field)"
         symbol:
           type: string
         value:
           type: number
-        variable:
-          type: string
-          description: "Inherited from research.ontology.yaml's observation: the measured variable name (same value as parameter_name)"
         unit:
           type: string
     source_vocab: "PPPL/NIST plasma-physics nomenclature; IAU/PACS observational-cosmology nomenclature"

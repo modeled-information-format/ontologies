@@ -163,13 +163,12 @@ entity_types:
     base: semantic
     traits: [cited, dated, measured]
     schema:
-      required: [met_value, variable, value]
+      required: [variable, value]
       properties:
-        met_value: { type: number }
+        value: { type: number, description: "Renamed from met_value to match research.ontology.yaml's observation field name directly" }
         measurement_type: { type: string }
         source_study_count: { type: integer }
-        variable: { type: string, description: "Inherited from research.ontology.yaml's observation: the measured variable name (i.e. 'MET value')" }
-        value: { type: string, description: "Inherited from observation (same value as met_value)" }
+        variable: { type: string, description: "The measured variable's name (i.e. 'MET value'); no prior equivalent field existed on met-value" }
     source_vocab: "Compendium of Physical Activities"
     source_class: "MET (metabolic equivalent of task) value field"
     prior_art: "extend research.ontology.yaml `observation` (\"A measured or observed datum produced by a procedure\") -- a MET value is a specialized energy-expenditure measurement datum; entity-inventory.json originally cited scientific.ontology.yaml `measurement`, which is unreachable once fitness extends clinical-health-base instead of scientific directly -- research's observation is the reachable, ADR-0003-intended generic equivalent"
@@ -181,13 +180,12 @@ entity_types:
     base: episodic
     traits: [cited, dated, measured]
     schema:
-      required: [step_count, observation_id, code, value]
+      required: [observation_id, code, value]
       properties:
-        step_count: { type: integer }
+        value: { type: integer, description: "Renamed from step_count to match clinical-observation's field name directly" }
         effective_time_frame: { type: string }
-        observation_id: { type: string, description: "Inherited from clinical-observation" }
-        code: { type: string, description: "Inherited from clinical-observation: omh:step-count" }
-        value: { type: string, description: "Inherited from clinical-observation (same value as step_count)" }
+        observation_id: { type: string, description: "Record identifier for this reading (no prior equivalent field existed)" }
+        code: { type: string, description: "The Open mHealth schema identifier: omh:step-count" }
     source_vocab: "Open mHealth"
     source_class: "omh:step-count schema"
     prior_art: "reuse -- direct clone of the named omh:step-count schema; subtypes clinical-health-base's clinical-observation per finding-intermediary-layering-spec.json (Open mHealth's schema design deliberately mirrors FHIR Observation's unit-value-time shape)"
@@ -199,14 +197,13 @@ entity_types:
     base: episodic
     traits: [cited, dated, measured]
     schema:
-      required: [heart_rate_bpm, observation_id, code, value]
+      required: [observation_id, code, value]
       properties:
-        heart_rate_bpm: { type: number }
+        value: { type: number, description: "Renamed from heart_rate_bpm to match clinical-observation's field name directly" }
         temporal_relationship_to_physical_activity: { type: string }
         effective_time_frame: { type: string }
-        observation_id: { type: string, description: "Inherited from clinical-observation" }
-        code: { type: string, description: "Inherited from clinical-observation: omh:heart-rate" }
-        value: { type: string, description: "Inherited from clinical-observation (same value as heart_rate_bpm)" }
+        observation_id: { type: string, description: "Record identifier for this reading (no prior equivalent field existed)" }
+        code: { type: string, description: "The Open mHealth schema identifier: omh:heart-rate" }
     source_vocab: "Open mHealth"
     source_class: "omh:heart-rate schema"
     prior_art: "reuse -- direct clone of the named omh:heart-rate schema; subtypes clinical-health-base's clinical-observation"
@@ -218,13 +215,12 @@ entity_types:
     base: episodic
     traits: [cited, dated, measured]
     schema:
-      required: [kcal_value, observation_id, code, value]
+      required: [observation_id, code, value]
       properties:
-        kcal_value: { type: number }
+        value: { type: number, description: "Renamed from kcal_value to match clinical-observation's field name directly" }
         effective_time_interval: { type: string }
-        observation_id: { type: string, description: "Inherited from clinical-observation" }
-        code: { type: string, description: "Inherited from clinical-observation: omh:calories_burned:2.0" }
-        value: { type: string, description: "Inherited from clinical-observation (same value as kcal_value)" }
+        observation_id: { type: string, description: "Record identifier for this reading (no prior equivalent field existed)" }
+        code: { type: string, description: "The Open mHealth schema identifier: omh:calories_burned:2.0" }
     source_vocab: "Open mHealth"
     source_class: "omh:calories_burned:2.0 schema"
     prior_art: "reuse -- direct clone of the named omh:calories_burned:2.0 schema; subtypes clinical-health-base's clinical-observation"
@@ -236,13 +232,12 @@ entity_types:
     base: episodic
     traits: [cited, dated, measured]
     schema:
-      required: [weight_value, observation_id, code, value]
+      required: [observation_id, code, value]
       properties:
-        weight_value: { type: number }
+        value: { type: number, description: "Renamed from weight_value to match clinical-observation's field name directly" }
         unit: { type: string }
-        observation_id: { type: string, description: "Inherited from clinical-observation" }
-        code: { type: string, description: "Inherited from clinical-observation: omh:body-weight" }
-        value: { type: string, description: "Inherited from clinical-observation (same value as weight_value)" }
+        observation_id: { type: string, description: "Record identifier for this reading (no prior equivalent field existed)" }
+        code: { type: string, description: "The Open mHealth schema identifier: omh:body-weight" }
         effective_time_frame: { type: string }
     source_vocab: "Open mHealth"
     source_class: "omh:body-weight schema"

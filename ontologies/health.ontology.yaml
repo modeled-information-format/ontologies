@@ -186,13 +186,12 @@ entity_types:
     base: semantic
     traits: [cited, dated, categorized]
     schema:
-      required: [extension_code, qualifies_stem, stem_code, title]
+      required: [extension_code, stem_code, title]
       properties:
         extension_code: { type: string }
-        qualifies_stem: { type: string }
+        stem_code: { type: string, description: "Renamed from qualifies_stem to match diagnostic-classification-entry's field name directly: the stem code this qualifier attaches to" }
         dimension_type: { type: string }
-        stem_code: { type: string, description: "Inherited from diagnostic-classification-entry: the stem code this qualifier attaches to (same value as qualifies_stem)" }
-        title: { type: string, description: "Inherited from diagnostic-classification-entry" }
+        title: { type: string, description: "A human-readable label for this specific qualifier (e.g. 'Severe'), distinct from dimension_type (which axis it qualifies: severity, temporality, etiology, etc.)" }
     source_vocab: "WHO ICD-11"
     source_class: "ICD-11-MMS extension codes (severity, temporality, etiology, anatomy, histopathology, causality)"
     prior_art: "mint -- no MIF equivalent for a diagnosis-qualifying extension/cluster code exists; subtypes clinical-health-base's diagnostic-classification-entry per finding-intermediary-layering-spec.json"

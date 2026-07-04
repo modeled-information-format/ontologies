@@ -440,27 +440,18 @@
       "schema": {
         "required": [
           "pacs_code",
-          "model_name",
-          "scheme_code",
           "title"
         ],
         "properties": {
           "pacs_code": {
             "type": "string"
           },
-          "model_name": {
-            "type": "string"
+          "title": {
+            "type": "string",
+            "description": "Renamed from model_name to match classification-scheme-entry's field name directly"
           },
           "theory_class": {
             "type": "string"
-          },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
-          },
-          "title": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as model_name)"
           }
         }
       }
@@ -481,13 +472,13 @@
       ],
       "schema": {
         "required": [
-          "parameter_name",
           "value",
           "variable"
         ],
         "properties": {
-          "parameter_name": {
-            "type": "string"
+          "variable": {
+            "type": "string",
+            "description": "Renamed from parameter_name to match physical-science-base's physical-quantity field name directly"
           },
           "value": {
             "type": "number"
@@ -497,10 +488,6 @@
           },
           "measurement_epoch": {
             "type": "string"
-          },
-          "variable": {
-            "type": "string",
-            "description": "Inherited from physical-quantity (same value as parameter_name)"
           }
         }
       }
@@ -522,8 +509,6 @@
       "schema": {
         "required": [
           "pacs_code",
-          "structure_type",
-          "scheme_code",
           "title"
         ],
         "properties": {
@@ -536,13 +521,9 @@
           "scale": {
             "type": "string"
           },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
-          },
           "title": {
             "type": "string",
-            "description": "Inherited from classification-scheme-entry"
+            "description": "The PACS section's own heading text, distinct from structure_type (the specific structure category); no prior equivalent field existed"
           }
         }
       }
@@ -564,8 +545,6 @@
       "schema": {
         "required": [
           "pacs_code",
-          "process_type",
-          "scheme_code",
           "title"
         ],
         "properties": {
@@ -578,13 +557,9 @@
           "galaxy_class": {
             "type": "string"
           },
-          "scheme_code": {
-            "type": "string",
-            "description": "Inherited from classification-scheme-entry (same value as pacs_code)"
-          },
           "title": {
             "type": "string",
-            "description": "Inherited from classification-scheme-entry"
+            "description": "The PACS section's own heading text, distinct from process_type (the specific evolutionary process); no prior equivalent field existed"
           }
         }
       }
@@ -605,32 +580,20 @@
       ],
       "schema": {
         "required": [
-          "radiation_type",
-          "parameter_name",
-          "value",
-          "variable"
+          "variable",
+          "value"
         ],
         "properties": {
-          "radiation_type": {
-            "type": "string"
-          },
-          "temperature_k": {
-            "type": "number"
-          },
-          "anisotropy_spectrum": {
-            "type": "string"
-          },
-          "parameter_name": {
-            "type": "string",
-            "description": "Inherited from physical-quantity (same value as radiation_type)"
-          },
           "variable": {
             "type": "string",
-            "description": "Inherited from physical-quantity (same value as radiation_type)"
+            "description": "Renamed from radiation_type to match physical-science-base's physical-quantity field name directly"
           },
           "value": {
             "type": "number",
-            "description": "Inherited from physical-quantity (same value as temperature_k)"
+            "description": "Renamed from temperature_k to match physical-science-base's physical-quantity field name directly"
+          },
+          "anisotropy_spectrum": {
+            "type": "string"
           }
         }
       }
