@@ -2,7 +2,7 @@
 id: changelog-ontology-corpus
 type: episodic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-06-30T12:00:00Z'
+modified: '2026-07-04T12:00:00Z'
 namespace: changelog/ontology-corpus
 title: Changelog
 tags:
@@ -36,6 +36,38 @@ Individual ontologies carry their own `version` in their YAML `ontology:` block;
 this file tracks the corpus as a whole.
 
 ## [Unreleased]
+
+### Added
+
+- `clinical-health-base` (0.1.0) and `physical-science-base` (0.1.0)
+  intermediary base layers (both `extends: [research]`): `clinical-record-subject`,
+  `clinical-encounter`, `clinical-observation`, and `diagnostic-classification-entry`
+  under `clinical-health-base`; `classification-scheme-entry` and
+  `physical-quantity` under `physical-science-base`.
+- Five domain ontologies extending those bases: `cardiology`, `health`, and
+  `fitness` (0.1.0 each, `extends: [clinical-health-base]`); `plasma-physics`
+  and `cosmology` (0.1.0 each, `extends: [physical-science-base]`).
+- 75 grounded entity types across the five domain packs, sourced from WHO
+  ICD-11/ICF, HL7 FHIR, LOINC, SNOMED CT, ACSM, the Compendium of Physical
+  Activities, Open mHealth, PACS, IAU, IVOA, and the Unified Astronomy
+  Thesaurus.
+
+### Fixed
+
+- Subtype `required`-field substitutability violations pre-dating this
+  release in `scientific` (8), `regenerative-agriculture` (3),
+  `regenerative-agriculture-research` (4), and `observability` (2): a
+  subtype's `required` set now includes every field its parent requires,
+  either by renaming a true naming synonym to the parent's field name or by
+  adding a genuinely distinct field the child never modeled.
+
+### Changed
+
+- `scientific` (0.2.1 -> 0.3.0), `regenerative-agriculture` (0.2.0 -> 0.3.0),
+  `regenerative-agriculture-research` (0.4.0 -> 0.5.0), and `observability`
+  (0.1.0 -> 0.2.0) each take a minor version bump for the field renames
+  above: breaking for a consumer that re-vendors and still reads the old
+  field name, so a patch bump would understate the change.
 
 ## [0.2.1] - 2026-06-30
 
