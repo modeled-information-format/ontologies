@@ -106,6 +106,15 @@
       "sha256": "3ee2efa82d97dd6715fdee93e6162365ab9f82beb061828d4175d1b839d7301b",
       "version": "1.0.0"
     },
+    "non-ionizing-radiation": {
+      "extends": [
+        "physical-science-base",
+        "clinical-health-base"
+      ],
+      "file": "non-ionizing-radiation.ontology.yaml",
+      "sha256": "3967fc5ba27d38037efdf2c6ea30f96b34dfda654f99a9f74900d5208f473c9f",
+      "version": "0.1.0"
+    },
     "observability": {
       "extends": [
         "engineering-base",
