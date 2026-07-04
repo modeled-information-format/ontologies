@@ -2,7 +2,7 @@
 id: changelog-ontology-corpus
 type: episodic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-06-30T12:00:00Z'
+modified: '2026-07-04T12:00:00Z'
 namespace: changelog/ontology-corpus
 title: Changelog
 tags:
@@ -36,6 +36,49 @@ Individual ontologies carry their own `version` in their YAML `ontology:` block;
 this file tracks the corpus as a whole.
 
 ## [Unreleased]
+
+## [0.2.2] - 2026-07-04
+
+### Added
+
+- `clinical-health-base` (0.1.0) and `physical-science-base` (0.1.0)
+  intermediary base layers (both `extends: [research]`): `clinical-record-subject`,
+  `clinical-encounter`, `clinical-observation`, and `diagnostic-classification-entry`
+  under `clinical-health-base`; `classification-scheme-entry` and
+  `physical-quantity` under `physical-science-base`.
+- Five domain ontologies extending those bases: `cardiology`, `health`, and
+  `fitness` (0.1.0 each, `extends: [clinical-health-base]`); `plasma-physics`
+  and `cosmology` (0.1.0 each, `extends: [physical-science-base]`).
+- 75 grounded entity types across the five domain packs, sourced from WHO
+  ICD-11/ICF, HL7 FHIR, LOINC, SNOMED CT, ACSM, the Compendium of Physical
+  Activities, Open mHealth, PACS, IAU, IVOA, and the Unified Astronomy
+  Thesaurus.
+
+### Fixed
+
+- Subtype `required`-field substitutability violations pre-dating this
+  release in `scientific` (8), `regenerative-agriculture` (3),
+  `regenerative-agriculture-research` (4), and `observability` (2): a
+  subtype's `required` set now includes every field its parent requires,
+  either by renaming a true naming synonym to the parent's field name or by
+  adding a genuinely distinct field the child never modeled. Closes #26.
+- `health`'s own `observation` entity type collided with
+  `research.ontology.yaml`'s own `observation` type once resolved through
+  `health`'s extends chain, both projecting to the same global JSON-LD id
+  (`mif:entityType/observation`) with incompatible schemas. Renamed to
+  `fhir-observation`.
+- The `patient` discovery pattern in `health.ontology.yaml` suggested a
+  namespace path declared under the wrong cognitive-triad branch
+  (`_semantic/health-clinical-record` instead of the actual
+  `_episodic/health-clinical-record`), a broken discovery-routing path.
+
+### Changed
+
+- `scientific` (0.2.1 -> 0.3.0), `regenerative-agriculture` (0.2.0 -> 0.3.0),
+  `regenerative-agriculture-research` (0.4.0 -> 0.5.0), and `observability`
+  (0.1.0 -> 0.2.0) each take a minor version bump for the field renames
+  above: breaking for a consumer that re-vendors and still reads the old
+  field name, so a patch bump would understate the change.
 
 ## [0.2.1] - 2026-06-30
 
@@ -95,7 +138,8 @@ no functional changes from 0.2.0. See [0.2.0] below for the full release notes.
 
 - Relicensed the repository under MIT.
 
-[Unreleased]: https://github.com/modeled-information-format/ontologies/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/modeled-information-format/ontologies/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/modeled-information-format/ontologies/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/modeled-information-format/ontologies/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/modeled-information-format/ontologies/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/modeled-information-format/ontologies/releases/tag/v0.1.0
