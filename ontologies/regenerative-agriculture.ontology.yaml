@@ -7,8 +7,8 @@
 #
 # Compatible with: mif-base v1.0.0, shared-traits v1.0.0
 #
-# Version: 0.1.0
-# Last Updated: 2026-01-26
+# Version: 0.3.0
+# Last Updated: 2026-07-04
 #
 # Sources:
 # - Rodale Institute Regenerative Organic Certified (ROC) Standards
@@ -26,7 +26,7 @@
 
 ontology:
   id: regenerative-agriculture
-  version: "0.2.0"
+  version: "0.3.0"
   description: "Regenerative agriculture ontology with ecosystem coverage"
   schema_url: >-
     https://mif-spec.dev/schema/ontology/ontology.schema.json
@@ -198,10 +198,14 @@ entity_types:
       required:
         - field_id
         - sample_date
+        - name
       properties:
         field_id:
           type: string
           description: "Reference to field"
+        name:
+          type: string
+          description: "Inherited from agriculture.ontology.yaml's soil-unit: the soil unit's human-readable name (e.g. 'North 40 - back terrace'), distinct from field_id (the internal reference)"
         sample_date:
           type: string
           format: date
@@ -406,10 +410,14 @@ entity_types:
         - tag_id
         - species
         - herd_id
+        - name
       properties:
         tag_id:
           type: string
           description: "Ear tag or RFID"
+        name:
+          type: string
+          description: "Inherited from agriculture.ontology.yaml's managed-animal: the animal's given or barn name (e.g. 'Bessie'), distinct from tag_id (the ear tag or RFID identifier)"
         species:
           type: string
         breed:
@@ -824,11 +832,15 @@ entity_types:
         - field_id
         - crop_id
         - harvest_date
+        - cultivar_ref
       properties:
         field_id:
           type: string
         crop_id:
           type: string
+        cultivar_ref:
+          type: string
+          description: "Inherited from agriculture.ontology.yaml's harvest-event: the specific cultivar/variety harvested (e.g. 'Silver Queen sweet corn'), distinct from crop_id (the general crop identity)"
         harvest_date:
           type: string
           format: date
