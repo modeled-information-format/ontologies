@@ -35,7 +35,7 @@
 
 ontology:
   id: regenerative-agriculture-research
-  version: "0.5.0"
+  version: "0.6.0"
   description: >-
     Agriculture / farm research ontology — research-oriented entity types for husbandry, agronomy, farm infrastructure, grants, and equipment, organized as an IS-A tree rooted in the inherited generic/engineering supertypes.
   schema_url: >-

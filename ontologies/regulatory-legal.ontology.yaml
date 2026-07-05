@@ -1,7 +1,7 @@
 ---
 ontology:
   id: regulatory-legal
-  version: 0.2.0
+  version: 0.3.0
   description: Regulatory and legal domain ontology — acts, obligations, authorities, jurisdictions, contracts,
     sanctions
   extends:

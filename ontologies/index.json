@@ -47,8 +47,8 @@
         "engineering-base"
       ],
       "file": "data-engineering.ontology.yaml",
-      "sha256": "d11cf2d39edf904ec36ec47d1170877bc9e91901ca529630a43b82c085642bed",
-      "version": "0.2.0"
+      "sha256": "c44a9bf8a83b862baa37c933b3607615f83ff7914014651ebca6884e2c673270",
+      "version": "0.3.0"
     },
     "engineering-base": {
       "extends": [
@@ -89,8 +89,8 @@
         "shared-traits"
       ],
       "file": "market-research.ontology.yaml",
-      "sha256": "288aa9ecdcf5b2d0a15f5b04061dcfc16ea57a83bcdf601da8de2da49f54823a",
-      "version": "0.2.0"
+      "sha256": "02a9f85bb49b52ed078dfb7330190472495c961d6c6abc5a6725a47f774d6000",
+      "version": "0.3.0"
     },
     "mif-base": {
       "extends": [],
@@ -129,8 +129,8 @@
         "mif-generic"
       ],
       "file": "observability.ontology.yaml",
-      "sha256": "326b0337c90ae673d7eaf15aff5b6920e09f492f946b179f6035c4045174b138",
-      "version": "0.2.0"
+      "sha256": "5a8d2a95b6f66d109c7ddaf56d8569bf9c2cab7e7c8d2cc4c0c54d265e774f56",
+      "version": "0.3.0"
     },
     "physical-science-base": {
       "extends": [
@@ -162,8 +162,8 @@
         "mif-generic"
       ],
       "file": "psycholinguistics.ontology.yaml",
-      "sha256": "c73f95a05c1f53ebee4820c59b7fbb09dbb49f53f69c4271c9cb7e75a6bab21f",
-      "version": "0.1.0"
+      "sha256": "a0d456f46b5561b4d78b212395d782196f29f4d7de78f99c3fc22a463464513f",
+      "version": "0.2.0"
     },
     "regenerative-agriculture": {
       "extends": [
@@ -181,8 +181,8 @@
         "mif-generic"
       ],
       "file": "regenerative-agriculture-research.ontology.yaml",
-      "sha256": "85eb5c4147ff1627a89e4e63b73c33222e36f104f8116cd416a9fd198c8cb52a",
-      "version": "0.5.0"
+      "sha256": "a9ec04efa0819c4d8fa22417f9e4ea70b8378a23a1a69e0c918e668a93adf528",
+      "version": "0.6.0"
     },
     "regulatory-legal": {
       "extends": [
@@ -190,8 +190,8 @@
         "shared-traits"
       ],
       "file": "regulatory-legal.ontology.yaml",
-      "sha256": "cd754165b959449c79ab0ab4e3361581fe81a3a77cdef1e6f825b0bfdcb99997",
-      "version": "0.2.0"
+      "sha256": "b8648edcb0677d4b34fad252b80ec07fc9a4199e2e5f44f59d72f75b3c03d732",
+      "version": "0.3.0"
     },
     "research": {
       "extends": [
@@ -223,16 +223,16 @@
         "engineering-base"
       ],
       "file": "software-engineering.ontology.yaml",
-      "sha256": "8adb255835cdcb0efe1c9df9b6ca257eaafeaf59c3fb9d392fb465e25a7113c1",
-      "version": "0.5.0"
+      "sha256": "a17ff6885a5fa97778e0f54fdb0f85ca2f3487502d43ae249e76ff02131f9e78",
+      "version": "0.6.0"
     },
     "software-security": {
       "extends": [
         "engineering-base"
       ],
       "file": "software-security.ontology.yaml",
-      "sha256": "dd66420c47ec60b4cb281de82ab1174520a7aea4146fa886d99c334d41b34a4e",
-      "version": "0.2.0"
+      "sha256": "0be590ad312777e51646e85505a99a4f2594a714145f6b53c91a01d67c1f89c2",
+      "version": "0.3.0"
     },
     "trend-analysis": {
       "extends": [
@@ -240,8 +240,8 @@
         "shared-traits"
       ],
       "file": "trend-analysis.ontology.yaml",
-      "sha256": "29b939990080ab6d4b754e2984d5ff8c0f5b356887439f91fcfb19ee62a8cf0c",
-      "version": "0.2.0"
+      "sha256": "393fce03a43a48d92e4bbe09148de6623dd031d06fb013aa109163ec76dd5999",
+      "version": "0.3.0"
     }
   },
   "schema": "mif-ontology-index/v1",

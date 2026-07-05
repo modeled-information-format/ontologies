@@ -1,7 +1,7 @@
 ---
 ontology:
   id: market-research
-  version: 0.2.0
+  version: 0.3.0
   description: Market-research domain ontology — segments, competitors, sizing, demand, intelligence
   extends:
   - mif-base

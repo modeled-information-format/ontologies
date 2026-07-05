@@ -38,7 +38,7 @@
 
 ontology:
   id: software-security
-  version: "0.2.0"
+  version: "0.3.0"
   description: "Software-security domain ontology — the software-facing slice of security: threats, vulnerabilities, controls, actors, indicators, supply-chain, incidents, frameworks"
   extends:
     - engineering-base

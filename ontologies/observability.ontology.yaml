@@ -22,7 +22,7 @@
 
 ontology:
   id: observability
-  version: "0.2.0"
+  version: "0.3.0"
   description: "Observability-platform domain ontology — services, telemetry signals, capability comparisons, service-ownership registries, migration patterns, market positioning, and roadmap signals, organized as an IS-A tree rooted in generic types"
   schema_url: >-
     https://mif-spec.dev/schema/ontology/ontology.schema.json

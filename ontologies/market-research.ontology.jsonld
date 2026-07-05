@@ -67,6 +67,18 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "aliases": {
+      "@id": "skos:altLabel",
+      "@container": "@set"
+    },
+    "exemplars": {
+      "@id": "skos:example",
+      "@container": "@set"
+    },
+    "negative_examples": {
+      "@id": "https://mif-spec.dev/ns/ontology#negativeExample",
+      "@container": "@set"
+    },
     "fields": {
       "@id": "mif:hasField",
       "@container": "@id"
@@ -126,7 +138,7 @@
   "@id": "mif:ontology/market-research",
   "@type": "mif:Ontology",
   "identifier": "market-research",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Market-research domain ontology \u2014 segments, competitors, sizing, demand, intelligence",
   "namespaces": {
     "semantic": {
@@ -186,6 +198,16 @@
       "name": "segment",
       "base": "semantic",
       "description": "A market segment \u2014 a defined slice of a market",
+      "aliases": [
+        "market segment",
+        "buyer segment",
+        "customer segment",
+        "target segment"
+      ],
+      "exemplars": [
+        "A structured knowledge infrastructure product maps to several distinct buyer segments, each with its own pain point and willingness to pay",
+        "Enterprise buyers have shifted decisively toward buying commercial software-as-a-service rather than building it in-house"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -560,6 +582,17 @@
       "name": "market-intelligence-report",
       "base": "semantic",
       "description": "A market-intelligence report or analysis",
+      "aliases": [
+        "market intelligence brief",
+        "competitive intelligence report",
+        "industry analyst report",
+        "market research report"
+      ],
+      "exemplars": [
+        "Pricing signals from adjacent enterprise software markets establish a willingness-to-pay range for a new category of infrastructure product",
+        "An analyst quadrant report evaluates competing vendors in one category across execution and vision criteria, naming market leaders",
+        "An annual industry index tracks aggregated billing data across hundreds of companies to compare single- versus multi-model revenue architectures"
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/versioned",

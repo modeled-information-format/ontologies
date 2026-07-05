@@ -21,7 +21,7 @@
 
 ontology:
   id: psycholinguistics
-  version: "0.1.0"
+  version: "0.2.0"
   description: >-
     Psycholinguistics and computational stylometry ontology — constructs,
     features, indices, protocols, instruments, frameworks, and references for

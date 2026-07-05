@@ -67,6 +67,18 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "aliases": {
+      "@id": "skos:altLabel",
+      "@container": "@set"
+    },
+    "exemplars": {
+      "@id": "skos:example",
+      "@container": "@set"
+    },
+    "negative_examples": {
+      "@id": "https://mif-spec.dev/ns/ontology#negativeExample",
+      "@container": "@set"
+    },
     "fields": {
       "@id": "mif:hasField",
       "@container": "@id"
@@ -126,7 +138,7 @@
   "@id": "mif:ontology/data-engineering",
   "@type": "mif:Ontology",
   "identifier": "data-engineering",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Data engineering domain ontology",
   "namespaces": {
     "semantic": {
@@ -179,6 +191,18 @@
       "name": "data-contract",
       "base": "semantic",
       "description": "A data contract: an enforceable agreement on schema, semantics, and SLAs between data producers and consumers",
+      "aliases": [
+        "data contract specification",
+        "schema contract",
+        "data contract policy",
+        "interface contract",
+        "data agreement"
+      ],
+      "exemplars": [
+        "A contract-native data-contract specification enforces a required root-level field set validated as a pre-merge continuous-integration gate",
+        "A streaming-native data contract enumerates a fixed set of schema-compatibility modes and a fixed set of message-direction actions",
+        "A stewardship-overlay data contract adds an approval-state and ownership fields not present in purely technical enforcement contracts"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -212,6 +236,17 @@
       "name": "data-product",
       "base": "semantic",
       "description": "A data product: a discoverable, governed, consumable data asset with an owner and interface",
+      "aliases": [
+        "data product",
+        "data mesh product",
+        "data-as-a-product asset",
+        "productized dataset"
+      ],
+      "exemplars": [
+        "An internal data-mesh project matured into a commercial cloud-native data marketplace serving institutional customers",
+        "A data mesh spanning many domains and hundreds of data products documented tens of millions in business benefit",
+        "A financial-technology company treats data as a product across several consumer-facing brands serving a large customer base"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -245,6 +280,20 @@
       "name": "data-governance-policy",
       "base": "semantic",
       "description": "A governance policy or control: a rule governing access, retention, classification, or stewardship of data",
+      "aliases": [
+        "access control policy",
+        "retention policy",
+        "data classification",
+        "masking policy",
+        "stewardship policy",
+        "tagging policy"
+      ],
+      "exemplars": [
+        "Row filters and column masks evaluated at query time via governed tags",
+        "Tiered storage lifecycle rules with regulation-aligned multi-year retention bands",
+        "A three-tier classification of sensitive records applied at the column level",
+        "Required at-birth documentation and ownership tags that hard-fail the build when missing"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -278,6 +327,18 @@
       "name": "data-quality-rule",
       "base": "semantic",
       "description": "A data quality rule, check, or assertion applied to data to detect or prevent defects",
+      "aliases": [
+        "data quality check",
+        "validation rule",
+        "data quality assertion",
+        "quality gate rule",
+        "data integrity rule"
+      ],
+      "exemplars": [
+        "A sync-lag failure mode where a record exists in one system but is missing in a downstream system is already encoded as a test scenario",
+        "A reconciliation service level objective sets maximum freshness lag between two systems and a minimum availability percentage",
+        "A regression-test matrix for identity data covers several already-implemented failure scenarios plus gaps identified from real incidents"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -311,6 +372,19 @@
       "name": "storage-architecture",
       "base": "semantic",
       "description": "A storage or scaling architecture for data (e.g. Postgres sharding, Snowflake multi-tenant isolation, lakehouse table format)",
+      "aliases": [
+        "data storage architecture",
+        "database architecture",
+        "storage topology",
+        "data platform architecture",
+        "storage design"
+      ],
+      "exemplars": [
+        "A tier-based provisioning scheme encodes isolation level, compute sizing, and clone strategy per tenant tier in one declarative source",
+        "Multiple overlapping identity stores are joined by sync processes with no single declared system of record per attribute",
+        "A dual-path staging design splits an old and new export path, both required to remain consistent to prevent data-quality errors",
+        "Self-managed clustered database high availability requires explicit replication and failover configuration a managed cloud service would otherwise automate"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -344,6 +418,19 @@
       "name": "pipeline-pattern",
       "base": "procedural",
       "description": "A pipeline or data-movement pattern (e.g. ETL/ELT, streaming, write-audit-publish, reverse-ETL)",
+      "aliases": [
+        "data pipeline pattern",
+        "pipeline architecture",
+        "ingestion pattern",
+        "data-flow pattern",
+        "processing pipeline"
+      ],
+      "exemplars": [
+        "A five-stage ingest-profile-validate-observe-remediate pipeline is the interlock spine every other enforcement pattern maps onto",
+        "Contract-native enforcement places the quality gate at pre-merge continuous integration using a declarative data contract",
+        "Streaming-native enforcement stages writes on an audit branch and only publishes them after data-quality checks pass",
+        "Stewardship-overlay enforcement routes proposed schema or contract changes through a human steward's approval before they take effect"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -373,6 +460,20 @@
       "name": "data-platform",
       "base": "semantic",
       "description": "A named data platform, tool, catalog, or engine (e.g. Snowflake, Postgres, dbt, Airflow, Kafka, Iceberg, Unity Catalog)",
+      "aliases": [
+        "data warehouse",
+        "data catalog",
+        "data quality tool",
+        "lakehouse engine",
+        "streaming platform",
+        "data tooling"
+      ],
+      "exemplars": [
+        "An open-source data quality framework with declarative check definitions",
+        "A cloud data warehouse feature reaching general availability with native test integration",
+        "A catalog offering branch-like transactional versioning across multiple tables",
+        "A contract validation tool that emits pipeline annotations and diffs versions for breaking changes"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
