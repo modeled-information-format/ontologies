@@ -1,7 +1,7 @@
 ---
 ontology:
   id: trend-analysis
-  version: 0.2.0
+  version: 0.3.0
   description: Strategic foresight and trend-analysis domain ontology — signals, drivers, trends, scenarios,
     forecasts
   extends:
@@ -40,6 +40,15 @@ namespaces:
 entity_types:
 - name: signal
   description: 'A weak signal: a concrete local artifact or event hinting at change'
+  aliases:
+    - "adoption signal"
+    - "market signal"
+    - "momentum signal"
+    - "trend indicator"
+  exemplars:
+    - "A newly published open specification gains thousands of repository stars within weeks, signaling strong but still unproven practitioner interest"
+    - "A vendor's AI-augmented feature entering open beta with claimed large time savings signals accelerating automation in its category"
+    - "A community's chat-platform membership grows by a meaningful percentage within a year, evidencing accelerating mainstream adoption"
   base: semantic
   traits:
   - cited
@@ -127,6 +136,18 @@ entity_types:
   disposition: mint
 - name: trend
   description: 'A trend: a currently visible direction of change (the canonical generic)'
+  aliases:
+    - "market trend"
+    - "adoption trend"
+    - "industry direction"
+    - "forecast"
+    - "trajectory"
+    - "market signal"
+  exemplars:
+    - "An analyst firm predicts a technology category will reach half of deployments within three years"
+    - "Survey data shows adoption rising year over year while trust declines"
+    - "Global spending in a market segment exceeds a milestone with double-digit growth"
+    - "Vendors consolidate through acquisitions as a product category matures"
   base: semantic
   traits:
   - cited
@@ -212,6 +233,15 @@ entity_types:
   disposition: mint
 - name: emerging-issue
   description: 'An emerging issue: a novel phenomenon gaining recognition before it becomes a trend'
+  aliases:
+    - "emerging risk"
+    - "open research problem"
+    - "unresolved technical issue"
+    - "nascent challenge"
+  exemplars:
+    - "Provenance tracking and temporal validity remain the two hardest unsolved problems for a widely deployed category of AI system"
+    - "A newly public specification differentiates on real technical grounds but is still building adoption against a better-funded competing standard"
+    - "Contract explosion and organizational adoption friction are documented failure modes that drove an entire testing approach's evolution"
   base: semantic
   traits:
   - cited

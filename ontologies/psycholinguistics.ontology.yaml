@@ -21,7 +21,7 @@
 
 ontology:
   id: psycholinguistics
-  version: "0.1.0"
+  version: "0.2.0"
   description: >-
     Psycholinguistics and computational stylometry ontology — constructs,
     features, indices, protocols, instruments, frameworks, and references for
@@ -59,6 +59,15 @@ namespaces:
 entity_types:
   - name: psycholinguistic-construct
     description: "An abstract psycholinguistic or psychological construct measurable via language (e.g. Big Five trait, attachment style)"
+    aliases:
+      - "psycholinguistic trait"
+      - "personality construct"
+      - "cognitive-linguistic construct"
+      - "psychological writing construct"
+    exemplars:
+      - "Style features fall on a spectrum from fully self-reportable, like punctuation preferences, to largely unconscious, like sentence complexity"
+      - "A personality trait correlates with pronoun and emotion-word usage frequency across a large body of analyzed text"
+      - "First-person singular pronoun usage is elevated in self-focused, lower-status, or genuinely emotional writing"
     base: semantic
     subtype_of:
       - concept
@@ -87,6 +96,16 @@ entity_types:
 
   - name: stylometric-feature
     description: "A quantifiable textual feature used in authorship analysis or style profiling (e.g. type-token ratio, function-word frequency)"
+    aliases:
+      - "stylometric marker"
+      - "authorship feature"
+      - "writing-style feature"
+      - "style fingerprint"
+      - "linguistic style marker"
+    exemplars:
+      - "Function word frequency remains a robust, largely unconscious marker of authorship that stays stable across topics"
+      - "The ratio of words used only once in a text indicates a writer's willingness to deploy unique vocabulary"
+      - "Deep-learning models outperform traditional n-gram methods at identifying an author's fingerprint in short text samples"
     base: semantic
     subtype_of:
       - concept
@@ -115,6 +134,15 @@ entity_types:
 
   - name: psychometric-index
     description: "A derived psychometric index or score computed over text or survey responses (e.g. Flesch Reading Ease, LIWC Analytic)"
+    aliases:
+      - "psychometric measure"
+      - "style metric"
+      - "readability index"
+      - "lexical diversity metric"
+    exemplars:
+      - "Tree-based models using measurable stylistic features achieve high accuracy distinguishing human from AI-generated text"
+      - "Two lexical-diversity metrics are considered psychometrically superior to a traditional type-token ratio for measuring vocabulary range"
+      - "A set of syntactic-complexity indices measures sentence length, subordination, and coordination across four structural dimensions"
     base: semantic
     subtype_of:
       - delivery-metric
@@ -142,6 +170,16 @@ entity_types:
 
   - name: elicitation-protocol
     description: "A structured protocol for eliciting language samples or self-report responses for psycholinguistic analysis"
+    aliases:
+      - "interview elicitation protocol"
+      - "survey elicitation method"
+      - "questioning protocol"
+      - "data-elicitation procedure"
+      - "probing protocol"
+    exemplars:
+      - "An AI-conducted adaptive interview produces response data comparable in quality to a human-led interview, with longer average responses"
+      - "A four-stage cognitive model of comprehension, retrieval, judgment, and response mapping explains how respondents process survey questions"
+      - "Long survey instruments risk significant respondent dropout past a certain length, motivating modular section design and pacing strategies"
     base: semantic
     subtype_of:
       - design-pattern
@@ -177,6 +215,15 @@ entity_types:
 
   - name: research-instrument
     description: "A software tool, survey platform, or analysis package used in psycholinguistic research"
+    aliases:
+      - "research toolkit"
+      - "analysis instrument"
+      - "measurement tool"
+      - "academic software tool"
+    exemplars:
+      - "An open-source academic package remains the dominant toolkit for computational stylistic analysis, supporting word and character n-gram extraction"
+      - "A hybrid model combines a psycholinguistic category dictionary with transformer embeddings for interpretable style profiling"
+      - "A latent-space interpolation approach conditions text generation on an arbitrary writing style from only a few samples"
     base: semantic
     subtype_of:
       - technology
@@ -207,6 +254,15 @@ entity_types:
 
   - name: linguistic-framework
     description: "A theoretical or computational framework grounding psycholinguistic research (e.g. LIWC dictionary, Universal Dependencies)"
+    aliases:
+      - "linguistic analysis framework"
+      - "register analysis framework"
+      - "stylistic framework"
+      - "text-analysis framework"
+    exemplars:
+      - "A multidimensional register-analysis framework identifies functional dimensions of text variation through factor analysis of many linguistic features"
+      - "A literature review of a forensic analysis method identifies persistent unresolved methodological gaps in evidence-strength standards"
+      - "A survey of personality-detection methods finds transformer-based models now dominate over earlier bag-of-words approaches"
     base: semantic
     subtype_of:
       - concept
@@ -234,6 +290,16 @@ entity_types:
 
   - name: existing-framework-reference
     description: "A reference to an existing psycholinguistic or stylometric framework for comparative or reuse analysis"
+    aliases:
+      - "reference framework"
+      - "prior-art reference"
+      - "existing tool reference"
+      - "comparable-system reference"
+      - "benchmark framework reference"
+    exemplars:
+      - "A commercial creative-writing tool calibrates its voice model to only a couple of author writing samples"
+      - "An enterprise brand-voice platform enforces granular style-guide rules for a large customer base learning brand voice at scale"
+      - "An AI-text detection tool expanded from binary detection into word- and sentence-level authorship attribution"
     base: semantic
     subtype_of:
       - concept

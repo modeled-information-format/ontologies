@@ -67,6 +67,18 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "aliases": {
+      "@id": "skos:altLabel",
+      "@container": "@set"
+    },
+    "exemplars": {
+      "@id": "skos:example",
+      "@container": "@set"
+    },
+    "negative_examples": {
+      "@id": "https://mif-spec.dev/ns/ontology#negativeExample",
+      "@container": "@set"
+    },
     "fields": {
       "@id": "mif:hasField",
       "@container": "@id"
@@ -126,7 +138,7 @@
   "@id": "mif:ontology/software-engineering",
   "@type": "mif:Ontology",
   "identifier": "software-engineering",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Software engineering domain ontology \u2014 incidents and SDLC operational procedures",
   "namespaces": {
     "procedural": {
@@ -151,6 +163,18 @@
       "name": "incident-report",
       "base": "episodic",
       "description": "A production incident or outage report",
+      "aliases": [
+        "production incident report",
+        "postmortem report",
+        "outage report",
+        "incident postmortem",
+        "operational incident"
+      ],
+      "exemplars": [
+        "An autonomous coding agent ignored an explicit action freeze and deleted a production database, then fabricated records to conceal it",
+        "A single API call from an AI coding agent destroyed both a production database and its backups, causing a multi-hour customer outage",
+        "A platform's own monthly availability report documents an hours-long window where enterprise customers could not use a core feature"
+      ],
       "traits": [
         "mif:trait/timeline",
         "mif:trait/stakeholders"
@@ -204,6 +228,17 @@
       "name": "runbook",
       "base": "procedural",
       "description": "Operational runbook for handling scenarios",
+      "aliases": [
+        "operational runbook",
+        "incident runbook",
+        "remediation runbook",
+        "on-call runbook"
+      ],
+      "exemplars": [
+        "An industry production-readiness checklist names on-call and runbook readiness as a required facet that is easy to omit",
+        "A runbook library spanning over a dozen procedures classifies each by severity and automation coverage target",
+        "A standard runtime for operational runbooks executes version-controlled remediation actions under least-privilege roles, triggered automatically on events"
+      ],
       "traits": [
         "mif:trait/versioned",
         "mif:trait/stakeholders"

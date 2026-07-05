@@ -67,6 +67,18 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "aliases": {
+      "@id": "skos:altLabel",
+      "@container": "@set"
+    },
+    "exemplars": {
+      "@id": "skos:example",
+      "@container": "@set"
+    },
+    "negative_examples": {
+      "@id": "https://mif-spec.dev/ns/ontology#negativeExample",
+      "@container": "@set"
+    },
     "fields": {
       "@id": "mif:hasField",
       "@container": "@id"
@@ -126,7 +138,7 @@
   "@id": "mif:ontology/regenerative-agriculture-research",
   "@type": "mif:Ontology",
   "identifier": "regenerative-agriculture-research",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Agriculture / farm research ontology \u2014 research-oriented entity types for husbandry, agronomy, farm infrastructure, grants, and equipment, organized as an IS-A tree rooted in the inherited generic/engineering supertypes.",
   "schema_url": "https://mif-spec.dev/schema/ontology/ontology.schema.json",
   "namespaces": {
@@ -173,6 +185,19 @@
       "name": "husbandry-practice",
       "base": "semantic",
       "description": "An animal-husbandry or livestock-care practice (lambing, newborn care, health management)",
+      "aliases": [
+        "livestock practice",
+        "flock management",
+        "lambing protocol",
+        "animal health management",
+        "breeding practice"
+      ],
+      "exemplars": [
+        "A vaccination schedule for newborn animals with a booster several weeks later",
+        "Leaving untreated animals in the flock to preserve dewormer efficacy",
+        "Body condition score targets for ewes and rams before breeding",
+        "Collecting weaning and post-weaning weights within defined day windows for genetic evaluation"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -209,6 +234,18 @@
       "name": "agronomic-practice",
       "base": "semantic",
       "description": "A grazing, soil, pasture, or crop-management practice",
+      "aliases": [
+        "farming practice",
+        "agronomic technique",
+        "crop and pasture practice",
+        "field management practice",
+        "cultivation practice"
+      ],
+      "exemplars": [
+        "Fence posts on hilly terrain are driven perpendicular to the ground surface, with high spots stapled before low dips",
+        "A pasture renovation is phased over several years, renovating a portion each year rather than the whole field at once",
+        "Short grazing rotations with long rest periods break a parasite's life cycle before it can reinfect the herd"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -245,6 +282,19 @@
       "name": "farm-infrastructure",
       "base": "semantic",
       "description": "A farm infrastructure system or component: fencing, irrigation, IoT, networks, towers, power",
+      "aliases": [
+        "farm network",
+        "irrigation infrastructure",
+        "water system",
+        "on-farm power",
+        "rural connectivity"
+      ],
+      "exemplars": [
+        "Electrical code requirements for ground-fault protection at a pondside pump installation",
+        "A self-hosted monitoring stack sized for a solo operator's small computer",
+        "Pasture watering systems from poly tubing to pond excavation",
+        "A community mesh network delivering symmetrical broadband to rural households"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -282,6 +332,19 @@
       "name": "grant-program",
       "base": "semantic",
       "description": "An agricultural grant, cost-share, or funding program",
+      "aliases": [
+        "cost-share program",
+        "funding opportunity",
+        "agricultural grant",
+        "microloan program",
+        "conservation funding"
+      ],
+      "exemplars": [
+        "A federal cost-share program with application deadlines, match requirements, and award caps",
+        "A state fund offering multi-year soil health project awards up to a fixed amount",
+        "Combining multiple programs on the same land without paying twice for one practice",
+        "A private foundation granting multi-year support for regenerative grazing"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -318,6 +381,20 @@
       "name": "equipment-or-input",
       "base": "semantic",
       "description": "A piece of farm equipment, hardware, device, or production input",
+      "aliases": [
+        "farm equipment",
+        "hardware device",
+        "sensor",
+        "livestock tag",
+        "production input",
+        "farm software"
+      ],
+      "exemplars": [
+        "A wireless access point priced for outdoor deployment with power over ethernet",
+        "Official livestock identification tags approved in plastic, metal, or electronic form",
+        "A computer-vision system scoring livestock body condition from camera imagery",
+        "An open-source farm management platform with guided onboarding and record types"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -354,6 +431,17 @@
       "name": "parturition-protocol",
       "base": "semantic",
       "description": "Birth-management protocol specifying care before, during, and immediately after parturition",
+      "aliases": [
+        "birthing protocol",
+        "lambing procedure",
+        "delivery assistance protocol",
+        "labor management protocol"
+      ],
+      "exemplars": [
+        "Labor proceeds through three timed stages, and disturbing the mother during the first stage risks stalling delivery",
+        "A normal birth presentation shows both front feet soles-down with the nose resting on top of the legs between them",
+        "Assisted delivery traction should only be applied during a contraction, pulled in a gentle downward arc following the birth canal"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -394,6 +482,19 @@
       "name": "neonatal-care",
       "base": "semantic",
       "description": "Newborn care protocol covering colostrum management, bonding, and rejection prevention",
+      "aliases": [
+        "newborn livestock care",
+        "neonatal lamb care",
+        "newborn animal husbandry",
+        "postnatal care",
+        "newborn survival care"
+      ],
+      "exemplars": [
+        "Maternal rejection risk concentrates in first-time mothers, difficult births, and mothers disturbed during the critical first-hour bonding window",
+        "Rubbing an orphan newborn in another newborn's birth fluids before the mother licks her own offspring is the most successful fostering technique",
+        "A stanchion or head-gate restrains a rejecting mother for several days of forced nursing until the bond takes",
+        "Skin from a deceased newborn is tied over an orphan to transfer scent and encourage a grieving mother to accept it"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -434,6 +535,19 @@
       "name": "periparturient-nutrition",
       "base": "semantic",
       "description": "Pre- and post-parturition and creep nutrition protocol targeting dam and neonatal needs",
+      "aliases": [
+        "creep feeding",
+        "lamb nutrition program",
+        "pre-weaning ration",
+        "lactation nutrition",
+        "birth-to-weaning feeding"
+      ],
+      "exemplars": [
+        "A creep starter ration targets a high crude-protein percentage early, stepping down as the animal approaches weaning",
+        "A calcium-to-phosphorus ratio in a grain-heavy creep ration must stay above a minimum threshold to prevent urinary calculi",
+        "Young offspring barely consume creep feed in the first weeks of life, with meaningful intake beginning only after about a month",
+        "Feed-conversion efficiency in young animals is highest right after birth and degrades sharply after several months of age"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -474,6 +588,19 @@
       "name": "livestock-health-condition",
       "base": "semantic",
       "description": "A diagnosed condition or complication in livestock with associated management protocol",
+      "aliases": [
+        "metabolic disorder",
+        "livestock health condition",
+        "animal medical condition",
+        "veterinary condition",
+        "birthing complication"
+      ],
+      "exemplars": [
+        "A metabolic emergency in late pregnancy progresses through escalating stages from off-feed lethargy to seizures requiring veterinary intervention",
+        "Whether a chilled newborn still has energy reserves determines whether it should be warmed first or given glucose first",
+        "A malpresentation at birth requires a specific hands-on correction technique depending on which limbs and the head are out of position",
+        "A uterine prolapse is a true emergency requiring immediate veterinary care, while a retained placenta should never be manually pulled"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -519,6 +646,17 @@
       "name": "breed-characteristic",
       "base": "semantic",
       "description": "A breed-specific trait or characteristic that influences husbandry decisions",
+      "aliases": [
+        "livestock breed trait",
+        "breed standard trait",
+        "genetic breed characteristic",
+        "breed performance trait"
+      ],
+      "exemplars": [
+        "A hair-sheep breed is noted for strong maternal instincts and a low dystocia rate compared to other breeds",
+        "A breed standard requiring no tail-docking and minimal wool around the udder reduces pre-lambing labor and infection risk",
+        "A national sheep-improvement program's estimated breeding values are used to select for maternal weaning weight and lambing rate"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -560,6 +698,19 @@
       "name": "fencing-system",
       "base": "semantic",
       "description": "A farm fencing system including type, energizer, grounding, and special conditions",
+      "aliases": [
+        "electric fence",
+        "high-tensile fence",
+        "energizer",
+        "fence grounding",
+        "paddock fencing"
+      ],
+      "exemplars": [
+        "Wire tensioning targets and spring indicator marks for high-tensile strands",
+        "Energizer hookup with fence, earth, and reference terminals and alarm thresholds",
+        "Ground rod material selection and spacing to prevent electrolysis and interference",
+        "Lightning protection with surge protectors, diverters, and separate ground beds"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -605,6 +756,19 @@
       "name": "irrigation-system",
       "base": "semantic",
       "description": "A farm irrigation system with source, capacity, and automation details",
+      "aliases": [
+        "pond-to-field irrigation",
+        "buried mainline system",
+        "pump-and-pipe irrigation",
+        "field watering system",
+        "irrigation infrastructure"
+      ],
+      "exemplars": [
+        "A pond-fed irrigation system runs through a buried mainline to field-by-field control valves via an underground pump",
+        "A single-phase pump's start and run capacitors are the dominant failure point under voltage sags or impeller binding",
+        "Algae and sediment clog a pond intake screen within a day or two during the growing season",
+        "Air pockets trap at unbraced high points in a buried mainline without air-release valves, and low points crack on freeze without drains"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -650,6 +814,20 @@
       "name": "connectivity-link",
       "base": "semantic",
       "description": "A wireless or wired network link providing farm connectivity",
+      "aliases": [
+        "rural connectivity link",
+        "mesh network link",
+        "satellite uplink",
+        "wireless backhaul",
+        "broadband connection",
+        "network bridge"
+      ],
+      "exemplars": [
+        "A residential satellite plan blocked by carrier-grade NAT is bypassed with a VPN tunnel to a public-IP relay",
+        "A long-range wireless mesh network of thousands of gateways leaves rural coverage sparse despite urban density",
+        "A low-earth-orbit satellite service targets underserved rural broadband with a fraction of an established provider's satellite count",
+        "A point-to-point wireless bridge extends a farm network to a remote pasture node without running cable"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -695,6 +873,17 @@
       "name": "sensor-or-edge-node",
       "base": "semantic",
       "description": "A field sensor or edge computing node deployed for farm data collection",
+      "aliases": [
+        "edge compute node",
+        "sensor node",
+        "field sensor hardware",
+        "IoT edge device"
+      ],
+      "exemplars": [
+        "A solar-powered single-board-computer node with a weatherproof enclosure provides low-cost off-grid edge compute",
+        "Long-range wireless soil-moisture sensors with waterproof enclosures for direct burial are now the standard for agricultural soil monitoring",
+        "A turnkey solar sensor platform packages a microcontroller, enclosure, and battery into one low-cost off-the-shelf product"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -740,6 +929,18 @@
       "name": "power-system",
       "base": "semantic",
       "description": "A farm power generation or storage system",
+      "aliases": [
+        "off-grid power system",
+        "solar power system",
+        "backup power system",
+        "electrical power supply"
+      ],
+      "exemplars": [
+        "A battery-backed outdoor power-over-ethernet enclosure powers a remote wireless node where running cable is cost-prohibitive",
+        "A full load budget for a satellite dish, router, switch, and supporting equipment totals to a continuous wattage draw and daily watt-hour figure",
+        "An inverter-charger with automatic generator transfer switching serves as the central component of an off-grid power system",
+        "Grounding code requires a solar array's metal frames to bond to the same grounding electrode system as other structures on site"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -785,6 +986,17 @@
       "name": "network-segment",
       "base": "semantic",
       "description": "A logical network segment on the farm with defined trust and isolation",
+      "aliases": [
+        "network zone",
+        "VLAN segment",
+        "network security zone",
+        "isolated network segment"
+      ],
+      "exemplars": [
+        "A farm's operational-technology network is designed so a compromised actuator fails to a safe state rather than an available one",
+        "A manufacturer usage description profile lets a network device enforce that an IoT sensor only talks to its declared destinations",
+        "A zones-and-conduits security model separates field devices, control systems, and IT management onto distinct network segments with controlled crossings"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -830,6 +1042,18 @@
       "name": "iot-device",
       "base": "semantic",
       "description": "An IoT device deployed on the farm for sensing, actuation, or automation",
+      "aliases": [
+        "IoT sensor device",
+        "connected farm device",
+        "wireless sensor node",
+        "smart farm device",
+        "telemetry device"
+      ],
+      "exemplars": [
+        "A long-range mesh radio platform claims a fraction of the cost of competing military-grade mesh radios",
+        "An open protocol supports over a hundred device variants for text messaging, GPS sharing, and sensor telemetry without cellular infrastructure",
+        "An open-source mesh radio node built on commodity single-board computer hardware costs a fraction of enterprise mesh alternatives"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -870,6 +1094,17 @@
       "name": "fencing-component",
       "base": "semantic",
       "description": "A discrete fencing component (post, wire, insulator, gate, clip)",
+      "aliases": [
+        "fence hardware component",
+        "fence post system",
+        "fencing accessory",
+        "fence material component"
+      ],
+      "exemplars": [
+        "A rigid recycled-material fence post product line is pre-drilled for wire threading and sold as a complete ecosystem of posts, braces, and corners",
+        "Corner and line post depth requirements vary by soil type, with driven posts rated several times more secure than set posts",
+        "A remote fence-energizer monitoring feature supports several zones with SMS alerting and smartphone control"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -910,6 +1145,18 @@
       "name": "conservation-cost-share",
       "base": "semantic",
       "description": "A conservation cost-share program offering agency-funded incentives for approved practice standards",
+      "aliases": [
+        "cost-share program",
+        "conservation cost-share",
+        "farm cost-share funding",
+        "conservation incentive payment",
+        "cost-share reimbursement"
+      ],
+      "exemplars": [
+        "A federal cost-share program reimburses a majority of practice installation cost, with a higher rate for beginning or historically underserved farmers",
+        "A state-level agricultural cost-share program funds water-quality best management practices but excludes irrigation infrastructure from its scope",
+        "Applications for a federal cost-share program must be submitted before an annual batching deadline to be ranked in that funding cycle"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -950,6 +1197,17 @@
       "name": "adoption-trend",
       "base": "semantic",
       "description": "A momentum, maturation, or standardization signal in the direction of travel",
+      "aliases": [
+        "technology adoption trend",
+        "practice adoption trend",
+        "program uptake trend",
+        "market adoption trend"
+      ],
+      "exemplars": [
+        "AI-driven monitoring and parametric models are emerging in an industry to reduce claim assessment time and enable automatic payouts",
+        "A soil-health incentive program spans many states, supporting practice adoption through financial incentives and technical assistance",
+        "A depleted, highly weathered soil type has high remaining capacity for carbon accumulation under improved management"
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -987,6 +1245,19 @@
       "name": "compliance-regulation",
       "base": "semantic",
       "description": "A law, regulation, code, or government mandate",
+      "aliases": [
+        "regulatory compliance requirement",
+        "code compliance rule",
+        "permit requirement",
+        "regulatory exemption",
+        "compliance obligation"
+      ],
+      "exemplars": [
+        "A land-disturbance threshold exempts small footprints from erosion-control permitting, but cumulative disturbance across a whole project can exceed it",
+        "A farm-structure building-code exemption does not extend to electrical, plumbing, gas, or HVAC work, which still requires a permit",
+        "A metal fence within a set distance of exposed electrical conductors must be bonded to the grounding system at regular intervals",
+        "Warning-sign spacing requirements near hazardous equipment vary by jurisdiction and typically include shock and pacemaker warnings"
+      ],
       "traits": [
         "mif:trait/cited"
       ],

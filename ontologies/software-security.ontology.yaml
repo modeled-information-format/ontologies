@@ -38,7 +38,7 @@
 
 ontology:
   id: software-security
-  version: "0.2.0"
+  version: "0.3.0"
   description: "Software-security domain ontology — the software-facing slice of security: threats, vulnerabilities, controls, actors, indicators, supply-chain, incidents, frameworks"
   extends:
     - engineering-base
@@ -452,6 +452,15 @@ entity_types:
     disposition: mint
   - name: security-infrastructure
     description: "Adversary or defensive infrastructure (servers, domains, hosting)"
+    aliases:
+      - "signing infrastructure"
+      - "verification infrastructure"
+      - "trust infrastructure"
+      - "package security infrastructure"
+    exemplars:
+      - "A package manager automatically verifies a cryptographic checksum against a public transparency log before trusting a downloaded module"
+      - "An extension marketplace now requires developer-registered private-key signing on every future upload, rejecting anything unsigned"
+      - "An official plugin directory applies automated security review to listings but explicitly cannot verify every server a plugin might call"
     base: semantic
     # STIX 2.1 Infrastructure SDO
     traits:
@@ -489,6 +498,15 @@ entity_types:
     disposition: mint
   - name: security-tool
     description: "A legitimate tool that can be used by adversaries or defenders"
+    aliases:
+      - "verification tool"
+      - "signing tool"
+      - "attestation CLI tool"
+      - "package security tool"
+    exemplars:
+      - "A package manager's chain-of-trust verifies a signed release manifest against trusted keys before installing anything, blocking by default on failure"
+      - "A command-line tool verifies a file's signature keylessly by pinning a certificate identity and issuer rather than a static key"
+      - "A package manager's opt-in attestation verification wraps another CLI tool to hard-fail an install when provenance verification fails"
     base: semantic
     # STIX 2.1 Tool SDO
     traits:
@@ -555,6 +573,15 @@ entity_types:
   # ----- Supply chain -----------------------------------------------------
   - name: supply-chain-risk
     description: "A cyber supply-chain (C-SCRM) supplier or component risk"
+    aliases:
+      - "supply chain vulnerability"
+      - "dependency risk"
+      - "package supply chain threat"
+      - "software supply-chain attack"
+    exemplars:
+      - "A package registry verifies integrity only by checksum, with no cryptographic signing yet, leaving a gap versus other language ecosystems"
+      - "A verification command silently returned success even when no attestation existed at all, until a later patched version fixed it"
+      - "An attacker compromised a maintainer's credentials and repointed every version tag of a widely used action to a malicious commit"
     base: semantic
     # NIST SP 800-161r1 C-SCRM Risk / Supplier Risk (SR control overlays, SBOM)
     traits:
@@ -735,6 +762,18 @@ entity_types:
   # ===========================================================================
   - name: security-threat
     description: "A security threat, attack class, or vulnerability affecting the software lifecycle (SDLC-facing supertype refined by attack-tactic/weakness/vulnerability)"
+    aliases:
+      - "attack vector"
+      - "vulnerability"
+      - "exploit"
+      - "threat class"
+      - "injection attack"
+      - "supply chain compromise"
+    exemplars:
+      - "Malicious instructions embedded in tool descriptions parsed as trusted context"
+      - "Silently altering approved tool definitions to inject behavior without re-authorization"
+      - "A command injection chain of published vulnerabilities sharing one unsanitized root cause"
+      - "Poisoned release tags exfiltrating credentials from continuous integration"
     base: semantic
     traits:
       - cited
@@ -774,6 +813,17 @@ entity_types:
     disposition: extend
   - name: security-framework
     description: "A security or assurance framework, taxonomy, or standard (e.g. OWASP Top 10, MITRE ATLAS, SLSA, NIST SSDF/CSF)"
+    aliases:
+      - "security standard"
+      - "controls framework"
+      - "vulnerability taxonomy"
+      - "assurance framework"
+      - "compliance framework"
+    exemplars:
+      - "A peer-reviewed top-ten risk taxonomy for an emerging application class"
+      - "A provenance standard defining leveled requirements from machine-readable to isolated builds"
+      - "A management-system standard with a reference set of controls in an annex"
+      - "Federal guidance organizing risk actions across govern, map, measure, and manage functions"
     base: semantic
     traits:
       - cited

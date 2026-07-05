@@ -47,8 +47,8 @@
         "engineering-base"
       ],
       "file": "data-engineering.ontology.yaml",
-      "sha256": "15e5edac8f212859cecb1af363f5b6d9ec0edbf19fb4650cd2534a3307cb874c",
-      "version": "0.2.0"
+      "sha256": "c44a9bf8a83b862baa37c933b3607615f83ff7914014651ebca6884e2c673270",
+      "version": "0.3.0"
     },
     "engineering-base": {
       "extends": [
@@ -80,7 +80,7 @@
         "physical-science-base"
       ],
       "file": "heliophysics.ontology.yaml",
-      "sha256": "2618eb0d73744dafa8d033461d5ccd5ba117b40b5ebb332e797034676ff3fca7",
+      "sha256": "c28a4718f3b787661d3b20a0bd29af7bd3f2320b0e28e946ec202a833654eeaf",
       "version": "0.1.0"
     },
     "market-research": {
@@ -89,8 +89,8 @@
         "shared-traits"
       ],
       "file": "market-research.ontology.yaml",
-      "sha256": "ce28d06ba61100dc19ef5f5c81d46dc09861a84375c3a1c848d2c56afe466242",
-      "version": "0.2.0"
+      "sha256": "02a9f85bb49b52ed078dfb7330190472495c961d6c6abc5a6725a47f774d6000",
+      "version": "0.3.0"
     },
     "mif-base": {
       "extends": [],
@@ -120,7 +120,7 @@
         "clinical-health-base"
       ],
       "file": "non-ionizing-radiation.ontology.yaml",
-      "sha256": "3967fc5ba27d38037efdf2c6ea30f96b34dfda654f99a9f74900d5208f473c9f",
+      "sha256": "27bdea23a0c2e47b8404c28429c66c42a12277703169e6f35c081ca7019b58d6",
       "version": "0.1.0"
     },
     "observability": {
@@ -129,8 +129,8 @@
         "mif-generic"
       ],
       "file": "observability.ontology.yaml",
-      "sha256": "b9bc875245504925a3cea698d4e94fdb8e2c19495cdee8cace3f989dff1a0d38",
-      "version": "0.2.0"
+      "sha256": "5a8d2a95b6f66d109c7ddaf56d8569bf9c2cab7e7c8d2cc4c0c54d265e774f56",
+      "version": "0.3.0"
     },
     "physical-science-base": {
       "extends": [
@@ -162,8 +162,8 @@
         "mif-generic"
       ],
       "file": "psycholinguistics.ontology.yaml",
-      "sha256": "427f9679ef3c75fa5873e6c08b5d0dab5dd718fe8d80255d8b228bd9a7b47d2c",
-      "version": "0.1.0"
+      "sha256": "a0d456f46b5561b4d78b212395d782196f29f4d7de78f99c3fc22a463464513f",
+      "version": "0.2.0"
     },
     "regenerative-agriculture": {
       "extends": [
@@ -181,8 +181,8 @@
         "mif-generic"
       ],
       "file": "regenerative-agriculture-research.ontology.yaml",
-      "sha256": "a106407f09034d1bb0cb8e470be2e3c9666ff74eff0518796e38ed2b50c3ff5d",
-      "version": "0.5.0"
+      "sha256": "a9ec04efa0819c4d8fa22417f9e4ea70b8378a23a1a69e0c918e668a93adf528",
+      "version": "0.6.0"
     },
     "regulatory-legal": {
       "extends": [
@@ -190,8 +190,8 @@
         "shared-traits"
       ],
       "file": "regulatory-legal.ontology.yaml",
-      "sha256": "49c3a65a27dd3babc2ba1cea6283de090f45dc30186d22fd5e55ac1529b9269d",
-      "version": "0.2.0"
+      "sha256": "b8648edcb0677d4b34fad252b80ec07fc9a4199e2e5f44f59d72f75b3c03d732",
+      "version": "0.3.0"
     },
     "research": {
       "extends": [
@@ -223,16 +223,16 @@
         "engineering-base"
       ],
       "file": "software-engineering.ontology.yaml",
-      "sha256": "cdd425d3b25133b443f65f910ffdb7191172533fcf2969c4145858fcc81f5b0a",
-      "version": "0.5.0"
+      "sha256": "a17ff6885a5fa97778e0f54fdb0f85ca2f3487502d43ae249e76ff02131f9e78",
+      "version": "0.6.0"
     },
     "software-security": {
       "extends": [
         "engineering-base"
       ],
       "file": "software-security.ontology.yaml",
-      "sha256": "8b8aafa07bfdc4b3f76ceffc91b691c0764b0cf84ac6bf4f99929716181a91a3",
-      "version": "0.2.0"
+      "sha256": "0be590ad312777e51646e85505a99a4f2594a714145f6b53c91a01d67c1f89c2",
+      "version": "0.3.0"
     },
     "trend-analysis": {
       "extends": [
@@ -240,8 +240,8 @@
         "shared-traits"
       ],
       "file": "trend-analysis.ontology.yaml",
-      "sha256": "de9c8b21cfb029629849d56b0023c7c028f09b9f9d3e1d8820891d19b99478c6",
-      "version": "0.2.0"
+      "sha256": "393fce03a43a48d92e4bbe09148de6623dd031d06fb013aa109163ec76dd5999",
+      "version": "0.3.0"
     }
   },
   "schema": "mif-ontology-index/v1",

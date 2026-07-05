@@ -67,6 +67,18 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "aliases": {
+      "@id": "skos:altLabel",
+      "@container": "@set"
+    },
+    "exemplars": {
+      "@id": "skos:example",
+      "@container": "@set"
+    },
+    "negative_examples": {
+      "@id": "https://mif-spec.dev/ns/ontology#negativeExample",
+      "@container": "@set"
+    },
     "fields": {
       "@id": "mif:hasField",
       "@container": "@id"
@@ -126,7 +138,7 @@
   "@id": "mif:ontology/regulatory-legal",
   "@type": "mif:Ontology",
   "identifier": "regulatory-legal",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Regulatory and legal domain ontology \u2014 acts, obligations, authorities, jurisdictions, contracts, sanctions",
   "namespaces": {
     "semantic": {
@@ -256,6 +268,20 @@
       "name": "legal-act",
       "base": "semantic",
       "description": "An abstract legislative work (act, regulation, directive, statute)",
+      "aliases": [
+        "regulation",
+        "statute",
+        "directive",
+        "act",
+        "legislative framework",
+        "compliance mandate"
+      ],
+      "exemplars": [
+        "A comprehensive law becomes fully applicable on a fixed date with penalties tied to turnover",
+        "An article-level obligation requiring logging, documentation, and human oversight for high-risk systems",
+        "A regulator's final rule or guidance adopted, stayed, or enforced through settlements",
+        "A national framework act signed into law and taking effect the following year"
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated",

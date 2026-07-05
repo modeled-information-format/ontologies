@@ -22,7 +22,7 @@
 
 ontology:
   id: observability
-  version: "0.2.0"
+  version: "0.3.0"
   description: "Observability-platform domain ontology — services, telemetry signals, capability comparisons, service-ownership registries, migration patterns, market positioning, and roadmap signals, organized as an IS-A tree rooted in generic types"
   schema_url: >-
     https://mif-spec.dev/schema/ontology/ontology.schema.json
@@ -134,6 +134,15 @@ entity_types:
           description: "Canonical AWS service name when provider is aws"
   - name: service-ownership-registry
     description: "A service catalog, resource registry, service map, or internal developer portal that tracks service ownership/topology"
+    aliases:
+      - "service catalog"
+      - "ownership registry"
+      - "application registry"
+      - "developer portal catalog"
+    exemplars:
+      - "A telemetry-driven service catalog auto-populates ownership metadata from live tracing data rather than requiring manual registration"
+      - "A cloud provider's application-registry capability evolved from an API-first tool toward a console-first, more discoverable successor"
+      - "No single native service replaces a telemetry-driven service catalog; a composite of several separate registries is required instead"
     base: semantic
     subtype_of:
       - observability-resource
@@ -190,6 +199,14 @@ entity_types:
             type: string
   - name: capability-comparison
     description: "A capability or gap comparison between an observability subject and a baseline (e.g. AWS-native vs Datadog for a pillar)"
+    aliases:
+      - "feature comparison"
+      - "capability gap analysis"
+      - "vendor capability comparison"
+      - "platform comparison"
+    exemplars:
+      - "A commercial observability platform has no official plugin for a given developer portal, requiring a proxy-based integration workaround instead"
+      - "An incumbent monitoring vendor retains capability leads in integrated security and multi-cloud breadth that a challenger has not yet matched"
     base: semantic
     subtype_of:
       - observability-assessment
@@ -221,6 +238,14 @@ entity_types:
             type: string
   - name: market-position
     description: "A vendor's positioning in the observability market per an analyst or market source"
+    aliases:
+      - "competitive market position"
+      - "market standing"
+      - "vendor market share"
+      - "analyst market ranking"
+    exemplars:
+      - "An analyst firm's quadrant places an incumbent vendor as a market leader and a cloud-native challenger a tier below"
+      - "A discipline has reached near-universal enterprise adoption within a few years, according to an annual research report"
     base: semantic
     subtype_of:
       - observability-assessment
@@ -246,6 +271,15 @@ entity_types:
             - unranked
   - name: roadmap-signal
     description: "A time-stamped product or roadmap signal: a GA date, launch, deprecation/maintenance move, or near-term prediction"
+    aliases:
+      - "product roadmap signal"
+      - "vendor trajectory signal"
+      - "future-direction signal"
+      - "platform roadmap indicator"
+    exemplars:
+      - "A community-governed open-source project's roadmap points toward AI-native tooling as the next integration direction"
+      - "Vendor-announced launches over the past year or two indicate which competing platform capabilities are likely to close within that window"
+      - "A generative-AI incident-investigation feature reaching general availability signals a broader shift toward AI-driven root-cause analysis"
     base: episodic
     subtype_of:
       - observability-assessment
@@ -273,6 +307,15 @@ entity_types:
           description: "The pillar/capability the signal advances"
   - name: migration-pattern
     description: "An approach, case study, or community pattern for migrating between observability platforms"
+    aliases:
+      - "platform migration pattern"
+      - "cloud migration pattern"
+      - "vendor migration playbook"
+      - "transition pattern"
+    exemplars:
+      - "A phased rollout plan for a new internal platform begins with a small pilot before scaling to organization-wide adoption waves"
+      - "Documented real-world migrations from one observability vendor to another report meaningful cost reduction alongside a multi-month timeline"
+      - "Automated migration tooling is reducing a historically months-long platform migration down to a matter of weeks"
     base: procedural
     subtype_of:
       - design-pattern
