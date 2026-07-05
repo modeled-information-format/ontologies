@@ -47,7 +47,7 @@
         "engineering-base"
       ],
       "file": "data-engineering.ontology.yaml",
-      "sha256": "15e5edac8f212859cecb1af363f5b6d9ec0edbf19fb4650cd2534a3307cb874c",
+      "sha256": "5cc102042c05a17ea57d15bb8eb4e476844cb64f09a18078ce48c0c79311a066",
       "version": "0.2.0"
     },
     "engineering-base": {
@@ -80,7 +80,7 @@
         "physical-science-base"
       ],
       "file": "heliophysics.ontology.yaml",
-      "sha256": "2618eb0d73744dafa8d033461d5ccd5ba117b40b5ebb332e797034676ff3fca7",
+      "sha256": "c28a4718f3b787661d3b20a0bd29af7bd3f2320b0e28e946ec202a833654eeaf",
       "version": "0.1.0"
     },
     "market-research": {
@@ -120,7 +120,7 @@
         "clinical-health-base"
       ],
       "file": "non-ionizing-radiation.ontology.yaml",
-      "sha256": "3967fc5ba27d38037efdf2c6ea30f96b34dfda654f99a9f74900d5208f473c9f",
+      "sha256": "27bdea23a0c2e47b8404c28429c66c42a12277703169e6f35c081ca7019b58d6",
       "version": "0.1.0"
     },
     "observability": {
@@ -181,7 +181,7 @@
         "mif-generic"
       ],
       "file": "regenerative-agriculture-research.ontology.yaml",
-      "sha256": "a106407f09034d1bb0cb8e470be2e3c9666ff74eff0518796e38ed2b50c3ff5d",
+      "sha256": "7c17b897d220c56e4ad1b5c30aab8630713b5fc3084733c0f88dec5287016ceb",
       "version": "0.5.0"
     },
     "regulatory-legal": {
@@ -190,7 +190,7 @@
         "shared-traits"
       ],
       "file": "regulatory-legal.ontology.yaml",
-      "sha256": "49c3a65a27dd3babc2ba1cea6283de090f45dc30186d22fd5e55ac1529b9269d",
+      "sha256": "cd754165b959449c79ab0ab4e3361581fe81a3a77cdef1e6f825b0bfdcb99997",
       "version": "0.2.0"
     },
     "research": {
@@ -231,7 +231,7 @@
         "engineering-base"
       ],
       "file": "software-security.ontology.yaml",
-      "sha256": "8b8aafa07bfdc4b3f76ceffc91b691c0764b0cf84ac6bf4f99929716181a91a3",
+      "sha256": "e4d68856d2b3157d581afd0cf4e16174e99fcc7b4b65280e3187c559fbf2e61c",
       "version": "0.2.0"
     },
     "trend-analysis": {
@@ -240,7 +240,7 @@
         "shared-traits"
       ],
       "file": "trend-analysis.ontology.yaml",
-      "sha256": "de9c8b21cfb029629849d56b0023c7c028f09b9f9d3e1d8820891d19b99478c6",
+      "sha256": "42f0928192bbaefa4f719c91350cf53b0e3ca6c1c19a125c7ba8509d4f453928",
       "version": "0.2.0"
     }
   },

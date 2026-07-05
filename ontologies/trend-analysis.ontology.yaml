@@ -127,6 +127,18 @@ entity_types:
   disposition: mint
 - name: trend
   description: 'A trend: a currently visible direction of change (the canonical generic)'
+  aliases:
+    - "market trend"
+    - "adoption trend"
+    - "industry direction"
+    - "forecast"
+    - "trajectory"
+    - "market signal"
+  exemplars:
+    - "An analyst firm predicts a technology category will reach half of deployments within three years"
+    - "Survey data shows adoption rising year over year while trust declines"
+    - "Global spending in a market segment exceeds a milestone with double-digit growth"
+    - "Vendors consolidate through acquisitions as a product category matures"
   base: semantic
   traits:
   - cited

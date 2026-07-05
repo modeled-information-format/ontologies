@@ -90,6 +90,18 @@ entity_types:
           description: "Service-level agreement (freshness, availability)"
   - name: data-governance-policy
     description: "A governance policy or control: a rule governing access, retention, classification, or stewardship of data"
+    aliases:
+      - "access control policy"
+      - "retention policy"
+      - "data classification"
+      - "masking policy"
+      - "stewardship policy"
+      - "tagging policy"
+    exemplars:
+      - "Row filters and column masks evaluated at query time via governed tags"
+      - "Tiered storage lifecycle rules with regulation-aligned multi-year retention bands"
+      - "A three-tier classification of sensitive records applied at the column level"
+      - "Required at-birth documentation and ownership tags that hard-fail the build when missing"
     base: semantic
     traits:
       - cited
@@ -171,6 +183,18 @@ entity_types:
           description: "How the pattern moves or validates data"
   - name: data-platform
     description: "A named data platform, tool, catalog, or engine (e.g. Snowflake, Postgres, dbt, Airflow, Kafka, Iceberg, Unity Catalog)"
+    aliases:
+      - "data warehouse"
+      - "data catalog"
+      - "data quality tool"
+      - "lakehouse engine"
+      - "streaming platform"
+      - "data tooling"
+    exemplars:
+      - "An open-source data quality framework with declarative check definitions"
+      - "A cloud data warehouse feature reaching general availability with native test integration"
+      - "A catalog offering branch-like transactional versioning across multiple tables"
+      - "A contract validation tool that emits pipeline annotations and diffs versions for breaking changes"
     base: semantic
     traits:
       - cited
