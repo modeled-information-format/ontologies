@@ -47,7 +47,7 @@
         "engineering-base"
       ],
       "file": "data-engineering.ontology.yaml",
-      "sha256": "5cc102042c05a17ea57d15bb8eb4e476844cb64f09a18078ce48c0c79311a066",
+      "sha256": "d11cf2d39edf904ec36ec47d1170877bc9e91901ca529630a43b82c085642bed",
       "version": "0.2.0"
     },
     "engineering-base": {
@@ -89,7 +89,7 @@
         "shared-traits"
       ],
       "file": "market-research.ontology.yaml",
-      "sha256": "ce28d06ba61100dc19ef5f5c81d46dc09861a84375c3a1c848d2c56afe466242",
+      "sha256": "288aa9ecdcf5b2d0a15f5b04061dcfc16ea57a83bcdf601da8de2da49f54823a",
       "version": "0.2.0"
     },
     "mif-base": {
@@ -129,7 +129,7 @@
         "mif-generic"
       ],
       "file": "observability.ontology.yaml",
-      "sha256": "b9bc875245504925a3cea698d4e94fdb8e2c19495cdee8cace3f989dff1a0d38",
+      "sha256": "326b0337c90ae673d7eaf15aff5b6920e09f492f946b179f6035c4045174b138",
       "version": "0.2.0"
     },
     "physical-science-base": {
@@ -162,7 +162,7 @@
         "mif-generic"
       ],
       "file": "psycholinguistics.ontology.yaml",
-      "sha256": "427f9679ef3c75fa5873e6c08b5d0dab5dd718fe8d80255d8b228bd9a7b47d2c",
+      "sha256": "c73f95a05c1f53ebee4820c59b7fbb09dbb49f53f69c4271c9cb7e75a6bab21f",
       "version": "0.1.0"
     },
     "regenerative-agriculture": {
@@ -181,7 +181,7 @@
         "mif-generic"
       ],
       "file": "regenerative-agriculture-research.ontology.yaml",
-      "sha256": "7c17b897d220c56e4ad1b5c30aab8630713b5fc3084733c0f88dec5287016ceb",
+      "sha256": "85eb5c4147ff1627a89e4e63b73c33222e36f104f8116cd416a9fd198c8cb52a",
       "version": "0.5.0"
     },
     "regulatory-legal": {
@@ -223,7 +223,7 @@
         "engineering-base"
       ],
       "file": "software-engineering.ontology.yaml",
-      "sha256": "cdd425d3b25133b443f65f910ffdb7191172533fcf2969c4145858fcc81f5b0a",
+      "sha256": "8adb255835cdcb0efe1c9df9b6ca257eaafeaf59c3fb9d392fb465e25a7113c1",
       "version": "0.5.0"
     },
     "software-security": {
@@ -231,7 +231,7 @@
         "engineering-base"
       ],
       "file": "software-security.ontology.yaml",
-      "sha256": "e4d68856d2b3157d581afd0cf4e16174e99fcc7b4b65280e3187c559fbf2e61c",
+      "sha256": "dd66420c47ec60b4cb281de82ab1174520a7aea4146fa886d99c334d41b34a4e",
       "version": "0.2.0"
     },
     "trend-analysis": {
@@ -240,7 +240,7 @@
         "shared-traits"
       ],
       "file": "trend-analysis.ontology.yaml",
-      "sha256": "42f0928192bbaefa4f719c91350cf53b0e3ca6c1c19a125c7ba8509d4f453928",
+      "sha256": "29b939990080ab6d4b754e2984d5ff8c0f5b356887439f91fcfb19ee62a8cf0c",
       "version": "0.2.0"
     }
   },

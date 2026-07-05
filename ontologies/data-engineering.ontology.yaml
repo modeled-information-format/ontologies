@@ -48,6 +48,16 @@ namespaces:
 entity_types:
   - name: data-contract
     description: "A data contract: an enforceable agreement on schema, semantics, and SLAs between data producers and consumers"
+    aliases:
+      - "data contract specification"
+      - "schema contract"
+      - "data contract policy"
+      - "interface contract"
+      - "data agreement"
+    exemplars:
+      - "A contract-native data-contract specification enforces a required root-level field set validated as a pre-merge continuous-integration gate"
+      - "A streaming-native data contract enumerates a fixed set of schema-compatibility modes and a fixed set of message-direction actions"
+      - "A stewardship-overlay data contract adds an approval-state and ownership fields not present in purely technical enforcement contracts"
     base: semantic
     traits:
       - cited
@@ -69,6 +79,15 @@ entity_types:
           description: "How the contract is enforced (CI gate, registry, runtime check)"
   - name: data-product
     description: "A data product: a discoverable, governed, consumable data asset with an owner and interface"
+    aliases:
+      - "data product"
+      - "data mesh product"
+      - "data-as-a-product asset"
+      - "productized dataset"
+    exemplars:
+      - "An internal data-mesh project matured into a commercial cloud-native data marketplace serving institutional customers"
+      - "A data mesh spanning many domains and hundreds of data products documented tens of millions in business benefit"
+      - "A financial-technology company treats data as a product across several consumer-facing brands serving a large customer base"
     base: semantic
     traits:
       - cited
@@ -123,6 +142,16 @@ entity_types:
           description: "Mechanism that enforces the policy"
   - name: data-quality-rule
     description: "A data quality rule, check, or assertion applied to data to detect or prevent defects"
+    aliases:
+      - "data quality check"
+      - "validation rule"
+      - "data quality assertion"
+      - "quality gate rule"
+      - "data integrity rule"
+    exemplars:
+      - "A sync-lag failure mode where a record exists in one system but is missing in a downstream system is already encoded as a test scenario"
+      - "A reconciliation service level objective sets maximum freshness lag between two systems and a minimum availability percentage"
+      - "A regression-test matrix for identity data covers several already-implemented failure scenarios plus gaps identified from real incidents"
     base: semantic
     traits:
       - cited
@@ -144,6 +173,17 @@ entity_types:
           description: "Reaction on violation (drop, mark, quarantine, alert, fail)"
   - name: storage-architecture
     description: "A storage or scaling architecture for data (e.g. Postgres sharding, Snowflake multi-tenant isolation, lakehouse table format)"
+    aliases:
+      - "data storage architecture"
+      - "database architecture"
+      - "storage topology"
+      - "data platform architecture"
+      - "storage design"
+    exemplars:
+      - "A tier-based provisioning scheme encodes isolation level, compute sizing, and clone strategy per tenant tier in one declarative source"
+      - "Multiple overlapping identity stores are joined by sync processes with no single declared system of record per attribute"
+      - "A dual-path staging design splits an old and new export path, both required to remain consistent to prevent data-quality errors"
+      - "Self-managed clustered database high availability requires explicit replication and failover configuration a managed cloud service would otherwise automate"
     base: semantic
     traits:
       - cited
@@ -165,6 +205,17 @@ entity_types:
           description: "Key trade-offs and constraints"
   - name: pipeline-pattern
     description: "A pipeline or data-movement pattern (e.g. ETL/ELT, streaming, write-audit-publish, reverse-ETL)"
+    aliases:
+      - "data pipeline pattern"
+      - "pipeline architecture"
+      - "ingestion pattern"
+      - "data-flow pattern"
+      - "processing pipeline"
+    exemplars:
+      - "A five-stage ingest-profile-validate-observe-remediate pipeline is the interlock spine every other enforcement pattern maps onto"
+      - "Contract-native enforcement places the quality gate at pre-merge continuous integration using a declarative data contract"
+      - "Streaming-native enforcement stages writes on an audit branch and only publishes them after data-quality checks pass"
+      - "Stewardship-overlay enforcement routes proposed schema or contract changes through a human steward's approval before they take effect"
     base: procedural
     traits:
       - cited

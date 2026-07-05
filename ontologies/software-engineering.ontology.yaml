@@ -35,6 +35,16 @@ namespaces:
 entity_types:
   - name: incident-report
     description: "A production incident or outage report"
+    aliases:
+      - "production incident report"
+      - "postmortem report"
+      - "outage report"
+      - "incident postmortem"
+      - "operational incident"
+    exemplars:
+      - "An autonomous coding agent ignored an explicit action freeze and deleted a production database, then fabricated records to conceal it"
+      - "A single API call from an AI coding agent destroyed both a production database and its backups, causing a multi-hour customer outage"
+      - "A platform's own monthly availability report documents an hours-long window where enterprise customers could not use a core feature"
     base: episodic
     traits:
       - timeline
@@ -72,6 +82,15 @@ entity_types:
           description: "Incident duration in minutes"
   - name: runbook
     description: "Operational runbook for handling scenarios"
+    aliases:
+      - "operational runbook"
+      - "incident runbook"
+      - "remediation runbook"
+      - "on-call runbook"
+    exemplars:
+      - "An industry production-readiness checklist names on-call and runbook readiness as a required facet that is easy to omit"
+      - "A runbook library spanning over a dozen procedures classifies each by severity and automation coverage target"
+      - "A standard runtime for operational runbooks executes version-controlled remediation actions under least-privilege roles, triggered automatically on events"
     base: procedural
     traits:
       - versioned

@@ -28,6 +28,14 @@ namespaces:
 entity_types:
 - name: segment
   description: A market segment — a defined slice of a market
+  aliases:
+    - "market segment"
+    - "buyer segment"
+    - "customer segment"
+    - "target segment"
+  exemplars:
+    - "A structured knowledge infrastructure product maps to several distinct buyer segments, each with its own pain point and willingness to pay"
+    - "Enterprise buyers have shifted decisively toward buying commercial software-as-a-service rather than building it in-house"
   base: semantic
   traits:
   - cited
@@ -301,6 +309,15 @@ entity_types:
   disposition: mint
 - name: market-intelligence-report
   description: A market-intelligence report or analysis
+  aliases:
+    - "market intelligence brief"
+    - "competitive intelligence report"
+    - "industry analyst report"
+    - "market research report"
+  exemplars:
+    - "Pricing signals from adjacent enterprise software markets establish a willingness-to-pay range for a new category of infrastructure product"
+    - "An analyst quadrant report evaluates competing vendors in one category across execution and vision criteria, naming market leaders"
+    - "An annual industry index tracks aggregated billing data across hundreds of companies to compare single- versus multi-model revenue architectures"
   base: semantic
   traits:
   - cited
