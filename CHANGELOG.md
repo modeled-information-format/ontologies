@@ -2,7 +2,7 @@
 id: changelog-ontology-corpus
 type: episodic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-07-05T12:00:00Z'
+modified: '2026-07-06T00:00:00Z'
 namespace: changelog/ontology-corpus
 title: Changelog
 tags:
@@ -36,6 +36,8 @@ Individual ontologies carry their own `version` in their YAML `ontology:` block;
 this file tracks the corpus as a whole.
 
 ## [Unreleased]
+
+## [0.4.0] - 2026-07-06
 
 ### Added
 
