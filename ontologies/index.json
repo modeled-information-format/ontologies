@@ -47,7 +47,7 @@
         "engineering-base"
       ],
       "file": "data-engineering.ontology.yaml",
-      "sha256": "9320e892f4f64c78ae1ff51b3995e915d3bc7e65dc4f0902588c1db783ff87aa",
+      "sha256": "de3a6926a4e8f991d4af44b6e4e7724762db23e8c171c1fd5285fcb0fbe35b19",
       "version": "0.4.0"
     },
     "engineering-base": {
@@ -56,7 +56,7 @@
         "shared-traits"
       ],
       "file": "engineering-base.ontology.yaml",
-      "sha256": "8cedafcf1534dd94d3a9e5dcc951fa6f9354043b5b6d1a0831256ccc60014ddd",
+      "sha256": "4a23819fafd17c96e82c0734a262277d595e7f584ee3de5a090356a4fa51bf57",
       "version": "0.2.0"
     },
     "fitness": {
@@ -89,7 +89,7 @@
         "shared-traits"
       ],
       "file": "market-research.ontology.yaml",
-      "sha256": "ab57fcbc4b37914227d78ec5d612aa6a2982a3ea2c8b350fc5b819217f19d5d2",
+      "sha256": "5985b961324f57f744b7c01647353be3897e7a4104fca8ad035b4cc39abfe101",
       "version": "0.4.0"
     },
     "mif-base": {
@@ -111,7 +111,7 @@
         "mif-base"
       ],
       "file": "mif-generic.ontology.yaml",
-      "sha256": "3e1ba5a8d32133bc1bb1ca1554b3404b9b0deeadc3e4ddb8892673460dfc4d94",
+      "sha256": "d92cdf31584582e31c77384bc8466ea2b4bc208be4ddc26873c47b724cbd48bc",
       "version": "1.1.0"
     },
     "non-ionizing-radiation": {
@@ -129,7 +129,7 @@
         "mif-generic"
       ],
       "file": "observability.ontology.yaml",
-      "sha256": "4cbea8480b24800cbd4edad97170fa24faf26017f69c0a1dbfef5de3dd486bbc",
+      "sha256": "8af3828b65d462a38c58e417cb3f5c7cf72aa40b47906b3b389fa3107a320283",
       "version": "0.4.0"
     },
     "physical-science-base": {
@@ -231,7 +231,7 @@
         "engineering-base"
       ],
       "file": "software-security.ontology.yaml",
-      "sha256": "0539a15deba4612cbc850c4ac81ded35aea531a092db5023cf928fb80f81d2a2",
+      "sha256": "f47cdaf294ec7a7bdc743addeadd43695bc72b37072dbddf73581008b9fa77dd",
       "version": "0.4.0"
     },
     "trend-analysis": {

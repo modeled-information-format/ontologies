@@ -574,7 +574,7 @@ entity_types:
     negative_examples:
       - "Mean time to detect (MTTD) and dwell time together measure the elapsed time from when a breach occurs (or evidence of compromise is logged) to when security operations detect and confirm it, serving as a key indicator of detection capability maturity."
       - "A sophisticated, long-duration attack operation targeting industrial control systems and critical infrastructure, employing living-off-the-land techniques and prioritizing stealth and persistence over disruptive impact."
-      - "A comprehensive analysis of a critical credential-compromise incident affecting a major credit-reporting organization, including technical indicators, attack timeline, and affected consumer record counts."
+      - "Attackers maintained access to Equifax's network for approximately 76 days before detection, moving laterally to access multiple databases and exfiltrating data gradually to avoid triggering volume-based detection thresholds, ultimately reaching consumer data equivalent to nearly half the US population. The breach led to a $700 million settlement with the FTC and state regulators and a GAO investigation into both Equifax's and federal agencies' response, and remains a frequently cited example of the gap between a patch being available and an organization actually applying it."
     base: episodic
     # STIX 2.1 Report SDO
     traits:
