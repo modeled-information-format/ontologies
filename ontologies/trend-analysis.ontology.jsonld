@@ -138,7 +138,7 @@
   "@id": "mif:ontology/trend-analysis",
   "@type": "mif:Ontology",
   "identifier": "trend-analysis",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Strategic foresight and trend-analysis domain ontology \u2014 signals, drivers, trends, scenarios, forecasts",
   "namespaces": {
     "semantic": {
@@ -289,6 +289,16 @@
       "name": "driver",
       "base": "semantic",
       "description": "A driver of change: a broad long-term force shaping the future",
+      "negative_examples": [
+        "Sustained investment in carbon-neutral electricity infrastructure and policy mandates for zero-carbon new building construction are accelerating the transition away from fossil-fuel generation.",
+        "The pace at which data protection regimes align globally, influenced by geopolitical competition and regulatory harmonization efforts, affects the feasibility of operating unified digital services.",
+        "Autonomous vehicles are positioned at hype-peak on the adoption S-curve, with inflated expectations ahead of mainstream feasibility, creating investor excitement and regulatory experimentation.",
+        "Last-mile delivery logistics are straining urban air quality through increased vehicle emissions, creating pressure for low-emission delivery infrastructure investment.",
+        "Technological and economic pressures are driving exponential growth in workplace automation, fundamentally reshaping labor-force composition and employment categories across sectors.",
+        "Early climate policy adoption is accelerating renewable energy scaling and circular-economy transitions, creating cascading benefits across industrial and agricultural sectors.",
+        "Central banks are experimenting with digital currency pilots, a force catalyzing broader financial-system digitalization and competitive pressure among payment networks.",
+        "Global development priorities are pushing toward achievement of the UN Sustainable Development Goals, mobilizing international financing and policy coordination toward the 2030 targets."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -362,6 +372,16 @@
         "Global spending in a market segment exceeds a milestone with double-digit growth",
         "Vendors consolidate through acquisitions as a product category matures"
       ],
+      "negative_examples": [
+        "If a policy removes tariff barriers on renewable equipment, manufacturing costs for solar panels will decline, expanding adoption potential among manufacturers and reducing per-watt system costs over five years.",
+        "Digital connectivity targets for developing economies aim toward universal broadband access by 2035, enabling digital service delivery and reducing the digital divide.",
+        "Software-driven dynamic pricing is spreading across rental housing, e-commerce, and hospitality, with growing market penetration of algorithmic optimization tools in rate-setting decisions.",
+        "Electricity generation from renewable sources is progressively increasing its share of global supply, displacing fossil-fuel generation in regional grids, particularly in Europe and East Asia.",
+        "Technology companies are increasingly halting hiring in certain specialties, reflecting market shifts toward operational efficiency and disciplined headcount management across the sector.",
+        "Generative AI capabilities are scaling rapidly in compute power and cost-efficiency, with improvements in model performance per dollar of infrastructure investment driving broader adoption.",
+        "Global energy systems are progressively decarbonizing under climate-neutral pathways, with renewable generation expanding and fossil-fuel generation declining across economic sectors.",
+        "Reserve-currency status is gradually shifting among major global currencies, with changing economic and geopolitical weight affecting international financial market composition."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -424,6 +444,11 @@
       "name": "megatrend",
       "base": "semantic",
       "description": "A megatrend: a long-term structural transformation operating over a decade or more",
+      "negative_examples": [
+        "Cities worldwide are concentrating population and economic activity at historically rapid rates, creating a persistent structural transformation of global geography and labor mobility.",
+        "Urban density concentration is triggering heat-island effects in cities, creating cascading infrastructure stress and public-health challenges across dense metropolitan areas.",
+        "Energy systems worldwide are transforming from fossil-fuel dependent to renewable-based infrastructure, a shift driven by cost curves, policy mandates, and technological maturity."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -488,6 +513,10 @@
         "A newly public specification differentiates on real technical grounds but is still building adoption against a better-funded competing standard",
         "Contract explosion and organizational adoption friction are documented failure modes that drove an entire testing approach's evolution"
       ],
+      "negative_examples": [
+        "Short-form video consumption patterns are reshaping media engagement and attention economics, shifting audience attention toward platforms optimized for sub-minute content.",
+        "Singapore's digital infrastructure investments are creating challenges around data privacy, cybersecurity, and equitable technology access in urban development."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -545,6 +574,10 @@
       "name": "wild-card",
       "base": "semantic",
       "description": "A wild card: a low-probability, high-impact rupture event",
+      "negative_examples": [
+        "Climate impacts on agriculture, water systems, and coastal infrastructure are creating systemic adaptation pressures that could trigger cascading economic shocks if tipping points are exceeded.",
+        "Orbital debris populations are accumulating faster than removal rates can sustain, with collision-cascade risks creating potential systemic failure of satellite-dependent infrastructure."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -607,6 +640,11 @@
       "name": "critical-uncertainty",
       "base": "semantic",
       "description": "A critical uncertainty: a high-impact factor that is genuinely unpredictable, used as a scenario axis",
+      "negative_examples": [
+        "The extent to which AI-driven control-system failures will cause cross-operator power-grid blackouts, versus remaining isolated incidents, depends on unmeasured deployment patterns and interdependency levels in infrastructure networks.",
+        "Whether climate policy implementation favors early aggressive action versus delayed mitigation, conditional on political-economy constraints and carbon-cost trajectories, remains an unresolved policy uncertainty.",
+        "As water and energy systems compete for finite resources in arid regions, the degree to which agricultural production can sustain population growth without triggering resource conflicts remains deeply uncertain."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -666,6 +704,13 @@
       "name": "adoption-curve",
       "base": "semantic",
       "description": "An adoption / maturity curve positioning a subject on an S-curve or hype cycle",
+      "negative_examples": [
+        "Branch-based retail banking is moving from early-maturity to decline-phase adoption as digital-first financial services capture market share from traditional in-branch interactions.",
+        "5G network deployment is progressing through early commercial availability into growth-phase adoption, with mainstream consumer and enterprise uptake driving infrastructure expansion.",
+        "Passenger vehicles are transitioning from internal-combustion dominance through early hybrid adoption into battery-electric maturity, following classic S-curve diffusion dynamics.",
+        "DNA synthesis capabilities are entering early commercial availability, with adoption growing among biotech researchers, while screening frameworks remain insufficient to prevent dual-use misuse.",
+        "Cashierless retail technology is progressing through pilot deployments toward early commercial viability, with customer acceptance and merchant adoption determining market penetration."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -999,6 +1044,10 @@
       "name": "roadmap",
       "base": "procedural",
       "description": "A roadmap: a time-sequenced action plan working backward from a vision",
+      "negative_examples": [
+        "Companies are establishing multi-year plans for deploying autonomous systems, with staged rollouts of robotics and automation technologies across supply chains and production facilities.",
+        "Urban planners are designing 15-minute-neighborhood infrastructure with distributed services and reduced transport-dependency, progressively rolling out in European and North American cities."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/versioned",

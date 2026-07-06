@@ -20,7 +20,7 @@
 
 ontology:
   id: software-engineering
-  version: "0.6.0"
+  version: "0.7.0"
   description: "Software engineering domain ontology — incidents and SDLC operational procedures"
   extends:
     - engineering-base
@@ -45,6 +45,8 @@ entity_types:
       - "An autonomous coding agent ignored an explicit action freeze and deleted a production database, then fabricated records to conceal it"
       - "A single API call from an AI coding agent destroyed both a production database and its backups, causing a multi-hour customer outage"
       - "A platform's own monthly availability report documents an hours-long window where enterprise customers could not use a core feature"
+    negative_examples:
+      - "Game days and disaster recovery testing are an engineering practice where teams simulate outage scenarios without impacting production, regularly practicing incident response and validating runbook accuracy."
     base: episodic
     traits:
       - timeline
@@ -91,6 +93,10 @@ entity_types:
       - "An industry production-readiness checklist names on-call and runbook readiness as a required facet that is easy to omit"
       - "A runbook library spanning over a dozen procedures classifies each by severity and automation coverage target"
       - "A standard runtime for operational runbooks executes version-controlled remediation actions under least-privilege roles, triggered automatically on events"
+    negative_examples:
+      - "CQRS splits commands from queries into separate models, but eventual consistency lag makes it a poor fit for a bank balance check immediately after a debit. The Saga pattern chains local transactions with compensating rollbacks, favoring orchestration over choreography as the number of steps grows."
+      - "A deployment procedure for rolling updates of container nodes on ECS: drain existing tasks, launch new tasks on updated AMI, wait for health checks, then terminate old tasks once new ones report healthy, minimizing downtime during gradual node replacement."
+      - "A migration guide for upgrading from Java 8 to Java 17 covers deprecated APIs to update, new module system configuration requirements, garbage collector tuning changes, and testing strategies for validating the upgrade in staging environments."
     base: procedural
     traits:
       - versioned
@@ -130,6 +136,10 @@ entity_types:
           description: "Escalation path"
   - name: deployment-procedure
     description: "Step-by-step deployment or release procedure"
+    negative_examples:
+      - "A git-flow branching model with long-lived develop and release branches can cause multi-day merge conflicts when feature branches diverge for days. Trunk-based development merges small changes directly to main behind feature flags, surfacing integration issues within hours instead of days."
+      - "Pull request cycle time measures the elapsed time from a PR being opened to it being merged, broken into sub-phases like time-to-first-review and approval-to-merge, to identify which phase is the actual bottleneck in the review process."
+      - "Feature flags and dark launches are an engineering practice where new code is deployed to production but hidden behind a configuration flag, allowing teams to control visibility and rollout pace independently of deployment timing."
     base: procedural
     traits:
       - versioned

@@ -1,7 +1,7 @@
 ---
 ontology:
   id: market-research
-  version: 0.3.0
+  version: "0.4.0"
   description: Market-research domain ontology — segments, competitors, sizing, demand, intelligence
   extends:
   - mif-base
@@ -59,6 +59,8 @@ entity_types:
   disposition: mint
 - name: competitor
   description: A competing organization in a market (EXTENDS schema:Organization)
+  negative_examples:
+    - "Individual vendors like CrowdStrike and Salesforce compete aggressively by undercutting on price, expanding feature sets faster than rivals, and differentiating on analyst rankings, collectively driving up the competitive intensity in the endpoint-security and CRM markets."
   base: semantic
   traits:
   - cited
@@ -89,6 +91,10 @@ entity_types:
   disposition: extend
 - name: brand
   description: A brand maintained by a competitor (REUSES schema:Brand)
+  negative_examples:
+    - "New DTC skincare brands can enter the market at low cost via white-label manufacturing and Shopify platforms, allowing fresh entrants to compete for social-media discovery and rapidly gain mindshare among Gen Z consumers."
+    - "Salesforce, Inc. (NYSE: CRM), a San Francisco enterprise CRM vendor, and Shopify Inc. (NYSE: SHOP), an Ottawa commerce-platform vendor, are both publicly traded companies competing in their respective markets."
+    - "Gen Z and Millennial consumers increasingly check ingredient lists via apps like INCIDecoder or Yuka before buying 'clean-label' skincare, pressuring legacy brands to reformulate or launch clean-label sub-brands."
   base: semantic
   traits:
   - cited
@@ -118,6 +124,12 @@ entity_types:
   disposition: reuse
 - name: buyer-persona
   description: A target buyer audience or ideal-customer profile (REUSES schema:Audience)
+  negative_examples:
+    - "This segment, aged 13-26, discovers and buys skincare mainly via TikTok and Instagram Reels rather than search, weighting ingredient transparency and influencer endorsement heavily, with low brand loyalty."
+    - "LinkedIn, acquired by Microsoft in 2016 and reported as a standalone segment, is cited in B2B market research via its Sales Navigator and Talent Solutions products for firmographic targeting data."
+    - "This cohort was screened for current software-purchasing involvement at 1,000+-employee organizations with at least director-level title, yielding 412 qualified respondents for a brand-awareness and vendor-consideration study."
+    - "This skincare subscription box, personalized to skin type and concerns at signup, relies on a pause-rather-than-cancel default and periodic re-personalization surveys to manage churn."
+    - "In this win-loss analysis, retail category buyers repeatedly declined a DTC skincare brand's shelf-placement pitch over inability to verify its claimed online repeat-purchase rate, used as a sell-through-risk proxy."
   base: semantic
   traits:
   - cited
@@ -141,6 +153,8 @@ entity_types:
   disposition: reuse
 - name: respondent-segment
   description: A survey-respondent cohort defined by screening criteria
+  negative_examples:
+    - "Demand for F2P games skews heavily toward older-demographics segments aged 40+ who prefer puzzle and strategy mechanics, representing a growing revenue opportunity for mobile developers."
   base: semantic
   traits:
   - cited
@@ -229,6 +243,11 @@ entity_types:
   disposition: mint
 - name: service-offering
   description: A service offering provided into a market (EXTENDS schema:Service)
+  negative_examples:
+    - "Demand for embedded-payment capabilities is driving vendors to offer recurring-revenue models like subscription-box curation, where payment processing becomes a value-add feature bundled with the core product experience."
+    - "New observability vendors are offering cloud-native monitoring and AI-driven root-cause-analysis services that compete with legacy enterprise monitoring platforms, changing how operations teams approach infrastructure visibility."
+    - "Stripe, Inc., a privately held, venture-backed payments-infrastructure vendor in South San Francisco offering Stripe Treasury and Stripe Capital, competes with Adyen and Braintree among developer-first platforms."
+    - "CB Insights' embedded-fintech intelligence service provides analysis and tracking of fintech-in-enterprise offerings, helping investors and operators understand the strategic implications of fintech integrations."
   base: semantic
   traits:
   - cited
@@ -258,6 +277,9 @@ entity_types:
   disposition: reuse
 - name: market-demand
   description: Market demand for an offered item (REUSES schema:Demand)
+  negative_examples:
+    - "Buyers with negotiating power in CRM and enterprise software markets demand better pricing, lower switching costs, and extended payment terms, forcing vendors to improve commercial flexibility to maintain customer retention and market share."
+    - "Conjoint-analysis survey instruments measure demand for specific pricing tiers and feature bundles, revealing which value combinations customers would actually choose across hypothetical product configurations."
   base: semantic
   traits:
   - cited
@@ -286,6 +308,11 @@ entity_types:
   disposition: reuse
 - name: value-proposition
   description: A value proposition mapping offerings to customer jobs, pains and gains
+  negative_examples:
+    - "K-12 tutoring software demand, initially subsidized by federal ESSER relief funds, has moderated as ESSER funding wound down through its 2024 obligation deadline, shifting purchasing back to district general funds."
+    - "This cohort screened for owners or sole financial decision-makers at businesses with fewer than 50 employees, yielding 650 qualified respondents for a study measuring unaided and aided brand awareness of accounting-software vendors. Quotas were set to match US Census Bureau small-business industry distribution rather than allowing a convenience sample skewed toward any single vertical."
+    - "Enterprise software buying centers (5,000+ employees) require formal RFPs and multi-stakeholder sign-off; Gartner and Forrester treat this as distinct since criteria like SOC 2 and SSO/SAML diverge from smaller buyers."
+    - "In this win-loss analysis, a vertical-SaaS company chose an embedded-payments partner based on API documentation and sandbox quality evaluated by its own engineers, weighing more than per-transaction pricing."
   base: semantic
   traits:
   - cited
@@ -318,6 +345,9 @@ entity_types:
     - "Pricing signals from adjacent enterprise software markets establish a willingness-to-pay range for a new category of infrastructure product"
     - "An analyst quadrant report evaluates competing vendors in one category across execution and vision criteria, naming market leaders"
     - "An annual industry index tracks aggregated billing data across hundreds of companies to compare single- versus multi-model revenue architectures"
+  negative_examples:
+    - "Demand for managed-detection-and-response (MDR) in ransomware protection is documented in industry reports like CB Insights' cybersecurity threat analysis and Forrester Wave assessments of the MDR market."
+    - "Healthcare payers represent a distinct market segment; industry intelligence reports track payer consolidation trends, reimbursement-policy shifts, and vendor adoption rates within this sector."
   base: semantic
   traits:
   - cited
@@ -350,6 +380,12 @@ entity_types:
   disposition: mint
 - name: market-data-source
   description: A catalog of market-intelligence data (REUSES schema:DataCatalog)
+  negative_examples:
+    - "Adobe (NASDAQ: ADBE) acquired Marketo Engage in 2018 for B2B marketing automation, while CrowdStrike (NASDAQ: CRWD), maker of the Falcon EDR platform, faced scrutiny after its July 2024 outage disrupted Windows systems globally."
+    - "Predictive-maintenance IoT demand has grown as unplanned downtime, cited at tens of thousands of dollars per hour for large facilities, strengthens the business case for sensor instrumentation investment."
+    - "Sensor Tower's mobile-gaming report tracks in-app-purchase revenue and downloads via its own app-store data-panel estimation methodology, a standard but non-publisher-disclosed secondary source in mobile-gaming competitive analysis."
+    - "Organizations of 200-2,000 employees lacking a 24/7 SOC but facing SOC 2 or cyber-insurance compliance pressure typically outsource threat monitoring entirely to a managed security provider rather than building hybrid coverage."
+    - "In this win-loss analysis, non-converting industrial-IoT pilots most often failed due to integration friction with the facility's existing SCADA/PLC vendor ecosystem, discovered only during the pilot itself."
   base: semantic
   traits:
   - cited
@@ -380,6 +416,11 @@ entity_types:
   disposition: reuse
 - name: survey-instrument
   description: A survey instrument — a research plan specification
+  negative_examples:
+    - "A surveyed cohort of 250 manufacturing plant managers is gathered using a multi-question screening protocol that filters for facility size and recent technology-evaluation activity to ensure respondent relevance to IoT adoption studies."
+    - "Clinical procurement leads at healthcare systems are characterized as decision-makers; capturing their preferences requires a structured interview protocol covering budget authority, risk tolerance, and vendor-certification requirements."
+    - "The K-12 edtech segment is researched using survey instruments that measure teacher adoption rates, student engagement outcomes, and curriculum-fit perceptions to guide product roadmap decisions."
+    - "Observability platforms communicate unified value propositions through surveys and buyer interviews, emphasizing single-pane-of-glass visibility, AI-driven insights, and cost reduction as key differentiators."
   base: procedural
   traits:
   - cited
@@ -404,6 +445,8 @@ entity_types:
   disposition: mint
 - name: win-loss-analysis
   description: A win-loss analysis episode — post-decision interviews with won/lost prospects
+  negative_examples:
+    - "Win-loss discussion guides are survey instruments used to conduct structured interviews with customers about their vendor-selection reasoning, competitive comparisons, and deal-outcome drivers."
   base: episodic
   traits:
   - cited

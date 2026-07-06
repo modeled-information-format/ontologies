@@ -22,7 +22,7 @@
 
 ontology:
   id: observability
-  version: "0.3.0"
+  version: "0.4.0"
   description: "Observability-platform domain ontology — services, telemetry signals, capability comparisons, service-ownership registries, migration patterns, market positioning, and roadmap signals, organized as an IS-A tree rooted in generic types"
   schema_url: >-
     https://mif-spec.dev/schema/ontology/ontology.schema.json
@@ -88,6 +88,17 @@ entity_types:
   # ----- Concrete leaf types -----
   - name: observability-service
     description: "An observability service or product (CloudWatch, X-Ray, ADOT, Amazon Managed Prometheus/Grafana, Datadog) and the pillars it serves"
+    negative_examples:
+      - "This decision record explains why the organization is standardizing on a single vendor-neutral instrumentation or log-backend choice, citing cost-of-query-pattern or vendor-lock-in rationale, and names the migration cost accepted as a consequence of the switch."
+      - "A narrowly-scoped piece of a larger observability stack that performs exactly one function relative to a neighboring piece, for example converting Kubernetes object state into metrics without reporting live resource usage itself, or only deduplicating and routing alerts that another process already evaluated."
+      - "Amazon Managed Grafana and Grafana Cloud run the same open-source Grafana engine, but Grafana Cloud bundles managed Loki, Tempo, and Mimir while Amazon Managed Grafana is visualization-only."
+      - "Prometheus Remote Write 2.0 adds native exemplar and histogram support, while a competing APM auto-instrumentation capability announced at re:Invent in late 2023 reached GA after seven months in preview."
+      - "Prometheus Remote Write is the shared protocol underlying every managed-Prometheus-compatible offering, while PromQL remains the de facto standard query language for time series regardless of backend."
+      - "Elastic was named a Leader in Gartner's 2025 Magic Quadrant for Observability Platforms for a second straight year, rooted in Elasticsearch and Kibana's search-and-log-analytics origins rather than a metrics-first design."
+      - "Because Amazon Managed Service for Prometheus speaks standard remote_write and PromQL, migrating off self-hosted Prometheus federation or Thanos/Cortex requires only repointing remote_write and adding IAM SigV4 signing."
+      - "The CNCF, under the Linux Foundation, hosts graduated projects Prometheus, Jaeger, Fluentd, and Fluent Bit alongside still-incubating OpenTelemetry, and its annual survey is a widely cited adoption data source."
+      - "Vizceral is a WebGL-based traffic-visualization tool Netflix open-sourced in 2016, rendering live request volume as an animated node-and-edge graph for what Netflix called 'intuition engineering.'"
+      - "The RED method, proposed by Tom Wilkie at Weaveworks, instruments services with Rate, Errors, and Duration metrics as a request-driven complement to the host-centric USE method."
     base: semantic
     subtype_of:
       - observability-resource
@@ -143,6 +154,8 @@ entity_types:
       - "A telemetry-driven service catalog auto-populates ownership metadata from live tracing data rather than requiring manual registration"
       - "A cloud provider's application-registry capability evolved from an API-first tool toward a console-first, more discoverable successor"
       - "No single native service replaces a telemetry-driven service catalog; a composite of several separate registries is required instead"
+    negative_examples:
+      - "Distributed trace context propagation across service boundaries maintains correlation identity through W3C standard headers and message metadata."
     base: semantic
     subtype_of:
       - observability-resource
@@ -168,6 +181,17 @@ entity_types:
             type: string
   - name: telemetry-signal
     description: "A class of telemetry data (a signal/pillar) produced and consumed across observability services"
+    negative_examples:
+      - "A correlation ID propagation technique embedded in service calls to track a request across multiple services and correlate logged events to a single logical transaction."
+      - "One governance rule assigns sensitivity tiers to telemetry carrying customer PII, such as session replays, enforced automatically at ingestion, while a companion rule requires security and legal sign-off before onboarding new observability vendor destinations."
+      - "An eBPF-based, zero-instrumentation monitoring agent was adopted to give every service an immediate baseline visibility floor, explicitly scoped as a stopgap ahead of manual OpenTelemetry instrumentation as the eventual end state."
+      - "The OpenTelemetry Collector is a standalone binary between instrumented apps and observability backends, accepting OTLP, Prometheus remote_write, Jaeger, and Zipkin, so switching backends becomes an exporter config change."
+      - "A control enforces that observability data is retained for a maximum of 90 days before purging, implemented as a data-retention policy applied to all metric backends to balance storage costs against the need to investigate historical incidents."
+      - "A telemetry onboarding checklist discipline lists the required steps when adding a new metric or trace to the observability infrastructure, including name/unit definition, dashboard link, alert thresholds, and retention policies."
+      - "Alert fatigue, studied in clinical alarm-fatigue research before adaptation to on-call practice, relates to Charity Majors's argument that the 'three pillars' metrics/logs/traces model is itself a tooling-problem symptom, not a foundational unit."
+      - "The OpenTelemetry Semantic Conventions document specifies standard attribute names, such as an HTTP request's status code or a Kubernetes pod's namespace, so differently-authored instrumentation lands under consistent field names."
+      - "Migrating from a proprietary APM agent to OpenTelemetry is de-risked via incremental, service-by-service rollout, since mismatched trace-context propagation between migrated and unmigrated services can fragment a request into two disconnected traces."
+      - "The OpenTelemetry Protocol (OTLP) efficiently encodes and transmits metrics, logs, and trace data to backend systems with built-in compression and automatic retry."
     base: semantic
     subtype_of:
       - delivery-metric
@@ -207,6 +231,11 @@ entity_types:
     exemplars:
       - "A commercial observability platform has no official plugin for a given developer portal, requiring a proxy-based integration workaround instead"
       - "An incumbent monitoring vendor retains capability leads in integrated security and multi-cloud breadth that a challenger has not yet matched"
+    negative_examples:
+      - "This decision favors a single vendor's unified observability platform over best-of-breed, valuing one-UI pivoting from a trace span to correlated logs and RUM sessions, while still requiring OpenTelemetry instrumentation over a proprietary SDK."
+      - "A canary analysis pattern detects when a percentage of production traffic is automatically rolled back to the previous version if post-deployment metrics diverge beyond configured thresholds, eliminating manual approval delays for low-risk changes."
+      - "An incident severity classification discipline defines distinct severity levels (critical, high, medium, low) based on impact (number of users affected, revenue impact, data loss risk) and provides decision rules for which level different types of issues map to."
+      - "A parallel-run cutover strategy shadows all production telemetry through both monitoring systems simultaneously before switching primary collection, minimizing data loss."
     base: semantic
     subtype_of:
       - observability-assessment
@@ -246,6 +275,9 @@ entity_types:
     exemplars:
       - "An analyst firm's quadrant places an incumbent vendor as a market leader and a cloud-native challenger a tier below"
       - "A discipline has reached near-universal enterprise adoption within a few years, according to an annual research report"
+    negative_examples:
+      - "Gartner's 2025 Magic Quadrant for Observability Platforms is a published report, released July 2025, that evaluates approximately 20 vendors against defined Ability to Execute and Completeness of Vision criteria."
+      - "Gartner is the analyst firm that publishes the annual Magic Quadrant for Observability Platforms, applying a consistent published evaluation methodology across roughly 20 vendors each report cycle."
     base: semantic
     subtype_of:
       - observability-assessment
@@ -280,6 +312,11 @@ entity_types:
       - "A community-governed open-source project's roadmap points toward AI-native tooling as the next integration direction"
       - "Vendor-announced launches over the past year or two indicate which competing platform capabilities are likely to close within that window"
       - "A generative-AI incident-investigation feature reaching general availability signals a broader shift toward AI-driven root-cause analysis"
+    negative_examples:
+      - "Cardinality growth rate measures the number of distinct values in a time-series metric over time; a rapid growth in cardinality can indicate unbounded tag explosion in an instrumentation library, increasing storage and query costs."
+      - "An SLO review cadence discipline schedules quarterly reviews where teams revisit their service-level objectives, adjusting targets based on actual performance trends and changing business priorities."
+      - "Splunk, acquired by Cisco in 2024, was named a Leader in Gartner's 2025 Magic Quadrant for Observability Platforms for a third consecutive year, its trace/metrics capability rooted in the 2021 SignalFx acquisition."
+      - "Continuous profiling samples a running process's stack traces to build always-on flame graphs, and OpenTelemetry has adopted it as a fourth core signal, entering public alpha with a pprof-compatible data model."
     base: episodic
     subtype_of:
       - observability-assessment
@@ -316,6 +353,8 @@ entity_types:
       - "A phased rollout plan for a new internal platform begins with a small pilot before scaling to organization-wide adoption waves"
       - "Documented real-world migrations from one observability vendor to another report meaningful cost reduction alongside a multi-month timeline"
       - "Automated migration tooling is reducing a historically months-long platform migration down to a matter of weeks"
+    negative_examples:
+      - "Treating dashboard definitions as version-controlled, PR-reviewed source code has become standard practice, alongside chaos engineering framed as observability validation itself: an injected failure surfacing on no dashboard is a first-class monitoring-gap finding."
     base: procedural
     subtype_of:
       - design-pattern
