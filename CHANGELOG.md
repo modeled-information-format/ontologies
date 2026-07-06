@@ -2,7 +2,7 @@
 id: changelog-ontology-corpus
 type: episodic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-07-05T12:00:00Z'
+modified: '2026-07-06T00:00:00Z'
 namespace: changelog/ontology-corpus
 title: Changelog
 tags:
@@ -36,6 +36,8 @@ Individual ontologies carry their own `version` in their YAML `ontology:` block;
 this file tracks the corpus as a whole.
 
 ## [Unreleased]
+
+## [0.4.0] - 2026-07-06
 
 ### Added
 
@@ -178,7 +180,9 @@ no functional changes from 0.2.0. See [0.2.0] below for the full release notes.
 
 - Relicensed the repository under MIT.
 
-[Unreleased]: https://github.com/modeled-information-format/ontologies/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/modeled-information-format/ontologies/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/modeled-information-format/ontologies/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/modeled-information-format/ontologies/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/modeled-information-format/ontologies/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/modeled-information-format/ontologies/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/modeled-information-format/ontologies/compare/v0.1.0...v0.2.0
