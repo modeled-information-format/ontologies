@@ -287,7 +287,7 @@
       "negative_examples": [
         "New DTC skincare brands can enter the market at low cost via white-label manufacturing and Shopify platforms, allowing fresh entrants to compete for social-media discovery and rapidly gain mindshare among Gen Z consumers.",
         "Salesforce and Shopify are recognized enterprise software brands that customers actively choose and switch between based on feature fit and vendor reputation in the platform-software market.",
-        "Clean-label skincare brands are driving premium pricing by emphasizing ingredient transparency and sustainability narratives that resonate with environmentally-conscious consumers."
+        "Demand for 'clean-label' skincare products, marketed around ingredient transparency and the exclusion of specific chemical categories, has grown among Gen Z and Millennial consumers, who report checking ingredient lists via apps like INCIDecoder or Yuka before purchase, a behavior historically far less common among older cohorts. That demand shift has pressured legacy skincare brands to reformulate or launch clean-label sub-brands rather than continuing to compete on efficacy claims alone."
       ],
       "traits": [
         "mif:trait/cited"
@@ -330,10 +330,10 @@
       "base": "semantic",
       "description": "A target buyer audience or ideal-customer profile (REUSES schema:Audience)",
       "negative_examples": [
-        "Gen Z skincare buyers aged 13-26 who discover products through TikTok and Instagram represent a key market segment, characterized by specific personas like the 'ingredient-conscious social-commerce explorer' who prioritizes transparency and creator endorsements.",
-        "LinkedIn's brand identity in the professional-social-networking space is strongly associated with a specific persona: the ambitious career-climber who uses the platform to build professional visibility and network with decision-makers.",
-        "Enterprise IT buyers in a 412-respondent survey represent a key audience persona, characterized by centralized procurement authority and sensitivity to vendor security certifications.",
-        "DTC skincare subscription boxes target a buyer persona: the millennial consumer seeking convenience and discovery through personalized curation and regular shipments at a discount.",
+        "This segment covers consumers aged roughly 13 to 26 who discover and purchase skincare primarily through short-form video, TikTok, Instagram Reels, rather than in-store browsing or search-driven discovery, and who weight ingredient transparency and influencer or creator endorsement heavily in their purchase decisions. Purchase frequency skews toward smaller, more frequent basket sizes than older cohorts, and brand loyalty runs comparatively low, with switching typically driven by whatever product is currently trending.",
+        "LinkedIn is a professional-networking brand that Microsoft Corporation acquired in 2016 and has since operated as a standalone brand and business segment, reported separately in Microsoft's financial disclosures rather than folded into the broader Microsoft 365 brand. Its Sales Navigator and Talent Solutions products are commonly cited in B2B market research as a data source for firmographic and buyer-persona targeting, given the depth of professional-profile data the platform holds.",
+        "This respondent cohort was screened to require current involvement in software-purchasing decisions at organizations with 1,000 or more employees and at least a director-level title, yielding 412 qualified respondents for a brand-awareness and vendor-consideration study. The screening explicitly excluded respondents whose involvement was limited to using already-purchased software without any purchasing influence, so the sample wouldn't be diluted with end-user-only perspectives.",
+        "This service offering delivers a recurring, personalized selection of skincare products on a monthly or bi-monthly cadence, based on a customer's stated skin type and concerns collected at signup, positioned against one-time retail purchase by offering product discovery and a mild price discount relative to buying full-size items individually. Churn management typically relies on a pause-rather-than-cancel default and periodic re-personalization surveys to keep box contents relevant as customer preferences shift over time.",
         "Win-loss interviews with skincare-brand retailers examine the buyer-persona preferences that influence which DTC brands get shelf space versus online-only placement."
       ],
       "traits": [
@@ -492,7 +492,7 @@
       "negative_examples": [
         "Demand for embedded-payment capabilities is driving vendors to offer recurring-revenue models like subscription-box curation, where payment processing becomes a value-add feature bundled with the core product experience.",
         "New observability vendors are offering cloud-native monitoring and AI-driven root-cause-analysis services that compete with legacy enterprise monitoring platforms, changing how operations teams approach infrastructure visibility.",
-        "Stripe offers payment-processing and embedded-fintech services that compete with traditional banking and payment gateways by providing developers with APIs and financial-product bundles.",
+        "Stripe, Inc. is a privately held payment-processing and financial-infrastructure vendor headquartered in South San Francisco, offering an API-first platform for online payments, billing, and embedded finance, Stripe Treasury, Stripe Capital, aimed primarily at software developers and vertical SaaS companies embedding payments into their own products. It competes with both legacy payment processors and other developer-first platforms such as Adyen and Braintree, and as of this writing remains venture-backed rather than publicly traded.",
         "CB Insights' embedded-fintech intelligence service provides analysis and tracking of fintech-in-enterprise offerings, helping investors and operators understand the strategic implications of fintech integrations."
       ],
       "traits": [
@@ -582,7 +582,7 @@
         "Post-pandemic demand for K-12 tutoring services emphasizes personalized learning, flexible scheduling, and remediation in core subjects, value-propositions that tutoring platforms must deliver to capture market share.",
         "SMB decision-makers surveyed (n=650) prioritize value propositions centered on ease-of-use, affordable pricing, and minimal implementation overhead when evaluating software vendors.",
         "Enterprise SaaS segments are defined by buyers seeking flexible cloud deployment, multi-tenant architecture, and integration with existing enterprise tech stacks as core value propositions.",
-        "Embedded-payments RFP decisions reveal winning value propositions around transaction processing, fund reconciliation, and integration ease that customers prioritize when comparing payment platforms."
+        "This win-loss analysis covers a vertical-SaaS company's formal RFP process for selecting an embedded-payments infrastructure partner, drawn from interviews with the product and finance leadership who ran the evaluation. The recurring theme was that developer-experience quality, the API documentation and sandbox environment, evaluated directly by the SaaS company's own engineers during the RFP, weighed more heavily on the final decision than the headline per-transaction pricing rate, since integration engineering time was viewed as the larger real cost driver."
       ],
       "traits": [
         "mif:trait/cited"
@@ -676,7 +676,7 @@
       "base": "semantic",
       "description": "A catalog of market-intelligence data (REUSES schema:DataCatalog)",
       "negative_examples": [
-        "Software platforms like Adobe and CrowdStrike publish annual SEC filings and financial disclosures that provide market-share benchmarks, revenue trends, and competitive positioning data used by analysts to track market dynamics.",
+        "Adobe Inc. is a publicly traded (NASDAQ: ADBE) software vendor headquartered in San Jose, California, whose Experience Cloud business unit, including the Marketo Engage marketing-automation product it acquired in 2018, competes in B2B marketing automation alongside its better-known Creative Cloud and Document Cloud lines, going up against HubSpot and Salesforce Marketing Cloud primarily at the upper end of the enterprise segment, where Marketo's pre-acquisition legacy footprint remains concentrated. CrowdStrike Holdings, Inc. is a similarly publicly traded (NASDAQ: CRWD) vendor in an unrelated space: a cloud-native endpoint and cloud-security company headquartered in Austin, Texas, built around its Falcon platform for endpoint detection and response, threat intelligence, and managed security services. It competes most directly with legacy endpoint-protection vendors and other EDR/XDR platforms, and has faced heightened scrutiny of platform reliability since a widely reported July 2024 content-update outage disrupted Windows systems globally.",
         "Industrial IoT adoption demand is measured through sources like Gartner's predictive-maintenance reports, sensor vendor case studies, and manufacturing-operations benchmarking data that quantify market opportunity.",
         "Sensor Tower publishes mobile-gaming reports that use aggregated app-store data sources to estimate F2P monetization benchmarks and revenue trends across game genres.",
         "The midmarket MDR segment is characterized by firms with 50-500 employees requiring managed security services; market-data sources like Gartner and Forrester track this segment's penetration rates and vendor share.",

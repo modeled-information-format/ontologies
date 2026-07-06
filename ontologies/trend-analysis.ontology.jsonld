@@ -639,7 +639,12 @@
       "@type": "mif:EntityType",
       "name": "critical-uncertainty",
       "base": "semantic",
-      "description": "A critical uncertainty: a high-impact factor that is genuinely unpredictable, used as negative_examples: - \"The extent to which AI-driven control-system failures will cause cross-operator power-grid blackouts, versus remaining isolated incidents, depends on unmeasured deployment patterns and interdependency levels in infrastructure networks.\" - \"Whether climate policy implementation favors early aggressive action versus delayed mitigation, conditional on political-economy constraints and carbon-cost trajectories, remains an unresolved policy uncertainty.\" - \"As water and energy systems compete for finite resources in arid regions, the degree to which agricultural production can sustain population growth without triggering resource conflicts remains deeply uncertain.\" a scenario axis",
+      "description": "A critical uncertainty: a high-impact factor that is genuinely unpredictable, used as a scenario axis",
+      "negative_examples": [
+        "The extent to which AI-driven control-system failures will cause cross-operator power-grid blackouts, versus remaining isolated incidents, depends on unmeasured deployment patterns and interdependency levels in infrastructure networks.",
+        "Whether climate policy implementation favors early aggressive action versus delayed mitigation, conditional on political-economy constraints and carbon-cost trajectories, remains an unresolved policy uncertainty.",
+        "As water and energy systems compete for finite resources in arid regions, the degree to which agricultural production can sustain population growth without triggering resource conflicts remains deeply uncertain."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
