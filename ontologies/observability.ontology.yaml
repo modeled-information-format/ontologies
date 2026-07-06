@@ -22,7 +22,7 @@
 
 ontology:
   id: observability
-  version: "0.3.0"
+  version: "0.4.0"
   description: "Observability-platform domain ontology — services, telemetry signals, capability comparisons, service-ownership registries, migration patterns, market positioning, and roadmap signals, organized as an IS-A tree rooted in generic types"
   schema_url: >-
     https://mif-spec.dev/schema/ontology/ontology.schema.json
@@ -88,6 +88,17 @@ entity_types:
   # ----- Concrete leaf types -----
   - name: observability-service
     description: "An observability service or product (CloudWatch, X-Ray, ADOT, Amazon Managed Prometheus/Grafana, Datadog) and the pillars it serves"
+    negative_examples:
+      - "This decision record explains why the organization is standardizing on a single vendor-neutral instrumentation or log-backend choice, citing cost-of-query-pattern or vendor-lock-in rationale, and names the migration cost accepted as a consequence of the switch."
+      - "A narrowly-scoped piece of a larger observability stack that performs exactly one function relative to a neighboring piece, for example converting Kubernetes object state into metrics without reporting live resource usage itself, or only deduplicating and routing alerts that another process already evaluated."
+      - "Grafana Cloud provides integrated visualization, metrics storage via Mimir, log aggregation via Loki, and distributed tracing via Tempo in a single managed offering."
+      - "CloudWatch provides AWS-native monitoring with log insights search, metrics collection with custom dimensions, and application performance monitoring through native instrumentation."
+      - "Datadog provides end-to-end monitoring combining metrics, logs, and distributed traces with machine-learning-powered anomaly detection and correlation across all signal types."
+      - "Elasticsearch as a search and analytics platform ingests, indexes, and analyzes metrics, logs, and events for real-time operational visibility and investigation."
+      - "Amazon Managed Service for Prometheus provides serverless Prometheus compatibility with automatic scaling, multi-region data redundancy, and built-in long-term retention."
+      - "OpenTelemetry-compatible collectors ingest, process, and export metrics, logs, and traces to any observability backend or analytics platform with flexible routing."
+      - "Service mesh observability provides automatic tracing and metrics collection across microservice dependencies without application code changes or manual instrumentation."
+      - "Service observability platforms automatically collect request-level metrics capturing latency percentiles, error rates, and throughput across all application endpoints."
     base: semantic
     subtype_of:
       - observability-resource
@@ -143,6 +154,8 @@ entity_types:
       - "A telemetry-driven service catalog auto-populates ownership metadata from live tracing data rather than requiring manual registration"
       - "A cloud provider's application-registry capability evolved from an API-first tool toward a console-first, more discoverable successor"
       - "No single native service replaces a telemetry-driven service catalog; a composite of several separate registries is required instead"
+    negative_examples:
+      - "Distributed trace context propagation across service boundaries maintains correlation identity through W3C standard headers and message metadata."
     base: semantic
     subtype_of:
       - observability-resource
@@ -168,6 +181,17 @@ entity_types:
             type: string
   - name: telemetry-signal
     description: "A class of telemetry data (a signal/pillar) produced and consumed across observability services"
+    negative_examples:
+      - "A correlation ID propagation technique embedded in service calls to track a request across multiple services and correlate logged events to a single logical transaction."
+      - "A data point or event transmitted by an instrumented system (e.g., a trace span, a metric sample, a log line) that characterizes system behavior."
+      - "An observable data point or event (trace span, metric sample, log entry) emitted by instrumented components to characterize system behavior and diagnose issues."
+      - "An observable output or event emitted by a component at runtime, such as a metric sample, a trace span, or a structured log entry, used for observability."
+      - "A control enforces that observability data is retained for a maximum of 90 days before purging, implemented as a data-retention policy applied to all metric backends to balance storage costs against the need to investigate historical incidents."
+      - "A telemetry onboarding checklist discipline lists the required steps when adding a new metric or trace to the observability infrastructure, including name/unit definition, dashboard link, alert thresholds, and retention policies."
+      - "Custom instrumentation tracking API response latency percentiles, database query duration histograms, and cache hit rates provides operational visibility into application performance."
+      - "Span events recording database query latency, error status codes, and exception stacktraces enable detailed distributed tracing and performance analysis across service boundaries."
+      - "W3C Trace Context propagation through HTTP headers and message metadata maintains correlation identity across heterogeneous instrumentation frameworks and observability backends."
+      - "The OpenTelemetry Protocol (OTLP) efficiently encodes and transmits metrics, logs, and trace data to backend systems with built-in compression and automatic retry."
     base: semantic
     subtype_of:
       - delivery-metric
@@ -207,6 +231,11 @@ entity_types:
     exemplars:
       - "A commercial observability platform has no official plugin for a given developer portal, requiring a proxy-based integration workaround instead"
       - "An incumbent monitoring vendor retains capability leads in integrated security and multi-cloud breadth that a challenger has not yet matched"
+    negative_examples:
+      - "An analysis comparing the strengths and weaknesses of two different architectural approaches (e.g., single-pane-of-glass monitoring vs. best-of-breed tooling per domain) to help stakeholders weigh trade-offs."
+      - "A canary analysis pattern detects when a percentage of production traffic is automatically rolled back to the previous version if post-deployment metrics diverge beyond configured thresholds, eliminating manual approval delays for low-risk changes."
+      - "An incident severity classification discipline defines distinct severity levels (critical, high, medium, low) based on impact (number of users affected, revenue impact, data loss risk) and provides decision rules for which level different types of issues map to."
+      - "A parallel-run cutover strategy shadows all production telemetry through both monitoring systems simultaneously before switching primary collection, minimizing data loss."
     base: semantic
     subtype_of:
       - observability-assessment
@@ -246,6 +275,9 @@ entity_types:
     exemplars:
       - "An analyst firm's quadrant places an incumbent vendor as a market leader and a cloud-native challenger a tier below"
       - "A discipline has reached near-universal enterprise adoption within a few years, according to an annual research report"
+    negative_examples:
+      - "Gartner's 2025 Magic Quadrant for Observability Platforms is a published report, released July 2025, that evaluates approximately 20 vendors against defined Ability to Execute and Completeness of Vision criteria."
+      - "Gartner is the analyst firm that publishes the annual Magic Quadrant for Observability Platforms, applying a consistent published evaluation methodology across roughly 20 vendors each report cycle."
     base: semantic
     subtype_of:
       - observability-assessment
@@ -280,6 +312,11 @@ entity_types:
       - "A community-governed open-source project's roadmap points toward AI-native tooling as the next integration direction"
       - "Vendor-announced launches over the past year or two indicate which competing platform capabilities are likely to close within that window"
       - "A generative-AI incident-investigation feature reaching general availability signals a broader shift toward AI-driven root-cause analysis"
+    negative_examples:
+      - "Cardinality growth rate measures the number of distinct values in a time-series metric over time; a rapid growth in cardinality can indicate unbounded tag explosion in an instrumentation library, increasing storage and query costs."
+      - "An SLO review cadence discipline schedules quarterly reviews where teams revisit their service-level objectives, adjusting targets based on actual performance trends and changing business priorities."
+      - "Splunk is expanding cloud-native deployment options and adding real-time machine-learning-driven anomaly detection to enhance competitive positioning in analytics."
+      - "Continuous profiling roadmaps include GPU workload analysis, real-time code optimization recommendations, and cross-language statistical correlation."
     base: episodic
     subtype_of:
       - observability-assessment
@@ -316,6 +353,8 @@ entity_types:
       - "A phased rollout plan for a new internal platform begins with a small pilot before scaling to organization-wide adoption waves"
       - "Documented real-world migrations from one observability vendor to another report meaningful cost reduction alongside a multi-month timeline"
       - "Automated migration tooling is reducing a historically months-long platform migration down to a matter of weeks"
+    negative_examples:
+      - "A structured approach to transitioning from one technology to another, such as canary deployments, blue-green swaps, or strangler fig refactoring."
     base: procedural
     subtype_of:
       - design-pattern

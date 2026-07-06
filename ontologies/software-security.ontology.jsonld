@@ -138,7 +138,7 @@
   "@id": "mif:ontology/software-security",
   "@type": "mif:Ontology",
   "identifier": "software-security",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Software-security domain ontology \u2014 the software-facing slice of security: threats, vulnerabilities, controls, actors, indicators, supply-chain, incidents, frameworks",
   "namespaces": {
     "semantic": {
@@ -279,6 +279,9 @@
       "name": "attack-mitigation",
       "base": "procedural",
       "description": "A course of action that mitigates one or more ATT&CK techniques",
+      "negative_examples": [
+        "Describes the range of techniques adversaries commonly employ to gain initial entry into a network, from social engineering via phishing to exploitation of unpatched systems and abuse of legitimate credentials."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -318,6 +321,15 @@
       "name": "malware",
       "base": "semantic",
       "description": "A malicious software family or instance",
+      "negative_examples": [
+        "Software features or system components that can be selectively restricted or disabled to prevent their abuse by adversaries, including legacy protocols, scripting engines, and unnecessary services.",
+        "A large-scale compromise of a third-party managed file-transfer platform used by thousands of organizations, resulting in unauthorized data access and exfiltration through exploitation of a critical software vulnerability.",
+        "Compromise of a widely-used open-source package through insertion of obfuscated malicious code in build scripts or test files, targeting a critical downstream dependency used by millions of systems.",
+        "A coordinated multi-phase attack operation targeting critical infrastructure, using wiper-style payloads and network spreading techniques to cause widespread disruptive impact across interconnected systems.",
+        "A legitimate domain registered to support a kill-switch mechanism, serving to disable or control the behavior of a self-replicating worm if the kill-switch domain can be contacted.",
+        "An extortion and encryption attack offered as a service, where criminals provide the ransomware toolkit and infrastructure in exchange for a percentage of recovery payments from victims.",
+        "A highly sophisticated state-sponsored cyberweapon targeting nuclear facilities, featuring rootkit functionality and self-propagation across air-gapped networks through USB-based mechanisms."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated",
@@ -387,6 +399,9 @@
       "name": "vulnerability",
       "base": "semantic",
       "description": "A CVE vulnerability instance in a product or component",
+      "negative_examples": [
+        "A documented security flaw or weakness in a software component, identified by CVE number or advisory, that consumers must patch or mitigate."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated"
@@ -499,6 +514,11 @@
       "name": "security-control",
       "base": "semantic",
       "description": "A security control or safeguard (the security specialization of the generic engineering-base `control`)",
+      "negative_examples": [
+        "A prescriptive safeguard requires that code changes be reviewed and approved by a second person before merging, enforced through branch protection settings that reject pushes lacking required review status.",
+        "An allowlist-based input validation design pattern rejects any input that does not match a known-safe pattern rather than trying to blacklist dangerous patterns, reducing the risk of bypass attacks.",
+        "The failure to properly encode or sanitize user-supplied HTML and JavaScript in web application output, allowing an attacker to inject malicious scripts that execute in the browser of victim users."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/versioned"
@@ -551,6 +571,16 @@
       "name": "threat-actor",
       "base": "semantic",
       "description": "A threat actor or intrusion set",
+      "negative_examples": [
+        "An identified persona or adversary class (e.g., external competitors, malicious insiders, supply-chain compromisers) whose capabilities and motivations inform security design.",
+        "A malicious or adversarial entity (an external attacker, insider, nation-state, criminal group) that a component must defend against or whose capabilities it assumes.",
+        "An organized series of coordinated attacks targeting multiple major corporations, employing sophisticated phishing and zero-day exploitation techniques to achieve intellectual property theft and surveillance access.",
+        "A tiered command-and-control infrastructure consisting of multiple staged relay servers and domain registrations designed to obscure the true location and origin of attack communications.",
+        "An attack vector leveraging weak credential validation at login endpoints, allowing unauthorized access through reuse of previously compromised username-password pairs across multiple services.",
+        "A sophisticated, state-sponsored cyberweapon designed to target industrial control systems, featuring self-propagation across USB devices and zero-day exploitation of multiple operating system components.",
+        "A continuous process of collecting, analyzing, and responding to security events and anomalies across an organization's infrastructure to detect unauthorized access, data exfiltration, and malicious activity.",
+        "A large-scale retail data breach targeting millions of customer payment card records through exploitation of inadequately segmented network architecture and unpatched point-of-sale systems."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/attributed"
@@ -719,6 +749,9 @@
         "An extension marketplace now requires developer-registered private-key signing on every future upload, rejecting anything unsigned",
         "An official plugin directory applies automated security review to listings but explicitly cannot verify every server a plugin might call"
       ],
+      "negative_examples": [
+        "A security-hardened component or system (e.g., a service-mesh control plane, a secrets vault, or a zero-trust network proxy) deployed to enforce security policies."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -779,6 +812,10 @@
         "A command-line tool verifies a file's signature keylessly by pinning a certificate identity and issuer rather than a static key",
         "A package manager's opt-in attestation verification wraps another CLI tool to hard-fail an install when provenance verification fails"
       ],
+      "negative_examples": [
+        "A TLS/SSL fingerprint artifact associated with a particular remote-access framework, allowing defenders to identify command-and-control communications even when encrypted.",
+        "A framework for command-and-control and post-exploitation activities used by attackers for maintaining persistence and executing arbitrary commands on compromised systems within a target network."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/versioned"
@@ -824,6 +861,11 @@
       "name": "threat-intelligence-report",
       "base": "episodic",
       "description": "A curated threat-intelligence report grouping related CTI objects",
+      "negative_examples": [
+        "Mean time to detect (MTTD) and dwell time together measure the elapsed time from when a breach occurs (or evidence of compromise is logged) to when security operations detect and confirm it, serving as a key indicator of detection capability maturity.",
+        "A sophisticated, long-duration attack operation targeting industrial control systems and critical infrastructure, employing living-off-the-land techniques and prioritizing stealth and persistence over disruptive impact.",
+        "A comprehensive analysis of a critical credential-compromise incident affecting a major credit-reporting organization, including technical indicators, attack timeline, and affected consumer record counts."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated",
@@ -943,6 +985,11 @@
       "name": "security-policy",
       "base": "procedural",
       "description": "A security policy grounded in an OSCAL system security plan / profile",
+      "negative_examples": [
+        "An API gateway deployed as a policy enforcement point is a design pattern where all service-to-service requests flow through a gateway that applies authentication, authorization, and rate-limiting rules before forwarding.",
+        "The implementation of multi-factor authentication across all user authentication endpoints as a required technical control for reducing unauthorized access risk through credential compromise.",
+        "Technical implementation of cryptographic algorithms and key-management procedures for protecting data at rest and in transit, including cipher-strength requirements and key-derivation practices."
+      ],
       "traits": [
         "mif:trait/versioned",
         "mif:trait/documented",
@@ -992,6 +1039,17 @@
       "name": "security-assessment",
       "base": "episodic",
       "description": "A security assessment, audit, or test of a system",
+      "negative_examples": [
+        "A formal evaluation process performed by security specialists to identify vulnerabilities and compliance gaps, typically with scoring or risk rating output.",
+        "A control runs at push time to detect credentials matching known patterns before they reach shared branches, paired with a documented incident-response runbook for when real credentials are detected as already pushed.",
+        "The metric tracking the number of open critical security findings in the backlog measures the aggregate count of unresolved vulnerabilities above a severity threshold, updated daily to reflect the current remediation queue depth.",
+        "The fail-secure design pattern ensures that when a system encounters an error or component failure, it defaults to denying access or rejecting operations rather than inadvertently granting permissions.",
+        "A security design review gate discipline requires that all architectural changes above a size threshold undergo formal security design review by the security team before implementation, documenting the threat model and mitigations.",
+        "A dual-purpose network utility that performs port scanning and service enumeration through TCP/IP-level probes, equally useful for both legitimate infrastructure inventory and attacker reconnaissance.",
+        "A behavioral pattern in Windows Event Logs showing access to the LSASS process memory in a manner consistent with credential extraction, used to identify systems with unauthorized access activity.",
+        "A documented remediation plan that schedules correction of identified compliance deficiencies against a baseline security framework, including specific actions, responsible parties, and target completion dates.",
+        "A compliance requirement from a payment-card security standard for maintaining separate network segments containing systems that store, process, or transmit cardholder data."
+      ],
       "traits": [
         "mif:trait/timeline",
         "mif:trait/cited",
@@ -1046,6 +1104,9 @@
       "name": "poam",
       "base": "procedural",
       "description": "A plan of action and milestones tracking risks to remediation",
+      "negative_examples": [
+        "A coordinated vulnerability disclosure process discipline defines the steps for responsible reporting of security flaws (notification timelines, embargo periods, credit assignment) to avoid alarming users before patches are available."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/dated",
@@ -1116,6 +1177,15 @@
         "A command injection chain of published vulnerabilities sharing one unsanitized root cause",
         "Poisoned release tags exfiltrating credentials from continuous integration"
       ],
+      "negative_examples": [
+        "An identified class of attacks or vulnerability (e.g., supply-chain compromise, privilege escalation via weak secrets management) that the decision mitigates.",
+        "Mean time to remediation (MTTR) for critical vulnerabilities measures the elapsed time from a critical vulnerability being identified to a fix being deployed to production, tracked as a team performance metric to monitor patch velocity.",
+        "Threat modeling using STRIDE is an engineering practice where teams systematically enumerate potential security threats to a system across spoofing, tampering, repudiation, information disclosure, denial of service, and elevation categories.",
+        "The improper handling of special characters in user-supplied input when constructing database queries allows attackers to manipulate query logic and gain unauthorized access to sensitive data.",
+        "A vulnerability in a transitive dependency inherited through a software package's supply chain, exposing downstream applications to exploitation even though the application itself has no direct vulnerable code.",
+        "Physical or logical isolation of security-critical network segments from general-purpose networks to limit the blast radius of a compromise and prevent lateral movement across organizational boundaries.",
+        "An exploitation framework providing payload generation, multi-stage delivery, and post-exploitation automation for penetration testers, equally valuable for defenders simulating attacks and adversaries conducting real intrusions."
+      ],
       "traits": [
         "mif:trait/cited",
         "mif:trait/versioned"
@@ -1180,6 +1250,11 @@
         "A provenance standard defining leveled requirements from machine-readable to isolated builds",
         "A management-system standard with a reference set of controls in an annex",
         "Federal guidance organizing risk actions across govern, map, measure, and manage functions"
+      ],
+      "negative_examples": [
+        "A secure SDLC gating discipline requires that each stage of the software development lifecycle (design, development, testing, deployment) must pass defined security criteria and automated scans before proceeding to the next stage.",
+        "A structured approach to risk management and control remediation based on defense department processes for information security, including assessment, authorization, and continuous monitoring phases.",
+        "A classification scheme for sensitive data based on compliance frameworks, including categories like public, internal-use-only, confidential, and restricted, with associated handling and protection requirements."
       ],
       "traits": [
         "mif:trait/cited",

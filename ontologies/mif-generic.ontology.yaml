@@ -6,7 +6,7 @@
 # specific types on top; where a name collides, the finding must name ontology.id.
 ontology:
   id: mif-generic
-  version: 1.0.0
+  version: "1.1.0"
   description: Basic generic ontology (MIF built-in entity types); always enabled for all topics.
   extends:
     - mif-base
@@ -28,6 +28,8 @@ entity_types:
   - name: organization
     base: semantic
     description: A company, institution, agency, or group.
+    negative_examples:
+      - "Global digital platforms are being designated as gatekeepers under new EU regulations, establishing a new class of regulated tech entities subject to stricter competition and transparency rules."
     schema:
       required: [name]
       properties:
@@ -35,6 +37,16 @@ entity_types:
   - name: technology
     base: semantic
     description: A tool, system, framework, standard, or product.
+    negative_examples:
+      - "Pair programming is an engineering practice where two developers share one workstation and actively collaborate on the same code, with one driving and one navigating, improving code quality and knowledge sharing."
+      - "Elasticsearch with Kibana dashboards enables unified storage and visualization of logs, metrics, and events across infrastructure and application layers."
+      - "OpenTelemetry provides vendor-neutral APIs and SDKs for instrumenting applications with metrics, logs, and distributed traces across programming languages and runtimes."
+      - "Embedded banking APIs that integrate lending and payment functionality directly into third-party platforms are enabling open-finance infrastructure across financial services."
+      - "Advanced semiconductor fabrication techniques and photonic computing architectures are emerging as enabling technologies for beyond-Moore performance scaling in data centers."
+      - "AI coding assistants now perform the routine implementation tasks junior developers previously handled, functioning as an automated code-generation capability plugged into a team's existing development workflow."
+      - "GitHub Copilot and competing AI pair-programming tools from Amazon, Google, and other vendors function as autocomplete-style code-generation engines built directly into standard IDEs."
+      - "Enterprise IT decision-makers (CIOs, VP Infrastructure) rely on technology platforms like Gartner research, proof-of-concept labs, and security-scanning tools to evaluate vendor claims before committing budget."
+      - "Industrial IoT represents a market segment where manufacturing plants deploy wireless sensor networks, predictive-maintenance platforms, and AI-driven analytics to optimize production."
     schema:
       required: [name]
       properties:
@@ -42,6 +54,14 @@ entity_types:
   - name: file
     base: semantic
     description: A document, dataset, or artifact.
+    negative_examples:
+      - "A specific artifact type or data serialization format chosen for the system (e.g., 'we selected MongoDB over PostgreSQL'), representing the decision's concrete output."
+      - "A concrete artifact of a single type with a specific identity (e.g., 'the parquet dataset snapshot from 2026-07-05 in S3 at path /datalake/v1/events/')."
+      - "A single data file or file-like resource with a specific identity, such as a configuration file, a dataset snapshot, or a compiled executable in a filesystem."
+      - "Event sourcing is a design pattern where all state changes are recorded as an immutable sequence of events, allowing a system to reconstruct its state at any point in time by replaying events."
+      - "The USE method documentation defines a resource-centric performance analysis framework for Utilization, Saturation, and Errors across system-level resources."
+      - "Regulatory agencies are subjecting data-intensive industries to heightened scrutiny, with expanded enforcement budgets and new compliance frameworks affecting operational costs."
+      - "K-12 learning-management systems offer integrated curriculum files, lesson-plan templates, and assessment resources that schools can customize and deploy across multiple classrooms."
     schema:
       required: [name]
       properties:

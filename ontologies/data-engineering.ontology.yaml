@@ -20,7 +20,7 @@
 
 ontology:
   id: data-engineering
-  version: "0.3.0"
+  version: "0.4.0"
   description: "Data engineering domain ontology"
   extends:
     - engineering-base
@@ -58,6 +58,13 @@ entity_types:
       - "A contract-native data-contract specification enforces a required root-level field set validated as a pre-merge continuous-integration gate"
       - "A streaming-native data contract enumerates a fixed set of schema-compatibility modes and a fixed set of message-direction actions"
       - "A stewardship-overlay data contract adds an approval-state and ownership fields not present in purely technical enforcement contracts"
+    negative_examples:
+      - "An agreed data exchange format specifying field names, types, and acceptable value ranges between a data producer and consumer."
+      - "A schema definition that specifies the structure, data types, and quality checks expected from a data source, enabling consumers to validate and parse incoming data."
+      - "A formal schema specification and quality contract for data exchanged between systems, defining field types, cardinality, and acceptable value ranges."
+      - "Contract-first development is an engineering practice where data structure and interface contracts are defined before implementation, ensuring producer and consumer teams agree on schema before either writes code."
+      - "The Confluent Schema Registry is a platform service that stores, versions, and serves Avro/Protobuf schemas for Kafka topics, enabling consumers to deserialize messages correctly across schema evolution."
+      - "ING's federated data mesh governance implements data contracts between domain teams where each domain publishes its data products with SLAs and versioned schemas, discoverable through a federated catalog."
     base: semantic
     traits:
       - cited
@@ -121,6 +128,9 @@ entity_types:
       - "Tiered storage lifecycle rules with regulation-aligned multi-year retention bands"
       - "A three-tier classification of sensitive records applied at the column level"
       - "Required at-birth documentation and ownership tags that hard-fail the build when missing"
+    negative_examples:
+      - "A rule defining which teams or roles have access to specific datasets, and under what conditions (e.g., PII is readable only by data engineers, anonymized for analysts)."
+      - "Saxo Bank implemented a data mesh where each business domain (e.g., trading, risk) manages and publishes its data product with documented ownership, quality standards, and access controls."
     base: semantic
     traits:
       - cited
@@ -152,6 +162,9 @@ entity_types:
       - "A sync-lag failure mode where a record exists in one system but is missing in a downstream system is already encoded as a test scenario"
       - "A reconciliation service level objective sets maximum freshness lag between two systems and a minimum availability percentage"
       - "A regression-test matrix for identity data covers several already-implemented failure scenarios plus gaps identified from real incidents"
+    negative_examples:
+      - "A validation rule that checks if a specific data attribute falls within expected boundaries (e.g., 'email addresses must match regex', 'prices must be positive')."
+      - "An automated validation step in a CI/CD pipeline that rejects commits if data test assertions fail, ensuring quality gates are met before deployment."
     base: semantic
     traits:
       - cited
@@ -184,6 +197,10 @@ entity_types:
       - "Multiple overlapping identity stores are joined by sync processes with no single declared system of record per attribute"
       - "A dual-path staging design splits an old and new export path, both required to remain consistent to prevent data-quality errors"
       - "Self-managed clustered database high availability requires explicit replication and failover configuration a managed cloud service would otherwise automate"
+    negative_examples:
+      - "A persistence strategy and technology stack (e.g., Delta Lake for time-travel queries, or tiered storage with hot/cold data separation) chosen to meet performance and cost goals."
+      - "A bring-your-own-key (BYOK) encryption policy requires that sensitive data be encrypted with customer-provided keys rather than service-managed keys, with key material never stored on the provider's infrastructure."
+      - "Snowflake's secure data sharing feature provides a data contract between provider and consumer where data stays in the provider's account but is accessible to authorized consumers with agreed-upon data governance terms."
     base: semantic
     traits:
       - cited
@@ -216,6 +233,16 @@ entity_types:
       - "Contract-native enforcement places the quality gate at pre-merge continuous integration using a declarative data contract"
       - "Streaming-native enforcement stages writes on an audit branch and only publishes them after data-quality checks pass"
       - "Stewardship-overlay enforcement routes proposed schema or contract changes through a human steward's approval before they take effect"
+    negative_examples:
+      - "A data transformation topology specifically optimized for ETL workflows, such as a map-reduce-merge shuffle pattern or a partition-aware batch aggregation pipeline."
+      - "A sequence of interdependent ETL stages where output from one component (e.g., a Spark transformer) feeds directly as input to the next, orchestrated by a scheduler."
+      - "A workflow progression through stages (e.g., ingest -> validate -> transform -> publish) where each stage's output becomes the next stage's input, defining the execution topology."
+      - "A repeatable sequence of data transformation and movement operations (e.g., batch-to-streaming ingestion topology, ELT job choreography)."
+      - "A predefined workflow orchestration pattern defining how data flows through stages (ingest, process, publish) and how job dependencies are resolved."
+      - "Analytics engineering is an engineering practice where data engineers build transformations and models that prepare raw data for consumption by analysts and business intelligence tools, treating data as a product."
+      - "Apache Atlas with Hive lineage tracking records the provenance of data assets as they flow through transformations, allowing analysts to trace back why a metric has a particular value to the source systems that populated it."
+      - "Apache Airflow is a data orchestration platform that schedules and monitors workflows, Kafka is a streaming platform for event ingestion, and Fivetran is a managed ELT platform - each provides infrastructure for moving data, not just a single pattern."
+      - "Segment's Protocols is a tracking plan system where event schemas and required fields are defined centrally, creating a contract between the analytics library and the backend about what data will be sent."
     base: procedural
     traits:
       - cited
@@ -246,6 +273,12 @@ entity_types:
       - "A cloud data warehouse feature reaching general availability with native test integration"
       - "A catalog offering branch-like transactional versioning across multiple tables"
       - "A contract validation tool that emits pipeline annotations and diffs versions for breaking changes"
+    negative_examples:
+      - "An integrated suite of tools and services providing end-to-end data capabilities (ingestion, transformation, storage, discovery, analytics) as a unified system."
+      - "An integrated data infrastructure providing end-to-end capabilities (ingestion, transformation, storage, discovery, governance) as a cohesive system."
+      - "Unity Catalog's automatic lineage feature traces data transformations across tables, capturing which source datasets feed into derived datasets and making that lineage queryable for impact analysis."
+      - "Airbnb's Minerva is a centralized metrics layer where metric definitions (like gross booking value) are authored once against governed tables and then automatically materialized for consumption by dashboards and analysis tools."
+      - "Apache Iceberg is a table format (not a platform) that adds ACID semantics and time-travel queries to data lakes, enabling efficient schema evolution and partition evolution without rewriting table data."
     base: semantic
     traits:
       - cited

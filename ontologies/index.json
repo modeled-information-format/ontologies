@@ -47,8 +47,8 @@
         "engineering-base"
       ],
       "file": "data-engineering.ontology.yaml",
-      "sha256": "c44a9bf8a83b862baa37c933b3607615f83ff7914014651ebca6884e2c673270",
-      "version": "0.3.0"
+      "sha256": "1a5f9f7db4f94fe28f3401609e1b0841e83b9309bc1bbfcb24dc8f0f23aef587",
+      "version": "0.4.0"
     },
     "engineering-base": {
       "extends": [
@@ -56,8 +56,8 @@
         "shared-traits"
       ],
       "file": "engineering-base.ontology.yaml",
-      "sha256": "89e2fb197f2ae880746b0ca7a3dff48eb8111864fd91c804e1169b866012bfb3",
-      "version": "0.1.0"
+      "sha256": "a033ce7eada338cb599c673c972daeaa1ef50ef8eaa739a05e178cff14115eb6",
+      "version": "0.2.0"
     },
     "fitness": {
       "extends": [
@@ -89,8 +89,8 @@
         "shared-traits"
       ],
       "file": "market-research.ontology.yaml",
-      "sha256": "02a9f85bb49b52ed078dfb7330190472495c961d6c6abc5a6725a47f774d6000",
-      "version": "0.3.0"
+      "sha256": "8ef5ad8f33f302b78170e133a829e4482748748e1f540df354e563e9c5410d0b",
+      "version": "0.4.0"
     },
     "mif-base": {
       "extends": [],
@@ -111,8 +111,8 @@
         "mif-base"
       ],
       "file": "mif-generic.ontology.yaml",
-      "sha256": "3ee2efa82d97dd6715fdee93e6162365ab9f82beb061828d4175d1b839d7301b",
-      "version": "1.0.0"
+      "sha256": "a907b5f1f74d4d4a77478a441f2b764770bb2a6ab46ac71be1a663fa46584a31",
+      "version": "1.1.0"
     },
     "non-ionizing-radiation": {
       "extends": [
@@ -129,8 +129,8 @@
         "mif-generic"
       ],
       "file": "observability.ontology.yaml",
-      "sha256": "5a8d2a95b6f66d109c7ddaf56d8569bf9c2cab7e7c8d2cc4c0c54d265e774f56",
-      "version": "0.3.0"
+      "sha256": "33ba637717154fcccf6745c5c0809080fed1146053c9a7d3c0c0df254f132946",
+      "version": "0.4.0"
     },
     "physical-science-base": {
       "extends": [
@@ -223,16 +223,16 @@
         "engineering-base"
       ],
       "file": "software-engineering.ontology.yaml",
-      "sha256": "a17ff6885a5fa97778e0f54fdb0f85ca2f3487502d43ae249e76ff02131f9e78",
-      "version": "0.6.0"
+      "sha256": "258fdb754cff9c5e1b1e5c933f7a51a836c075a859ed5112b05f59b775fbc611",
+      "version": "0.7.0"
     },
     "software-security": {
       "extends": [
         "engineering-base"
       ],
       "file": "software-security.ontology.yaml",
-      "sha256": "0be590ad312777e51646e85505a99a4f2594a714145f6b53c91a01d67c1f89c2",
-      "version": "0.3.0"
+      "sha256": "93e0b7b0af92f75c1d4dc45e405c9ac3a5b3f08ff76b335a8c6302121a93339d",
+      "version": "0.4.0"
     },
     "trend-analysis": {
       "extends": [
@@ -240,8 +240,8 @@
         "shared-traits"
       ],
       "file": "trend-analysis.ontology.yaml",
-      "sha256": "393fce03a43a48d92e4bbe09148de6623dd031d06fb013aa109163ec76dd5999",
-      "version": "0.3.0"
+      "sha256": "ef19e19006e61873ea71ccc99a2f8f335f5ea06bec3b7262db4337ffbb8800cc",
+      "version": "0.4.0"
     }
   },
   "schema": "mif-ontology-index/v1",

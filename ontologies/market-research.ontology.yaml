@@ -1,7 +1,7 @@
 ---
 ontology:
   id: market-research
-  version: 0.3.0
+  version: "0.4.0"
   description: Market-research domain ontology — segments, competitors, sizing, demand, intelligence
   extends:
   - mif-base
@@ -59,6 +59,8 @@ entity_types:
   disposition: mint
 - name: competitor
   description: A competing organization in a market (EXTENDS schema:Organization)
+  negative_examples:
+    - "Individual vendors like CrowdStrike and Salesforce compete aggressively by undercutting on price, expanding feature sets faster than rivals, and differentiating on analyst rankings, collectively driving up the competitive intensity in the endpoint-security and CRM markets."
   base: semantic
   traits:
   - cited
@@ -89,6 +91,10 @@ entity_types:
   disposition: extend
 - name: brand
   description: A brand maintained by a competitor (REUSES schema:Brand)
+  negative_examples:
+    - "New DTC skincare brands can enter the market at low cost via white-label manufacturing and Shopify platforms, allowing fresh entrants to compete for social-media discovery and rapidly gain mindshare among Gen Z consumers."
+    - "Salesforce and Shopify are recognized enterprise software brands that customers actively choose and switch between based on feature fit and vendor reputation in the platform-software market."
+    - "Clean-label skincare brands are driving premium pricing by emphasizing ingredient transparency and sustainability narratives that resonate with environmentally-conscious consumers."
   base: semantic
   traits:
   - cited
@@ -118,6 +124,12 @@ entity_types:
   disposition: reuse
 - name: buyer-persona
   description: A target buyer audience or ideal-customer profile (REUSES schema:Audience)
+  negative_examples:
+    - "Gen Z skincare buyers aged 13-26 who discover products through TikTok and Instagram represent a key market segment, characterized by specific personas like the 'ingredient-conscious social-commerce explorer' who prioritizes transparency and creator endorsements."
+    - "LinkedIn's brand identity in the professional-social-networking space is strongly associated with a specific persona: the ambitious career-climber who uses the platform to build professional visibility and network with decision-makers."
+    - "Enterprise IT buyers in a 412-respondent survey represent a key audience persona, characterized by centralized procurement authority and sensitivity to vendor security certifications."
+    - "DTC skincare subscription boxes target a buyer persona: the millennial consumer seeking convenience and discovery through personalized curation and regular shipments at a discount."
+    - "Win-loss interviews with skincare-brand retailers examine the buyer-persona preferences that influence which DTC brands get shelf space versus online-only placement."
   base: semantic
   traits:
   - cited
@@ -141,6 +153,8 @@ entity_types:
   disposition: reuse
 - name: respondent-segment
   description: A survey-respondent cohort defined by screening criteria
+  negative_examples:
+    - "Demand for F2P games skews heavily toward older-demographics segments aged 40+ who prefer puzzle and strategy mechanics, representing a growing revenue opportunity for mobile developers."
   base: semantic
   traits:
   - cited
@@ -229,6 +243,11 @@ entity_types:
   disposition: mint
 - name: service-offering
   description: A service offering provided into a market (EXTENDS schema:Service)
+  negative_examples:
+    - "Demand for embedded-payment capabilities is driving vendors to offer recurring-revenue models like subscription-box curation, where payment processing becomes a value-add feature bundled with the core product experience."
+    - "New observability vendors are offering cloud-native monitoring and AI-driven root-cause-analysis services that compete with legacy enterprise monitoring platforms, changing how operations teams approach infrastructure visibility."
+    - "Stripe offers payment-processing and embedded-fintech services that compete with traditional banking and payment gateways by providing developers with APIs and financial-product bundles."
+    - "CB Insights' embedded-fintech intelligence service provides analysis and tracking of fintech-in-enterprise offerings, helping investors and operators understand the strategic implications of fintech integrations."
   base: semantic
   traits:
   - cited
@@ -258,6 +277,9 @@ entity_types:
   disposition: reuse
 - name: market-demand
   description: Market demand for an offered item (REUSES schema:Demand)
+  negative_examples:
+    - "Buyers with negotiating power in CRM and enterprise software markets demand better pricing, lower switching costs, and extended payment terms, forcing vendors to improve commercial flexibility to maintain customer retention and market share."
+    - "Conjoint-analysis survey instruments measure demand for specific pricing tiers and feature bundles, revealing which value combinations customers would actually choose across hypothetical product configurations."
   base: semantic
   traits:
   - cited
@@ -286,6 +308,11 @@ entity_types:
   disposition: reuse
 - name: value-proposition
   description: A value proposition mapping offerings to customer jobs, pains and gains
+  negative_examples:
+    - "Post-pandemic demand for K-12 tutoring services emphasizes personalized learning, flexible scheduling, and remediation in core subjects, value-propositions that tutoring platforms must deliver to capture market share."
+    - "SMB decision-makers surveyed (n=650) prioritize value propositions centered on ease-of-use, affordable pricing, and minimal implementation overhead when evaluating software vendors."
+    - "Enterprise SaaS segments are defined by buyers seeking flexible cloud deployment, multi-tenant architecture, and integration with existing enterprise tech stacks as core value propositions."
+    - "Embedded-payments RFP decisions reveal winning value propositions around transaction processing, fund reconciliation, and integration ease that customers prioritize when comparing payment platforms."
   base: semantic
   traits:
   - cited
@@ -318,6 +345,9 @@ entity_types:
     - "Pricing signals from adjacent enterprise software markets establish a willingness-to-pay range for a new category of infrastructure product"
     - "An analyst quadrant report evaluates competing vendors in one category across execution and vision criteria, naming market leaders"
     - "An annual industry index tracks aggregated billing data across hundreds of companies to compare single- versus multi-model revenue architectures"
+  negative_examples:
+    - "Demand for managed-detection-and-response (MDR) in ransomware protection is documented in industry reports like CB Insights' cybersecurity threat analysis and Forrester Wave assessments of the MDR market."
+    - "Healthcare payers represent a distinct market segment; industry intelligence reports track payer consolidation trends, reimbursement-policy shifts, and vendor adoption rates within this sector."
   base: semantic
   traits:
   - cited
@@ -350,6 +380,12 @@ entity_types:
   disposition: mint
 - name: market-data-source
   description: A catalog of market-intelligence data (REUSES schema:DataCatalog)
+  negative_examples:
+    - "Software platforms like Adobe and CrowdStrike publish annual SEC filings and financial disclosures that provide market-share benchmarks, revenue trends, and competitive positioning data used by analysts to track market dynamics."
+    - "Industrial IoT adoption demand is measured through sources like Gartner's predictive-maintenance reports, sensor vendor case studies, and manufacturing-operations benchmarking data that quantify market opportunity."
+    - "Sensor Tower publishes mobile-gaming reports that use aggregated app-store data sources to estimate F2P monetization benchmarks and revenue trends across game genres."
+    - "The midmarket MDR segment is characterized by firms with 50-500 employees requiring managed security services; market-data sources like Gartner and Forrester track this segment's penetration rates and vendor share."
+    - "Win-loss analysis of industrial IoT pilot conversions uses market-data sources like customer databases, CRM records, and deal-closure data to understand which platform capabilities and vendor factors predicted successful adoption."
   base: semantic
   traits:
   - cited
@@ -380,6 +416,11 @@ entity_types:
   disposition: reuse
 - name: survey-instrument
   description: A survey instrument — a research plan specification
+  negative_examples:
+    - "A surveyed cohort of 250 manufacturing plant managers is gathered using a multi-question screening protocol that filters for facility size and recent technology-evaluation activity to ensure respondent relevance to IoT adoption studies."
+    - "Clinical procurement leads at healthcare systems are characterized as decision-makers; capturing their preferences requires a structured interview protocol covering budget authority, risk tolerance, and vendor-certification requirements."
+    - "The K-12 edtech segment is researched using survey instruments that measure teacher adoption rates, student engagement outcomes, and curriculum-fit perceptions to guide product roadmap decisions."
+    - "Observability platforms communicate unified value propositions through surveys and buyer interviews, emphasizing single-pane-of-glass visibility, AI-driven insights, and cost reduction as key differentiators."
   base: procedural
   traits:
   - cited
@@ -404,6 +445,8 @@ entity_types:
   disposition: mint
 - name: win-loss-analysis
   description: A win-loss analysis episode — post-decision interviews with won/lost prospects
+  negative_examples:
+    - "Win-loss discussion guides are survey instruments used to conduct structured interviews with customers about their vendor-selection reasoning, competitive comparisons, and deal-outcome drivers."
   base: episodic
   traits:
   - cited

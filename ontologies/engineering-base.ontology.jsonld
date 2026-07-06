@@ -67,6 +67,18 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "aliases": {
+      "@id": "skos:altLabel",
+      "@container": "@set"
+    },
+    "exemplars": {
+      "@id": "skos:example",
+      "@container": "@set"
+    },
+    "negative_examples": {
+      "@id": "https://mif-spec.dev/ns/ontology#negativeExample",
+      "@container": "@set"
+    },
     "fields": {
       "@id": "mif:hasField",
       "@container": "@id"
@@ -126,7 +138,7 @@
   "@id": "mif:ontology/engineering-base",
   "@type": "mif:Ontology",
   "identifier": "engineering-base",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared engineering supertypes \u2014 the MIF-compliant intermediate layer the engineering domains extend",
   "namespaces": {
     "semantic": {
@@ -158,6 +170,10 @@
       "name": "component",
       "base": "semantic",
       "description": "A software/system component, module, or service",
+      "negative_examples": [
+        "A software system or service chosen for integration (e.g., 'we use Istio for service mesh' is a decision, but Istio itself is a deployable component).",
+        "The circuit breaker pattern wraps calls to failure-prone dependencies in a state machine that stops forwarding requests (open state) once a failure rate threshold is crossed, preventing cascading resource exhaustion in the caller."
+      ],
       "traits": [
         "mif:trait/versioned",
         "mif:trait/documented"
@@ -251,6 +267,9 @@
       "name": "design-pattern",
       "base": "semantic",
       "description": "A design pattern or architectural pattern",
+      "negative_examples": [
+        "The medallion (or lambda) architecture pattern organizes data pipelines into bronze (raw), silver (cleaned), and gold (curated) layers, a reusable structure that many data teams adopt for their transformation workflows."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -291,6 +310,13 @@
       "name": "delivery-metric",
       "base": "semantic",
       "description": "A delivery, reliability, or operations metric (e.g. DORA four/five keys, SLO/SLI, MTTR, throughput)",
+      "negative_examples": [
+        "A quantitative success measure for operational health, such as SLO compliance percentage, error budget burn rate, or mean time to detection.",
+        "A retry-with-exponential-backoff-and-jitter pattern resends failed requests with progressively longer delays plus randomized jitter, reducing thundering herd effects when many clients retry simultaneously after an outage.",
+        "A capacity planning review discipline is a recurring meeting where teams forecast resource needs (compute, storage, personnel) for the next quarter based on growth trends and project commitments.",
+        "Alert response time and incident resolution speed measure on-call efficiency and system reliability, key indicators of observability practice maturity.",
+        "Deployment frequency, lead time for changes, mean time to recovery, and change failure rate are key software delivery performance indicators for continuous improvement."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -323,6 +349,12 @@
       "name": "engineering-practice",
       "base": "semantic",
       "description": "An organizational, cultural, or operating practice (e.g. blameless postmortems, you-build-it-you-run-it, data mesh, federated governance)",
+      "negative_examples": [
+        "A standardized code review checklist or best practice guideline for validating changes before deployment, such as security review checklists or performance testing criteria.",
+        "A recurring team habit or preferred approach to solving a class of problems, such as 'we always use infrastructure-as-code for deployments' or 'we do code review before merge.'",
+        "Blameless postmortems analyze system failures through a lens of preventable environmental factors rather than individual actions, improving collective learning and psychological safety.",
+        "Structured incident postmortems focusing on systemic failure causes rather than individual blame drive organizational learning and improve system reliability engineering practices."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -387,6 +419,14 @@
       "name": "control",
       "base": "semantic",
       "description": "A control or safeguard governing a component, artifact, or asset (security, data-governance, or compliance control)",
+      "negative_examples": [
+        "An access control policy enforced at infrastructure level that restricts which services can communicate with a backend component, such as firewall rules or network policies.",
+        "A technical mechanism (firewall rule, IAM policy, encryption requirement) that enforces compliance or security constraints on a system's behavior at runtime.",
+        "A technical or procedural safeguard (access control, change approval gate) that prevents unauthorized or destabilizing actions in production systems.",
+        "A technical constraint enforced at infrastructure level, such as mutual TLS enforcement in a service mesh or a secrets-vault mandate for all applications.",
+        "A documented plan to address identified security risks and compliance gaps through risk assessment, prioritization of remediation activities, and tracking of implementation progress against regulatory deadlines.",
+        "Technical mechanisms and procedural requirements for managing user identities and access permissions across systems, including provisioning, de-provisioning, and role-based access reviews."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -419,6 +459,16 @@
       "name": "artifact",
       "base": "semantic",
       "description": "A produced, content-addressable artifact (software package/build, dataset, model, report)",
+      "negative_examples": [
+        "A compiled output or deliverable (e.g., a container image, a binary executable, an API specification document) produced by a build or generation process.",
+        "A versioned document, script, or bundle containing instructions, code samples, or automation tools required to upgrade from one system version to another.",
+        "A tangible output of a build, test, or data processing run: executables, container images, reports, or datasets identified by digest or version.",
+        "A concrete deliverable or output from a build or data process, such as a compiled binary, a published dataset, or a generated report.",
+        "Trunk-based development is an engineering practice where all developers commit to a single main branch frequently (multiple times per day) rather than maintaining long-lived feature branches, reducing merge conflicts and enabling continuous integration.",
+        "A 2017 GitLab incident where a primary database was accidentally deleted through a misconfigured backup deletion script, causing hours of data loss and recovery work, resulting in improved runbook procedures.",
+        "The RED method specifies three request-level metrics-Rate (requests per second), Errors (failure rate), and Duration (response time distribution)-for microservice monitoring.",
+        "Raw kernel trace events exported in JSON format enable analysis of system call latency, memory allocation patterns, and I/O performance characteristics."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -451,6 +501,13 @@
       "name": "policy",
       "base": "semantic",
       "description": "A policy: a rule governing access, retention, classification, or change, enforced across the lifecycle",
+      "negative_examples": [
+        "A documented rule or standard that teams must follow (e.g., 'all changes require peer review', 'data retention is 90 days'), enforced through audit and compliance checks.",
+        "A documented requirement or standard (e.g., 'all secrets must be rotated quarterly', 'all deployments require peer review') that an organization enforces via processes or tools.",
+        "Error budget policy is an engineering practice where teams track the difference between their SLO and actual uptime, using the remaining budget to decide whether to prioritize new features or stability work.",
+        "Procedures for creating, managing, and verifying cryptographic credentials (passwords, passphrases, certificates) including complexity requirements, rotation schedules, and secure storage practices.",
+        "Requirements for managing user access and data protection based on international information security standards, including classification, encryption, and access-control principles."
+      ],
       "traits": [
         "mif:trait/cited"
       ],
@@ -479,6 +536,14 @@
       "name": "provenance",
       "base": "semantic",
       "description": "A provenance or attestation record binding an artifact to how it was produced (SLSA/in-toto, OpenLineage)",
+      "negative_examples": [
+        "A cryptographic signature or hash object that certifies the source and integrity of a software release, such as a Cosign-signed container image digest or an SBOM attestation attached to a build.",
+        "A detective control periodically verifies that an SLI's underlying metric is still receiving data and producing valid values, catching silent instrumentation breakage that would otherwise show as a false perfect SLO.",
+        "An oncall handoff discipline defines how on-call operators transfer responsibility at shift changes, including status briefing on active incidents, escalation contact procedures, and access credential handoff protocols.",
+        "A runbook for addressing TLS certificate expiration incidents includes steps to check certificate expiration dates, renew certificates before expiry, update certificate references in load balancers and services, and verify HTTPS connectivity post-renewal.",
+        "A set of security practices and levels of assurance (SLSA L0-L4) for establishing confidence in software integrity and origin, including source control, build system hardening, and artifact signing.",
+        "Cryptographic assurance mechanisms demonstrating that software artifacts originate from claimed sources and have not been tampered with, using techniques like code signing, attestation, and checksums."
+      ],
       "traits": [
         "mif:trait/cited"
       ],

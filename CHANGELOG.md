@@ -2,7 +2,7 @@
 id: changelog-ontology-corpus
 type: episodic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-07-04T12:00:00Z'
+modified: '2026-07-05T12:00:00Z'
 namespace: changelog/ontology-corpus
 title: Changelog
 tags:
@@ -36,6 +36,19 @@ Individual ontologies carry their own `version` in their YAML `ontology:` block;
 this file tracks the corpus as a whole.
 
 ## [Unreleased]
+
+### Added
+
+- Curated `negative_examples` for 59 entity types across 8 packs (`data-engineering`
+  0.4.0, `engineering-base` 0.2.0, `market-research` 0.4.0, `mif-generic` 1.1.0,
+  `observability` 0.4.0, `software-engineering` 0.7.0, `software-security` 0.4.0,
+  `trend-analysis` 0.4.0): 234 human-reviewed near-miss phrases sourced from the
+  ranked confusion-pair export of a 666-finding reference corpus (mif-rs#34/#35),
+  each grounded in real finding content and targeting a specific gold/top1
+  confusion pair. Per MIF ADR-020, these are decision-boundary content only, never
+  concatenated into a type's positive embedding document. Regenerated the matching
+  `.ontology.jsonld` projections and `ontologies/index.json` for the 8 touched
+  packs. Closes #39.
 
 ## [0.3.0] - 2026-07-04
 
