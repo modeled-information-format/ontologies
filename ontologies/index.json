@@ -47,7 +47,7 @@
         "engineering-base"
       ],
       "file": "data-engineering.ontology.yaml",
-      "sha256": "de3a6926a4e8f991d4af44b6e4e7724762db23e8c171c1fd5285fcb0fbe35b19",
+      "sha256": "e27c0c6ef54a9c113d82c541d46d92dbe266ca9ed02e07894b668a3dc4cd4c66",
       "version": "0.4.0"
     },
     "engineering-base": {
@@ -56,7 +56,7 @@
         "shared-traits"
       ],
       "file": "engineering-base.ontology.yaml",
-      "sha256": "4a23819fafd17c96e82c0734a262277d595e7f584ee3de5a090356a4fa51bf57",
+      "sha256": "134b99195ee94a7a48e394fa74f7eb197e7f20c692757c243ac2f21deb08b6d4",
       "version": "0.2.0"
     },
     "fitness": {
@@ -89,7 +89,7 @@
         "shared-traits"
       ],
       "file": "market-research.ontology.yaml",
-      "sha256": "5985b961324f57f744b7c01647353be3897e7a4104fca8ad035b4cc39abfe101",
+      "sha256": "d71ebf0bced1042ab352e78c4d710ad1585ae019d41edb13939f46d5788b07dc",
       "version": "0.4.0"
     },
     "mif-base": {
@@ -111,7 +111,7 @@
         "mif-base"
       ],
       "file": "mif-generic.ontology.yaml",
-      "sha256": "d92cdf31584582e31c77384bc8466ea2b4bc208be4ddc26873c47b724cbd48bc",
+      "sha256": "b815479f4915167ca4deb2515ac45cc3d2f8470b3c90d7f50144f7a32b7e9941",
       "version": "1.1.0"
     },
     "non-ionizing-radiation": {
@@ -129,7 +129,7 @@
         "mif-generic"
       ],
       "file": "observability.ontology.yaml",
-      "sha256": "8af3828b65d462a38c58e417cb3f5c7cf72aa40b47906b3b389fa3107a320283",
+      "sha256": "d1d86e8a6de45b0582aed67b093eabe0492360181b27bc4dfee4ac23b9cd6cc8",
       "version": "0.4.0"
     },
     "physical-science-base": {
@@ -223,7 +223,7 @@
         "engineering-base"
       ],
       "file": "software-engineering.ontology.yaml",
-      "sha256": "c646ccecb1d273335ed8b636fb4a5da8f8f27b16d4b1e73fb5db2afb97d87ea7",
+      "sha256": "e68f43fb99e87a0de892ac344c36d0494c7b2434ecf69caea85be974eb162e18",
       "version": "0.7.0"
     },
     "software-security": {
@@ -231,7 +231,7 @@
         "engineering-base"
       ],
       "file": "software-security.ontology.yaml",
-      "sha256": "f47cdaf294ec7a7bdc743addeadd43695bc72b37072dbddf73581008b9fa77dd",
+      "sha256": "efae535fc6b516a8e1183315c7bb4564c812083d9af841e07d1a8e09752f6056",
       "version": "0.4.0"
     },
     "trend-analysis": {
