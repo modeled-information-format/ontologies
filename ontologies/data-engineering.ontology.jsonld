@@ -402,7 +402,7 @@
         "Self-managed clustered database high availability requires explicit replication and failover configuration a managed cloud service would otherwise automate"
       ],
       "negative_examples": [
-        "A persistence strategy and technology stack (e.g., Delta Lake for time-travel queries, or tiered storage with hot/cold data separation) chosen to meet performance and cost goals.",
+        "A team building a lakehouse on Databricks decided to store tables in Delta Lake's format rather than as directories of plain Parquet files, citing the need for ACID write guarantees and time travel once multiple concurrent jobs began writing to and reading from the same tables. The team accepted the operational cost of periodic log compaction and vacuum maintenance that Delta's transaction log requires, judging it acceptable relative to the correctness risk of concurrent writers corrupting a plain-Parquet directory with no transactional coordination.",
         "A bring-your-own-key (BYOK) encryption policy requires that sensitive data be encrypted with customer-provided keys rather than service-managed keys, with key material never stored on the provider's infrastructure.",
         "Snowflake's secure data sharing feature provides a data contract between provider and consumer where data stays in the provider's account but is accessible to authorized consumers with agreed-upon data governance terms."
       ],

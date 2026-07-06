@@ -47,7 +47,7 @@
         "engineering-base"
       ],
       "file": "data-engineering.ontology.yaml",
-      "sha256": "66e698864154251c4d5af4dcc0b9e88586dc50f80a17f9c5d206dd1eb811ca14",
+      "sha256": "9320e892f4f64c78ae1ff51b3995e915d3bc7e65dc4f0902588c1db783ff87aa",
       "version": "0.4.0"
     },
     "engineering-base": {
@@ -89,7 +89,7 @@
         "shared-traits"
       ],
       "file": "market-research.ontology.yaml",
-      "sha256": "40500b0a923001ea42ada6eaf585240143291a5ed04efa1264729c9a426f5056",
+      "sha256": "ab57fcbc4b37914227d78ec5d612aa6a2982a3ea2c8b350fc5b819217f19d5d2",
       "version": "0.4.0"
     },
     "mif-base": {
@@ -111,7 +111,7 @@
         "mif-base"
       ],
       "file": "mif-generic.ontology.yaml",
-      "sha256": "8f73c25790fd1463340bd137d00eb61c068dae3a25c3534c927de3f8fd652999",
+      "sha256": "3e1ba5a8d32133bc1bb1ca1554b3404b9b0deeadc3e4ddb8892673460dfc4d94",
       "version": "1.1.0"
     },
     "non-ionizing-radiation": {
@@ -129,7 +129,7 @@
         "mif-generic"
       ],
       "file": "observability.ontology.yaml",
-      "sha256": "f6d803eb0de0b9eb2e6a73a3382a9191bb62451ebc13b1185e41dc884924b37f",
+      "sha256": "4cbea8480b24800cbd4edad97170fa24faf26017f69c0a1dbfef5de3dd486bbc",
       "version": "0.4.0"
     },
     "physical-science-base": {
