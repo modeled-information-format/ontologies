@@ -33,7 +33,7 @@ jobs:
   # version. Guarded to tag pushes; a branch workflow_dispatch passes empty (skip).
   # ---------------------------------------------------------------------------
   changelog-check:
-    uses: modeled-information-format/.github/.github/workflows/reusable-changelog-check.yml@824b7ba80c0f798bf1be1d4b776e3688b89152fc
+    uses: modeled-information-format/.github/.github/workflows/reusable-changelog-check.yml@1b416b97ff3ded8a49ae6873cc350eb1efb389bf
     with:
       version: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
 
