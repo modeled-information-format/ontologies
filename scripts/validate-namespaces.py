@@ -95,7 +95,10 @@ def _flatten_namespaces(tree: Any, prefix: str = "") -> dict[str, dict]:
 def load_corpus(repo_root: Path) -> dict[str, dict]:
     """{ontology_id: {'extends': [...], 'namespaces': {full_path: info}}}, plus a
     'file' key for error reporting. Files that fail to parse (including on a
-    duplicate-key error) are recorded separately in `parse_errors`."""
+    duplicate-key error) are silently skipped here -- check_duplicate_keys already
+    reports duplicate-key failures separately, and a file that's absent from the
+    corpus for any other parse reason surfaces as broken subtype_of/schema
+    references from validate-ontologies.py, not from this script."""
     corpus: dict[str, dict] = {}
     ontology_dir = repo_root / "ontologies"
     if not ontology_dir.exists():
@@ -171,7 +174,12 @@ def check_corpus(corpus: dict[str, dict]) -> dict[str, list[str]]:
                     f"an ontology this one extends"
                 )
             replaces = own.get("replaces")
-            if replaces and replaces not in ancestors and replaces not in info["namespaces"]:
+            if (
+                isinstance(replaces, str)
+                and replaces
+                and replaces not in ancestors
+                and replaces not in info["namespaces"]
+            ):
                 file_errors.append(
                     f"  - namespace '{path}': replaces '{replaces}', which is not "
                     f"declared by this ontology or any it extends"

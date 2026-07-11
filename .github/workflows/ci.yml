@@ -90,7 +90,6 @@ jobs:
   # never touches).
   # ---------------------------------------------------------------------------
   validate-ontologies:
-    name: Validate Ontology Files
     runs-on: ubuntu-latest
     permissions:
       contents: read
