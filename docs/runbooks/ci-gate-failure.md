@@ -130,7 +130,7 @@ Reproduce locally before pushing:
 ```bash
 curl -fsSL -o /tmp/ontology.schema.json \
   https://mif-spec.dev/schema/ontology/ontology.schema.json
-pip install -r scripts/requirements.txt && npm ci
+pip install --require-hashes -r scripts/requirements.txt && npm ci
 ONTOLOGY_SCHEMA_PATH=/tmp/ontology.schema.json python3 scripts/validate-ontologies.py
 python3 scripts/validate-namespaces.py
 ```
