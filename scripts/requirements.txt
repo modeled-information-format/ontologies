@@ -1,0 +1,7 @@
+# Python dependencies for scripts/validate-ontologies.py and
+# scripts/validate-namespaces.py. This repo has no existing Python dependency
+# infra (no requirements.txt/pyproject.toml before this) -- version-pinned
+# without hash-pinning, unlike MIF's requirements-ci.txt (a heavier
+# hash-pinned setup this repo doesn't otherwise have and this small a
+# footprint doesn't warrant introducing on its own).
+PyYAML==6.0.3
