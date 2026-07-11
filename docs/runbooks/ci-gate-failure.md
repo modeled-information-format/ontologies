@@ -32,10 +32,11 @@ entity:
 # CI or release gate failure
 
 A gate just went red on the Modeled Information Format (MIF) ontology corpus. This
-runbook takes you from the red check to a fix. The gates here are **supply-chain
-security gates**, not ontology validation; this repo runs no ontology validator
-(that lives in the sibling `MIF` spec repo). A red gate means a pinning, code,
-dependency, IaC, posture, or attestation problem.
+runbook takes you from the red check to a fix. Most gates here are **supply-chain
+security gates** (pinning, code, dependency, IaC, posture, attestation); one,
+`validate-ontologies`, validates the ontology content itself (schema conformance,
+`subtype_of` integrity, namespace consistency) — see its own remediation section
+below.
 
 Scope: one red gate, one path to green. Set the repo once:
 
@@ -73,6 +74,7 @@ Filter by `.tool.name`: `CodeQL`, `OSV-Scanner`, or `Trivy`.
 |---|---|---|---|
 | `pin-check` | `ci.yml` | A `uses:` references an action by tag/branch, not a 40-char SHA | `gh run view <run-id> --repo "$REPO" --log-failed` |
 | `validate-workflows` | `ci.yml` | `actionlint` found a workflow-YAML error | `gh run view <run-id> --repo "$REPO" --log-failed` |
+| `validate-ontologies` | `ci.yml` | An `ontologies/*.ontology.yaml` file fails schema conformance, `subtype_of` integrity, or namespace consistency | `gh run view <run-id> --repo "$REPO" --log-failed` |
 | `sast` (CodeQL) | `quality-gates.yml`, `gate-sast` in `release.yml` | SAST finding on the workflows/source (`languages: actions`) | Security tab → Code scanning → `tool=CodeQL`; or the `gh api` query above |
 | `sca` (OSV-Scanner) | `quality-gates.yml`, `gate-sca` in `release.yml` | A dependency advisory at severity `high` or above | Security tab → `tool=OSV-Scanner` |
 | `trivy` (IaC/license) | `quality-gates.yml`, `gate-trivy` in `release.yml` | Trivy filesystem scan flagged IaC misconfig or a license | Security tab → `tool=Trivy` |
@@ -104,6 +106,34 @@ re-runs on the PR.
 ### `validate-workflows`: actionlint error
 
 The log points at the file and line. Fix the YAML/expression, push, re-run.
+
+### `validate-ontologies`: schema, `subtype_of`, or namespace error
+
+The log names the failing file and the specific error(s):
+
+- **Schema error** (`- schema: ...`) — the ontology YAML doesn't conform to
+  `ontology.schema.json` (fetched fresh each run from its canonical `$id`,
+  `https://mif-spec.dev/schema/ontology/ontology.schema.json`). Fix the
+  offending field in the `.ontology.yaml` file.
+- **`subtype_of` error** — a self-reference, a parent that isn't declared by
+  the ontology or anything it `extends`, a missing required-field
+  substitutability, or a cycle. Fix the `subtype_of`/`schema.required` values
+  named in the error.
+- **Namespace error** (from `validate-namespaces.py`) — a duplicate namespace
+  key within one ontology's own tree, a `type_hint` that conflicts with an
+  ontology this one `extends`, or a `replaces` reference that doesn't resolve
+  to any namespace declared by this ontology or its ancestors. Fix the
+  `namespaces:` block named in the error.
+
+Reproduce locally before pushing:
+
+```bash
+curl -fsSL -o /tmp/ontology.schema.json \
+  https://mif-spec.dev/schema/ontology/ontology.schema.json
+pip install --require-hashes -r scripts/requirements.txt && npm ci
+ONTOLOGY_SCHEMA_PATH=/tmp/ontology.schema.json python3 scripts/validate-ontologies.py
+python3 scripts/validate-namespaces.py
+```
 
 ### `sast` (CodeQL) / `sca` (OSV) / `trivy` (IaC/license): SARIF gates
 

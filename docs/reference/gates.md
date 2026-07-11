@@ -58,6 +58,7 @@ Trigger: every push and pull request to `main`; `workflow_dispatch`.
 | `pin-check` | Thin caller of `pin-check.yml`; fails closed if any `uses:` references an action by tag or branch instead of a full 40-char SHA |
 | `lint` | Counts TODO/FIXME/HACK/XXX markers in YAML, shell, and Markdown (informational; never fails) |
 | `validate-workflows` | Thin caller of `reusable-actionlint.yml`; validates workflow YAML syntax |
+| `validate-ontologies` | Runs `scripts/tests/test_ontology_validation.py` (regression tests), `scripts/validate-ontologies.py` (schema conformance against `ontology.schema.json`'s canonical, unversioned `$id`, fetched fresh each run, plus cross-ontology `subtype_of` integrity), and `scripts/validate-namespaces.py` (namespace-tree consistency across the `extends` graph) against every `ontologies/*.ontology.yaml` |
 
 ---
 
