@@ -199,7 +199,12 @@ def validate_ontology(ontology_path: Path, schema_path: Path, corpus: dict[str, 
         errors.extend(_ajv_validate(ontology, schema_path))
         ob = ontology.get("ontology") if isinstance(ontology, dict) else None
         oid = ob.get("id") if isinstance(ob, dict) else None
-        visible = visible_types(oid, corpus) if isinstance(oid, str) and oid else _type_info(ontology)
+        visible = visible_types(oid, corpus) if isinstance(oid, str) and oid else {}
+        if not visible:
+            # oid missing from the preloaded corpus (e.g. an id collision left this
+            # file's entry overwritten) -- fall back to this file's own local types
+            # rather than treating every locally-declared parent as unresolvable.
+            visible = _type_info(ontology)
         errors.extend(check_subtype_of(ontology, visible))
     except yaml.YAMLError as e:
         errors.append(f"  - YAML parse error: {e}")

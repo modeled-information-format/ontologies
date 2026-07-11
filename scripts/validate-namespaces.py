@@ -145,7 +145,10 @@ def ancestor_namespaces(oid: str, corpus: dict[str, dict], _seen: set | None = N
 
 def check_duplicate_keys(repo_root: Path) -> dict[str, list[str]]:
     """Re-parse every ontology file strictly, reporting any that fail on a
-    duplicate namespace key (or any other duplicate mapping key)."""
+    duplicate namespace key (or any other duplicate mapping key) -- and any
+    other YAML parse error, so this script fails closed when run standalone
+    (per its own docstring) instead of silently treating a syntactically
+    broken file as simply absent from the corpus."""
     errors: dict[str, list[str]] = {}
     ontology_dir = repo_root / "ontologies"
     if not ontology_dir.exists():
@@ -155,8 +158,8 @@ def check_duplicate_keys(repo_root: Path) -> dict[str, list[str]]:
             load_yaml_strict(f)
         except DuplicateKeyError as e:
             errors.setdefault(f.name, []).append(f"  - {e}")
-        except yaml.YAMLError:
-            continue
+        except yaml.YAMLError as e:
+            errors.setdefault(f.name, []).append(f"  - YAML parse error: {e}")
     return errors
 
 

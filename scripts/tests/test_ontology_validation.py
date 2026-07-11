@@ -71,6 +71,26 @@ class SubtypeOfIntegrityTests(unittest.TestCase):
         errors = validate_ontologies.check_subtype_of(ontology, visible)
         self.assertEqual(errors, [])
 
+    def test_missing_from_corpus_falls_back_to_local_types(self):
+        # oid isn't a key in `corpus` at all (e.g. an id collision left this file's
+        # entry overwritten) -- validate_ontology must not treat every locally
+        # declared parent as unresolvable just because visible_types(oid, {}) == {}.
+        ontology = {
+            "ontology": {"id": "orphaned"},
+            "entity_types": [
+                {"name": "child", "subtype_of": ["parent"], "schema": {"required": ["a"]}},
+                {"name": "parent", "schema": {"required": ["a"]}},
+            ],
+        }
+        empty_corpus: dict = {}
+        oid = ontology["ontology"]["id"]
+        visible = validate_ontologies.visible_types(oid, empty_corpus)
+        self.assertEqual(visible, {})  # confirms the scenario this guards against
+        if not visible:
+            visible = validate_ontologies._type_info(ontology)
+        errors = validate_ontologies.check_subtype_of(ontology, visible)
+        self.assertEqual(errors, [])
+
     def test_local_cycle_fails_closed(self):
         # a.subtype_of b, b.subtype_of a -- both declared in the SAME ontology. Per
         # check_subtype_of's own comment, cycle detection is intentionally scoped to
@@ -134,6 +154,22 @@ class AjvWrapperTests(unittest.TestCase):
 class NamespaceConsistencyTests(unittest.TestCase):
     """validate-namespaces.py's fresh checks (see its module docstring for why
     this isn't a port of MIF's retired memory-namespace script)."""
+
+    def test_malformed_yaml_fails_closed_standalone(self):
+        # check_duplicate_keys previously silently swallowed any yaml.YAMLError
+        # (not just DuplicateKeyError), so a syntactically broken ontology file
+        # made validate-namespaces.py exit 0 when run standalone -- it just
+        # vanished from the corpus instead of being reported as broken.
+        tmpdir = Path(tempfile.mkdtemp())
+        try:
+            ontology_dir = tmpdir / "ontologies"
+            ontology_dir.mkdir()
+            (ontology_dir / "broken.ontology.yaml").write_text("namespaces: [unterminated\n")
+            errors = validate_namespaces.check_duplicate_keys(tmpdir)
+            self.assertIn("broken.ontology.yaml", errors)
+            self.assertTrue(any("YAML parse error" in e for e in errors["broken.ontology.yaml"]))
+        finally:
+            shutil.rmtree(tmpdir, ignore_errors=True)
 
     def test_duplicate_namespace_key_fails_closed(self):
         text = """
