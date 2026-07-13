@@ -105,7 +105,7 @@ jobs:
       contents: read
     # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-zap.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
+      modeled-information-format/.github/.github/workflows/reusable-zap.yml@05b13774259a17140419556a45a48ba6a3e36e0c
     with:
       target: ${{ inputs.target }}
       fail-action: false
