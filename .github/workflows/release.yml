@@ -292,7 +292,7 @@ jobs:
       packages: read   # reusable's (skipped) image job declares it
     # modeled-information-format/.github main @ bf1c8e2 (re-pinned 2026-06-30)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-trivy.yml@bf1c8e219de5b134c82d51c1b66507cd86e2d711
+      modeled-information-format/.github/.github/workflows/reusable-trivy.yml@86b74cdfa5c1e913be72a4a9464c0e7f3036d24a
     with:
       scan-iac: true
 
