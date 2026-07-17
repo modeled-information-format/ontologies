@@ -68,6 +68,8 @@ jobs:
       modeled-information-format/.github/.github/workflows/reusable-scorecard.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
     with:
       publish-results: false
+    secrets:
+      app-private-key: ${{ secrets.CI_CLIENT_APP_PRIVATE_KEY }}
 
   trivy:
     permissions:
