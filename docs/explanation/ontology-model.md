@@ -2,7 +2,7 @@
 id: explanation-ontology-model
 type: semantic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-06-30T12:00:00Z'
+modified: '2026-10-08T00:00:00Z'
 namespace: explanation/ontology-corpus
 title: The Ontology Model
 tags:
@@ -33,12 +33,12 @@ entity:
 
 # The Ontology Model
 
-A memory is only as useful as the vocabulary it is typed against. Write "this is
+A concept is only as useful as the vocabulary it is typed against. Write "this is
 a decision, confidence 0.8, from the design review" in one project's private
 shape and another project's private shape, and you have two records that mean the
 same thing and can agree on nothing. The Modeled Information Format (MIF) ontology
 corpus exists to remove that gap: one shared vocabulary, declared in the open, so
-a memory typed in one domain stays legible to tools and people working in another.
+a concept typed in one domain stays legible to tools and people working in another.
 
 This page is about the *why* behind the corpus, why it is central rather than
 per-project, why the model is written once and read twice, and the reasoning
@@ -54,7 +54,7 @@ The tempting shortcut is for each project to invent its own types as it goes. It
 is less work on day one, you name a field, you move on, nothing to agree with
 anyone about. The cost arrives later and compounds. Two teams independently model
 "a thing we decided," give it different field names and different namespace
-paths, and now a memory that should be portable is stranded. Nothing typed in one
+paths, and now a concept that should be portable is stranded. Nothing typed in one
 project can be discovered, validated, or related against another. The vocabulary
 fragments exactly where it would have been most valuable: at the seams between
 domains.
@@ -62,7 +62,7 @@ domains.
 A central corpus makes the opposite bet. The knowledge triad, the core traits,
 the shared cross-domain traits, the relationship types: these are declared once,
 in `mif-base` and `shared-traits`, and every domain ontology builds on them. A
-`decisions` memory from a software-engineering ontology and a `decisions` memory
+`decisions` concept from a software-engineering ontology and a `decisions` concept
 from a regenerative-agriculture ontology share the same base type, the same
 `confidence` and `provenance` traits, the same `_semantic/decisions` namespace.
 They were authored by different people for different work, and they still
@@ -74,7 +74,7 @@ That bet has a real cost, and it is worth naming. A shared vocabulary is a
 constraint: a domain author cannot model "a decision" however they please; they
 inherit `_semantic/decisions` and compose the base traits whether or not they
 would have designed them that way. The corpus trades some local freedom for
-cross-domain meaning. For memory that is meant to travel, that trade is the whole
+cross-domain meaning. For knowledge that is meant to travel, that trade is the whole
 point.
 
 ## One model, two readers
@@ -153,7 +153,7 @@ division is not arbitrary. It follows a long-standing taxonomy of what knowledge
 Three, and not more, because these are genuinely different kinds of thing, not
 three topics. A fact does not expire the way an event recedes into the past; a
 procedure is graded by whether its steps work, not by whether it is true. Typing
-a memory by which kind of knowledge it is (before typing it by domain) gives
+a concept by which kind of knowledge it is (before typing it by domain) gives
 every tool a coarse, reliable handle that holds across every ontology in the
 corpus. A query for "recent incidents" means the same thing whether the incidents
 are server outages or failed field trials, because both were typed `episodic`
@@ -243,7 +243,7 @@ traits, composing entity types, projecting to JSON-LD) is more work than dumping
 loose JSON and moving on. A loose record costs nothing to write and everything to
 trust: no one can say what its fields mean, whether two of them are the same
 thing, or whether a tool will read it the way a person did. The corpus front-loads
-that work so the trust is built in. A memory typed against an ontology in this
+that work so the trust is built in. A concept typed against an ontology in this
 corpus can be validated, related, and discovered, and it means the same thing to
 the next person and the next parser that reach it. That up-front explicitness is
 not overhead the corpus tolerates: it is the thing the corpus is for.
@@ -251,14 +251,14 @@ not overhead the corpus tolerates: it is the thing the corpus is for.
 ## How this fits the MIF spec
 
 The corpus is the vocabulary; the [MIF specification](https://mif-spec.dev) is the
-format that vocabulary plugs into. A MIF memory declares which ontology it
+format that vocabulary plugs into. A MIF concept declares which ontology it
 conforms to with an `ontology` reference (`id`, `version`, and an optional `uri`)
 and a `namespace` path such as `_semantic/decisions`. That declaration works the
 same way in YAML frontmatter and in JSON-LD, the same two readings the ontologies
 themselves carry. The schema that defines a valid ontology,
 [`ontology.schema.json`](https://mif-spec.dev/schema/ontology/ontology.schema.json),
 is published under the canonical `mif-spec.dev` domain and is what the MIF repo
-validates this corpus against. The spec says how a memory is shaped and how it
+validates this corpus against. The spec says how a concept is shaped and how it
 points at its ontology; the corpus says what the ontologies are. Together they
 make one model that a person and a parser read the same way, no translation, no
 drift.

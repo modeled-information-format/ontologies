@@ -2,7 +2,7 @@
 id: reference-ontologies-directory
 type: semantic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-06-30T12:00:00Z'
+modified: '2026-10-08T00:00:00Z'
 namespace: reference/ontology-corpus
 title: MIF Ontologies
 tags:
@@ -35,7 +35,7 @@ This directory contains ontology definitions for the Modeled Information Format.
 
 ### mif-base.ontology.yaml
 
-The base ontology defines the namespace hierarchy for the three base memory types.
+The base ontology defines the namespace hierarchy for the three base knowledge types (MIF §4.2).
 
 **Important:** Namespace paths use an underscore prefix (`_semantic`, `_episodic`, `_procedural`) to distinguish base type namespaces from domain-specific namespaces. This convention ensures consistent namespace identification across implementations.
 
@@ -76,7 +76,7 @@ The base ontology defines foundational traits:
 | Trait | Description | Fields |
 |-------|-------------|--------|
 | `timestamped` | Creation/update timestamps | `created_at`, `updated_at` |
-| `confidence` | Memory decay score | `confidence` (0.0-1.0) |
+| `confidence` | Confidence score for freshness and validity tracking | `confidence` (0.0-1.0) |
 | `provenance` | Source tracking | `source`, `author` |
 
 ### Shared Traits (shared-traits)
@@ -143,32 +143,32 @@ Later entries override earlier entries for conflicting definitions.
 
 ## Using Ontologies
 
-### Path Format
+### Namespace Paths
 
-Memories are stored using hierarchical namespace paths:
-
-```text
-# User-level (includes org and project)
-${MNEMONIC_ROOT}/{org}/{project}/{namespace}/
-
-# Project-level (namespace only)
-./.claude/mnemonic/{namespace}/
-```
+A concept classifies itself with a hierarchical `namespace` path in its
+frontmatter. MIF §10.1 defines the general form as `{root}/{scope}+[/{session}]`,
+where the root is an organization name or a reserved `_` prefix (§10.2). For
+ontology-typed concepts the root is usually a base-type prefix (`_semantic`,
+`_episodic`, `_procedural`) followed by a child namespace the declared ontology
+defines or inherits.
 
 Examples:
 
-- `${MNEMONIC_ROOT}/zircote/mif/_semantic/decisions/`
-- `./.claude/mnemonic/_procedural/patterns/`
+- `_semantic/decisions`
+- `_procedural/patterns`
 
-> **Path contexts:** `${MNEMONIC_ROOT}/{org}/{project}/` is the user-level storage path
-> (external to the repository). Project-level `.claude/mnemonic/` is for embedded project memories.
+> **Namespace is not a storage path:** MIF §3.3 recommends (SHOULD) one directory
+> per base type in a bundle (`semantic/`, `episodic/`, `procedural/`, optionally
+> with nested subdirectories), and directory placement is independent of the
+> frontmatter `namespace`. Where an implementation keeps its bundles is
+> implementation-defined.
 
 ### Namespace Selection
 
-Choose namespaces based on memory type:
+Choose namespaces based on the kind of knowledge a concept records:
 
-| Memory Type | Namespace | Description |
-|-------------|-----------|-------------|
+| Knowledge | Namespace | Description |
+|-----------|-----------|-------------|
 | Architectural choices | `_semantic/decisions` | Why we chose X over Y |
 | API/technical facts | `_semantic/knowledge` | How X works |
 | Component definitions | `_semantic/entities` | What X is |
@@ -179,9 +179,9 @@ Choose namespaces based on memory type:
 | Code conventions | `_procedural/patterns` | How we write X |
 | Upgrade steps | `_procedural/migrations` | How to migrate to X |
 
-## Declaring Ontology in Memories
+## Declaring Ontology in Concepts
 
-MIF memories can explicitly declare which ontology they conform to using the `ontology` field:
+MIF concepts can explicitly declare which ontology they conform to using the `ontology` field (MIF §4.3):
 
 ### YAML Frontmatter (Markdown)
 
@@ -192,9 +192,9 @@ type: semantic
 created: 2026-01-26T10:00:00Z
 ontology:
   id: regenerative-agriculture
-  version: "0.1.0"
-  uri: https://raw.githubusercontent.com/modeled-information-format/MIF/main/ontologies/examples/regenerative-agriculture.ontology.yaml
-namespace: _semantic/livestock
+  version: "0.3.0"
+  uri: https://mif-spec.dev/ontologies/regenerative-agriculture.ontology.yaml
+namespace: _semantic/entities
 ---
 ```
 
@@ -203,18 +203,28 @@ namespace: _semantic/livestock
 ```json
 {
   "@context": "https://mif-spec.dev/schema/context.jsonld",
-  "@type": "Memory",
-  "@id": "urn:mif:550e8400",
+  "@type": "Concept",
+  "@id": "urn:mif:550e8400-e29b-41d4-a716-446655440000",
+  "conceptType": "semantic",
+  "created": "2026-01-26T10:00:00Z",
+  "timestamp": "2026-01-26T10:00:00Z",
   "ontology": {
     "@type": "OntologyReference",
     "id": "regenerative-agriculture",
-    "version": "0.1.0",
-    "uri": "https://raw.githubusercontent.com/modeled-information-format/MIF/main/ontologies/examples/regenerative-agriculture.ontology.yaml"
+    "version": "0.3.0",
+    "uri": "https://mif-spec.dev/ontologies/regenerative-agriculture.ontology.yaml"
   },
-  "namespace": "_semantic/livestock",
+  "namespace": "_semantic/entities",
   "content": "..."
 }
 ```
+
+The JSON-LD form is the derived projection of the Markdown concept (MIF §6.1):
+`@type` is `Concept`, `@id` is `urn:mif:` followed by the full frontmatter `id`
+UUID, the frontmatter `type` surfaces as `conceptType`, and `timestamp` mirrors
+`modified` (or `created` when there is no `modified`). The v0.1 terms `Memory` and
+`memoryType` remain defined for backward compatibility only; new documents use
+`Concept` and `conceptType` (MIF §14).
 
 ### OntologyReference Fields
 
@@ -234,10 +244,12 @@ namespaces, and traits, see the
 
 ## Creating Custom Ontologies
 
-1. Create an `ontology.yaml` file in your project:
+1. Create a `<name>.ontology.yaml` file in your project's `.mif/ontologies/`
+   directory (project ontologies; a per-user location such as
+   `~/.mif/ontologies/` is also resolved, MIF §10.8.5):
 
    ```text
-   ./.claude/mnemonic/ontology.yaml
+   .mif/ontologies/my-project.ontology.yaml
    ```
 
 2. Define custom namespaces, entity types, and discovery patterns:

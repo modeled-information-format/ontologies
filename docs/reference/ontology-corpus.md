@@ -2,7 +2,7 @@
 id: reference-ontology-corpus
 type: semantic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-06-30T12:00:00Z'
+modified: '2026-10-08T00:00:00Z'
 namespace: reference/ontology-corpus
 title: Ontology Corpus Reference
 tags:
@@ -250,9 +250,9 @@ The `extends` declared by each domain ontology:
 `shared-traits` and `mif-generic` extend `mif-base`; `engineering-base` extends
 `mif-base` and `shared-traits`; `mif-base` declares no `extends`.
 
-## Declaring conformance in a memory
+## Declaring conformance in a concept
 
-A memory references the ontology it conforms to with an `ontology` block (`id`,
+A MIF concept references the ontology it conforms to with an `ontology` block (`id`,
 `version`, optional `uri`) and a `namespace` path. The same declaration works in
 YAML frontmatter and in the JSON-LD projection.
 
@@ -260,7 +260,7 @@ YAML frontmatter and in the JSON-LD projection.
 ontology:
   id: mif-base
   version: "1.0.0"
-  uri: https://mif-spec.dev/schema/ontology/ontology.schema.json
+  uri: https://mif-spec.dev/ontologies/mif-base.ontology.yaml
 namespace: _semantic/decisions
 ```
 

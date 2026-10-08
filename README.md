@@ -8,7 +8,7 @@
 The central, growing corpus of ontologies for the **Modeled Information Format
 (MIF)**. An ontology here is one model read two ways: the `*.ontology.yaml` a
 person reads and the `*.ontology.jsonld` a parser resolves. It types MIF
-memories so a fact recorded in one domain means the same thing everywhere it
+concepts so a fact recorded in one domain means the same thing everywhere it
 travels.
 
 A domain does not invent its own vocabulary. It `extends` a shared base and adds
@@ -63,7 +63,7 @@ types are not, so each ontology defines its own. See
 [ADR 0001](docs/decisions/0001-underscore-prefixed-base-namespaces.md) for why
 base-type namespaces carry the `_` prefix.
 
-A memory then names the ontology it conforms to:
+A MIF concept then names the ontology it conforms to:
 
 ```yaml
 ontology:
