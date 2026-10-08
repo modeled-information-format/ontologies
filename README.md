@@ -63,7 +63,7 @@ types are not, so each ontology defines its own. See
 [ADR 0001](docs/decisions/0001-underscore-prefixed-base-namespaces.md) for why
 base-type namespaces carry the `_` prefix.
 
-A memory then names the ontology it conforms to:
+A MIF concept then names the ontology it conforms to:
 
 ```yaml
 ontology:

@@ -2,7 +2,7 @@
 id: explanation-ontology-model
 type: semantic
 created: '2026-06-30T12:00:00Z'
-modified: '2026-06-30T12:00:00Z'
+modified: '2026-10-08T00:00:00Z'
 namespace: explanation/ontology-corpus
 title: The Ontology Model
 tags:
@@ -251,14 +251,14 @@ not overhead the corpus tolerates: it is the thing the corpus is for.
 ## How this fits the MIF spec
 
 The corpus is the vocabulary; the [MIF specification](https://mif-spec.dev) is the
-format that vocabulary plugs into. A MIF memory declares which ontology it
+format that vocabulary plugs into. A MIF concept declares which ontology it
 conforms to with an `ontology` reference (`id`, `version`, and an optional `uri`)
 and a `namespace` path such as `_semantic/decisions`. That declaration works the
 same way in YAML frontmatter and in JSON-LD, the same two readings the ontologies
 themselves carry. The schema that defines a valid ontology,
 [`ontology.schema.json`](https://mif-spec.dev/schema/ontology/ontology.schema.json),
 is published under the canonical `mif-spec.dev` domain and is what the MIF repo
-validates this corpus against. The spec says how a memory is shaped and how it
+validates this corpus against. The spec says how a concept is shaped and how it
 points at its ontology; the corpus says what the ontologies are. Together they
 make one model that a person and a parser read the same way, no translation, no
 drift.
