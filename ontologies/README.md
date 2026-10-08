@@ -146,22 +146,22 @@ Later entries override earlier entries for conflicting definitions.
 ### Namespace Paths
 
 A concept classifies itself with a hierarchical `namespace` path in its
-frontmatter, rooted at a base-type prefix (`_semantic`, `_episodic`,
-`_procedural`) or a domain namespace the declared ontology defines:
-
-```text
-{base-type-or-domain}/{child}[/{child}...]
-```
+frontmatter. MIF §10.1 defines the general form as `{root}/{scope}+[/{session}]`,
+where the root is an organization name or a reserved `_` prefix (§10.2). For
+ontology-typed concepts the root is usually a base-type prefix (`_semantic`,
+`_episodic`, `_procedural`) followed by a child namespace the declared ontology
+defines or inherits.
 
 Examples:
 
 - `_semantic/decisions`
 - `_procedural/patterns`
 
-> **Namespace is not a storage path:** MIF bundles store concept files in one
-> directory per base type (`semantic/`, `episodic/`, `procedural/`), and directory
-> placement is independent of the frontmatter `namespace` (MIF §3.3). Where an
-> implementation keeps its bundles is implementation-defined.
+> **Namespace is not a storage path:** MIF §3.3 recommends (SHOULD) one directory
+> per base type in a bundle (`semantic/`, `episodic/`, `procedural/`, optionally
+> with nested subdirectories), and directory placement is independent of the
+> frontmatter `namespace`. Where an implementation keeps its bundles is
+> implementation-defined.
 
 ### Namespace Selection
 
@@ -194,7 +194,7 @@ ontology:
   id: regenerative-agriculture
   version: "0.3.0"
   uri: https://mif-spec.dev/ontologies/regenerative-agriculture.ontology.yaml
-namespace: _semantic/livestock
+namespace: _semantic/entities
 ---
 ```
 
@@ -206,21 +206,25 @@ namespace: _semantic/livestock
   "@type": "Concept",
   "@id": "urn:mif:550e8400-e29b-41d4-a716-446655440000",
   "conceptType": "semantic",
+  "created": "2026-01-26T10:00:00Z",
+  "timestamp": "2026-01-26T10:00:00Z",
   "ontology": {
     "@type": "OntologyReference",
     "id": "regenerative-agriculture",
     "version": "0.3.0",
     "uri": "https://mif-spec.dev/ontologies/regenerative-agriculture.ontology.yaml"
   },
-  "namespace": "_semantic/livestock",
+  "namespace": "_semantic/entities",
   "content": "..."
 }
 ```
 
-The JSON-LD form is the derived projection of the Markdown concept: `@type` is
-`Concept`, `@id` is `urn:mif:` followed by the full frontmatter `id` UUID, and the
-frontmatter `type` surfaces as `conceptType` (MIF §6.1). The v0.1 terms `Memory`
-and `memoryType` are deprecated.
+The JSON-LD form is the derived projection of the Markdown concept (MIF §6.1):
+`@type` is `Concept`, `@id` is `urn:mif:` followed by the full frontmatter `id`
+UUID, the frontmatter `type` surfaces as `conceptType`, and `timestamp` mirrors
+`modified` (or `created` when there is no `modified`). The v0.1 terms `Memory` and
+`memoryType` remain defined for backward compatibility only; new documents use
+`Concept` and `conceptType` (MIF §14).
 
 ### OntologyReference Fields
 

@@ -8,7 +8,7 @@
 The central, growing corpus of ontologies for the **Modeled Information Format
 (MIF)**. An ontology here is one model read two ways: the `*.ontology.yaml` a
 person reads and the `*.ontology.jsonld` a parser resolves. It types MIF
-memories so a fact recorded in one domain means the same thing everywhere it
+concepts so a fact recorded in one domain means the same thing everywhere it
 travels.
 
 A domain does not invent its own vocabulary. It `extends` a shared base and adds
