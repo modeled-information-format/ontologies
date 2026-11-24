@@ -33,7 +33,7 @@ jobs:
   # version. Guarded to tag pushes; a branch workflow_dispatch passes empty (skip).
   # ---------------------------------------------------------------------------
   changelog-check:
-    uses: modeled-information-format/.github/.github/workflows/reusable-changelog-check.yml@1b416b97ff3ded8a49ae6873cc350eb1efb389bf
+    uses: modeled-information-format/.github/.github/workflows/reusable-changelog-check.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       version: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
 
@@ -49,8 +49,8 @@ jobs:
       version: ${{ steps.meta.outputs.version }}
     steps:
       - name: Checkout repository
-        # v4.2.2
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Resolve artifact name and version
         id: meta
@@ -87,8 +87,8 @@ jobs:
 
     steps:
       - name: Checkout repository
-        # v4.2.2
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       # -----------------------------------------------------------------------
       # ADAPT THIS STEP for your toolchain.
@@ -162,8 +162,8 @@ jobs:
 
     steps:
       - name: Checkout repository
-        # v4.2.2
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Download build artifacts
         # v4.3.0
@@ -220,9 +220,9 @@ jobs:
       contents: read
       actions: read
       packages: read   # reusable's analyze job declares it (CodeQL pkg resolution)
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-sast-codeql.yml@1b416b97ff3ded8a49ae6873cc350eb1efb389bf
+      modeled-information-format/.github/.github/workflows/reusable-sast-codeql.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       languages: actions
       build-mode: none
@@ -234,9 +234,9 @@ jobs:
       id-token: write
       attestations: write
       contents: read
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@05b13774259a17140419556a45a48ba6a3e36e0c
+      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       subject-name: ${{ needs.build.outputs.subject-name }}
       subject-digest: ${{ needs.build.outputs.subject-digest }}
@@ -256,9 +256,9 @@ jobs:
       contents: read
       security-events: write
       pull-requests: write   # reusable's (skipped) dependency-review job declares it
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-sca-osv.yml@789b6baf9a1451f406ff507aabb5c5be8a9d48a4
+      modeled-information-format/.github/.github/workflows/reusable-sca-osv.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       fail-on-severity: high
 
@@ -269,9 +269,9 @@ jobs:
       id-token: write
       attestations: write
       contents: read
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@05b13774259a17140419556a45a48ba6a3e36e0c
+      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       subject-name: ${{ needs.build.outputs.subject-name }}
       subject-digest: ${{ needs.build.outputs.subject-digest }}
@@ -290,9 +290,9 @@ jobs:
       security-events: write
       actions: read
       packages: read   # reusable's (skipped) image job declares it
-    # modeled-information-format/.github main @ bf1c8e2 (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-trivy.yml@86b74cdfa5c1e913be72a4a9464c0e7f3036d24a
+      modeled-information-format/.github/.github/workflows/reusable-trivy.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       scan-iac: true
 
@@ -303,9 +303,9 @@ jobs:
       id-token: write
       attestations: write
       contents: read
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@05b13774259a17140419556a45a48ba6a3e36e0c
+      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       subject-name: ${{ needs.build.outputs.subject-name }}
       subject-digest: ${{ needs.build.outputs.subject-digest }}
@@ -325,9 +325,9 @@ jobs:
       id-token: write
       attestations: write
       contents: read
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-vex.yml@667ee7b3bc93a8789c65cb9b4fedc6d827fcd36a
+      modeled-information-format/.github/.github/workflows/reusable-vex.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       subject-name: ${{ needs.build.outputs.subject-name }}
       subject-digest: ${{ needs.build.outputs.subject-digest }}
