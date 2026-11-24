@@ -28,12 +28,12 @@ jobs:
   # central `pin-check.yml` reusable, not an inline re-implementation. The
   # reusable is itself pinned by the central `.github` repo's commit SHA.
   # ---------------------------------------------------------------------------
-  # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+  # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
   pin-check:
     permissions:
       contents: read
     uses: >-
-      modeled-information-format/.github/.github/workflows/pin-check.yml@5c856f8118976bfd3bb64a8911f69dc9b00b4cad
+      modeled-information-format/.github/.github/workflows/pin-check.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
 
   # ---------------------------------------------------------------------------
   # Lint: basic shell/YAML linting placeholder.
@@ -44,8 +44,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        # v7.0.0
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Check for TODO/FIXME markers (informational)
         run: |
@@ -63,12 +63,12 @@ jobs:
   # Thin caller of the central reusable-actionlint — the verified, pinned
   # actionlint download lives in the reusable (consume the central reusables,
   # never reinvent them). Pinned by the .github repo's commit SHA.
-  # modeled-information-format/.github @ 789b6ba (re-pinned 2026-06-30)
+  # modeled-information-format/.github @ c72b3fa (re-pinned 2026-11-24)
   validate-workflows:
     permissions:
       contents: read
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-actionlint.yml@1b416b97ff3ded8a49ae6873cc350eb1efb389bf
+      modeled-information-format/.github/.github/workflows/reusable-actionlint.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
 
   # ---------------------------------------------------------------------------
   # Validate ontology content: schema conformance + subtype_of integrity +
@@ -95,8 +95,8 @@ jobs:
       contents: read
     steps:
       - name: Checkout repository
-        # v7.0.0
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Setup Python
         # v6.3.0
@@ -105,8 +105,8 @@ jobs:
           python-version: '3.12'
 
       - name: Setup Node.js
-        # v6.4.0
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        # v7.1.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
           node-version: '24'
 

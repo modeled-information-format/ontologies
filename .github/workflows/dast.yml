@@ -43,8 +43,8 @@ jobs:
       version: ${{ steps.meta.outputs.version }}
     steps:
       - name: Checkout repository
-        # v4.2.2
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - name: Resolve artifact name and version
         id: meta
         run: |
@@ -67,8 +67,8 @@ jobs:
       subject-digest: ${{ steps.pack.outputs.digest }}
     steps:
       - name: Checkout repository
-        # v4.2.2
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - name: Pack subject snapshot
         id: pack
         env:
@@ -103,9 +103,9 @@ jobs:
     needs: [meta]
     permissions:
       contents: read
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-zap.yml@667ee7b3bc93a8789c65cb9b4fedc6d827fcd36a
+      modeled-information-format/.github/.github/workflows/reusable-zap.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       target: ${{ inputs.target }}
       fail-action: false
@@ -118,9 +118,9 @@ jobs:
       id-token: write
       attestations: write
       contents: read
-    # modeled-information-format/.github main @ 789b6ba (re-pinned 2026-06-30)
+    # modeled-information-format/.github main @ c72b3fa (re-pinned 2026-11-24)
     uses: >-
-      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@05b13774259a17140419556a45a48ba6a3e36e0c
+      modeled-information-format/.github/.github/workflows/reusable-attest-scan.yml@c72b3fae829318990ba3da9b9d5ea0671ac5151f
     with:
       subject-name: ${{ needs.subject.outputs.subject-name }}
       subject-digest: ${{ needs.subject.outputs.subject-digest }}
